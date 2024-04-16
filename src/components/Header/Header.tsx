@@ -1,8 +1,9 @@
-import logo from '../../images/Header/Logo.png';
-import menu from '../../images/Header/Menu.png';
-import cart from '../../images/Header/Cart.png';
-import favourites from '../../images/Header/Favourites.png';
+import logo from '../../assets/images/Header/Logo.png';
+import menu from '../../assets/images/Header/Menu.svg';
+import cart from '../../assets/images/Header/Cart.svg';
+import favourites from '../../assets/images/Header/Favourites.svg';
 import './Header.scss';
+import { NavLink } from 'react-router-dom';
 
 export const Header = () => {
   return (
@@ -12,36 +13,41 @@ export const Header = () => {
 
         <ul className="header__navbar navbar">
           <li>
-            <a href="#" className="navbar__link">
+            <NavLink to="#" className="navbar__link">
               Home
-            </a>
+            </NavLink>
           </li>
 
           <li>
-            <a href="#" className="navbar__link">
+            <NavLink to="#" className="navbar__link">
               Phones
-            </a>
+            </NavLink>
           </li>
 
           <li>
-            <a href="#" className="navbar__link">
+            <NavLink to="#" className="navbar__link">
               Tablets
-            </a>
+            </NavLink>
           </li>
 
           <li>
-            <a href="#" className="navbar__link">
+            <NavLink to="#" className="navbar__link">
               Accessories
-            </a>
+            </NavLink>
           </li>
         </ul>
       </div>
 
       <div className="header__icons">
-        <img src={cart} alt="Cart" className="header__cart" />
+        <img src={menu} alt="Menu" className="header__menu" />
+
         <div className="wrapper">
-          <img src={favourites} alt="Favourites" className="header__favourites" />
-          <img src={menu} alt="Menu" className="header__menu" />
+          <img
+            src={favourites}
+            alt="Favourites"
+            className="header__favourites"
+          />
+          <img src={cart} alt="Cart" className="header__cart" />
         </div>
       </div>
     </div>

@@ -1,9 +1,21 @@
 $layout-breakpoint-tablet: 640px;
 $layout-breakpoint-desktop: 1440px;
 
+@mixin on-tablet {
+  @media (min-width: $layout-breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $layout-breakpoint-desktop) {
+    @content;
+  }
+}
+
 @font-face {
   font-family: 'Mont';
-  src: url('../../fonts/FontsFree-Net-Mont-Bold.ttf');
+  src: url('../../assets/fonts/Mont-Bold.otf');
   font-weight: bold;
 }
 
@@ -11,7 +23,9 @@ $layout-breakpoint-desktop: 1440px;
   display: flex;
   justify-content: space-between;
   height: 48px;
-  margin: 0 16px;
+  padding: 0 16px;
+  box-shadow: 0px 1px 0px 0px #E2E6E9;
+  box-sizing: border-box;
 
   &__container {
     display: flex;
@@ -26,11 +40,11 @@ $layout-breakpoint-desktop: 1440px;
     display: flex;
     align-items: center;
   }
-  
+
   &__menu {
     height: 16px;
   }
-  
+
   &__cart,
   &__favourites {
     display: none;
@@ -70,19 +84,18 @@ $layout-breakpoint-desktop: 1440px;
   }
 }
 
-@media (min-width: $layout-breakpoint-tablet) {
+@include on-tablet {
   .header {
-    margin-left: 16px;
-    margin-right: 0;
+    padding: 0 0 0 16px;
 
     &__menu {
       display: none;
     }
-  
+
     &__cart,
     &__favourites {
       display: inline;
-      height: 16px;
+      height: 48px;
     }
   }
 
@@ -92,15 +105,12 @@ $layout-breakpoint-desktop: 1440px;
 
   .wrapper {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    width: 48px;
-    height: 100%;
   }
 }
 
-@media (min-width: $layout-breakpoint-desktop) {
+@include on-desktop {
   .navbar {
     gap: 64px;
     padding-left: 48px;
@@ -110,16 +120,17 @@ $layout-breakpoint-desktop: 1440px;
     }
   }
 
-  .wrapper {
-    width: 64px;
-  }
-
   .header {
     height: 64px;
-    margin-left: 24px;
+    padding: 0 0 0 24px;
 
     &__logo {
       height: 27px;
+    }
+
+    &__cart,
+    &__favourites {
+      height: 64px;
     }
   }
 }
