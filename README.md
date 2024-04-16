@@ -12,7 +12,7 @@ use Node version 18
 1. `Pull` the latest `develop`
 1. Create a `feat/your-feature-name` branch and `push` it to Github
 1. Open a Pull Request (`PR`) from your branch to `develop`
-1. Add a [DEMO LINK](https://kshepetska.github.io/phone-catalog/) to the PR description
+1. Add a [DEMO LINK](https://<your_account>.github.io/react_phone-catalog/) to the PR description
 1. Write your code, save it and push it to Github
 1. Deploy the code to GH-Pages
 1. Ask your teammate to review and approve if everything is OK

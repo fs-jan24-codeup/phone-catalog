@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Phone } from '../types/Phone';
+import { Phone } from '../../types/Phone';
 import { getAllPhones } from './fetchPhonesData';
 export default function PhonePage() {
   const [phones, setPhones] = useState<Phone[]>([]);

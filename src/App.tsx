@@ -1,5 +1,5 @@
 import './App.css';
-import PhonePage from './PhonePage/PhonePage';
+import PhonePage from './pages/PhonePage/PhonePage';
 
 export function App() {
   return (
