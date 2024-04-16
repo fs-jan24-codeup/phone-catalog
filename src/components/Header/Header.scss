@@ -1,0 +1,125 @@
+$layout-breakpoint-tablet: 640px;
+$layout-breakpoint-desktop: 1440px;
+
+@font-face {
+  font-family: 'Mont';
+  src: url('../../fonts/FontsFree-Net-Mont-Bold.ttf');
+  font-weight: bold;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  height: 48px;
+  margin: 0 16px;
+
+  &__container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo {
+    height: 21px;
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+  }
+  
+  &__menu {
+    height: 16px;
+  }
+  
+  &__cart,
+  &__favourites {
+    display: none;
+  }
+}
+
+.navbar {
+  display: none;
+  padding-left: 32px;
+  gap: 32px;
+  list-style: none;
+
+  &__link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 48px;
+
+    font-size: 12px;
+    font-family: 'Mont';
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #89939a;
+
+    &:hover {
+      color: #313237;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        height: 3px;
+        width: 100%;
+        background-color: #313237;
+      }
+    }
+  }
+}
+
+@media (min-width: $layout-breakpoint-tablet) {
+  .header {
+    margin-left: 16px;
+    margin-right: 0;
+
+    &__menu {
+      display: none;
+    }
+  
+    &__cart,
+    &__favourites {
+      display: inline;
+      height: 16px;
+    }
+  }
+
+  .navbar {
+    display: flex;
+  }
+
+  .wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 100%;
+  }
+}
+
+@media (min-width: $layout-breakpoint-desktop) {
+  .navbar {
+    gap: 64px;
+    padding-left: 48px;
+
+    &__link {
+      height: 64px;
+    }
+  }
+
+  .wrapper {
+    width: 64px;
+  }
+
+  .header {
+    height: 64px;
+    margin-left: 24px;
+
+    &__logo {
+      height: 27px;
+    }
+  }
+}

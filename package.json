@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://fs-jan24-codeup.github.io/phone-catalog/",
+  "homepage": "https://fs-jan24-codeup.github.io/phone-catalog",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
