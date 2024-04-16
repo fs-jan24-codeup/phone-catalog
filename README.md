@@ -1,30 +1,22 @@
-# React + TypeScript + Vite
+## How to start
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+use Node version 18
 
-Currently, two official plugins are available:
+- clone this repo
+- run `npm i` to install dependencies
+- run `npm run dev` to start project
+- open http://localhost:5173/phone-catalog/ in browser
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## How to develop a feature
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+1. `Pull` the latest `develop`
+1. Create a `feat/your-feature-name` branch and `push` it to Github
+1. Open a Pull Request (`PR`) from your branch to `develop`
+1. Add a [DEMO LINK](https://<your_account>.github.io/react_phone-catalog/) to the PR description
+1. Write your code, save it and push it to Github
+1. Deploy the code to GH-Pages
+1. Ask your teammate to review and approve if everything is OK
+1. If some fixes are required discuss the comments and repeat steps 5-7
+1. If PR was approved by your teammate ask a mentor to review
+1. If the mentor requests some changes repeat steps 5 and 6
+1. After the mentor approves your PR `merge` it and delete the feature branch
