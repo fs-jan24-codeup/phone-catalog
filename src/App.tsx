@@ -1,17 +1,11 @@
-import { useState } from 'react';
 import './App.css';
-import { Phone } from './types/Phone';
-import phonesFromServer from '../public/api/phones.json';
+import PhonePage from './PhonePage/PhonePage';
 
-function App() {
-  const [phones] = useState<Phone[]>(phonesFromServer);
-
+export function App() {
   return (
-    <ul>
-    {phones.map(phone => (
-      <li key={phone.id}>{phone.name}</li>
-    ))}
-  </ul>
+    <div className="App">
+      <PhonePage />
+    </div>
   );
 }
 
