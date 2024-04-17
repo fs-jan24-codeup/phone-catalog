@@ -1,11 +1,13 @@
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+
 import logo from '../../assets/images/Header/Logo.png';
 import menu from '../../assets/images/Header/Menu.svg';
 import cart from '../../assets/images/Header/Cart.svg';
 import favourites from '../../assets/images/Header/Favourites.svg';
 import './Header.scss';
-import { NavLink } from 'react-router-dom';
 
-export const Header = () => {
+export const Header: React.FC = () => {
   return (
     <div className="header">
       <div className="header__container">
@@ -13,25 +15,25 @@ export const Header = () => {
 
         <ul className="header__navbar navbar">
           <li>
-            <NavLink to="#" className="navbar__link">
+            <NavLink to="/" className="navbar__link">
               Home
             </NavLink>
           </li>
 
           <li>
-            <NavLink to="#" className="navbar__link">
+            <NavLink to="/phones" className="navbar__link">
               Phones
             </NavLink>
           </li>
 
           <li>
-            <NavLink to="#" className="navbar__link">
+            <NavLink to="/tablets" className="navbar__link">
               Tablets
             </NavLink>
           </li>
 
           <li>
-            <NavLink to="#" className="navbar__link">
+            <NavLink to="/accessories" className="navbar__link">
               Accessories
             </NavLink>
           </li>

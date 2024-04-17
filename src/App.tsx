@@ -1,13 +1,14 @@
-// import { CardLayout } from './components/CardLayout/CardLayout';
+import React from 'react';
+import { Outlet } from 'react-router-dom';
 import { Header } from './components/Header/Header';
 
-function App() {
+export const App: React.FC = () => {
   return (
     <>
       <Header />
-      {/* <CardLayout /> */}
+      <Outlet />
     </>
   );
-}
+};
 
 export default App;

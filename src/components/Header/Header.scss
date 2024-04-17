@@ -13,12 +13,6 @@ $layout-breakpoint-desktop: 1440px;
   }
 }
 
-@font-face {
-  font-family: 'Mont';
-  src: url('../../assets/fonts/Mont-Bold.otf');
-  font-weight: bold;
-}
-
 .header {
   display: flex;
   justify-content: space-between;
@@ -26,6 +20,7 @@ $layout-breakpoint-desktop: 1440px;
   padding: 0 16px;
   box-shadow: 0px 1px 0px 0px #E2E6E9;
   box-sizing: border-box;
+  font-weight: 800;
 
   &__container {
     display: flex;
