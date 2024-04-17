@@ -1,0 +1,137 @@
+@import '../../styles/utils/mixins.scss';
+@import '../../styles/utils/variables.scss';
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.card {
+  border: 1px solid $element-color;
+  width: 288px;
+  height: 439px;
+  display: flex;
+  flex-direction: column;
+
+  @include on-tablet {
+    height: 506px;
+  }
+
+  &:hover {
+    box-shadow: 0px 2px 16px 0px #0000001a;
+  }
+
+  &__container {
+    margin: 32px;
+  }
+
+  &__image {
+    margin: 0 auto;
+    margin-bottom: 24px;
+    width: 224px;
+    height: 130px;
+    object-fit: contain;
+
+    @include on-tablet {
+      height: 196px;
+    }
+  }
+
+  &__name {
+    font-family: 'Mont';
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 150%;
+    color: $primary-color;
+    margin-bottom: 8px;
+  }
+
+  &__prices {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__price {
+    font-family: 'Mont';
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 150%;
+    text-decoration: line-through;
+    color: $secondary-color;
+
+    &--discount {
+      font-family: 'Mont';
+      font-weight: 800;
+      font-size: 22px;
+      line-height: 150%;
+    }
+  }
+
+  &__breakline {
+    margin: 8px 0 16px;
+    height: 1px;
+    width: 100%;
+    background-color: $element-color;
+  }
+
+  &__button {
+    &--container {
+      display: flex;
+      justify-content: center;
+      height: 40px;
+      gap: 8px;
+      margin: 16px 0;
+    }
+
+    &--add {
+      width: 160px;
+      background-color: $primary-color;
+      border: none;
+      color: $white-color;
+      font-family: 'Mont';
+      font-weight: 400;
+      font-size: 14px;
+    }
+
+    &--favourite {
+      box-sizing: border-box;
+      width: 40px;
+      border: none;
+      background-color: $white-color;
+      border: 1px solid $icon-color;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    &--image {
+      height: 39px;
+      width: 39x;
+      transform: translateX(-1px);
+    }
+  }
+
+  &__characteristics {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+.characteristics {
+  font-size: 12px;
+
+  &--name {
+    color: $primary-color;
+  }
+
+  &--value {
+    color: $secondary-color;
+  }
+}
+
+.screen,
+.capacity,
+.ram {
+  display: flex;
+  justify-content: space-between;
+}
