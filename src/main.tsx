@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 
-import 'normalize.css';
+// import 'normalize.css';
 import './styles/styles.scss';
 import App from './App.tsx';
 import { PhonePages } from './pages/PhonesPage';
