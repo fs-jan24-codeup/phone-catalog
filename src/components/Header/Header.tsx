@@ -1,10 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import logo from '../../assets/images/Header/Logo.png';
-import menu from '../../assets/images/Header/Menu.svg';
-import cart from '../../assets/images/Header/Cart.svg';
-import favourites from '../../assets/images/Header/Favourites.svg';
+import logo from '../../assets/images/Header/logo.png';
+import menu from '../../assets/icons/menu.svg';
+import cart from '../../assets/icons/cart.svg';
+import favourites from '../../assets/icons/favourites.svg';
 import './Header.scss';
 
 export const Header: React.FC = () => {
