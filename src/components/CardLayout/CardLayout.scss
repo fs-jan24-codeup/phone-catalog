@@ -76,15 +76,16 @@ p {
 
   &__button {
     &--container {
-      display: flex;
-      justify-content: center;
-      height: 40px;
-      gap: 8px;
+      display: grid;
+      grid-template-columns: 1fr 40px;
+      column-gap: 8px;
       margin: 16px 0;
+      height: 40px;
     }
 
     &--add {
-      width: 160px;
+      grid-column: 1 / 2;
+      padding: 0;
       background-color: $primary-color;
       border: none;
       color: $white-color;
@@ -94,6 +95,7 @@ p {
     }
 
     &--favourite {
+      grid-column: 2 / -1;
       box-sizing: border-box;
       width: 40px;
       border: none;
