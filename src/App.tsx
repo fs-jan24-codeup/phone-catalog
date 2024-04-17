@@ -1,12 +1,14 @@
-import './App.css';
-import PhonePage from './pages/PhonePage/PhonePage';
+import React from 'react';
+import { Outlet } from 'react-router-dom';
+import { Header } from './components/Header/Header';
 
-export function App() {
+export const App: React.FC = () => {
   return (
-    <div className="App">
-      <PhonePage />
-    </div>
+    <>
+      <Header />
+      <Outlet />
+    </>
   );
-}
+};
 
 export default App;
