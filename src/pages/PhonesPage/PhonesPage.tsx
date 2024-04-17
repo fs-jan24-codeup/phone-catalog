@@ -1,7 +1,9 @@
+import React from 'react';
 import { useState, useEffect } from 'react';
 import { Phone } from '../../types/Phone';
-import { getAllPhones } from './fetchPhonesData';
-export default function PhonePage() {
+import { getAllPhones } from '../../utils/fetchPhonesData';
+
+export const PhonePages: React.FC = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
 
   useEffect(() => {
@@ -19,4 +21,4 @@ export default function PhonePage() {
       </ul>
     </div>
   );
-}
+};

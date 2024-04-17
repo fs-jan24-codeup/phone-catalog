@@ -1,4 +1,4 @@
-import { Phone } from '../../types/Phone';
+import { Phone } from '../types/Phone';
 
 const API_URL = './api/phones.json';
 
