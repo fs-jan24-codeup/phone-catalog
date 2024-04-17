@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Footer.scss';
+import logo from './img/logo.svg';
+import arrow from './img/arrow_up.svg';
 
 export const Footer: React.FC = () => {
   return (
@@ -9,7 +11,7 @@ export const Footer: React.FC = () => {
         <div className="footer__content">
           <div className="footer__logo-wrapper">
             <Link to="/" className="footer__logo">
-              <img className="footer__img" alt="logo" src="./img/logo.svg" />
+              <img className="footer__img" alt="logo" src={logo} />
             </Link>
           </div>
 
@@ -35,11 +37,7 @@ export const Footer: React.FC = () => {
           <div className="footer__anchor">
             <span className="footer__label">Back to top</span>
             <Link to="#top" className="footer__link footer__link--top">
-              <img
-                src="./img/arrow_up.svg"
-                alt="Arrow Up"
-                className="footer__arrow"
-              />
+              <img src={arrow} alt="Arrow Up" className="footer__arrow" />
             </Link>
           </div>
         </div>
