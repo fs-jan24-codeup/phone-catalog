@@ -49,7 +49,9 @@ export const Header: React.FC = () => {
             alt="Favourites"
             className="header__favourites"
           />
-          <img src={cart} alt="Cart" className="header__cart" />
+          <NavLink to="/cart" className="navbar__link">
+            <img src={cart} alt="Cart" className="header__cart" />
+          </NavLink>
         </div>
       </div>
     </div>
