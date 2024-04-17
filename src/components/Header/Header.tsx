@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import logo from '../../assets/images/Header/logo.png';
+import logo from '../../assets/images/logo.svg';
 import menu from '../../assets/icons/menu.svg';
 import cart from '../../assets/icons/cart.svg';
 import favourites from '../../assets/icons/favourites.svg';

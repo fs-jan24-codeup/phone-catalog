@@ -1,10 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
+import logo from '../../assets/images/logo.svg';
+import arrowUp from '../../assets/icons/arrow_up.svg';
 import './Footer.scss';
-import logo from './img/logo.svg';
-import arrow from './img/arrow_up.svg';
 
 export const Footer: React.FC = () => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <footer>
       <div className="container footer">
@@ -22,23 +30,26 @@ export const Footer: React.FC = () => {
               rel="noopener noreferrer"
               className="footer__link"
             >
-              GITHUB
+              Github
             </Link>
 
             <Link to="/" className="footer__link">
-              CONTACTS
+              Contacts
             </Link>
 
             <Link to="/" className="footer__link">
-              RIGHTS
+              Rights
             </Link>
           </div>
 
           <div className="footer__anchor">
             <span className="footer__label">Back to top</span>
-            <Link to="#top" className="footer__link footer__link--top">
-              <img src={arrow} alt="Arrow Up" className="footer__arrow" />
-            </Link>
+            <button
+              onClick={scrollToTop}
+              className="footer__link footer__link--top"
+            >
+              <img src={arrowUp} alt="Arrow Up" className="footer__arrow" />
+            </button>
           </div>
         </div>
       </div>

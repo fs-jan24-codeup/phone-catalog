@@ -2,6 +2,7 @@
 @import '../../styles/utils/variables.scss';
 
 .header {
+  position: sticky;
   display: flex;
   justify-content: space-between;
   height: 48px;
