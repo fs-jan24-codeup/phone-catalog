@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import logo from '../../assets/images/logo.svg';
 import menu from '../../assets/icons/menu.svg';
@@ -49,7 +49,10 @@ export const Header: React.FC = () => {
             alt="Favourites"
             className="header__favourites"
           />
-          <img src={cart} alt="Cart" className="header__cart" />
+
+          <Link to="/cart">
+            <img src={cart} alt="Cart" className="header__cart" />
+          </Link>
         </div>
       </div>
     </div>

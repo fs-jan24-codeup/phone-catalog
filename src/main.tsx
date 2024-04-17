@@ -5,6 +5,7 @@ import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import './styles/styles.scss';
 import App from './App.tsx';
 import { PhonePages } from './pages/PhonesPage';
+import { CartPage } from './pages/CartPage/CartPage.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -24,7 +25,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
               element={<div>Accessory details page</div>}
             />
           </Route>
-          <Route path="cart" element={<div>Cart page</div>} />
+          <Route path="cart" element={<CartPage />} />
           <Route path="favourites" element={<div>Favourites page</div>} />
         </Route>
       </Routes>
