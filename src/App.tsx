@@ -11,7 +11,6 @@ export const App: React.FC = () => {
       <PageLayout>
         <Outlet />
       </PageLayout>
-      
       <Footer />
     </>
   );
