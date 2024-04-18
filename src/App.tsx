@@ -3,7 +3,6 @@ import { Outlet } from 'react-router-dom';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { PageLayout } from './components/PageLayout';
-import { CartItem } from './components/CartItem';
 
 export const App: React.FC = () => {
   return (
@@ -11,7 +10,6 @@ export const App: React.FC = () => {
       <Header />
       <PageLayout>
         <Outlet />
-        <CartItem />
       </PageLayout>
       
       <Footer />
