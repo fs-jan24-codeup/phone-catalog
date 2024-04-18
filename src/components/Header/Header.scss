@@ -2,7 +2,6 @@
 @import '../../styles/utils/variables.scss';
 
 .header {
-  position: sticky;
   display: flex;
   justify-content: space-between;
   height: 48px;
@@ -11,7 +10,7 @@
   box-sizing: border-box;
   font-weight: 800;
 
-  &__container {
+  &__wrapper {
     display: flex;
     align-items: center;
   }

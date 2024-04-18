@@ -3,12 +3,10 @@ import { Link } from 'react-router-dom';
 import './CartPage.scss';
 import goBackIcon from '../../assets/icons/arrow-left.svg';
 import { CartItem } from '../../components/CartItem/CartItem';
+import { useAppContext } from '../../hooks/useAppContext';
 
 export const CartPage: React.FC = () => {
-  const [cartItems, setCartItems] = useState([
-    { name: 'iPhone 13', priceRegular: 1000, priceDiscount: 800, quantity: 1 },
-    { name: 'iPhone 11', priceRegular: 800, quantity: 1 }
-  ]);
+  const { cart } = useAppContext();
 
   const totalPrice = cartItems.reduce((total, item) => total + (item.priceDiscount || item.priceRegular) * item.quantity, 0);
 
@@ -31,21 +29,29 @@ export const CartPage: React.FC = () => {
         </div>
 
         <h1 className="cart__title">Cart</h1>
-        <div className="cart__content-wrapper">
-          <div className='cart__content'>
+        {cart.length ? (
+          <div className="cart__content-wrapper">
+            <div className="cart__content">
             {cartItems.map((item, id) => (
               <CartItem key={id} {...item} updateQuantity={(newQuantity: number) => updateQuantity(id, newQuantity)} />
             ))}
-          </div>
-          <div className="cart__summary">
+            </div>
+            <div className="cart__summary">
             <div className="cart__total-price">${totalPrice}</div>
             <div className="cart__total-price--label">Total for {itemCount} items</div>
-            <button type="button" className="cart__submit-btn">
-              Checkout
-            </button>
+              <button type="button" className="cart__submit-btn">
+                Checkout
+              </button>
+              </div>
+          </div>
+        ) : (
+          <div className="cart__empty">
+            <h1>Your basket is empty.</h1>
+            <p className="cart__text">But it's never too late to fix it...</p>
+          </div>
+        )}
           </div>
         </div>
-      </div>
-    </div>
+     
   );
 };

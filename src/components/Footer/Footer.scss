@@ -1,33 +1,27 @@
 @import '../../styles/utils/mixins.scss';
 @import '../../styles/utils/variables.scss';
 
-.container {
+.footer {
+  display: block;
+  text-align: left;
+  padding-block: 32px;
   padding-inline: 16px;
+  border-top: 1px solid $element-color;
 
   @include on-tablet {
     padding-inline: 32px;
+    height: 96px;
+    flex-wrap: wrap;
+    align-items: center;
   }
 
   @include on-desktop {
     padding-inline: 152px;
   }
-}
 
-.footer {
-  position: relative;
-  display: block;
-  text-align: left;
-  padding-block: 32px;
-
-  @include on-tablet {
-    height: 96px;
-  }
-
-  border-top: 1px solid $element-color;
-
-  @include on-tablet {
-    flex-wrap: wrap;
-    align-items: center;
+  &--fixed {
+    margin-top: auto;
+    position: relative;
   }
 
   &__content {
@@ -40,9 +34,7 @@
       justify-content: space-between;
       align-items: center;
     }
-  }
 
-  &__wrapper {
     @include on-desktop {
       margin-inline: auto;
       max-width: 1200px;

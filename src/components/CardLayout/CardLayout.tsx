@@ -1,5 +1,6 @@
 import favourites from '../../assets/icons/favourites.svg';
 import { Phone } from '../../types/Phone';
+import { ButtonAddToCard } from '../ButtonAddToCard';
 import './CardLayout.scss';
 
 type Props = {
@@ -42,7 +43,7 @@ export const CardLayout: React.FC<Props> = ({ good }) => {
         </div>
 
         <div className="card__button card__button--container">
-          <button className="card__button--add">Add to cart</button>
+          <ButtonAddToCard good={good} />
 
           <button className="card__button--favourite">
             <img
