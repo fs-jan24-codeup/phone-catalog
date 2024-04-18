@@ -27,7 +27,7 @@ const defaultItems = [
 
 export const CartPage: React.FC = () => {
   return (
-    <div className="container">
+    <div>
       <div className="cart">
         <div className="button-go-back">
           <img src={goBackIcon} alt="Go back" className="button-go-back__img" />

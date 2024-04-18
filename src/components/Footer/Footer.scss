@@ -44,7 +44,8 @@
 
   &__wrapper {
     @include on-desktop {
-      max-width: 1440px;
+      margin-inline: auto;
+      max-width: 1200px;
     }
   }
 
