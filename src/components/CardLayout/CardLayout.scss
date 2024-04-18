@@ -96,7 +96,7 @@ p {
       transition: all $effect-duration;
     }
 
-    &--unadd {
+    &--remove {
       grid-column: 1 / 2;
       padding: 0;
       background-color: transparent;

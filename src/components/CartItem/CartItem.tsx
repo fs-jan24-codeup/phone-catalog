@@ -1,21 +1,20 @@
 import React from 'react';
-
 import Minus from '../../assets/icons/Minus.svg';
 import Plus from '../../assets/icons/Plus.svg';
 import Union from '../../assets/icons/Union.svg';
-
 import './CartItem.scss';
-import { Phone } from '../../types/Phone';
+
 import { useAppContext } from '../../hooks/useAppContext';
+import { CartProduct } from '../../types/CartProduct';
 
 type Props = {
-  item: Phone;
+  item: CartProduct;
 };
 
 export const CartItem: React.FC<Props> = ({ item }) => {
   const [count, setCount] = React.useState(1);
 
-  const { name, images } = item;
+  const { name, image } = item;
 
   const { removeFromCart } = useAppContext();
 
@@ -40,7 +39,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
           <img src={Union} alt="union" className="cart-item__buttons-icon" />
         </div>
         <div className="cart-item__img">
-          <img src={images[0]} alt={name} />
+          <img src={image} alt={name} />
         </div>
         <p className="cart-item__name">{name}</p>
         <div className="cart-item__buttons">

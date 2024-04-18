@@ -29,7 +29,7 @@ export const ButtonAddToCard: React.FC<Props> = ({ good }) => {
 
   return (
     <button
-      className={!isAddedToCart ? 'card__button--add' : 'card__button--unadd'}
+      className={!isAddedToCart ? 'card__button--add' : 'card__button--remove'}
       onClick={handleAddToCart}
     >
       {isAddedToCart ? 'Added to cart' : 'Add to cart'}

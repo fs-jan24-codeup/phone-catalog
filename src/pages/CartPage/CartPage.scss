@@ -80,6 +80,14 @@
     color: $white-color;
     cursor: pointer;
   }
+
+  &__empty {
+    text-align: center;
+  }
+
+  &__text {
+    color: $secondary-color;
+  }
 }
 
 .button-go-back {
