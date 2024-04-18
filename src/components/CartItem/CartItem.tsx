@@ -30,7 +30,9 @@ export const CartItem: React.FC<CartItemProps> = ({ name, priceRegular, priceDis
     <div className='card-item__container'>
       <div className='card-item'>
         <div className='cross'>
-          <img src={Union} alt="union" className='cart-item__buttons-icon'/>
+        <button className='cart-item__buttons-icon' onClick={handleClickMinus}>
+            <img src={Union} alt="minus" />
+          </button>
         </div>
         <div className='cart-item__img'>
           <img src={Photo} alt="Photo"/>
@@ -38,14 +40,18 @@ export const CartItem: React.FC<CartItemProps> = ({ name, priceRegular, priceDis
         <p className='cart-item__name'>{name}</p>
         <div className='cart-item__buttons'>
           <div className='cart-item__buttons-icons'>
-            <img src={Minus} alt="minus" className='cart-item__buttons-icon' onClick={handleClickMinus}/>
+            <button className='cart-item__buttons-icon' onClick={handleClickMinus}>
+               <img src={Minus} alt="minus" />
+            </button>
           </div>
           <div className='cart-item__count'>{quantity}</div>
           <div className='cart-item__buttons-icons'>
-            <img src={Plus} alt="plus" className='cart-item__buttons-icon' onClick={handleClickPlus} />
+            <button className='cart-item__buttons-icon' onClick={handleClickPlus}>
+               <img src={Plus} alt="plus" />
+            </button>
           </div>
         </div>
-        <p className='cart-item__price'>{priceDiscount ? `${priceDiscount}$` : `${priceRegular}$`}</p>
+        <p className='cart-item__price'>{priceDiscount ? priceDiscount : priceRegular}</p>
       </div>
     </div>
   );

@@ -80,11 +80,17 @@
     height: 32px;
     border: 1px solid $element-color;
     margin: 1.5%;
+    align-items: center; 
 }
 
 .cart-item__buttons-icon {
-    width: 16px;
-    height: 16px;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background: none;
+    outline: none;
     margin: 8px;
     cursor: pointer;
 }
@@ -103,8 +109,23 @@
     margin-left: auto;
     justify-self: end;
     grid-area: 2 / 3 / 3 / 5;
+    position: relative;
 
     @include on-tablet {
         margin-left: 10%;
     }
+
+    &::before {
+        content: '$';
+        position: absolute;
+        left: 45px;
+    }
+}
+
+
+
+.cart-item__buttons-icon {
+    width: 16px;
+    height: 16px;
+    margin: 8px;
 }

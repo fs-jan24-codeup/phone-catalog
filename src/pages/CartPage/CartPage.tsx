@@ -33,8 +33,8 @@ export const CartPage: React.FC = () => {
         <h1 className="cart__title">Cart</h1>
         <div className="cart__content-wrapper">
           <div className='cart__content'>
-            {cartItems.map((item, index) => (
-              <CartItem key={index} {...item} updateQuantity={(newQuantity: number) => updateQuantity(index, newQuantity)} />
+            {cartItems.map((item, id) => (
+              <CartItem key={id} {...item} updateQuantity={(newQuantity: number) => updateQuantity(id, newQuantity)} />
             ))}
           </div>
           <div className="cart__summary">
