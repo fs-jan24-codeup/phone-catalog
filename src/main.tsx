@@ -5,6 +5,8 @@ import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 // import 'normalize.css';
 import './styles/styles.scss';
 import App from './App.tsx';
+
+import { CartPage } from './pages/CartPage/CartPage.tsx';
 import { PhonesPage } from './pages/PhonesPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 
@@ -26,7 +28,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
               element={<div>Accessory details page</div>}
             />
           </Route>
-          <Route path="cart" element={<div>Cart page</div>} />
+          <Route path="cart" element={<CartPage />} />
           <Route path="favourites" element={<div>Favourites page</div>} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
