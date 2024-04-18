@@ -42,6 +42,12 @@
     }
   }
 
+  &__wrapper {
+    @include on-desktop {
+      max-width: 1440px;
+    }
+  }
+
   &__logo-wrapper {
     margin-bottom: 32px;
 

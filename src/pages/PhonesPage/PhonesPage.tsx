@@ -2,8 +2,9 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { Phone } from '../../types/Phone';
 import { getAllPhones } from '../../utils/fetchPhonesData';
+import { CardLayout } from '../../components/CardLayout';
 
-export const PhonePages: React.FC = () => {
+export const PhonesPage: React.FC = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
 
   useEffect(() => {
@@ -16,7 +17,7 @@ export const PhonePages: React.FC = () => {
     <div>
       <ul>
         {phones.map(phone => (
-          <li key={phone.id}>{phone.name}</li>
+          <CardLayout good={phone} key={phone.id} />
         ))}
       </ul>
     </div>

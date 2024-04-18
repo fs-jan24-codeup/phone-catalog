@@ -2,10 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 
+// import 'normalize.css';
 import './styles/styles.scss';
 import App from './App.tsx';
-import { PhonePages } from './pages/PhonesPage';
+
 import { CartPage } from './pages/CartPage/CartPage.tsx';
+import { PhonesPage } from './pages/PhonesPage';
+import { NotFoundPage } from './pages/NotFoundPage';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -13,7 +16,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<div>Home page</div>} />
-          <Route path="phones" element={<PhonePages />}>
+          <Route path="phones" element={<PhonesPage />}>
             <Route path=":phoneId?" element={<div>Phone details page</div>} />
           </Route>
           <Route path="tablets" element={<div>Tablets page</div>}>
@@ -27,6 +30,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           </Route>
           <Route path="cart" element={<CartPage />} />
           <Route path="favourites" element={<div>Favourites page</div>} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </Router>
