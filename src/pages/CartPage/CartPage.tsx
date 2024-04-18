@@ -1,14 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './CartPage.scss';
 import goBackIcon from '../../assets/icons/arrow-left.svg';
 import { CartItem } from '../../components/CartItem/CartItem';
 import { useAppContext } from '../../hooks/useAppContext';
+import { CartProduct } from '../../types/CartProduct';
 
-export const CartPage: React.FC = () => {
+interface Props {
+  item: CartProduct;
+}
+
+export const CartPage: React.FC<Props> = () => {
   const { cart } = useAppContext();
+  const [cartItems, setCartItems] = React.useState<CartProduct[]>(cart);
 
-  const totalPrice = cartItems.reduce((total, item) => total + (item.priceDiscount || item.priceRegular) * item.quantity, 0);
+  React.useEffect(() => {
+    setCartItems(cart);
+  }, [cart]);
+
+  const totalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
 
   const itemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
@@ -29,20 +39,21 @@ export const CartPage: React.FC = () => {
         </div>
 
         <h1 className="cart__title">Cart</h1>
+
         {cart.length ? (
           <div className="cart__content-wrapper">
             <div className="cart__content">
-            {cartItems.map((item, id) => (
-              <CartItem key={id} {...item} updateQuantity={(newQuantity: number) => updateQuantity(id, newQuantity)} />
-            ))}
+              {cartItems.map((item, id) => (
+                <CartItem key={id} item={item} updateQuantity={(newQuantity: number) => updateQuantity(id, newQuantity)}/>
+              ))}
             </div>
             <div className="cart__summary">
-            <div className="cart__total-price">${totalPrice}</div>
-            <div className="cart__total-price--label">Total for {itemCount} items</div>
+              <div className="cart__total-price">${totalPrice}</div>
+              <div className="cart__total-price--label">Total for {itemCount} items</div>
               <button type="button" className="cart__submit-btn">
                 Checkout
               </button>
-              </div>
+            </div>
           </div>
         ) : (
           <div className="cart__empty">
@@ -50,8 +61,7 @@ export const CartPage: React.FC = () => {
             <p className="cart__text">But it's never too late to fix it...</p>
           </div>
         )}
-          </div>
-        </div>
-     
+      </div>
+    </div>
   );
 };
