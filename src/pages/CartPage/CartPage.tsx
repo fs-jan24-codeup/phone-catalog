@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom';
 import './CartPage.scss';
 import goBackIcon from '../../assets/icons/arrow-left.svg';
 import { CartItem } from '../../components/CartItem/CartItem';
+import { useAppContext } from '../../hooks/useAppContext';
 
 export const CartPage: React.FC = () => {
+  const { cart } = useAppContext();
+
   return (
     <div>
       <div className="cart">
@@ -17,9 +20,12 @@ export const CartPage: React.FC = () => {
 
         <h1 className="cart__title">Cart</h1>
         <div className="cart__content-wrapper">
-          <div className='cart__content'>
-            <CartItem />
-            <CartItem />
+          <div className="cart__content">
+            {cart.map((item) => (
+              <CartItem key={item.id} item={item} />
+            ))}
+            {/* <CartItem />
+            <CartItem /> */}
           </div>
           <div className="cart__summary">
             <div className="cart__total-price">$2000</div>
