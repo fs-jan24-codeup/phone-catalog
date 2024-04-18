@@ -12,12 +12,6 @@
   }
 }
 
-@mixin on-mobile {
-  @media (max-width: 640px) {
-    @content;
-  }
-}
-
 @mixin hover($property, $toValue) {
   transition: #{$property} $effect-duration;
 

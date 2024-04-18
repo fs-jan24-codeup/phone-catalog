@@ -29,7 +29,7 @@ export const CartItem = () => {
             <div className='cart-item__img'>
                 <img src={Photo} alt="Photo"/>
             </div>
-            <div className='cart-item__name'>Apple iPhone 14 Pro 128GB Silver (MQ023)</div>
+            <p className='cart-item__name'>Apple iPhone 14 Pro 128GB Silver (MQ023)</p>
             <div className='cart-item__buttons'>
                 <div className='cart-item__buttons-icons'>
                     <img src={Minus} alt="minus" className='cart-item__buttons-icon' onClick={handleClickMinus}/>
@@ -39,7 +39,7 @@ export const CartItem = () => {
                     <img src={Plus} alt="plus" className='cart-item__buttons-icon' onClick={handleClickPlus} />
                 </div>
             </div>
-            <div className='cart-item__price'>$1000</div>
+            <p className='cart-item__price'>$1000</p>
             </div>
         </div>
     );
