@@ -6,11 +6,5 @@ type Props = {
 };
 
 export const PageLayout: React.FC<Props> = ({ children }) => {
-  return (
-    <>
-      <div className="grid_container">
-        <main className="main_layout">{children}</main>
-      </div>
-    </>
-  );
+  return <main className="grid">{children}</main>;
 };

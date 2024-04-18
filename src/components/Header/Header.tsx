@@ -10,7 +10,7 @@ import './Header.scss';
 export const Header: React.FC = () => {
   return (
     <div className="header">
-      <div className="header__container">
+      <div className="header__wrapper">
         <img src={logo} alt="Nice gadgets" className="header__logo" />
 
         <ul className="header__navbar navbar">
