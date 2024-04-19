@@ -28,6 +28,13 @@ export const CartPage: React.FC = () => {
     }
   }, [isModalOpen]);
 
+  const totalPrice = cart.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0,
+  );
+
+  const itemCount = cart.reduce((total, item) => total + item.quantity, 0);
+
   return (
     <>
       <div className="cart">
@@ -43,20 +50,20 @@ export const CartPage: React.FC = () => {
         {cart.length ? (
           <div className="cart__content-wrapper">
             <div className="cart__content">
-              {cart.map(item => (
-                <CartItem key={item.id} item={item} />
+              {cart.map((item, id) => (
+                <CartItem key={id} item={item} />
               ))}
             </div>
             <div className="cart__summary">
-              <div className="cart__total-price">$2000</div>
-              <div className="cart__total-price--label">Total for 2 items</div>
+              <div className="cart__total-price">${totalPrice}</div>
+              <div className="cart__total-price--label">
+                Total for {itemCount} items
+              </div>
               <button
                 type="button"
                 className="cart__submit-btn"
                 onClick={openModal}
               >
-                Checkout
-              </button>
             </div>
           </div>
         ) : orderConfirmed ? (

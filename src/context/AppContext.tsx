@@ -22,6 +22,7 @@ export const AppContextProvider: React.FC<Props> = ({ children }) => {
       name,
       price: smallerPrice,
       image: images[0],
+      quantity: 1,
     };
 
     setCart(prevCart => [...prevCart, newProduct]);
@@ -33,14 +34,27 @@ export const AppContextProvider: React.FC<Props> = ({ children }) => {
     setAddedIds(prevIds => prevIds.filter(id => id !== productId));
   };
 
+  const updateQuantity = (id: string, newQuantity: number) => {
+    const cartCopy = [...cart];
+
+    const newCartItems = cartCopy.map(item => {
+      if (item.id === id) {
+        return { ...item, quantity: newQuantity };
+      }
+      return item;
+    });
+
+    setCart(newCartItems);
+  };
+
   const isItemAdded = (productId: string) => addedIds.includes(productId);
 
   const contextValue = {
     cart,
-    setCart,
     addToCart,
     removeFromCart,
     isItemAdded,
+    updateQuantity,
   };
 
   return (
