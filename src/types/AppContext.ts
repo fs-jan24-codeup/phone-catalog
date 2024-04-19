@@ -7,4 +7,5 @@ export type AppContext = {
   removeFromCart: (productId: string) => void;
   isItemAdded: (productId: string) => boolean;
   updateQuantity: (id: string, newQuantity: number) => void;
+  itemCount: number;
 };

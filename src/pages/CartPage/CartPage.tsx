@@ -7,7 +7,7 @@ import { useAppContext } from '../../hooks/useAppContext';
 import { Modal } from '../../components/Modal/Modal';
 
 export const CartPage: React.FC = () => {
-  const { cart, removeFromCart } = useAppContext();
+  const { cart, removeFromCart, itemCount } = useAppContext();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [orderConfirmed, setOrderConfirmed] = useState(false);
@@ -32,8 +32,6 @@ export const CartPage: React.FC = () => {
     (total, item) => total + item.price * item.quantity,
     0,
   );
-
-  const itemCount = cart.reduce((total, item) => total + item.quantity, 0);
 
   return (
     <>
