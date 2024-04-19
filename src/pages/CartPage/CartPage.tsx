@@ -64,6 +64,8 @@ export const CartPage: React.FC = () => {
                 className="cart__submit-btn"
                 onClick={openModal}
               >
+                Checkout
+              </button>
             </div>
           </div>
         ) : orderConfirmed ? (
