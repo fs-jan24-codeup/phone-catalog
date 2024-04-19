@@ -4,4 +4,5 @@ export type CartProduct = Pick<Phone, 'id' | 'name' | 'priceRegular' | 'priceDis
   image: string;
   price: number;
   quantity: number;
+  id: number;
 };

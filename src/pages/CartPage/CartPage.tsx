@@ -23,10 +23,14 @@ export const CartPage: React.FC<Props> = () => {
   const itemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   const updateQuantity = (id: number, newQuantity: number) => {
-    const newCartItems = [...cartItems];
-    newCartItems[id].quantity = newQuantity;
+    const newCartItems = cartItems.map((item) => {
+      if (item.id === id) {
+        return { ...item, quantity: newQuantity };
+      }
+      return item;
+    });
     setCartItems(newCartItems);
-  };
+  };  
 
   return (
     <div>
@@ -44,7 +48,7 @@ export const CartPage: React.FC<Props> = () => {
           <div className="cart__content-wrapper">
             <div className="cart__content">
               {cartItems.map((item, id) => (
-                <CartItem key={id} item={item} updateQuantity={(newQuantity: number) => updateQuantity(id, newQuantity)}/>
+                <CartItem key={id} item={item} updateQuantity={(item: CartProduct, newQuantity: number) => updateQuantity(item.id, newQuantity)}/>
               ))}
             </div>
             <div className="cart__summary">

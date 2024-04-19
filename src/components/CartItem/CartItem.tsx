@@ -8,7 +8,7 @@ import { CartProduct } from '../../types/CartProduct';
 
 interface Props {
   item: CartProduct;
-  updateQuantity: (newQuantity: number) => void;
+  updateQuantity: (item: CartProduct, newQuantity: number) => void;
 }
 
 export const CartItem: React.FC<Props> = ({ item, updateQuantity }) => {
@@ -17,17 +17,18 @@ export const CartItem: React.FC<Props> = ({ item, updateQuantity }) => {
   const [quantity, setQuantity] = React.useState(initialQuantity || 1);
 
   const handleClickPlus = () => {
-    setQuantity((prevQuantity) => prevQuantity + 1);
-    updateQuantity(quantity + 1);
+    const newQuantity = quantity + 1;
+    setQuantity(newQuantity);
+    updateQuantity(item, newQuantity);
   };
 
   const handleClickMinus = () => {
     if (quantity > 1) {
-      setQuantity((prevQuantity) => prevQuantity - 1);
-      updateQuantity(quantity - 1);
-    }
-    if (quantity === 1) {
-        removeFromCart(id);
+      const newQuantity = quantity - 1;
+      setQuantity(newQuantity);
+      updateQuantity(item, newQuantity);
+    } else {
+      removeFromCart(id);
     }
   };
 
@@ -47,11 +48,11 @@ export const CartItem: React.FC<Props> = ({ item, updateQuantity }) => {
         <p className="cart-item__name">{name}</p>
         <div className="cart-item__buttons">
           <div className="cart-item__buttons-icons">
-          <button 
+            <button 
               className='cart-item__buttons-icon' 
-               onClick={handleClickMinus} 
-               disabled={quantity === 1}>
-               <img src={Minus} alt="minus" />
+              onClick={handleClickMinus} 
+              disabled={quantity === 1}>
+              <img src={Minus} alt="minus" />
             </button>
           </div>
           <div className="cart-item__count">{quantity}</div>
