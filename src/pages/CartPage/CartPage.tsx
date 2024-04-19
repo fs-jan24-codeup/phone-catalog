@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './CartPage.scss';
 import goBackIcon from '../../assets/icons/arrow-left.svg';
@@ -19,6 +19,14 @@ export const CartPage: React.FC = () => {
     cart.forEach(item => removeFromCart(item.id));
     setOrderConfirmed(true);
   };
+
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.classList.add('modal-open');
+    } else {
+      document.body.classList.remove('modal-open');
+    }
+  }, [isModalOpen]);
 
   return (
     <div className="container">
