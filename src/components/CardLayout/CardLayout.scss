@@ -94,6 +94,10 @@ p {
       font-size: 14px;
       cursor: pointer;
       transition: all $effect-duration;
+
+      &:hover {
+        box-shadow: $hover-shadow;
+      }
     }
 
     &--remove {
@@ -107,6 +111,10 @@ p {
       font-size: 14px;
       cursor: pointer;
       transition: all $effect-duration;
+
+      &:hover {
+        box-shadow: $hover-shadow;
+      }
     }
 
     &--favourite {

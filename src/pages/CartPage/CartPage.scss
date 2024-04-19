@@ -79,6 +79,11 @@
     line-height: 150%;
     color: $white-color;
     cursor: pointer;
+    transition: all $effect-duration;
+
+    &:hover {
+      box-shadow: $hover-shadow;
+    }
   }
 
   &__empty {
@@ -108,5 +113,43 @@
     text-decoration: none;
     display: inline-block;
     vertical-align: middle;
+  }
+}
+
+.modal {
+  &__btn-wrapper {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &__title {
+    margin: 0;
+    margin-bottom: 32px;
+  }
+
+  &__btn {
+    border: none;
+    height: 40px;
+    width: 68px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 150%;
+    cursor: pointer;
+    transition: all $effect-duration;
+
+    &:hover {
+      box-shadow: $hover-shadow;
+    }
+
+    &--no {
+      background-color: $primary-color;
+      color: $white-color;
+    }
+
+    &--yes {
+      background-color: transparent;
+      border: 1px solid $element-color;
+      color: $green-color;
+    }
   }
 }

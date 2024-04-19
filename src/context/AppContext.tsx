@@ -24,15 +24,13 @@ export const AppContextProvider: React.FC<Props> = ({ children }) => {
       image: images[0],
     };
 
-    console.log('newProduct :>> ', newProduct);
-
-    setCart([...cart, newProduct]);
-    setAddedIds([...addedIds, product.id]);
+    setCart(prevCart => [...prevCart, newProduct]);
+    setAddedIds(prevIds => [...prevIds, product.id]);
   };
 
   const removeFromCart = (productId: string) => {
-    setCart(cart.filter(item => item.id !== productId));
-    setAddedIds(addedIds.filter(id => id !== productId));
+    setCart(prevCart => prevCart.filter(item => item.id !== productId));
+    setAddedIds(prevIds => prevIds.filter(id => id !== productId));
   };
 
   const isItemAdded = (productId: string) => addedIds.includes(productId);
