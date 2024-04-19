@@ -12,25 +12,13 @@ interface Props {
 
 export const CartPage: React.FC<Props> = () => {
   const { cart } = useAppContext();
-  const [cartItems, setCartItems] = React.useState<CartProduct[]>(cart);
 
-  React.useEffect(() => {
-    setCartItems(cart);
-  }, [cart]);
+  const totalPrice = cart.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0,
+  );
 
-  const totalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
-
-  const itemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
-
-  const updateQuantity = (id: number, newQuantity: number) => {
-    const newCartItems = cartItems.map((item) => {
-      if (item.id === id) {
-        return { ...item, quantity: newQuantity };
-      }
-      return item;
-    });
-    setCartItems(newCartItems);
-  };  
+  const itemCount = cart.reduce((total, item) => total + item.quantity, 0);
 
   return (
     <div>
@@ -47,13 +35,15 @@ export const CartPage: React.FC<Props> = () => {
         {cart.length ? (
           <div className="cart__content-wrapper">
             <div className="cart__content">
-              {cartItems.map((item, id) => (
-                <CartItem key={id} item={item} updateQuantity={(item: CartProduct, newQuantity: number) => updateQuantity(item.id, newQuantity)}/>
+              {cart.map((item, id) => (
+                <CartItem key={id} item={item} />
               ))}
             </div>
             <div className="cart__summary">
               <div className="cart__total-price">${totalPrice}</div>
-              <div className="cart__total-price--label">Total for {itemCount} items</div>
+              <div className="cart__total-price--label">
+                Total for {itemCount} items
+              </div>
               <button type="button" className="cart__submit-btn">
                 Checkout
               </button>

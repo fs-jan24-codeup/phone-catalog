@@ -1,8 +1,7 @@
-import { Phone } from "./Phone";
-
-export type CartProduct = Pick<Phone, 'id' | 'name' | 'priceRegular' | 'priceDiscount'> & {
+export type CartProduct = {
+  id: string;
+  name: string;
   image: string;
   price: number;
   quantity: number;
-  id: number;
 };
