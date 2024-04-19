@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import './Modal.scss';
 
@@ -10,8 +10,6 @@ type Props = {
 };
 
 export const Modal: React.FC<Props> = ({ children, onClose }) => {
-  const modalRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
