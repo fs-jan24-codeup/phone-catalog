@@ -9,6 +9,7 @@ import App from './App.tsx';
 import { CartPage } from './pages/CartPage/CartPage.tsx';
 import { PhonesPage } from './pages/PhonesPage';
 import { NotFoundPage } from './pages/NotFoundPage';
+import { PhoneDetailsPage } from './pages/PhonesDetailsPage/PhoneDetailsPage.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -16,8 +17,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<div>Home page</div>} />
-          <Route path="phones" element={<PhonesPage />}>
-            <Route path=":phoneId?" element={<div>Phone details page</div>} />
+          <Route path="phones">
+            <Route index element={<PhonesPage />} />
+            <Route path=":productId" element={<PhoneDetailsPage />} />
           </Route>
           <Route path="tablets" element={<div>Tablets page</div>}>
             <Route path=":tabletId?" element={<div>Tablet details page</div>} />

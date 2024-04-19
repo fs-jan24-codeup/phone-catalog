@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import favourites from '../../assets/icons/favourites.svg';
 import { Phone } from '../../types/Phone';
 import { ButtonAddToCard } from '../ButtonAddToCard';
@@ -14,7 +15,9 @@ export const CardLayout: React.FC<Props> = ({ good }) => {
   return (
     <article className="card">
       <div className="card__container">
-        <img src={images[0]} alt={name} className="card__image" />
+        <Link to={`/phones/${good.id}`}>
+          <img src={images[0]} alt={name} className="card__image" />
+        </Link>
 
         <div className="card__name">{name}</div>
 
