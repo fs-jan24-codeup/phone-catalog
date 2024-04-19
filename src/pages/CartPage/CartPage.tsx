@@ -4,13 +4,8 @@ import './CartPage.scss';
 import goBackIcon from '../../assets/icons/arrow-left.svg';
 import { CartItem } from '../../components/CartItem/CartItem';
 import { useAppContext } from '../../hooks/useAppContext';
-import { CartProduct } from '../../types/CartProduct';
 
-interface Props {
-  item: CartProduct;
-}
-
-export const CartPage: React.FC<Props> = () => {
+export const CartPage: React.FC = () => {
   const { cart } = useAppContext();
 
   const totalPrice = cart.reduce(
