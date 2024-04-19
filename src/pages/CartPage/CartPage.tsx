@@ -29,7 +29,7 @@ export const CartPage: React.FC = () => {
   }, [isModalOpen]);
 
   return (
-    <div className="container">
+    <>
       <div className="cart">
         <div className="button-go-back">
           <img src={goBackIcon} alt="Go back" className="button-go-back__img" />
@@ -95,6 +95,6 @@ export const CartPage: React.FC = () => {
           </Modal>
         )}
       </div>
-    </div>
+    </>
   );
 };

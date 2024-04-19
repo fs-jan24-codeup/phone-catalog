@@ -142,14 +142,14 @@
     }
 
     &--no {
-      background-color: $primary-color;
-      color: $white-color;
+      background-color: transparent;
+      border: 1px solid $element-color;
+      color: $primary-color;
     }
 
     &--yes {
-      background-color: transparent;
-      border: 1px solid $element-color;
-      color: $green-color;
+      background-color: $primary-color;
+      color: $white-color;
     }
   }
 }
