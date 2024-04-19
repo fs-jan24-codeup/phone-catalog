@@ -47,11 +47,12 @@ export const CartItem: React.FC<Props> = ({ item, updateQuantity }) => {
         <p className="cart-item__name">{name}</p>
         <div className="cart-item__buttons">
           <div className="cart-item__buttons-icons">
-          {quantity >= 1 && (
-            <button className='cart-item__buttons-icon' onClick={handleClickMinus}>
+          <button 
+              className='cart-item__buttons-icon' 
+               onClick={handleClickMinus} 
+               disabled={quantity === 1}>
                <img src={Minus} alt="minus" />
             </button>
-          )}
           </div>
           <div className="cart-item__count">{quantity}</div>
           <div className="cart-item__buttons-icons">

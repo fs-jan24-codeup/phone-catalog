@@ -22,9 +22,9 @@ export const CartPage: React.FC<Props> = () => {
 
   const itemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
-  const updateQuantity = (index: number, newQuantity: number) => {
+  const updateQuantity = (id: number, newQuantity: number) => {
     const newCartItems = [...cartItems];
-    newCartItems[index].quantity = newQuantity;
+    newCartItems[id].quantity = newQuantity;
     setCartItems(newCartItems);
   };
 
