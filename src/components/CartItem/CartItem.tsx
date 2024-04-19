@@ -1,67 +1,63 @@
 import React from 'react';
-import Minus from '../../assets/icons/Minus.svg';
-import Plus from '../../assets/icons/Plus.svg';
-import Union from '../../assets/icons/Union.svg';
+import minus from '../../assets/icons/minus.svg';
+import plus from '../../assets/icons/plus.svg';
+import close from '../../assets/icons/close.svg';
 import './CartItem.scss';
-
 import { useAppContext } from '../../hooks/useAppContext';
 import { CartProduct } from '../../types/CartProduct';
 
-type Props = {
+interface Props {
   item: CartProduct;
-};
+}
 
 export const CartItem: React.FC<Props> = ({ item }) => {
-  const [count, setCount] = React.useState(1);
+  const { id, name, image, price, quantity: initialQuantity } = item;
+  const { removeFromCart, updateQuantity } = useAppContext();
+  const [quantity, setQuantity] = React.useState(initialQuantity);
 
-  const { name, image } = item;
+  const handleClickPlus = () => {
+    const newQuantity = quantity + 1;
+    setQuantity(newQuantity);
+    updateQuantity(id, newQuantity);
+  };
 
-  const { removeFromCart } = useAppContext();
+  const handleClickMinus = () => {
+    const newQuantity = quantity - 1;
+    setQuantity(newQuantity);
+    updateQuantity(id, newQuantity);
+  };
 
-  function handleClickPlus() {
-    setCount(count + 1);
-  }
-
-  function handleClickMinus() {
-    if (count > 1) {
-      setCount(count - 1);
-    }
-  }
-
-  function handleRemoveFromCart() {
-    removeFromCart(item.id);
-  }
+  const handleRemoveFromCart = () => {
+    removeFromCart(id);
+  };
 
   return (
     <div className="card-item__container">
       <div className="card-item">
-        <div className="cross" onClick={handleRemoveFromCart}>
-          <img src={Union} alt="union" className="cart-item__buttons-icon" />
-        </div>
+        <button onClick={handleRemoveFromCart} className="cross">
+          <img src={close} alt="union" />
+        </button>
         <div className="cart-item__img">
           <img src={image} alt={name} />
         </div>
         <p className="cart-item__name">{name}</p>
         <div className="cart-item__buttons">
           <div className="cart-item__buttons-icons">
-            <img
-              src={Minus}
-              alt="minus"
+            <button
               className="cart-item__buttons-icon"
               onClick={handleClickMinus}
-            />
+              disabled={quantity === 1}
+            >
+              <img src={minus} alt="minus" />
+            </button>
           </div>
-          <div className="cart-item__count">{count}</div>
-          <div className="cart-item__buttons-icons">
-            <img
-              src={Plus}
-              alt="plus"
-              className="cart-item__buttons-icon"
-              onClick={handleClickPlus}
-            />
-          </div>
+          <div className="cart-item__count">{quantity}</div>
+
+          <button className="cart-item__buttons-icon" onClick={handleClickPlus}>
+            <img src={plus} alt="plus" />
+          </button>
         </div>
-        <p className="cart-item__price">$1000</p>
+        <p className="cart-item__price">{price * quantity}</p>
       </div>
     </div>
   );
