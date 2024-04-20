@@ -1,6 +1,6 @@
 import { createContext, useState } from 'react';
 import { AppContext as AppContextType } from '../types/AppContext';
-import { Phone } from '../types/Phone';
+import { Product } from '../types/Product';
 import { CartProduct } from '../types/CartProduct';
 
 export const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -13,7 +13,7 @@ export const AppContextProvider: React.FC<Props> = ({ children }) => {
   const [cart, setCart] = useState<CartProduct[]>([]);
   const [addedIds, setAddedIds] = useState<string[]>([]);
 
-  const addToCart = (product: Phone) => {
+  const addToCart = (product: Product) => {
     const { id, name, priceRegular, priceDiscount, images } = product;
     const smallerPrice = Math.min(priceRegular, priceDiscount);
 
