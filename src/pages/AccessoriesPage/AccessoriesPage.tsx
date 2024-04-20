@@ -5,14 +5,14 @@ import { Product } from '../../types/Product';
 import { getProducts } from '../../utils/fetchData';
 import { ProductsPage } from '../ProductsPage';
 
-export const PhonesPage: React.FC = () => {
-  const [phones, setPhones] = useState<Product[]>([]);
+export const AccessoriesPage: React.FC = () => {
+  const [accessories, setAccessories] = useState<Product[]>([]);
 
   useEffect(() => {
-    getProducts('./api/phones.json')
-      .then(phones => setPhones(phones))
+    getProducts('./api/accessories.json')
+      .then(accessories => setAccessories(accessories))
       .catch(error => console.error('Error fetching phones:', error));
   }, []);
 
-  return <ProductsPage products={phones} title="Mobile phones" />;
+  return <ProductsPage products={accessories} title="Accessories" />;
 };
