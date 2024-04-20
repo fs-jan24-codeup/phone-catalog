@@ -54,7 +54,9 @@
 
     @include hover(color, $primary-color);
 
-    &:hover {
+    &--active {
+      color: $primary-color;
+
       &::after {
         content: '';
         position: absolute;

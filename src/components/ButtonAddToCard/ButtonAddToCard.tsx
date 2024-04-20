@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Phone } from '../../types/Phone';
+import { Product } from '../../types/Product';
 import '../CardLayout/CardLayout.scss';
 import { useAppContext } from '../../hooks/useAppContext';
 
 type Props = {
-  good: Phone;
+  good: Product;
 };
 
 export const ButtonAddToCard: React.FC<Props> = ({ good }) => {
-  const { addToCart, removeFromCart, isItemAdded } = useAppContext();
+  const { addToCart, isItemAdded } = useAppContext();
   const [isAddedToCart, setIsAddedToCart] = useState<boolean>(
     isItemAdded(good.id),
   );
@@ -21,9 +21,6 @@ export const ButtonAddToCard: React.FC<Props> = ({ good }) => {
     if (!isAddedToCart) {
       addToCart(good);
       setIsAddedToCart(true);
-    } else {
-      removeFromCart(good.id);
-      setIsAddedToCart(false);
     }
   };
 

@@ -1,12 +1,17 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import classNames from 'classnames';
 
 import logo from '../../assets/images/logo.svg';
 import menu from '../../assets/icons/menu.svg';
 import cartImg from '../../assets/icons/cart.svg';
 import favourites from '../../assets/icons/favourites.svg';
-import './Header.scss';
 import { SelectedItemsCircle } from '../SelectedItemsCircle/SelectedItemsCircle';
+import './Header.scss';
+
+const getLinkClass = ({ isActive }: { isActive: boolean }) =>
+  classNames('navbar__link', { 'navbar__link--active': isActive });
+
 
 export const Header: React.FC = () => {
   return (
@@ -16,25 +21,25 @@ export const Header: React.FC = () => {
 
         <ul className="header__navbar navbar">
           <li>
-            <NavLink to="/" className="navbar__link">
+            <NavLink to="/" className={getLinkClass}>
               Home
             </NavLink>
           </li>
 
           <li>
-            <NavLink to="/phones" className="navbar__link">
+            <NavLink to="/phones" className={getLinkClass}>
               Phones
             </NavLink>
           </li>
 
           <li>
-            <NavLink to="/tablets" className="navbar__link">
+            <NavLink to="/tablets" className={getLinkClass}>
               Tablets
             </NavLink>
           </li>
 
           <li>
-            <NavLink to="/accessories" className="navbar__link">
+            <NavLink to="/accessories" className={getLinkClass}>
               Accessories
             </NavLink>
           </li>
@@ -45,12 +50,11 @@ export const Header: React.FC = () => {
         <img src={menu} alt="Menu" className="header__menu" />
 
         <div className="wrapper">
-          <NavLink to="/favourites" className="navbar__link">
+          <NavLink to="/favourites" className={getLinkClass}>
             <img src={favourites} alt="Favourites" className="header__favourites" />
           </NavLink>
-          <NavLink to="/cart" className="navbar__link">
+          <NavLink to="/cart" className={getLinkClass}>
             <img src={cartImg} alt="Cart" className="header__cart" />
-
             <SelectedItemsCircle />
           </NavLink>
         </div>
