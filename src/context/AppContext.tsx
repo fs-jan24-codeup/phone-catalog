@@ -48,6 +48,7 @@ export const AppContextProvider: React.FC<Props> = ({ children }) => {
   };
 
   const isItemAdded = (productId: string) => addedIds.includes(productId);
+  const itemCount = cart.reduce((total, item) => total + item.quantity, 0);
 
   const contextValue = {
     cart,
@@ -55,6 +56,7 @@ export const AppContextProvider: React.FC<Props> = ({ children }) => {
     removeFromCart,
     isItemAdded,
     updateQuantity,
+    itemCount,
   };
 
   return (

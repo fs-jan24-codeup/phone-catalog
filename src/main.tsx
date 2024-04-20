@@ -10,6 +10,7 @@ import { CartPage } from './pages/CartPage/CartPage.tsx';
 import { PhonesPage } from './pages/PhonesPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { PhoneDetailsPage } from './pages/PhonesDetailsPage/PhoneDetailsPage.tsx';
+import { FavouritesPage } from './pages/FavoritesPage/FavoritesPage.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -31,7 +32,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             />
           </Route>
           <Route path="cart" element={<CartPage />} />
-          <Route path="favourites" element={<div>Favourites page</div>} />
+          <Route path="favourites" element={<FavouritesPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
