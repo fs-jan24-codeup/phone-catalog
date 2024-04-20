@@ -1,42 +1,45 @@
 import React, { useEffect, useState } from 'react';
-import { Phone } from '../../types/Phone';
-import '../CardLayout/CardLayout.scss';
+
+import { Product } from '../../types/Product';
 import { useAppContext } from '../../hooks/useAppContext';
+
 import favourites from '../../assets/icons/favourites.svg';
 import favourites_filled from '../../assets/icons/favourites_filled.svg';
 
+import '../CardLayout/CardLayout.scss';
+
 type Props = {
-    good: Phone;
+  good: Product;
+};
+
+export const ButtonAddToFavorites: React.FC<Props> = ({ good }) => {
+  const { addToFavourites, removeFromFavourites, isItemInFavourites } =
+    useAppContext();
+  const [isAddedToFavorites, setIsAddedToFavorites] = useState<boolean>(
+    isItemInFavourites(good.id),
+  );
+
+  useEffect(() => {
+    setIsAddedToFavorites(isItemInFavourites(good.id));
+  }, [isItemInFavourites, good.id]);
+
+  const handleAddToFavorites = () => {
+    if (!isAddedToFavorites) {
+      addToFavourites(good);
+      setIsAddedToFavorites(true);
+    } else {
+      removeFromFavourites(good.id);
+      setIsAddedToFavorites(false);
+    }
   };
 
-  export const ButtonAddToFavorites: React.FC<Props> = ({ good }) => {
-    const { addToFavorites, removeFromFavorites, isItemAdded } = useAppContext();
-    const [isAddedToFavorites, setIsAddedToFavorites] = useState<boolean>(
-      isItemAdded(good.id),
-    );
-  
-    useEffect(() => {
-      setIsAddedToFavorites(isItemAdded(good.id));
-    }, [isItemAdded, good.id]);
-  
-    const handleAddToFavorites = () => {
-      if (!isAddedToFavorites) {
-        addToFavorites(good);
-        setIsAddedToFavorites(true);
-      } else {
-        removeFromFavorites(good.id);
-        setIsAddedToFavorites(false);
-      }
-    };
-  
-    return (
-      <button className="card__button--favourite" onClick={handleAddToFavorites}>
-        <img
-          src={isAddedToFavorites ? favourites_filled : favourites}
-          alt="Favourite"
-          className="card__button--image"
-        />
-      </button>
-    );
-  };
-  
+  return (
+    <button className="card__button--favourite" onClick={handleAddToFavorites}>
+      <img
+        src={isAddedToFavorites ? favourites_filled : favourites}
+        alt="Favourite"
+        className="card__button--image"
+      />
+    </button>
+  );
+};

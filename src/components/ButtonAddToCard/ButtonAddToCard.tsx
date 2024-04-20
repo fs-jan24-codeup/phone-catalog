@@ -8,14 +8,14 @@ type Props = {
 };
 
 export const ButtonAddToCard: React.FC<Props> = ({ good }) => {
-  const { addToCart, isItemAdded } = useAppContext();
+  const { addToCart, isItemInCart } = useAppContext();
   const [isAddedToCart, setIsAddedToCart] = useState<boolean>(
-    isItemAdded(good.id),
+    isItemInCart(good.id),
   );
 
   useEffect(() => {
-    setIsAddedToCart(isItemAdded(good.id));
-  }, [isItemAdded, good.id]);
+    setIsAddedToCart(isItemInCart(good.id));
+  }, [isItemInCart, good.id]);
 
   const handleAddToCart = () => {
     if (!isAddedToCart) {

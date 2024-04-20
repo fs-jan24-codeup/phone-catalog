@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { Product } from '../../types/Product';
 import { getProducts } from '../../utils/fetchData';
 import { ProductsPage } from '../ProductsPage';
-import { ItemsLayout } from '../../components/ItemsLayout';
 
 export const PhonesPage: React.FC = () => {
   const [phones, setPhones] = useState<Product[]>([]);
@@ -15,9 +14,5 @@ export const PhonesPage: React.FC = () => {
       .catch(error => console.error('Error fetching phones:', error));
   }, []);
 
-  return (
-      <ItemsLayout>
-          <ProductsPage products={phones} title="Mobile phones" />;
-      </ItemsLayout>
-  );
+  return <ProductsPage products={phones} title="Mobile phones" />;
 };

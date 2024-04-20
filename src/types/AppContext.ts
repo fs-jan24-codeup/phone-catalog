@@ -3,11 +3,13 @@ import { CartProduct } from './CartProduct';
 
 export type AppContext = {
   cart: CartProduct[];
+  favourites: Product[];
   addToCart: (product: Product) => void;
   removeFromCart: (productId: string) => void;
-  isItemAdded: (productId: string) => boolean;
+  isItemInCart: (productId: string) => boolean;
   updateQuantity: (id: string, newQuantity: number) => void;
-  addToFavorites: (product: Phone) => void;
-  removeFromFavorites: (productId: string) => void;
+  addToFavourites: (product: Product) => void;
+  removeFromFavourites: (productId: string) => void;
+  isItemInFavourites: (productId: string) => boolean;
   itemCount: number;
 };

@@ -1,11 +1,13 @@
 import { CartProduct } from '../types/CartProduct';
+import { Product } from '../types/Product';
 
 type Cart = Record<string, CartProduct[]>;
+type Products = Record<string, Product[]>;
 
 export const useCartStorage = <T>(): {
   updateCart: (key: string, value: T) => void;
   removeCart: (key: string, id: string, removeAll?: boolean) => void;
-  getCart: (key: string) => Cart;
+  getCart: (key: string) => Cart | Products;
 } => {
   const updateCart = (key: string, value: T) => {
     const existItem = localStorage.getItem(key);

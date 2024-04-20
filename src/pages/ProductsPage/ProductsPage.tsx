@@ -6,6 +6,7 @@ import { Sort } from '../../types/Sort';
 
 import './ProductsPage.scss';
 import { Pagination } from '../../components/Pagination';
+import { ItemsLayout } from '../../components/ItemsLayout';
 
 type Props = {
   title: string;
@@ -82,11 +83,11 @@ export const ProductsPage: React.FC<Props> = ({ products, title }) => {
         </div>
       </div>
 
-      <ul>
+      <ItemsLayout>
         {currentItems.map(product => (
           <CardLayout good={product} key={product.id} />
         ))}
-      </ul>
+      </ItemsLayout>
 
       <Pagination
         currentPage={currentPage}

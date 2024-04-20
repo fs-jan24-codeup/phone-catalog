@@ -136,6 +136,9 @@ p {
     }
 
     &--favourite {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       grid-column: 2 / -1;
       box-sizing: border-box;
       width: 40px;
@@ -144,12 +147,6 @@ p {
       border: 1px solid $icon-color;
       padding: 0;
       overflow: hidden;
-    }
-
-    &--image {
-      height: 39px;
-      width: 39x;
-      transform: translateX(-1px);
     }
   }
 

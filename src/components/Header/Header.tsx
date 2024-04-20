@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 import logo from '../../assets/images/logo.svg';
 import menu from '../../assets/icons/menu.svg';
-import cartImg from '../../assets/icons/cart.svg';
+import shoppingCart from '../../assets/icons/shopping-cart.svg';
 import favourites from '../../assets/icons/favourites.svg';
 import { SelectedItemsCircle } from '../SelectedItemsCircle/SelectedItemsCircle';
 import './Header.scss';
@@ -12,6 +12,8 @@ import './Header.scss';
 const getLinkClass = ({ isActive }: { isActive: boolean }) =>
   classNames('navbar__link', { 'navbar__link--active': isActive });
 
+const getIconClass = ({ isActive }: { isActive: boolean }) =>
+  classNames('navbar__icon', { 'navbar__link--active': isActive });
 
 export const Header: React.FC = () => {
   return (
@@ -50,12 +52,17 @@ export const Header: React.FC = () => {
         <img src={menu} alt="Menu" className="header__menu" />
 
         <div className="wrapper">
-          <NavLink to="/favourites" className={getLinkClass}>
-            <img src={favourites} alt="Favourites" className="header__favourites" />
+          <NavLink to="/favourites" className={getIconClass}>
+            <img
+              src={favourites}
+              alt="Favourites"
+              className="header__favourites"
+            />
+            <SelectedItemsCircle type="favourite" />
           </NavLink>
-          <NavLink to="/cart" className={getLinkClass}>
-            <img src={cartImg} alt="Cart" className="header__cart" />
-            <SelectedItemsCircle />
+          <NavLink to="/cart" className={getIconClass}>
+            <img src={shoppingCart} alt="Cart" className="header__cart" />
+            <SelectedItemsCircle type="cart" />
           </NavLink>
         </div>
       </div>

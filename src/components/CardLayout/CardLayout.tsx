@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import favourites from '../../assets/icons/favourites.svg';
 import { Product } from '../../types/Product';
 import { ButtonAddToCard } from '../ButtonAddToCard';
 import { ButtonAddToFavorites } from '../ButtonAddToFavorites';
