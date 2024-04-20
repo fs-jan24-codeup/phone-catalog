@@ -1,25 +1,21 @@
 import React from 'react';
 
 import { CardLayout } from '../../components/CardLayout';
-import goBackIcon from '../../assets/icons/arrow-left.svg';
-import { Link } from 'react-router-dom';
 import './FavoritesPage.scss';
 import { ItemsLayout } from '../../components/ItemsLayout';
 import { useAppContext } from '../../hooks/useAppContext';
+import { Breadcrumb } from '../../components/Breadcrumb';
 
 export const FavouritesPage: React.FC = () => {
   const { favourites } = useAppContext();
 
   return (
     <div className="favorites-page">
-      <div className="button-go-back">
-        <img src={goBackIcon} alt="Go back" className="button-go-back__img" />
-        <Link to=".." className="button-go-back__link">
-          Go back
-        </Link>
-      </div>
+      <Breadcrumb />
 
       <h1 className="favorites__title">Favourites</h1>
+
+      <p className="favorites__quantity">{favourites.length} items</p>
 
       <div className="favorites__content-wrapper">
         <ItemsLayout>
