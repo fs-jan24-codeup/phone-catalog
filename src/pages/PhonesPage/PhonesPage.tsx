@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { Phone } from '../../types/Phone';
 import { getAllPhones } from '../../utils/fetchPhonesData';
 import { CardLayout } from '../../components/CardLayout';
+import { ItemsLayout } from '../../components/ItemsLayout';
 
 export const PhonesPage: React.FC = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
@@ -14,12 +15,10 @@ export const PhonesPage: React.FC = () => {
   }, []);
 
   return (
-    <div>
-      <ul>
-        {phones.map(phone => (
-          <CardLayout good={phone} key={phone.id} />
-        ))}
-      </ul>
-    </div>
+      <ItemsLayout>
+          {phones.map(phone => (
+            <CardLayout key={phone.id} good={phone}/>
+          ))}
+      </ItemsLayout>
   );
 };
