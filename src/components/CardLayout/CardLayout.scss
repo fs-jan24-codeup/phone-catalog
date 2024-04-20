@@ -12,8 +12,19 @@ p {
   height: 439px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
 
-  @include on-tablet {
+  @include on-small-tablet {
+    height: 506px;
+  }
+  
+  @include on-medium-tablet {
+    width: 100%;
+  }
+
+  @include on-desktop {
     height: 506px;
   }
 
@@ -22,7 +33,14 @@ p {
   }
 
   &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     margin: 32px;
+
+    @include on-medium-tablet {
+      width: 80%;
+    }
   }
 
   &__image {

@@ -1,0 +1,6 @@
+@import '../../styles/utils/mixins.scss';
+
+.items {
+    @include items-grid;
+    place-items: center;
+}

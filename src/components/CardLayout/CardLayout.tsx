@@ -1,6 +1,8 @@
+import { Link } from 'react-router-dom';
 import favourites from '../../assets/icons/favourites.svg';
 import { Product } from '../../types/Product';
 import { ButtonAddToCard } from '../ButtonAddToCard';
+import { ButtonAddToFavorites } from '../ButtonAddToFavorites';
 import './CardLayout.scss';
 
 type Props = {
@@ -14,7 +16,9 @@ export const CardLayout: React.FC<Props> = ({ good }) => {
   return (
     <article className="card">
       <div className="card__container">
-        <img src={images[0]} alt={name} className="card__image" />
+        <Link to={`/phones/${good.id}`}>
+          <img src={images[0]} alt={name} className="card__image" />
+        </Link>
 
         <div className="card__name">{name}</div>
 
@@ -44,14 +48,7 @@ export const CardLayout: React.FC<Props> = ({ good }) => {
 
         <div className="card__button card__button--container">
           <ButtonAddToCard good={good} />
-
-          <button className="card__button--favourite">
-            <img
-              src={favourites}
-              alt="Favourite"
-              className="card__button--image"
-            />
-          </button>
+          <ButtonAddToFavorites good={good} />
         </div>
       </div>
     </article>

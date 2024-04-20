@@ -93,6 +93,14 @@
   &__text {
     color: $secondary-color;
   }
+
+  &__empty {
+    text-align: center;
+  }
+
+  &__text {
+    color: $secondary-color;
+  }
 }
 
 .button-go-back {

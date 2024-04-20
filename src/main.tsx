@@ -11,6 +11,8 @@ import { PhonesPage } from './pages/PhonesPage';
 import { TabletsPage } from './pages/TabletsPage';
 import { AccessoriesPage } from './pages/AccessoriesPage';
 import { NotFoundPage } from './pages/NotFoundPage';
+import { PhoneDetailsPage } from './pages/PhonesDetailsPage/PhoneDetailsPage.tsx';
+import { FavouritesPage } from './pages/FavoritesPage/FavoritesPage.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -18,8 +20,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<div>Home page</div>} />
-          <Route path="phones" element={<PhonesPage />}>
-            <Route path=":phoneId?" element={<div>Phone details page</div>} />
+          <Route path="phones">
+            <Route index element={<PhonesPage />} />
+            <Route path=":productId" element={<PhoneDetailsPage />} />
           </Route>
           <Route path="tablets" element={<TabletsPage />}>
             <Route path=":tabletId?" element={<div>Tablet details page</div>} />
@@ -31,7 +34,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             />
           </Route>
           <Route path="cart" element={<CartPage />} />
-          <Route path="favourites" element={<div>Favourites page</div>} />
+          <Route path="favourites" element={<FavouritesPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

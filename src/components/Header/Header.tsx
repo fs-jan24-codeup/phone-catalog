@@ -1,15 +1,17 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import classNames from 'classnames';
 
 import logo from '../../assets/images/logo.svg';
 import menu from '../../assets/icons/menu.svg';
-import cart from '../../assets/icons/cart.svg';
+import cartImg from '../../assets/icons/cart.svg';
 import favourites from '../../assets/icons/favourites.svg';
+import { SelectedItemsCircle } from '../SelectedItemsCircle/SelectedItemsCircle';
 import './Header.scss';
-import classNames from 'classnames';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) =>
   classNames('navbar__link', { 'navbar__link--active': isActive });
+
 
 export const Header: React.FC = () => {
   return (
@@ -48,13 +50,12 @@ export const Header: React.FC = () => {
         <img src={menu} alt="Menu" className="header__menu" />
 
         <div className="wrapper">
-          <img
-            src={favourites}
-            alt="Favourites"
-            className="header__favourites"
-          />
+          <NavLink to="/favourites" className={getLinkClass}>
+            <img src={favourites} alt="Favourites" className="header__favourites" />
+          </NavLink>
           <NavLink to="/cart" className={getLinkClass}>
-            <img src={cart} alt="Cart" className="header__cart" />
+            <img src={cartImg} alt="Cart" className="header__cart" />
+            <SelectedItemsCircle />
           </NavLink>
         </div>
       </div>

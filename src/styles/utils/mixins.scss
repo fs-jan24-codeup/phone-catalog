@@ -35,3 +35,35 @@
     --columns: 24;
   }
 }
+
+@mixin on-small-tablet {
+  @media (min-width: $small-tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-medium-tablet {
+  @media (min-width: $medium-tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin items-grid {
+  --columns: 1;
+
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat(var(--columns), minmax(229px, 1fr));
+
+  @include on-small-tablet {
+    --columns: 2;
+  }
+
+  @include on-medium-tablet {
+    --columns: 3;
+  }
+
+  @include on-desktop {
+    --columns: 4;
+  }
+}
