@@ -1,10 +1,10 @@
 import favourites from '../../assets/icons/favourites.svg';
-import { Phone } from '../../types/Phone';
+import { Product } from '../../types/Product';
 import { ButtonAddToCard } from '../ButtonAddToCard';
 import './CardLayout.scss';
 
 type Props = {
-  good: Phone;
+  good: Product;
 };
 
 export const CardLayout: React.FC<Props> = ({ good }) => {

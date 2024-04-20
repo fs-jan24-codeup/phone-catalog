@@ -52,6 +52,10 @@
   border: none;
   background: none;
   grid-area: 1 / 1 / 2 / 2;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .cart-item__name {
