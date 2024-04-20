@@ -9,4 +9,5 @@ export type AppContext = {
   updateQuantity: (id: string, newQuantity: number) => void;
   addToFavorites: (product: Phone) => void;
   removeFromFavorites: (productId: string) => void;
+  itemCount: number;
 };

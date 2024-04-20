@@ -3,9 +3,10 @@ import { NavLink } from 'react-router-dom';
 
 import logo from '../../assets/images/logo.svg';
 import menu from '../../assets/icons/menu.svg';
-import cart from '../../assets/icons/cart.svg';
+import cartImg from '../../assets/icons/cart.svg';
 import favourites from '../../assets/icons/favourites.svg';
 import './Header.scss';
+import { SelectedItemsCircle } from '../SelectedItemsCircle/SelectedItemsCircle';
 
 export const Header: React.FC = () => {
   return (
@@ -48,7 +49,9 @@ export const Header: React.FC = () => {
             <img src={favourites} alt="Favourites" className="header__favourites" />
           </NavLink>
           <NavLink to="/cart" className="navbar__link">
-            <img src={cart} alt="Cart" className="header__cart" />
+            <img src={cartImg} alt="Cart" className="header__cart" />
+
+            <SelectedItemsCircle />
           </NavLink>
         </div>
       </div>
