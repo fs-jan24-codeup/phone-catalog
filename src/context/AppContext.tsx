@@ -18,12 +18,15 @@ export const AppContextProvider: React.FC<Props> = ({ children }) => {
   const [favourites, setFavourites] = useState<Product[]>([]);
   const [favouritesIds, setFavouritesIds] = useState<string[]>([]);
   const [addedIds, setAddedIds] = useState<string[]>([]);
-  const { updateCart, removeCart, getCart } = useCartStorage();
+  const [tempCard, setTempCard] = useState < Product | null>(null);
+  const { updateCart, removeCart, getCart, addTempCard } = useCartStorage();
 
   useEffect(() => {
     const itemFromLocalStorge = getCart(CART_STORAGE_KEY);
     const favouriteItems = getCart(FAVOURITE_STORAGE_KEY);
-
+    // const tempCardFromLocalStorage = getCart('temp');
+    const tempCardFromLocalStorage = JSON.parse(localStorage.temp);
+    
     if (itemFromLocalStorge) {
       const cart = Object.values(itemFromLocalStorge).flat();
       const itemIds = Object.keys(itemFromLocalStorge);
@@ -36,7 +39,16 @@ export const AppContextProvider: React.FC<Props> = ({ children }) => {
       setFavourites(Object.values(favouriteItems).flat());
       setFavouritesIds(Object.keys(favouriteItems));
     }
+
+    if (tempCardFromLocalStorage) {
+      setTempCard(tempCardFromLocalStorage)
+    }
   }, []);
+
+  const addTemporaryCard = (product: Product) => {
+    addTempCard('temp', product);
+    setTempCard(product);
+  };
 
   const addToCart = (product: Product) => {
     const { id, name, priceRegular, priceDiscount, images } = product;
@@ -116,6 +128,8 @@ export const AppContextProvider: React.FC<Props> = ({ children }) => {
     removeFromFavourites,
     isItemInFavourites,
     itemCount,
+    addTemporaryCard,
+    tempCard,
   };
 
   return (

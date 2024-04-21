@@ -10,7 +10,7 @@
 }
 
 .product__images {
-  background-color: #66ccff;
+  margin: 10px 0;
 }
 
 .product__about {
@@ -63,6 +63,11 @@
 
   &__images {
     margin-bottom: 16px;
+
+    /*TEST DELETE THIS*/
+    margin-bottom: 80px;
+    /*TEST DELETE THIS*/
+
     height: 288px;
   }
 
@@ -126,6 +131,7 @@
 
     &__images {
       grid-column: 1 / span 12;
+      height: 464px;
     }
     &__price {
       grid-column: 13 / span 12;

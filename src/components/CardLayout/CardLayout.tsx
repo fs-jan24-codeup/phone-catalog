@@ -3,6 +3,7 @@ import { Product } from '../../types/Product';
 import { ButtonAddToCard } from '../ButtonAddToCard';
 import { ButtonAddToFavorites } from '../ButtonAddToFavorites';
 import './CardLayout.scss';
+import { useAppContext } from '../../hooks/useAppContext';
 
 type Props = {
   good: Product;
@@ -11,9 +12,10 @@ type Props = {
 export const CardLayout: React.FC<Props> = ({ good }) => {
   const { images, name, priceRegular, priceDiscount, ram, screen, capacity } =
     good;
+  const { addTemporaryCard } = useAppContext();
 
   return (
-    <article className="card">
+    <article className="card" onClick={() => addTemporaryCard(good)}>
       <div className="card__container">
         <Link to={`/phones/${good.id}`}>
           <img src={images[0]} alt={name} className="card__image" />

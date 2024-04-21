@@ -8,7 +8,17 @@ export const useCartStorage = <T>(): {
   updateCart: (key: string, value: T) => void;
   removeCart: (key: string, id: string, removeAll?: boolean) => void;
   getCart: (key: string) => Cart | Products;
+  addTempCard: (key: string, card: Product) => void;
 } => {
+  const addTempCard = (key: string, card: Product) => {
+    localStorage.removeItem(key)
+
+    const cardToStore = JSON.stringify(card);
+
+    localStorage.setItem(key, cardToStore);
+
+    return;
+  }
   const updateCart = (key: string, value: T) => {
     const existItem = localStorage.getItem(key);
 
@@ -34,6 +44,7 @@ export const useCartStorage = <T>(): {
     const existItem = localStorage.getItem(key);
 
     if (existItem) {
+
       return JSON.parse(existItem);
     }
 
@@ -64,5 +75,5 @@ export const useCartStorage = <T>(): {
     }
   };
 
-  return { updateCart, removeCart, getCart };
+  return { updateCart, removeCart, getCart, addTempCard };
 };
