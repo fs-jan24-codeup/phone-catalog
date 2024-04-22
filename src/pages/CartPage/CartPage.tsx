@@ -7,16 +7,17 @@ import { useAppContext } from '../../hooks/useAppContext';
 import { Modal } from '../../components/Modal/Modal';
 
 export const CartPage: React.FC = () => {
-  const { cart, removeFromCart, itemCount } = useAppContext();
+  const { cart, clearCart, itemCount } = useAppContext();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [orderConfirmed, setOrderConfirmed] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+
   const confirmOrder = () => {
     setIsModalOpen(false);
-    cart.forEach(item => removeFromCart(item.id));
+    clearCart();
     setOrderConfirmed(true);
   };
 

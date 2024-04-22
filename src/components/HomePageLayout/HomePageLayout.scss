@@ -1,0 +1,80 @@
+@import '../../styles/utils/mixins.scss';
+@import '../../styles/utils/variables.scss';
+
+.home {
+  &__slider {
+    background-color: aqua;
+  }
+
+  &__brand-new-models {
+    background-color: rgb(68, 108, 229);
+  }
+
+  &__shop-by-category {
+    background-color: rgb(173, 69, 237);
+  }
+
+  &__hot-prices {
+    background-color: rgb(255, 255, 0);
+  }
+}
+
+.home {
+  &__grid {
+    @include page-grid;
+  }
+
+  &__title {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 128%;
+    letter-spacing: -0.01em;
+    color: $primary-color;
+    margin-block: 24px;
+    grid-column: 1 / 5;
+  }
+
+  &__slider,
+  &__brand-new-models,
+  &__shop-by-category {
+    grid-column: 1 / 5;
+    margin-bottom: 56px;
+  }
+
+  &__hot-prices {
+    grid-column: 1 / 5;
+    margin-bottom: 64px;
+  }
+
+  @include on-tablet {
+    &__title {
+      margin-block: 32px;
+      font-size: 48px;
+      line-height: 117%;
+      grid-column: 1 / 13;
+    }
+
+    &__slider,
+    &__brand-new-models,
+    &__shop-by-category,
+    &__hot-prices {
+      grid-column: 1 / 13;
+      margin-bottom: 64px;
+    }
+  }
+
+  @include on-desktop {
+    &__title {
+      margin-block: 56px;
+      grid-column: 1 / 25;
+    }
+
+    &__slider,
+    &__brand-new-models,
+    &__shop-by-category,
+    &__hot-prices {
+      grid-column: 1 / 25;
+      margin-bottom: 80px;
+    }
+  }
+}

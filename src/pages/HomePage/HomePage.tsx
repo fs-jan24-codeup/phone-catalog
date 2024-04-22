@@ -1,9 +1,6 @@
-import { CategoriesSection } from "../../components/CategoriesSection";
+import React from 'react';
+import { HomePageLayout } from '../../components/HomePageLayout';
 
-export const HomePage = () => {
-    return (
-        <>
-            <CategoriesSection />
-        </>
-    )
-}
+export const HomePage: React.FC = () => {
+  return <HomePageLayout />;
+};
