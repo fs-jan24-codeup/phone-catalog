@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import './ProductPageLayout.scss';
 import { ProductPageLayoutImages } from '../ProductPageLayoutImages/ProductPageLayoutImages';
 import { getProduct } from '../../utils/fetchData';
 import { Product } from '../../types/Product';
+
+import './ProductPageLayout.scss';
 
 export const ProductPageLayout: React.FC = () => {
   const productId = new URL(window?.location?.href)?.hash?.split('/').pop();

@@ -12,7 +12,6 @@ type Props = {
 export const ProductPageLayoutImages: React.FC<Props> = ({ images }) => {
   const [index, setIndex] = useState(0);
   const [swiper, setSwiper] = useState<any>(null);
-  console.log(swiper);
 
   return (
     <div className="images1">
