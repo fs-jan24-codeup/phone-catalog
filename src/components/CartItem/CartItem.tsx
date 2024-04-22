@@ -5,6 +5,7 @@ import close from '../../assets/icons/close.svg';
 import './CartItem.scss';
 import { useAppContext } from '../../hooks/useAppContext';
 import { CartProduct } from '../../types/CartProduct';
+import { Link } from 'react-router-dom';
 
 interface Props {
   item: CartProduct;
@@ -40,7 +41,9 @@ export const CartItem: React.FC<Props> = ({ item }) => {
         <div className="cart-item__img">
           <img src={image} alt={name} />
         </div>
-        <p className="cart-item__name">{name}</p>
+        <Link className="cart-item__name" to={`/phones/${id}`}>
+          {name}
+        </Link>
         <div className="cart-item__buttons">
           <div className="cart-item__buttons-icons">
             <button

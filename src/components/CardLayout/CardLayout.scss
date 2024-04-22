@@ -72,12 +72,12 @@ p {
   }
 
   &__name {
-    font-family: 'Mont';
     font-weight: 500;
     font-size: 14px;
     line-height: 150%;
     color: $primary-color;
     margin-bottom: 8px;
+    text-decoration: none;
   }
 
   &__prices {
@@ -86,7 +86,6 @@ p {
   }
 
   &__price {
-    font-family: 'Mont';
     font-weight: 500;
     font-size: 22px;
     line-height: 150%;
