@@ -8,8 +8,8 @@ p {
 
 .card {
   border: 1px solid $element-color;
-  width: 288px;
-  height: 439px;
+  width: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -18,10 +18,12 @@ p {
 
   @include on-small-tablet {
     height: 506px;
+    width: 288px;
   }
   
   @include on-medium-tablet {
     width: 100%;
+    
   }
 
   @include on-desktop {
@@ -32,26 +34,41 @@ p {
     box-shadow: 0px 2px 16px 0px #0000001a;
   }
 
+  &__link {
+    display: flex;
+    align-items: center;
+    padding-bottom: 10%;
+
+    @include on-tablet {
+      padding-bottom: 0;
+    }
+  }
+
   &__container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin: 32px;
+    width: 100%;
+    padding: 32px;
+    padding-bottom: 0;
 
-    @include on-medium-tablet {
-      width: 80%;
+    @include on-tablet {
+      padding-bottom: 32px;
     }
   }
 
   &__image {
     margin: 0 auto;
     margin-bottom: 24px;
-    width: 224px;
-    height: 130px;
+    width: 100%;
+    height: auto;
+    max-height: 250px;
     object-fit: contain;
 
     @include on-tablet {
       height: 196px;
+      width: 224px;
     }
   }
 
