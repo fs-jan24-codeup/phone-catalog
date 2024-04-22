@@ -2,80 +2,58 @@
 @import '../../styles/utils/mixins.scss';
 
 .categories {
-    &-section {       
-    margin-top: 56px;
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 32px;
 
-        @include on-tablet {
-            margin-top: 64px;
-        }
-
-        @include on-desktop {
-            margin-top: 80px;
-        }
+    @include on-tablet {
+      flex-direction: row;
+      column-gap: 16px;
     }
 
-    &-section__content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        @include on-tablet {
-            flex-direction: row;
-            justify-content: center;
-        }
+    &__link {
+      display: flex;
     }
+  }
 
-    &-section__content__section {
-        margin-top: 24px;
-        margin-inline: 16px;
-        margin-bottom: 32px;
-        width: 100%;
+  &__content__section {
+    flex: 1;
+  }
 
-        @include on-tablet {
-            margin-inline: 8px;
-            margin-bottom: 64px;
-        }
+  &__title {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 30.8px;
+    color: $primary-color;
+    letter-spacing: -1%;
+    margin-top: 0;
+    margin-bottom: 24px;
 
-        @include on-desktop {
-            margin-bottom: 80px;
-        }
+    @include on-tablet {
+      font-size: 32px;
+      line-height: 41px;
     }
+  }
 
-    &-section__title {
-        font-size: 22px;
-        font-weight: 800;
-        line-height: 30.8px;
-        color: $primary-color;
-        letter-spacing: -1%;
-        margin-top: 0;
+  &__content__item {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 25.56px;
+    color: $primary-color;
+    margin-top: 24px;
+  }
 
-        @include on-tablet {
-            font-size: 32px;
-            line-height: 41px;
-        }
-    }
+  &__content__image {
+    width: 100%;
+  }
 
-    &-section__content__item {
-        font-size: 20px;
-        font-weight: 700;
-        line-height: 25.56px;
-        color: $primary-color;
-        margin-top: 24px;
-    }
-
-    &-section__content__image {
-        width: 100%;
-
-        @include on-desktop {        
-            width: 368px;
-        }
-    }
-
-    &-section__content__quantity {
-        font-size: 14px;
-        font-weight: 600;
-        line-height: 21px;
-        color: $secondary-color;
-        margin-top: 4px;
-    }
+  &__content__quantity {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: $secondary-color;
+    margin-top: 4px;
+  }
 }
