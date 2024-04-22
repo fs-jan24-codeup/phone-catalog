@@ -12,4 +12,5 @@ export type AppContext = {
   removeFromFavourites: (productId: string) => void;
   isItemInFavourites: (productId: string) => boolean;
   itemCount: number;
+  clearCart: () => void;
 };
