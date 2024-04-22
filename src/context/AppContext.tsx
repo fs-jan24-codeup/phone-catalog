@@ -100,6 +100,12 @@ export const AppContextProvider: React.FC<Props> = ({ children }) => {
     setCart(newCartItems);
   };
 
+  const clearCart = () => {
+    setCart([]);
+    setAddedIds([]);
+    localStorage.removeItem(CART_STORAGE_KEY);
+  };
+
   const isItemInCart = (productId: string) => addedIds.includes(productId);
   const isItemInFavourites = (productId: string) =>
     favouritesIds.includes(productId);
@@ -116,6 +122,7 @@ export const AppContextProvider: React.FC<Props> = ({ children }) => {
     removeFromFavourites,
     isItemInFavourites,
     itemCount,
+    clearCart,
   };
 
   return (
