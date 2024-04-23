@@ -48,6 +48,48 @@ a {
     padding-left: 3px;
   }
 
+  &__capacity {
+    position: relative;
+    margin-bottom: 45px;
+  
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -24px;
+      width: 100%;
+  
+      border-bottom: $element-color solid 1px;
+    }
+  
+    &__option {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 32px;
+      width: 63px;
+  
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21px;
+      color: $primary-color;
+  
+      border: 1px solid $element-color;
+      background-color: $white-color;
+  
+      @include hover(border, 1px solid $primary-color);
+  
+      &:hover {
+        cursor: pointer;
+      }
+  
+      &--active {
+        background-color: $primary-color;
+        color: $white-color;
+        border: 1px solid $primary-color;
+      }
+    }
+  }
+
   &__top-text {
     display: flex;
     justify-content: space-between;
@@ -166,48 +208,6 @@ a {
 
     &--active::before {
       border-color: $primary-color;
-    }
-  }
-}
-
-.capacity {
-  position: relative;
-  margin-bottom: 45px;
-
-  &::before {
-    content: '';
-    position: absolute;
-    bottom: -24px;
-    width: 100%;
-
-    border-bottom: $element-color solid 1px;
-  }
-
-  &__option {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 32px;
-    width: 63px;
-
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 21px;
-    color: $primary-color;
-
-    border: 1px solid $element-color;
-    background-color: $white-color;
-
-    @include hover(border, 1px solid $primary-color);
-
-    &:hover {
-      cursor: pointer;
-    }
-
-    &--active {
-      background-color: $primary-color;
-      color: $white-color;
-      border: 1px solid $primary-color;
     }
   }
 }
