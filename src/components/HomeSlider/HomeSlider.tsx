@@ -41,6 +41,7 @@ export const HomeSlider: React.FC = () => {
         }}
         onSwiper={swiper => setSwiper(swiper)}
         modules={[Autoplay, Pagination, Navigation]}
+        className="home-swiper"
       >
         <SwiperSlide>
           <img src={slidePhones}></img>

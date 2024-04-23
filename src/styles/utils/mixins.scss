@@ -53,6 +53,7 @@
 
   display: grid;
   column-gap: 16px;
+  row-gap: 40px;
   grid-template-columns: repeat(var(--columns), minmax(229px, 1fr));
 
   @include on-small-tablet {
