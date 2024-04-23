@@ -29,9 +29,9 @@
   background-color: #ffcc00;
 }
 
-.product__price {
-  background-color: #ff6696;
-}
+// .product__price {
+//   background-color: #ff6696;
+// }
 
 .product {
   &__grid {
@@ -128,6 +128,7 @@
       grid-column: 1 / span 12;
     }
     &__price {
+      margin-left: 48px;
       grid-column: 13 / span 12;
     }
 
