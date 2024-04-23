@@ -1,43 +1,71 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Breadcrumb } from '../../components/Breadcrumb';
 import { Product } from '../../types/Product';
 import { CardLayout } from '../../components/CardLayout';
-import { Sort } from '../../types/Sort';
-
-import './ProductsPage.scss';
 import { Pagination } from '../../components/Pagination';
 import { ItemsLayout } from '../../components/ItemsLayout';
+import { useNavigate, useLocation } from 'react-router-dom';
+import './ProductsPage.scss';
+import { Sort } from '../../types/Sort';
 
 type Props = {
   title: string;
   products: Product[];
 };
 
-export const ProductsPage: React.FC<Props> = ({ products, title }) => {
-  const [sortBy, setSortBy] = useState(Sort.Default);
+export const ProductsPage: React.FC<Props> = ({ title, products }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const [sortBy, setSortBy] = useState<Sort>(() => {
+    const params = new URLSearchParams(location.search);
+    const sortByParam = params.get('sortBy');
+    return sortByParam ? (sortByParam as Sort) : Sort.Newest;
+  });
+
+  const [itemsPerPage, setItemsPerPage] = useState<number>(() => {
+    const params = new URLSearchParams(location.search);
+    return Number(params.get('itemsPerPage')) || 4;
+  });
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    params.set('itemsPerPage', itemsPerPage.toString());
+
+    if (sortBy !== Sort.Newest) {
+      params.set('sortBy', sortBy);
+    } else {
+      params.delete('sortBy');
+    }
+
+    if (sortBy === Sort.Newest) {
+      params.set('sortBy', 'newest');
+    }
+
+    navigate(`${location.pathname}?${params.toString()}`);
+  }, [sortBy, itemsPerPage, navigate, location.pathname]);
+
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(4);
 
   const sortProducts = (phones: Product[]) => {
-    return [...phones].sort((a, b) => {
-      switch (sortBy) {
-        case Sort.Alphabetically:
-          return a.name.localeCompare(b.name);
-        case Sort.PriceLow:
-          return a.priceDiscount - b.priceDiscount;
-        case Sort.PriceHigh:
-          return b.priceDiscount - a.priceDiscount;
-        default:
-          return 0;
-      }
-    });
+    switch (sortBy) {
+      case Sort.Alphabetically:
+        return [...phones].sort((a, b) => a.name.localeCompare(b.name));
+      case Sort.PriceLow:
+        return [...phones].sort((a, b) => a.priceDiscount - b.priceDiscount);
+      case Sort.PriceHigh:
+        return [...phones].sort((a, b) => b.priceDiscount - a.priceDiscount);
+      case Sort.Newest:
+      default:
+        return [...phones];
+    }
   };
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = sortProducts(products).slice(
     indexOfFirstItem,
-    indexOfLastItem,
+    indexOfLastItem
   );
 
   const handlePageChange = (page: number) => setCurrentPage(page);
@@ -56,9 +84,12 @@ export const ProductsPage: React.FC<Props> = ({ products, title }) => {
           <select
             className="select"
             value={sortBy}
-            onChange={event => setSortBy(event.target.value as Sort)}
+            onChange={(event) => {
+              const selectedSort = event.target.value as Sort;
+              setSortBy(selectedSort === "newest" ? Sort.Newest : selectedSort);
+            }}
           >
-            <option value={Sort.Default}>Newest</option>
+            <option value={Sort.Newest}>Newest</option>
             <option value={Sort.Alphabetically}>Alphabetically</option>
             <option value={Sort.PriceLow}>Price low</option>
             <option value={Sort.PriceHigh}>Price high</option>
@@ -70,7 +101,7 @@ export const ProductsPage: React.FC<Props> = ({ products, title }) => {
           <select
             className="select"
             value={itemsPerPage}
-            onChange={event => {
+            onChange={(event) => {
               setItemsPerPage(Number(event.target.value));
               setCurrentPage(1);
             }}
@@ -84,7 +115,7 @@ export const ProductsPage: React.FC<Props> = ({ products, title }) => {
       </div>
 
       <ItemsLayout>
-        {currentItems.map(product => (
+        {currentItems.map((product) => (
           <CardLayout good={product} key={product.id} />
         ))}
       </ItemsLayout>

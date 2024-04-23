@@ -1,0 +1,47 @@
+@import '../../styles/utils/mixins.scss';
+
+.product-slider-container {
+  &__title {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 128%;
+    letter-spacing: -0.01em;
+  }
+  &__wrapper-title-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__btn--wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+  }
+}
+
+.custom-prev-button,
+.custom-next-button {
+  width: 32px;
+  height: 32px;
+  border: 1px solid $icon-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &:hover {
+    border: 1px solid $primary-color;
+  }
+}
+
+.swiper-button-disabled {
+  border: 1px solid $element-color;
+}
+
+.products-swiper .swiper-slide {
+  width: 288px;
+}

@@ -4,6 +4,7 @@ import { getProduct } from '../../utils/fetchData';
 import { Product } from '../../types/Product';
 
 import './ProductPageLayout.scss';
+import { PriceInfo } from '../PriceInfo';
 
 export const ProductPageLayout: React.FC = () => {
   const productId = new URL(window?.location?.href)?.hash?.split('/').pop();

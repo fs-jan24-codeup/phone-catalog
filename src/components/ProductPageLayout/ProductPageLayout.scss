@@ -28,9 +28,9 @@
   }
 }
 
-.product__price {
-  background-color: #ff6696;
-}
+// .product__price {
+//   background-color: #ff6696;
+// }
 
 .product {
   &__grid {
@@ -129,6 +129,7 @@
       height: 464px;
     }
     &__price {
+      margin-left: 48px;
       grid-column: 13 / span 12;
     }
 
