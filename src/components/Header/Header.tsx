@@ -1,21 +1,61 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import classNames from 'classnames';
-
 import logo from '../../assets/images/logo.svg';
 import menu from '../../assets/icons/menu.svg';
+import cancel from '../../assets/icons/close.svg';
 import shoppingCart from '../../assets/icons/shopping-cart.svg';
 import favourites from '../../assets/icons/favourites.svg';
 import { SelectedItemsCircle } from '../SelectedItemsCircle/SelectedItemsCircle';
 import './Header.scss';
+import { Menu } from '../Menu';
+import classNames from 'classnames';
 
-const getLinkClass = ({ isActive }: { isActive: boolean }) =>
-  classNames('navbar__link', { 'navbar__link--active': isActive });
+export const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 640);
 
-const getIconClass = ({ isActive }: { isActive: boolean }) =>
-  classNames('navbar__icon', { 'navbar__link--active': isActive });
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
-export const Header: React.FC = () => {
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 640);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = (e: WheelEvent) => {
+      if (isMenuOpen) {
+        e.preventDefault();
+      }
+    };
+
+    if (isMenuOpen) {
+      document.body.classList.add('disable-scroll');
+      window.addEventListener('wheel', handleScroll, { passive: false });
+    } else {
+      document.body.classList.remove('disable-scroll');
+      window.removeEventListener('wheel', handleScroll);
+    }
+
+    return () => {
+      window.removeEventListener('wheel', handleScroll);
+    };
+  }, [isMenuOpen]);
+
+  const getHeaderLinkClass = ({ isActive }: { isActive: boolean }) =>
+    classNames('navbar__link', { 'navbar__link--active': isActive });
+
+  const getHeaderIconClass = ({ isActive }: { isActive: boolean }) =>
+    classNames('navbar__icon', { 'navbar__link--active': isActive });
+
   return (
     <div className="header">
       <div className="header__wrapper">
@@ -23,25 +63,22 @@ export const Header: React.FC = () => {
 
         <ul className="header__navbar navbar">
           <li>
-            <NavLink to="/" className={getLinkClass}>
+            <NavLink to="/" className={getHeaderLinkClass}>
               Home
             </NavLink>
           </li>
-
           <li>
-            <NavLink to="/phones" className={getLinkClass}>
+            <NavLink to="/phones" className={getHeaderLinkClass}>
               Phones
             </NavLink>
           </li>
-
           <li>
-            <NavLink to="/tablets" className={getLinkClass}>
+            <NavLink to="/tablets" className={getHeaderLinkClass}>
               Tablets
             </NavLink>
           </li>
-
           <li>
-            <NavLink to="/accessories" className={getLinkClass}>
+            <NavLink to="/accessories" className={getHeaderLinkClass}>
               Accessories
             </NavLink>
           </li>
@@ -49,10 +86,17 @@ export const Header: React.FC = () => {
       </div>
 
       <div className="header__icons">
-        <img src={menu} alt="Menu" className="header__menu" />
+        {(isMobile || isMenuOpen) && (
+          <button className="header__menu__toggler" onClick={toggleMenu}>
+            <img 
+              src={isMenuOpen ? cancel : menu} 
+              alt="Menu" 
+              className="header__icon--menu" />
+          </button>
+        )}
 
         <div className="wrapper">
-          <NavLink to="/favourites" className={getIconClass}>
+          <NavLink to="/favourites" className={getHeaderIconClass}>
             <img
               src={favourites}
               alt="Favourites"
@@ -60,12 +104,17 @@ export const Header: React.FC = () => {
             />
             <SelectedItemsCircle type="favourite" />
           </NavLink>
-          <NavLink to="/cart" className={getIconClass}>
-            <img src={shoppingCart} alt="Cart" className="header__cart" />
+          <NavLink to="/cart" className={getHeaderIconClass}>
+            <img 
+              src={shoppingCart} 
+              alt="Cart" 
+              className="header__cart" />
             <SelectedItemsCircle type="cart" />
           </NavLink>
         </div>
       </div>
+
+      {isMenuOpen && isMobile && <Menu onCloseMenu={toggleMenu} />}
     </div>
   );
 };
