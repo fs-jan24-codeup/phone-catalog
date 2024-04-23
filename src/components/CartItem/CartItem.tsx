@@ -47,11 +47,11 @@ export const CartItem: React.FC<Props> = ({ item }) => {
         <div className="cart-item__buttons">
           <div className="cart-item__buttons-icons">
             <button
-              className="cart-item__buttons-icon"
+             className={"cart-item__buttons-icon" + (quantity === 1 ? ' disabled' : '')}
               onClick={handleClickMinus}
               disabled={quantity === 1}
             >
-              <img src={minus} alt="minus" />
+              <img src={minus} alt="minus" className={quantity === 1 ? 'disabled' : ''}/>
             </button>
           </div>
           <div className="cart-item__count">{quantity}</div>
