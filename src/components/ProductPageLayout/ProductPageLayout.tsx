@@ -1,6 +1,8 @@
 import React from 'react';
 import './ProductPageLayout.scss';
 import { PriceInfo } from '../PriceInfo';
+import { AboutSection } from '../AboutSection';
+import { TechSpecs } from '../TechSpecs';
 
 export const ProductPageLayout: React.FC = () => {
   return (
@@ -12,8 +14,8 @@ export const ProductPageLayout: React.FC = () => {
       <div className="product__price">
         <PriceInfo />
       </div>
-      <div className="product__about">About</div>
-      <div className="product__specs">Tech specs</div>
+      <div className="product__about"><AboutSection /></div>
+      <div className="product__specs"><TechSpecs /></div>
       <div className="product__also-like">You may also like</div>
     </div>
   );
