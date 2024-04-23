@@ -1,100 +1,43 @@
-@import '../../styles/utils/variables.scss';
 @import '../../styles/utils/mixins.scss';
 
 .images {
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
+  height: 353px;
+
+  @include on-tablet {
+    height: 288px;
+  }
 }
 
 .images__main-image {
-  display: flex;
-  margin: 0 auto;
-  margin-bottom: 16px;
+  height: 275px !important;
+}
+
+.images__swiper--main {
   height: 288px;
-  object-fit: contain;
+  display: flex !important;
+  align-items: center;
 }
 
-.images__other-images {
-  display: flex;
-  margin: 0 auto;
-  gap: 8px;
+.images__sidebar-image {
+  height: 43px !important;
+  object-fit: contain !important;
 }
 
-.other-images {
-  &--wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    width: 49px;
+
+
+
+
+.images__swiper--sidebar {
+  height: 49px;
+  width: 288px;
+
+  .swiper-slide {
+    width: 51px !important;
+    border: 1px solid #E2E6E9;
+  }
+
+  .swiper-wrapper {
     height: 49px;
-    border: 1px solid $element-color;
+    gap: 8px;
   }
-
-  &--all {
-    width: 42px;
-    height: 42px;
-    object-fit: contain;
-  }
-}
-
-@include on-tablet {
-  .images1 {
-    display: flex;
-    flex-direction: row-reverse;
-  }
-  .images {
-    justify-content: space-between;
-
-    &__main-image {
-      width: 288px;
-    }
-
-    &__other-images {
-      flex-direction: column;
-      margin: 0;
-    }
-  }
-
-  .other-images {
-    &--wrapper {
-      width: 35px;
-      height: 35px;
-    }
-
-    &--all {
-      width: 29px;
-      height: 29px;
-    }
-  }
-}
-
-@include on-desktop {
-  .images {
-    &__main-image {
-      width: 464px;
-      height: 464px;
-    }
-
-    &__other-images {
-      gap: 17px;
-    }
-  }
-
-  .other-images {
-    &--wrapper {
-      width: 80px;
-      height: 80px;
-    }
-
-    &--all {
-      width: 66px;
-      height: 66px;
-    }
-  }
-}
-
-.active {
-  border: 1px solid #313237;
 }

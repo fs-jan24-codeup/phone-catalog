@@ -16,18 +16,19 @@ export const ProductPageLayout: React.FC = () => {
       .catch(error => console.error('Error fetching phones:', error));
   }, []);
 
-  
   if (selectedProduct) {
-    const { images } = selectedProduct;
+    const { images, name } = selectedProduct;
     return (
       <>
         {selectedProduct && (
           <div className="product__grid">
             <div className="product__path">Path</div>
             <div className="product__back">Button Back</div>
-            <div className="product__title">Title</div>
+            <div className="product__title">
+              <div className="product__title--title">{name}</div>
+            </div>
             <div className="product__images">
-              <ProductPageLayoutImages images={images}/>
+              <ProductPageLayoutImages images={images} />
             </div>
             <div className="product__price">Price, info</div>
             <div className="product__about">About</div>

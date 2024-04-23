@@ -22,7 +22,10 @@
 }
 
 .product__title {
-  background-color: #ffcc00;
+  &--title {
+    font-weight: 800;
+    font-size: 22px;
+  }
 }
 
 .product__price {
@@ -54,7 +57,7 @@
   }
 
   &__title {
-    margin-bottom: 32px;
+    margin-bottom: 16px;
   }
 
   &__images {

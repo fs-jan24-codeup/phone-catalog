@@ -1,61 +1,41 @@
-import React, { useState } from 'react';
-import { OtherImages } from './OtherImages/OtherImages';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import './ProductPageLayoutImages.scss';
 import 'swiper/css';
+import { ProductPageDetailsSwiper } from './SwiperTablet/ProductPageDetailsSwiper';
 
 type Props = {
   images: string[];
 };
+const MAIN = 'main';
+const SIDEBAR = 'sidebar';
+
+const MAX_MOBILE_WIDTH = 640;
 
 export const ProductPageLayoutImages: React.FC<Props> = ({ images }) => {
-  const [index, setIndex] = useState(0);
-  const [swiper, setSwiper] = useState<any>(null);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= MAX_MOBILE_WIDTH)
+  const prevWidth = useRef(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const currWidth = window.innerWidth
+      if (currWidth <= MAX_MOBILE_WIDTH && prevWidth.current > MAX_MOBILE_WIDTH){
+        setIsMobile(true)
+      } else if (currWidth > MAX_MOBILE_WIDTH && prevWidth.current <= MAX_MOBILE_WIDTH) {
+        setIsMobile(false)
+      }
+      prevWidth.current = currWidth
+    }
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
 
   return (
-    <div className="images1">
-      <Swiper
-        spaceBetween={50}
-        slidesPerView={1}
-        onSwiper={swiper => {
-          setSwiper(swiper);
-        }}
-        onSlideChange={swiper => {
-          setIndex(swiper.realIndex);
-        }}
-      >
-        <SwiperSlide>
-          <img className="images__main-image" src={images[0]} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img className="images__main-image" src={images[1]} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img className="images__main-image" src={images[2]} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img className="images__main-image" src={images[3]} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img className="images__main-image" src={images[4]} />
-        </SwiperSlide>
-      </Swiper>
-      <div className="images">
-        <div className="images__other-images">
-          {images.map(image => {
-            return (
-              <OtherImages
-                image={image}
-                key={image}
-                index={index}
-                setIndex={setIndex}
-                swiper={swiper}
-              />
-            );
-          })}
-        </div>
-      </div>
+    <div className="images">
+      {isMobile && (
+        <ProductPageDetailsSwiper classname={MAIN} images={images} />
+      )}
+      <ProductPageDetailsSwiper classname={SIDEBAR} images={images} />
     </div>
   );
 };
