@@ -1,20 +1,13 @@
 import { Product } from '../../types/Product';
-import { useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import { getProduct } from '../../utils/fetchData';
 import './TechSpecs.scss';
 
-export const TechSpecs = () => {
-  const [good, setGood] = useState<Product | null>(null);
-  const { productId } = useParams();
+type Props = {
+    good: Product | null;
+}
 
-  useEffect(() => {
-    if (productId) {
-      getProduct('./api/phones.json', productId)
-        .then(product => setGood(product))
-        .catch(error => console.log(error));
-    }
-  }, [productId]);
+export const TechSpecs: React.FC<Props> = ({ good }) => {
+  const keys: string[] = ['screen', 'resolution', 'processor', 'ram', 'camera', 'zoom'];
+  const cellKey: string = 'cell';
 
   return (
     <div className='specs'>
@@ -23,7 +16,7 @@ export const TechSpecs = () => {
         {good && (
           <>
             {Object.entries(good).map(([key, value]) => (
-              ['screen', 'resolution', 'processor', 'ram', 'camera', 'zoom'].includes(key) && (
+              keys.includes(key) && (
                 <div className='specs__container' key={key}>
                   <p className='specs_subtitle'>{key.charAt(0).toUpperCase() + key.slice(1)}</p>
                   <p className='specs_text'>{value}</p>
@@ -32,7 +25,7 @@ export const TechSpecs = () => {
             ))}
 
             {Object.entries(good).map(([key, value]) => (
-              ['cell'].includes(key) && (
+              key === cellKey && (
                 <div className='specs__container' key={key}>
                   <p className='specs_subtitle'>{key.charAt(0).toUpperCase() + key.slice(1)}</p>
                   <div className='specs_text cell'>

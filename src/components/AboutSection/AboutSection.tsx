@@ -1,20 +1,11 @@
 import { Product } from '../../types/Product';
-import { useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import { getProduct } from '../../utils/fetchData';
 import './AboutSection.scss';
 
-export const AboutSection = () => {
-  const [good, setGood] = useState<Product | null>(null);
-  const { productId } = useParams();
+type Props = {
+    good: Product | null;
+}
 
-  useEffect(() => {
-    if (productId) {
-      getProduct('./api/phones.json', productId)
-        .then(product => setGood(product))
-        .catch(error => console.log(error));
-    }
-  }, []);
+export const AboutSection: React.FC<Props> = ({ good }) => {
 
   return (
     <div className='about'>
