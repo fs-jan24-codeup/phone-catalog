@@ -58,7 +58,7 @@ export const PriceInfo = () => {
 
         <div className="product-card__top-text">Select capacity</div>
         <Link to="#">
-          <div className="product-card__options capacity">
+          <div className="product-card__options product-card__capacity">
             {capacityAvailable.map(capacity => (
               <div
                 key={capacity}
