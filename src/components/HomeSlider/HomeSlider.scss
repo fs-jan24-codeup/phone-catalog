@@ -1,0 +1,67 @@
+@import '../../styles/utils/variables.scss';
+@import '../../styles/utils/mixins.scss';
+
+%slider-height-responsive {
+  height: 320px;
+
+  @include on-tablet {
+    height: 200px;
+  }
+
+  @include on-desktop {
+    height: 400px;
+  }
+}
+
+.slider {
+  display: flex;
+  column-gap: 16px;
+
+  &__button {
+    display: none;
+    background: none;
+    border: 1px solid $icon-color;
+
+    @include hover(border, 1px solid $primary-color);
+
+    @include on-tablet {
+      display: block;
+    }
+
+    @extend %slider-height-responsive;
+  }
+}
+
+.swiper-wrapper {
+  @extend %slider-height-responsive;
+}
+
+.swiper-slide {
+  background: #fff;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.swiper-pagination {
+  position: static;
+  margin-top: 20px;
+}
+
+.swiper-pagination-bullet {
+  width: 14px;
+  height: 4px;
+  border-radius: 0%;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: $primary-color;
+}
