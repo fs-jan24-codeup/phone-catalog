@@ -8,8 +8,6 @@ import { Navigation } from 'swiper/modules';
 import { Product } from '../../types/Product';
 import { CardLayout } from '../CardLayout';
 import './ProductSlider.scss';
-import arrowLeft from '../../assets/icons/chevron-left.svg';
-import arrowRight from '../../assets/icons/chevron-right.svg';
 
 SwiperCore.use([Navigation]);
 
@@ -29,30 +27,17 @@ export const ProductSlider: React.FC<Props> = ({ title, products }) => {
 
   return (
     <div className="product-slider-container">
-      <h2>{title}</h2>
       <div className="product-slider-container__wrapper-title-btn">
         <h2>{title}</h2>
         <div className="product-slider-container__btn--wrapper">
           <button
             onClick={() => swiperRef.current?.swiper?.slidePrev()}
             className="custom-prev-button"
-          >
-            <img
-              src={arrowLeft}
-              alt="Prev"
-              className="product-slider-container__arrow-left"
-            />
-          </button>
+          />
           <button
             onClick={() => swiperRef.current?.swiper?.slideNext()}
             className="custom-next-button"
-          >
-            <img
-              src={arrowRight}
-              alt="Next"
-              className="product-slider-container__arrow-right"
-            />
-          </button>
+          />
         </div>
       </div>
 

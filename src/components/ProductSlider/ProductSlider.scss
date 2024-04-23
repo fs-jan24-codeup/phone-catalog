@@ -12,25 +12,6 @@
     flex-direction: row;
     gap: 16px;
   }
-  &__btn {
-    width: 32px;
-    height: 32px;
-    background-color: transparent;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    &--plus {
-      color: $primary-color;
-      border: 1px solid $icon-color;
-    }
-
-    &--minus {
-      color: $primary-color;
-      border: 1px solid $icon-color;
-    }
-  }
 }
 
 .custom-prev-button,
@@ -42,9 +23,21 @@
   justify-content: center;
   align-items: center;
   background-color: transparent;
-  background-size: 50%;
+  background-size: 20%;
   background-repeat: no-repeat;
   background-position: center;
+
+  &:hover {
+    border: 1px solid $primary-color;
+  }
+}
+
+.custom-prev-button {
+  background-image: url('../../assets/icons/arrow-left.svg');
+}
+
+.custom-next-button {
+  background-image: url('../../assets/icons/arrow-right.svg');
 }
 
 .swiper-button-disabled {
@@ -53,4 +46,14 @@
 
 .products-swiper .swiper-slide {
   width: 288px;
+}
+
+button.custom-prev-button.swiper-button-disabled {
+  background-size: 58%;
+  background-image: url('../../assets/icons/chevron-left.svg');
+}
+
+button.custom-next-button.swiper-button-disabled {
+  background-size: 58%;
+  background-image: url('../../assets/icons/chevron-right.svg');
 }
