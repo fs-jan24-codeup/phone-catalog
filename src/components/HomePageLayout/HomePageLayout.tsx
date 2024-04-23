@@ -14,19 +14,14 @@ export const HomePageLayout: React.FC = () => {
   useEffect(() => {
     getProducts('./api/phones.json')
       .then(phones => {
-        phones.sort((a, b) => b.priceDiscount - a.priceDiscount);
-        const limitedPhones = phones.slice(0, 12);
-        setPhonesWithHotPrices(limitedPhones);
-      })
-      .catch(error => console.error('Error fetching phones:', error));
-  }, []);
+        const hotPrices = phones
+          .sort((a, b) => b.priceDiscount - a.priceDiscount)
+          .slice(0, 12);
 
-  useEffect(() => {
-    getProducts('./api/phones.json')
-      .then(phones => {
-        phones.sort((a, b) => a.priceRegular - b.priceRegular);
-        const limitedPhones = phones.slice(0, 12);
-        setNewModels(limitedPhones);
+        const newPhones = phones.slice(0, 12);
+
+        setPhonesWithHotPrices(hotPrices);
+        setNewModels(newPhones);
       })
       .catch(error => console.error('Error fetching phones:', error));
   }, []);
