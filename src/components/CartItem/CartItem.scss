@@ -94,6 +94,17 @@
   &:hover {
     cursor: pointer;
   }
+
+  &.disabled {
+    &:hover {
+      border: 1px solid $element-color;
+      cursor: default;
+    }
+  }
+}
+
+.cart-item__buttons-icon img.disabled {
+  filter: brightness(2) invert(8) sepia(0) saturate(0) hue-rotate(0);
 }
 
 .cart-item__count {
