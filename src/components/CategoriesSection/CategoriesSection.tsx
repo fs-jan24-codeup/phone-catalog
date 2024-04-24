@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+
 import accessories from '../../assets/images/accessories.png';
 import tablets from '../../assets/images/tablets.png';
 import phones from '../../assets/images/phones.png';
