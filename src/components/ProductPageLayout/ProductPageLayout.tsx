@@ -8,6 +8,7 @@ import { useParams } from 'react-router-dom';
 import { getProduct, getProducts } from '../../utils/fetchData';
 import { useState, useEffect } from 'react';
 import { ProductSlider } from '../ProductSlider';
+import { ProductImages } from '../ProductImages/ProductImages';
 
 export const ProductPageLayout: React.FC = () => {
   const [good, setGood] = useState<Product | null>(null);
@@ -36,7 +37,11 @@ export const ProductPageLayout: React.FC = () => {
       <div className="product__path">Path</div>
       <div className="product__back">Button Back</div>
       <div className="product__title">Title</div>
-      <div className="product__images">Photo</div>
+      <div className="product__images">
+        {good && (
+          <ProductImages images={good.images}/>
+        )}
+      </div>
       <div className="product__price">
         <PriceInfo />
       </div>

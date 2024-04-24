@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 
 import 'swiper/css';
 
@@ -9,7 +9,7 @@ type Props = {
   images: string[];
 };
 
-export const ProductPageDetailsSwiper: React.FC<Props> = ({ images }) => {
+export const ImagesSwiper: React.FC<Props> = ({ images }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
 
   return (

@@ -9,14 +9,20 @@
 }
 
 .images__main-image {
-  height: 275px !important;
+  max-height: 275px !important;
 
   @include on-tablet {
-    height: 273px !important;
+    max-height: 287px !important;
+    max-width: 287px !important;
+  }
+
+  @include on-medium-tablet {
+    max-height: 353px !important;
+    max-width: 353px !important;
   }
 
   @include on-desktop {
-    height: 464px !important;
+    max-height: 464px !important;
   }
 }
 
@@ -29,9 +35,14 @@
 .images__swiper--sidebar {
   height: 49px;
   width: 288px;
+
   @include on-tablet {
     height: 207px;
   }
+  @include on-medium-tablet {
+    height: 253px;
+  }
+
   @include on-desktop {
     height: 464px;
     width: 464px;
@@ -42,8 +53,13 @@
 
     @include on-tablet {
       width: 35px !important;
-      height: 207px !important;
+      height: 253px !important;
     }
+    @include on-medium-tablet {
+      width: 43px !important;
+      height: 309px !important;
+    }
+
     @include on-desktop {
       width: 80px !important;
       height: 464px !important;
@@ -59,6 +75,12 @@
       width: 35px !important;
       height: 35px !important;
     }
+
+    @include on-medium-tablet {
+      width: 43px !important;
+      height: 43px !important;
+    }
+
     @include on-desktop {
       width: 80px !important;
       height: 80px !important;
@@ -79,6 +101,11 @@
     width: 29px !important;
     height: 29px !important;
   }
+  @include on-medium-tablet {
+    width: 36px !important;
+    height: 36px !important;
+  }
+
   @include on-desktop {
     width: 76px !important;
     height: 76px !important;

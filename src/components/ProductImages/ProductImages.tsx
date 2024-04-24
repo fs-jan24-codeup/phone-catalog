@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import './ProductPageLayoutImages.scss';
 import 'swiper/css';
-import { ProductPageDetailsSwiper } from './SwiperTablet/ProductPageDetailsSwiper';
+import { ImagesSwiper } from '../ImagesSwiper/ImagesSwiper';
 
 type Props = {
   images: string[];
@@ -10,7 +10,7 @@ type Props = {
 
 const MAX_MOBILE_WIDTH = 640;
 
-export const ProductPageLayoutImages: React.FC<Props> = ({ images }) => {
+export const ProductImages: React.FC<Props> = ({ images }) => {
   const [_, setIsMobile] = useState(
     window.innerWidth <= MAX_MOBILE_WIDTH,
   );
@@ -38,7 +38,7 @@ export const ProductPageLayoutImages: React.FC<Props> = ({ images }) => {
 
   return (
     <div className="images">
-      <ProductPageDetailsSwiper images={images}  />
+      <ImagesSwiper images={images}  />
     </div>
   );
 };
