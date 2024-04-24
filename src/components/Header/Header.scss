@@ -14,8 +14,11 @@
     align-items: center;
   }
 
+  &__home {
+    display: flex;
+  }
+
   &__logo {
-    // height: 21px;
     padding-left: 16px;
   }
 

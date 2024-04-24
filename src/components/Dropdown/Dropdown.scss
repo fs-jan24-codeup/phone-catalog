@@ -1,3 +1,4 @@
+@import '../../styles/utils/mixins.scss';
 @import '../../styles/utils/variables.module.scss';
 
 .custom-dropdown {
@@ -16,9 +17,7 @@
     width: 100%;
     border: 1px solid $element-color;
 
-    &:hover {
-      border-color: $element-color;
-    }
+    @include hover(border-color, $primary-color);
   }
 
   &__title {
@@ -63,10 +62,8 @@
     color: $secondary-color;
     cursor: pointer;
 
-    &:hover {
-      background-color: $hover-background-color;
-      color: $primary-color;
-    }
+    @include hover(background-color, $hover-background-color);
+    @include hover(color, $primary-color);
   }
 
   &__icon.open {

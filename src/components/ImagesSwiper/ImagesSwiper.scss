@@ -86,6 +86,10 @@
       height: 80px !important;
     }
   }
+
+  .swiper-slide-thumb-active {
+    border: 1px solid $primary-color;
+  }
 }
 
 .images__swiper--main {
@@ -96,6 +100,10 @@
   width: 40px !important;
   height: 40px !important;
   object-fit: contain;
+
+  &:hover {
+    cursor: pointer;
+  }
 
   @include on-tablet {
     width: 29px !important;

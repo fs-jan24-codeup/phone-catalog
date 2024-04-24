@@ -61,7 +61,9 @@ export const Header = () => {
   return (
     <div className="header">
       <div className="header__wrapper">
-        <Logo className="header__logo" />
+        <NavLink to="/" className="header__home">
+          <Logo className="header__logo" />
+        </NavLink>
 
         <ul className="header__navbar navbar">
           <li>

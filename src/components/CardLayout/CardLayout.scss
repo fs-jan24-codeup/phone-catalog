@@ -25,9 +25,7 @@ p {
     
   }
 
-  &:hover {
-    box-shadow: 0px 2px 16px 0px #0000001a;
-  }
+  @include hover(box-shadow, 0px 2px 16px 0px #0000001a);
 
   &__link {
     display: flex;
@@ -43,7 +41,6 @@ p {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    // margin: 32px;
     width: 100%;
     padding: 32px;
     padding-bottom: 0;
@@ -159,6 +156,8 @@ p {
       border: 1px solid $icon-color;
       padding: 0;
       overflow: hidden;
+
+      @include hover(border, 1px solid $primary-color);
     }
   }
 
