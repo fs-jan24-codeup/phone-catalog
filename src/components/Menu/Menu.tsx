@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import './Menu.scss';
-import cart from '../../assets/icons/shopping-cart.svg';
-import favourites from '../../assets/icons/favourites.svg';
+import Cart from '../../assets/icons/shopping-cart.svg?react';
+import Favourites from '../../assets/icons/favourites.svg?react';
 import classNames from 'classnames';
 
 interface MenuProps {
@@ -65,33 +65,29 @@ export const Menu: React.FC<MenuProps> = ({ onCloseMenu }) => {
       <div className="menu__navbar__icons">
         <NavLink
           to="/favourites"
-          className={(props) => classNames(
-            getMenuIconClass(props),
-            'menu__navbar__icon__wrapper',
-            'menu__navbar__icon__wrapper--favourites'
-          )}
+          className={props =>
+            classNames(
+              getMenuIconClass(props),
+              'menu__navbar__icon__wrapper',
+              'menu__navbar__icon__wrapper--favourites',
+            )
+          }
           onClick={handleLinkClick}
         >
-          <img
-            src={favourites}
-            alt="Favourites"
-            className="menu__navbar__icon--favourites"
-          />
+          <Favourites />
         </NavLink>
         <NavLink
           to="/cart"
-          className={(props) => classNames(
-            getMenuIconClass(props),
-            'menu__navbar__icon__wrapper',
-            'menu__navbar__icon__wrapper--cart'
-          )}
+          className={props =>
+            classNames(
+              getMenuIconClass(props),
+              'menu__navbar__icon__wrapper',
+              'menu__navbar__icon__wrapper--cart',
+            )
+          }
           onClick={handleLinkClick}
         >
-          <img
-            src={cart}
-            alt="Cart"
-            className="menu__navbar__icon--cart"
-          />
+          <Cart />
         </NavLink>
       </div>
     </div>

@@ -1,4 +1,4 @@
-@import './variables.scss';
+@import './variables.module.scss';
 
 @mixin on-tablet {
   @media (min-width: $tablet-min-width) {

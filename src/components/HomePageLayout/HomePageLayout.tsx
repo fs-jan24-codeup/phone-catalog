@@ -14,7 +14,7 @@ export const HomePageLayout: React.FC = () => {
   useEffect(() => {
     getProducts('./api/phones.json')
       .then(phones => {
-        const hotPrices = phones
+        const hotPrices = [...phones]
           .sort((a, b) => b.priceDiscount - a.priceDiscount)
           .slice(0, 12);
 
@@ -33,13 +33,21 @@ export const HomePageLayout: React.FC = () => {
         <HomeSlider />
       </div>
       <div className="home__brand-new-models">
-        <ProductSlider products={newModels} title="Brand new models" />
+        <ProductSlider
+          id="brand-new"
+          products={newModels}
+          title="Brand new models"
+        />
       </div>
       <div className="home__shop-by-category">
         <CategoriesSection />
       </div>
       <div className="home__hot-prices">
-        <ProductSlider products={phonesWithHotPrices} title="Hot prices" />
+        <ProductSlider
+          id="hot-models"
+          products={phonesWithHotPrices}
+          title="Hot prices"
+        />
       </div>
     </div>
   );

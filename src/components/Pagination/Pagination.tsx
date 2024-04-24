@@ -2,8 +2,8 @@ import React from 'react';
 
 import './Pagination.scss';
 import classNames from 'classnames';
-import chevronLeft from '../../assets/icons/chevron-left.svg';
-import chevronRight from '../../assets/icons/chevron-right.svg';
+import ChevronLeft from '../../assets/icons/chevron-left.svg?react';
+import ChevronRight from '../../assets/icons/chevron-right.svg?react';
 
 type Props = {
   currentPage: number;
@@ -44,7 +44,7 @@ export const Pagination: React.FC<Props> = ({
           disabled={currentPage === 1}
           onClick={() => handlePageChange(currentPage - 1)}
         >
-          <img src={chevronLeft} alt="Previous page" />
+          <ChevronLeft />
         </button>
 
         <ul className="pagination__buttons">
@@ -68,7 +68,7 @@ export const Pagination: React.FC<Props> = ({
           disabled={currentPage === totalPages}
           onClick={() => handlePageChange(currentPage + 1)}
         >
-          <img src={chevronRight} alt="Next page" />
+          <ChevronRight />
         </button>
       </div>
     </div>

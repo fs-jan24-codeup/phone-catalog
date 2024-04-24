@@ -1,10 +1,11 @@
 import React from 'react';
 
 import { CardLayout } from '../../components/CardLayout';
-import './FavoritesPage.scss';
 import { ItemsLayout } from '../../components/ItemsLayout';
 import { useAppContext } from '../../hooks/useAppContext';
 import { Breadcrumb } from '../../components/Breadcrumb';
+
+import './FavoritesPage.scss';
 
 export const FavouritesPage: React.FC = () => {
   const { favourites } = useAppContext();

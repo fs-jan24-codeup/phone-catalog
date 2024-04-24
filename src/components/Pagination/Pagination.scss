@@ -1,4 +1,4 @@
-@import '../../styles/utils/variables.scss';
+@import '../../styles/utils/variables.module.scss';
 @import '../../styles/utils/mixins.scss';
 
 .pagination {
@@ -34,6 +34,10 @@
 
     &--nav {
       border: 1px solid $icon-color;
+
+      &:disabled {
+        pointer-events: none;
+      }
     }
 
     &--active {

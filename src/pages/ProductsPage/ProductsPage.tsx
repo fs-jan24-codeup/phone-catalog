@@ -31,8 +31,11 @@ export const ProductsPage: React.FC<Props> = ({ title, products }) => {
     return itemsPerPageParam ? parseInt(itemsPerPageParam) : 4;
   });
 
+  const [currentPage, setCurrentPage] = useState(1);
+
   useEffect(() => {
     const params = new URLSearchParams(location.search);
+    params.set('page', currentPage.toString());
     params.set('itemsPerPage', itemsPerPage.toString());
 
     if (sortBy !== Sort.Newest) {
@@ -46,9 +49,7 @@ export const ProductsPage: React.FC<Props> = ({ title, products }) => {
     }
 
     navigate(`${location.pathname}?${params.toString()}`);
-  }, [sortBy, itemsPerPage, navigate, location.pathname]);
-
-  const [currentPage, setCurrentPage] = useState(1);
+  }, [currentPage, sortBy, itemsPerPage, navigate, location.pathname]);
 
   const sortProducts = (products: Product[]) => {
     switch (sortBy) {
@@ -83,6 +84,7 @@ export const ProductsPage: React.FC<Props> = ({ title, products }) => {
           <label className="select-label">Sort by</label>
           <DropdownSort
             value={sortBy}
+
             onChange={(selectedSort: Sort) => setSortBy(selectedSort)}
             options={[
               Sort.Newest,
@@ -104,7 +106,7 @@ export const ProductsPage: React.FC<Props> = ({ title, products }) => {
       </div>
 
       <ItemsLayout>
-        {currentItems.map((product) => (
+        {currentItems.map(product => (
           <CardLayout good={product} key={product.id} />
         ))}
       </ItemsLayout>
