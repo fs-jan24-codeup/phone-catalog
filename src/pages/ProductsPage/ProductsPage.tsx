@@ -28,8 +28,11 @@ export const ProductsPage: React.FC<Props> = ({ title, products }) => {
     return Number(params.get('itemsPerPage')) || 4;
   });
 
+  const [currentPage, setCurrentPage] = useState(1);
+
   useEffect(() => {
     const params = new URLSearchParams(location.search);
+    params.set('page', currentPage.toString());
     params.set('itemsPerPage', itemsPerPage.toString());
 
     if (sortBy !== Sort.Newest) {
@@ -43,9 +46,7 @@ export const ProductsPage: React.FC<Props> = ({ title, products }) => {
     }
 
     navigate(`${location.pathname}?${params.toString()}`);
-  }, [sortBy, itemsPerPage, navigate, location.pathname]);
-
-  const [currentPage, setCurrentPage] = useState(1);
+  }, [currentPage, sortBy, itemsPerPage, navigate, location.pathname]);
 
   const sortProducts = (phones: Product[]) => {
     switch (sortBy) {
@@ -65,7 +66,7 @@ export const ProductsPage: React.FC<Props> = ({ title, products }) => {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = sortProducts(products).slice(
     indexOfFirstItem,
-    indexOfLastItem
+    indexOfLastItem,
   );
 
   const handlePageChange = (page: number) => setCurrentPage(page);
@@ -84,9 +85,9 @@ export const ProductsPage: React.FC<Props> = ({ title, products }) => {
           <select
             className="select"
             value={sortBy}
-            onChange={(event) => {
+            onChange={event => {
               const selectedSort = event.target.value as Sort;
-              setSortBy(selectedSort === "newest" ? Sort.Newest : selectedSort);
+              setSortBy(selectedSort === 'newest' ? Sort.Newest : selectedSort);
             }}
           >
             <option value={Sort.Newest}>Newest</option>
@@ -101,7 +102,7 @@ export const ProductsPage: React.FC<Props> = ({ title, products }) => {
           <select
             className="select"
             value={itemsPerPage}
-            onChange={(event) => {
+            onChange={event => {
               setItemsPerPage(Number(event.target.value));
               setCurrentPage(1);
             }}
@@ -115,7 +116,7 @@ export const ProductsPage: React.FC<Props> = ({ title, products }) => {
       </div>
 
       <ItemsLayout>
-        {currentItems.map((product) => (
+        {currentItems.map(product => (
           <CardLayout good={product} key={product.id} />
         ))}
       </ItemsLayout>
