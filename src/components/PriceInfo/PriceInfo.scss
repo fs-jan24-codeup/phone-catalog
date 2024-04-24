@@ -167,6 +167,54 @@ a {
     &--active::before {
       border-color: $primary-color;
     }
+
+    &--black {
+      background: #171818;
+    }
+
+    &--silver {
+      background: #dfe0dc;
+    }
+
+    &--green {
+      background: #96d2b6;
+    }
+
+    &--yellow {
+      background: #ffe77b;
+    }
+
+    &--white {
+      background: #fffaf5;
+    }
+
+    &--purple {
+      background: #c1bcd1;
+    }
+
+    &--gold {
+      background: #e6b7af;
+    }
+
+    &--rosegold {
+      background: #fcdbc1;
+    }
+
+    &--red {
+      background: #ab001b;
+    }
+
+    &--coral {
+      background: #ef5f54;
+    }
+    &--spacegray,
+    &--space-gray {
+      background: #717378;
+    }
+
+    &--midnightgreen {
+      background: #464f47;
+    }
   }
 }
 

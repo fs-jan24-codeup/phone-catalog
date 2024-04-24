@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { ButtonAddToCard } from '../ButtonAddToCard';
 import { ButtonAddToFavorites } from '../ButtonAddToFavorites';
@@ -12,14 +12,18 @@ export const CardLayout: React.FC<Props> = ({ good }) => {
   const { images, name, priceRegular, priceDiscount, ram, screen, capacity } =
     good;
 
+  const { pathname } = useLocation();
+
+  const BASE_PATH = pathname.slice(1);
+
   return (
     <article className="card">
       <div className="card__container">
-        <Link className="card__link" to={`/phones/${good.id}`}>
+        <Link className="card__link" to={`/${BASE_PATH}/${good.id}`}>
           <img src={images[0]} alt={name} className="card__image" />
         </Link>
 
-        <Link className="card__name" to={`/phones/${good.id}`}>
+        <Link className="card__name" to={`/${BASE_PATH}/${good.id}`}>
           {name}
         </Link>
 
