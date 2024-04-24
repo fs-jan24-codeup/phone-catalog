@@ -50,7 +50,11 @@ export const ProductPageLayout: React.FC = () => {
         <TechSpecs good={good} />
       </div>
       <div className="product__also-like">
-        <ProductSlider products={recommendedGoods} title="You may also like" />
+        <ProductSlider
+          id="also-like"
+          products={recommendedGoods}
+          title="You may also like"
+        />
       </div>
     </div>
   );

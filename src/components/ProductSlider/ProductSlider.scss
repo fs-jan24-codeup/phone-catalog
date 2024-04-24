@@ -36,11 +36,11 @@
   &:hover {
     border: 1px solid $primary-color;
   }
-}
 
-.swiper-button-disabled {
-  border: 1px solid $element-color;
-  pointer-events: none;
+  &:disabled {
+    border: 1px solid $element-color;
+    pointer-events: none;
+  }
 }
 
 .products-swiper .swiper-slide {
