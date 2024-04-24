@@ -1,0 +1,51 @@
+@import '../../styles/utils/variables.scss';
+@import '../../styles/utils/mixins.scss';
+
+.about {
+    @include on-tablet {
+        margin-right: 32px;
+    }
+}
+
+.about__title {
+    font-size: 20px;
+    line-height: 25.56px;
+    font-weight: 700;
+}
+
+.about__title.line {
+    font-size: 20px;
+    line-height: 25.56px;
+    font-weight: 700;
+    margin-bottom: 48px;
+    position: relative;
+  }
+  
+  .line::before {
+    content: '';
+    position: absolute;
+    bottom: -16px;
+    width: 100%;
+    border-bottom: $element-color solid 1px;
+  }
+  
+  .about__container {
+    margin-bottom: 32px;
+  }
+
+  .about_subtitle {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20.45px;
+    text-align: left;
+    margin-bottom: 16px;
+    color: $primary-color;
+  }
+
+  .about_text {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    text-align: left;
+    color: $secondary-color;
+  }

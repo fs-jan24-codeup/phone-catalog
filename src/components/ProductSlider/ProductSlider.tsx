@@ -29,9 +29,8 @@ export const ProductSlider: React.FC<Props> = ({ title, products }) => {
 
   return (
     <div className="product-slider-container">
-      <h2>{title}</h2>
       <div className="product-slider-container__wrapper-title-btn">
-        <h2>{title}</h2>
+        <h2 className="product-slider-container__title">{title}</h2>
         <div className="product-slider-container__btn--wrapper">
           <button
             onClick={() => swiperRef.current?.swiper?.slidePrev()}

@@ -2,12 +2,6 @@
 @import '../../styles/utils/variables.module.scss';
 
 .home {
-  &__brand-new-models {
-    background-color: rgb(68, 108, 229);
-  }
-}
-
-.home {
   &__grid {
     @include page-grid;
   }
