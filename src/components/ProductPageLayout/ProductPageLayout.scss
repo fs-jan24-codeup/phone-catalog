@@ -1,9 +1,5 @@
 @import '../../styles/utils/mixins.scss';
-@import '../../styles/utils/variables.scss';
-
-.product__path {
-  background-color: #ffcc00;
-}
+@import '../../styles/utils/variables.module.scss';
 
 .product__back {
   background-color: #ff6666;
@@ -30,10 +26,6 @@
   &__also-like,
   &__price {
     grid-column: 1 / 5;
-  }
-
-  &__path {
-    margin-block: 24px;
   }
 
   &__back {
@@ -64,10 +56,6 @@
     &__about,
     &__also-like {
       grid-column: 1 / 13;
-    }
-
-    &__path {
-      margin-bottom: 40px;
     }
 
     &__title {

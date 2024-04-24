@@ -1,5 +1,5 @@
 @import '../../styles/utils/mixins.scss';
-@import '../../styles/utils/variables.scss';
+@import '../../styles/utils/variables.module.scss';
 
 .header {
   display: flex;
@@ -15,7 +15,7 @@
   }
 
   &__logo {
-    height: 21px;
+    // height: 21px;
     padding-left: 16px;
   }
 
@@ -113,6 +113,7 @@
     padding: 0 0 0 16px;
 
     &__logo {
+      height: 21px;
       padding-left: 0;
     }
 
@@ -150,9 +151,5 @@
   .header {
     min-height: 64px;
     padding: 0 0 0 24px;
-
-    &__logo {
-      height: 27px;
-    }
   }
 }

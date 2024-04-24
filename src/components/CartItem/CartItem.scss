@@ -1,5 +1,5 @@
 @import '../../styles/utils/mixins.scss';
-@import '../../styles/utils/variables.scss';
+@import '../../styles/utils/variables.module.scss';
 
 .card-item__container {
   border: 1px solid $element-color;
@@ -94,17 +94,13 @@
   &:hover {
     cursor: pointer;
   }
-
-  &.disabled {
-    &:hover {
-      border: 1px solid $element-color;
-      cursor: default;
-    }
-  }
 }
 
-.cart-item__buttons-icon img.disabled {
-  filter: brightness(2) invert(8) sepia(0) saturate(0) hue-rotate(0);
+.icon--disabled {
+  &:hover {
+    border: 1px solid $element-color;
+    cursor: default;
+  }
 }
 
 .cart-item__count {

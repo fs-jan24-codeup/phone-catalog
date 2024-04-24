@@ -40,6 +40,7 @@
 
 .swiper-button-disabled {
   border: 1px solid $element-color;
+  pointer-events: none;
 }
 
 .products-swiper .swiper-slide {

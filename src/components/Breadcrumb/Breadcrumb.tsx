@@ -1,9 +1,10 @@
 import React from 'react';
 
-import home from '../../assets/icons/home.svg';
-import chevronRight from '../../assets/icons/chevron-right.svg';
+import Home from '../../assets/icons/home.svg?react';
+import ChevronRight from '../../assets/icons/chevron-right.svg?react';
 import './Breadcrumb.scss';
 import { Link, useLocation } from 'react-router-dom';
+import variables from '../../styles/utils/variables.module.scss';
 
 interface Segment {
   path: string;
@@ -37,12 +38,15 @@ export const Breadcrumb: React.FC = () => {
     <ul className="breadcrumb">
       <li className="breadcrumb__part">
         <Link to="/" className="breadcrumb__home">
-          <img src={home} className="breadcrumb__icon" />
+          <Home color={variables.primaryColor} />
         </Link>
       </li>
       {processedSegments.map((segment, index) => (
         <li key={segment.path} className="breadcrumb__part">
-          <img src={chevronRight} className="breadcrumb__icon" />
+          <ChevronRight
+            color={variables.iconColor}
+            className="breadcrumb__icon"
+          />
           {index === processedSegments.length - 1 ? (
             <span className="breadcrumb__path breadcrumb__path--last">
               {segment.displayName}

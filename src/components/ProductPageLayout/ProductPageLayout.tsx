@@ -1,6 +1,7 @@
 import React from 'react';
 import './ProductPageLayout.scss';
 import { PriceInfo } from '../PriceInfo';
+import { Breadcrumb } from '../Breadcrumb';
 import { AboutSection } from '../AboutSection';
 import { TechSpecs } from '../TechSpecs';
 import { Product } from '../../types/Product';
@@ -34,7 +35,9 @@ export const ProductPageLayout: React.FC = () => {
   }, [productId]);
   return (
     <div className="product__grid">
-      <div className="product__path">Path</div>
+      <div className="product__path">
+        <Breadcrumb />
+      </div>
       <div className="product__back">Button Back</div>
       <div className="product__title">Title</div>
       <div className="product__images">
