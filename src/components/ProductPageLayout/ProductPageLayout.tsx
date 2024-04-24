@@ -1,44 +1,54 @@
-import React, { useEffect, useState } from 'react';
-import { ProductPageLayoutImages } from '../ProductPageLayoutImages/ProductPageLayoutImages';
-import { getProduct } from '../../utils/fetchData';
-import { Product } from '../../types/Product';
-
+import React from 'react';
 import './ProductPageLayout.scss';
-import { useParams } from 'react-router-dom';
 import { PriceInfo } from '../PriceInfo';
+import { AboutSection } from '../AboutSection';
+import { TechSpecs } from '../TechSpecs';
+import { Product } from '../../types/Product';
+import { useParams } from 'react-router-dom';
+import { getProduct, getProducts } from '../../utils/fetchData';
+import { useState, useEffect } from 'react';
+import { ProductSlider } from '../ProductSlider';
 
 export const ProductPageLayout: React.FC = () => {
+  const [good, setGood] = useState<Product | null>(null);
+  const [recommendedGoods, setRecomendedGoods] = useState<Product[]>([]);
   const { productId } = useParams();
 
-  const [selectedProduct, setSelectedProduct] = useState<Product>();
-
   useEffect(() => {
-    getProduct('./api/phones.json', productId || '')
-      .then(setSelectedProduct)
+    getProducts('./api/phones.json')
+      .then(phones => {
+        const newPhones = phones.slice(5, 16);
+
+        setRecomendedGoods(newPhones);
+      })
       .catch(error => console.error('Error fetching phones:', error));
   }, []);
 
-  if (selectedProduct) {
-    const { images, name } = selectedProduct;
-    return (
-      <>
-        {selectedProduct && (
-          <div className="product__grid">
-            <div className="product__path">Path</div>
-            <div className="product__back">Button Back</div>
-            <div className="product__title">
-              <div className="product__title--title">{name}</div>
-            </div>
-            <div className="product__images">
-              <ProductPageLayoutImages images={images} />
-            </div>
-            <div className="product__price">Price, info</div>
-            <div className="product__about">About</div>
-            <div className="product__specs">Tech specs</div>
-            <div className="product__also-like">You may also like</div>
-          </div>
-        )}
-      </>
-    );
-  }
+  useEffect(() => {
+    if (productId) {
+      getProduct('./api/phones.json', productId)
+        .then(product => setGood(product))
+        .catch(error => console.log(error));
+    }
+  }, [productId]);
+  return (
+    <div className="product__grid">
+      <div className="product__path">Path</div>
+      <div className="product__back">Button Back</div>
+      <div className="product__title">Title</div>
+      <div className="product__images">Photo</div>
+      <div className="product__price">
+        <PriceInfo />
+      </div>
+      <div className="product__about">
+        <AboutSection good={good} />
+      </div>
+      <div className="product__specs">
+        <TechSpecs good={good} />
+      </div>
+      <div className="product__also-like">
+        <ProductSlider products={recommendedGoods} title="You may also like" />
+      </div>
+    </div>
+  );
 };
