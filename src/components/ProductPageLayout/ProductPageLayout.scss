@@ -1,15 +1,11 @@
 @import '../../styles/utils/mixins.scss';
 @import '../../styles/utils/variables.module.scss';
 
-.product__back {
-  background-color: #ff6666;
-}
-
 .product__title {
-  &--title {
-    font-weight: 800;
-    font-size: 22px;
-  }
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: 800;
+  font-size: 32px;
 }
 
 .product {

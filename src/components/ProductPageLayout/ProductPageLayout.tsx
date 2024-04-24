@@ -1,15 +1,19 @@
 import React from 'react';
-import './ProductPageLayout.scss';
-import { PriceInfo } from '../PriceInfo';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+
+import { Product } from '../../types/Product';
+import { getProduct, getProducts } from '../../utils/fetchData';
+
 import { Breadcrumb } from '../Breadcrumb';
+import { PriceInfo } from '../PriceInfo';
 import { AboutSection } from '../AboutSection';
 import { TechSpecs } from '../TechSpecs';
-import { Product } from '../../types/Product';
-import { useParams } from 'react-router-dom';
-import { getProduct, getProducts } from '../../utils/fetchData';
-import { useState, useEffect } from 'react';
 import { ProductSlider } from '../ProductSlider';
-import { ProductImages } from '../ProductImages/ProductImages';
+import { ImagesSwiper } from '../ImagesSwiper';
+
+import './ProductPageLayout.scss';
+import { GoBack } from '../GoBack';
 
 export const ProductPageLayout: React.FC = () => {
   const [good, setGood] = useState<Product | null>(null);
@@ -38,12 +42,12 @@ export const ProductPageLayout: React.FC = () => {
       <div className="product__path">
         <Breadcrumb />
       </div>
-      <div className="product__back">Button Back</div>
-      <div className="product__title">Title</div>
+      <div className="product__back">
+        <GoBack />
+      </div>
+      <h2 className="product__title">{good?.name}</h2>
       <div className="product__images">
-        {good && (
-          <ProductImages images={good.images}/>
-        )}
+        {good && <ImagesSwiper images={good.images} />}
       </div>
       <div className="product__price">
         <PriceInfo />

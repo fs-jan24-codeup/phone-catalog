@@ -1,9 +1,10 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
 import React, { useState } from 'react';
 
 import 'swiper/css';
-
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Thumbs } from 'swiper/modules';
+
+import './ImagesSwiper.scss';
 
 type Props = {
   images: string[];
@@ -13,7 +14,7 @@ export const ImagesSwiper: React.FC<Props> = ({ images }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
 
   return (
-    <>
+    <div className="images">
       <Swiper
         className="images__swiper--main"
         slidesPerView={1}
@@ -43,11 +44,11 @@ export const ImagesSwiper: React.FC<Props> = ({ images }) => {
         }}
       >
         {images.map(image => (
-          <SwiperSlide>
+          <SwiperSlide key={image}>
             <img className="images__sidebar-image" src={image} />
           </SwiperSlide>
         ))}
       </Swiper>
-    </>
+    </div>
   );
 };
