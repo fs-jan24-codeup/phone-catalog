@@ -4,10 +4,11 @@ import { getProduct } from '../../utils/fetchData';
 import { Product } from '../../types/Product';
 
 import './ProductPageLayout.scss';
+import { useParams } from 'react-router-dom';
 import { PriceInfo } from '../PriceInfo';
 
 export const ProductPageLayout: React.FC = () => {
-  const productId = new URL(window?.location?.href)?.hash?.split('/').pop();
+  const { productId } = useParams();
 
   const [selectedProduct, setSelectedProduct] = useState<Product>();
 

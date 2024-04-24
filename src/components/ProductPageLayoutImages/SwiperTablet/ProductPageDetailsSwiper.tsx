@@ -1,59 +1,53 @@
-// Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
+import React, { Fragment, useState } from 'react';
 
-// Import Swiper styles
 import 'swiper/css';
-import classNames from 'classnames';
-import React, { useEffect, useState } from 'react';
+
+import { Navigation, Thumbs } from 'swiper/modules';
 
 type Props = {
-  classname: string;
   images: string[];
 };
 
-export const ProductPageDetailsSwiper: React.FC<Props> = ({ classname,images }) => {
-  const [isMain, setIsMain] = useState('');
-  useEffect(() => {
-    setIsMain(classname);
-  }, []);
-
-  const mainOrSidebar = classNames({
-    'images__swiper--main': isMain === 'main',
-    'images__swiper--sidebar': isMain === 'sidebar',
-  });
-
-  const mainOrSidebarEl = classNames({
-    'images__main-image': isMain === 'main',
-    'images__sidebar-image': isMain === 'sidebar',
-  });
-
-  const numberOfSlides = isMain === 'main' ? 1 : 5;
-
-  // const displayWay = isMain === 'sidebar' ? 'vertical' : 'horizontal';
-  const displayWay = window.innerWidth < 640 ? 'horizontal' : 'vertical';
-  console.log(displayWay);
+export const ProductPageDetailsSwiper: React.FC<Props> = ({ images }) => {
+  const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
 
   return (
-    <Swiper
-      className={mainOrSidebar}
-      slidesPerView={numberOfSlides}
-      direction={displayWay}
-    >
-      <SwiperSlide>
-        <img className={mainOrSidebarEl} src={images[0]} />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img className={mainOrSidebarEl} src={images[1]} />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img className={mainOrSidebarEl} src={images[2]} />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img className={mainOrSidebarEl} src={images[3]} />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img className={mainOrSidebarEl} src={images[4]} />
-      </SwiperSlide>
-    </Swiper>
+    <>
+      <Swiper
+        className="images__swiper--main"
+        slidesPerView={1}
+        modules={[Navigation, Thumbs]}
+        thumbs={{
+          swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
+        }}
+      >
+        {images.map(image => (
+          <SwiperSlide key={image + ' swiper--main'}>
+            <img className="images__main-image" src={image} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+
+      <Swiper
+        onSwiper={swiper => {
+          setThumbsSwiper(swiper);
+        }}
+        className="images__swiper--sidebar"
+        slidesPerView={5}
+        modules={[Navigation, Thumbs]}
+        breakpoints={{
+          640: {
+            direction: 'vertical',
+          },
+        }}
+      >
+        {images.map(image => (
+          <SwiperSlide>
+            <img className="images__sidebar-image" src={image} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </>
   );
 };

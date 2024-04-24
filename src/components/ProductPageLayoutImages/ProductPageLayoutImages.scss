@@ -1,43 +1,86 @@
 @import '../../styles/utils/mixins.scss';
+@import '../../styles/utils/variables.scss';
 
 .images {
-  height: 353px;
-
   @include on-tablet {
-    height: 288px;
+    display: flex;
+    flex-direction: row-reverse;
   }
 }
 
 .images__main-image {
   height: 275px !important;
+
+  @include on-tablet {
+    height: 273px !important;
+  }
+
+  @include on-desktop {
+    height: 464px !important;
+  }
 }
 
-.images__swiper--main {
-  height: 288px;
+.swiper-slide {
   display: flex !important;
-  align-items: center;
+  justify-content: center !important;
+  align-items: center !important;
 }
-
-.images__sidebar-image {
-  height: 43px !important;
-  object-fit: contain !important;
-}
-
-
-
-
 
 .images__swiper--sidebar {
   height: 49px;
   width: 288px;
-
-  .swiper-slide {
-    width: 51px !important;
-    border: 1px solid #E2E6E9;
+  @include on-tablet {
+    height: 207px;
+  }
+  @include on-desktop {
+    height: 464px;
+    width: 464px;
   }
 
   .swiper-wrapper {
-    height: 49px;
     gap: 8px;
+
+    @include on-tablet {
+      width: 35px !important;
+      height: 207px !important;
+    }
+    @include on-desktop {
+      width: 80px !important;
+      height: 464px !important;
+      gap: 16px;
+    }
+  }
+
+  .swiper-slide {
+    border: 1px solid $element-color;
+    width: 49px !important;
+
+    @include on-tablet {
+      width: 35px !important;
+      height: 35px !important;
+    }
+    @include on-desktop {
+      width: 80px !important;
+      height: 80px !important;
+    }
+  }
+}
+
+.images__swiper--main {
+  margin-bottom: 16px;
+}
+
+.images__sidebar-image {
+  width: 40px !important;
+  height: 40px !important;
+  object-fit: contain;
+
+  @include on-tablet {
+    width: 29px !important;
+    height: 29px !important;
+  }
+  @include on-desktop {
+    width: 76px !important;
+    height: 76px !important;
   }
 }
