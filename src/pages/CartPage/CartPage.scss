@@ -18,8 +18,11 @@
   }
 
   &__title {
-    margin-top: 16px;
     margin-bottom: 32px;
+    font-weight: 800;
+    line-height: 117%;
+    letter-spacing: -0.01em;
+    margin-top: 16px;
   }
 
   &__content-wrapper {
@@ -29,7 +32,12 @@
       justify-content: space-between;
       align-items: flex-start;
       gap: 16px;
+      margin-top: 32px;
     }
+  }
+
+  &-item__count {
+    color: var(--primary-color);
   }
 
   &__summary {
@@ -38,8 +46,9 @@
     align-items: center;
     padding: 24px;
     margin-block: 32px 56px;
-    border: 1px solid $element-color;
+    border: 1px solid var(--element-color);
     position: relative;
+    color: var(--primary-color);
 
     @include on-desktop {
       width: 40%;
@@ -57,7 +66,7 @@
       font-weight: 600;
       font-size: 14px;
       line-height: 150%;
-      color: $secondary-color;
+      color: var(--secondary-color);
       margin-bottom: 32px;
 
       &:after {
@@ -65,7 +74,7 @@
         display: block;
         width: calc(100% - 48px);
         height: 1px;
-        background-color: $element-color;
+        background-color: var(--element-color);
         position: absolute;
         bottom: 86px;
         left: 24px;
@@ -75,14 +84,14 @@
   }
 
   &__submit-btn {
-    background-color: $primary-color;
+    background-color: var(--button-color);
     border: none;
     width: 100%;
     height: 48px;
     font-weight: 700;
     font-size: 14px;
     line-height: 150%;
-    color: $white-color;
+    color: var(--white-color);
     cursor: pointer;
     transition: all $effect-duration;
 
@@ -93,18 +102,20 @@
 
   &__empty {
     text-align: center;
+    margin-top: 0;
+
+    &--img {
+      width: 300px;
+      margin-bottom: 20px;
+
+      @include on-tablet {
+        width: 400px;
+      }
+    }
   }
 
   &__text {
-    color: $secondary-color;
-  }
-
-  &__empty {
-    text-align: center;
-  }
-
-  &__text {
-    color: $secondary-color;
+    color: var(--secondary-color);
   }
 }
 
@@ -135,13 +146,13 @@
 
     &--no {
       background-color: transparent;
-      border: 1px solid $element-color;
-      color: $primary-color;
+      border: 1px solid var(--element-color);
+      color: var(--primary-color);
     }
 
     &--yes {
-      background-color: $primary-color;
-      color: $white-color;
+      background-color: var(--primary-color);
+      color: var(--white-color);
     }
   }
 }

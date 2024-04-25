@@ -7,22 +7,21 @@ p {
 }
 
 .card {
-  border: 1px solid $element-color;
   width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border: 1px solid var(--element-color);
+  box-sizing: border-box;
 
   @include on-small-tablet {
-    height: 506px;
     min-width: 212px;
   }
-  
+
   @include on-medium-tablet {
     width: 100%;
-    
   }
 
   @include hover(box-shadow, 0px 2px 16px 0px #0000001a);
@@ -44,6 +43,7 @@ p {
     width: 100%;
     padding: 32px;
     padding-bottom: 0;
+    background-color: var(--card-layout-bg-color);
 
     @include on-tablet {
       padding-bottom: 32px;
@@ -71,7 +71,7 @@ p {
     font-weight: 500;
     font-size: 14px;
     line-height: 150%;
-    color: $primary-color;
+    color: var(--primary-color);
     margin-bottom: 8px;
     text-decoration: none;
   }
@@ -86,12 +86,13 @@ p {
     font-size: 22px;
     line-height: 150%;
     text-decoration: line-through;
-    color: $secondary-color;
+    color: var(--secondary-color);
 
     &--discount {
       font-weight: 800;
       font-size: 22px;
       line-height: 150%;
+      color: var(--primary-color);
     }
   }
 
@@ -99,7 +100,7 @@ p {
     margin: 8px 0 16px;
     width: 100%;
     height: 1px;
-    background-color: $element-color;
+    background-color: var(--element-color);
   }
 
   &__button {
@@ -114,9 +115,9 @@ p {
     &--add {
       grid-column: 1 / 2;
       padding: 0;
-      background-color: $primary-color;
+      background-color: var(--button-color);
       border: none;
-      color: $white-color;
+      color: var(--white-color);
       font-weight: 400;
       font-size: 14px;
       cursor: pointer;
@@ -130,18 +131,14 @@ p {
     &--remove {
       grid-column: 1 / 2;
       padding: 0;
-      background-color: transparent;
-      border: 1px solid $element-color;
-      color: $green-color;
+      background-color: var(--button-color-selected);
+      border: 1px solid var(--element-color);
+      color: var(--button-color-text);
       font-family: 'Mont';
       font-weight: 400;
       font-size: 14px;
       cursor: pointer;
       transition: all $effect-duration;
-
-      &:hover {
-        box-shadow: $hover-shadow;
-      }
     }
 
     &--favourite {
@@ -152,12 +149,12 @@ p {
       box-sizing: border-box;
       width: 40px;
       border: none;
-      background-color: $white-color;
-      border: 1px solid $icon-color;
+      background-color: var(--favourite-button-color);
+      border: 1px solid var(--secondary-color);
       padding: 0;
       overflow: hidden;
 
-      @include hover(border, 1px solid $primary-color);
+      @include hover(border, 1px solid var(--button-hover-color));
     }
   }
 
@@ -172,11 +169,11 @@ p {
   font-size: 12px;
 
   &--name {
-    color: $primary-color;
+    color: var(--card-characteristic-name-color);
   }
 
   &--value {
-    color: $secondary-color;
+    color: var(--card-characteristic-value-color);
   }
 }
 
