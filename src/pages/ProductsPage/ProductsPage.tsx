@@ -7,8 +7,12 @@ import { ItemsLayout } from '../../components/ItemsLayout';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './ProductsPage.scss';
 import { Sort } from '../../types/Sort';
+
+import { QuantitySkeleton } from './QuantitySkeleton';
+
 import { DropdownSort } from '../../components/Dropdown/DropdownSort';
 import { DropdownAmount } from '../../components/Dropdown/DropdownAmount';
+
 
 type Props = {
   title: string;
@@ -31,6 +35,8 @@ export const ProductsPage: React.FC<Props> = ({ title, products }) => {
     return itemsPerPageParam ? parseInt(itemsPerPageParam) : 4;
   });
 
+
+  const [isLoadingTitle, setIsLoadingTitle] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
@@ -76,11 +82,21 @@ export const ProductsPage: React.FC<Props> = ({ title, products }) => {
 
   const totalPages = Math.ceil(products.length / itemsPerPage);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoadingTitle(false);
+    }, 500);
+  }, []);
+
   return (
     <div className="product-page">
       <Breadcrumb />
       <h1 className="product-page__header">{title}</h1>
-      <p className="product-page__quantity">{products.length} models</p>
+      {isLoadingTitle ? (
+        <QuantitySkeleton />
+      ) : (
+        <p className="product-page__quantity">{products.length} models</p>
+      )}
 
       <div className="product-page__filters">
         <div className="product-page__filter product-page__filter--sort">

@@ -18,8 +18,11 @@
   }
 
   &__title {
-    margin-top: 16px;
     margin-bottom: 32px;
+    font-weight: 800;
+    line-height: 117%;
+    letter-spacing: -0.01em;
+    margin-top: 16px;
   }
 
   &__content-wrapper {
@@ -29,6 +32,7 @@
       justify-content: space-between;
       align-items: flex-start;
       gap: 16px;
+      margin-top: 32px;
     }
   }
 
@@ -98,14 +102,16 @@
 
   &__empty {
     text-align: center;
-  }
+    margin-top: 0;
 
-  &__text {
-    color: var(--secondary-color);
-  }
+    &--img {
+      width: 300px;
+      margin-bottom: 20px;
 
-  &__empty {
-    text-align: center;
+      @include on-tablet {
+        width: 400px;
+      }
+    }
   }
 
   &__text {

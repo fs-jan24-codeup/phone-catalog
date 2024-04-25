@@ -6,6 +6,7 @@
     font-size: 32px;
     line-height: 128%;
     letter-spacing: -0.01em;
+    margin: 0;
     color: var(--primary-color)
   }
   &__wrapper-title-btn {
@@ -13,6 +14,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 24px;
   }
   &__btn--wrapper {
     display: flex;
@@ -45,5 +47,16 @@
 }
 
 .products-swiper .swiper-slide {
-  width: 288px;
+  width: 237px;
+  height: 512px;
+
+  @include on-tablet {
+    width: 237px;
+    height: 512px;
+  }
+
+  @include on-desktop {
+    width: 272px;
+    height: 506px;
+  }
 }
