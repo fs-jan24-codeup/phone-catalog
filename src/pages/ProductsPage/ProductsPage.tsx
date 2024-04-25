@@ -67,7 +67,10 @@ export const ProductsPage: React.FC<Props> = ({ title, products }) => {
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = sortProducts(products).slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = sortProducts(products).slice(
+    indexOfFirstItem,
+    indexOfLastItem,
+  );
 
   const handlePageChange = (page: number) => setCurrentPage(page);
 
@@ -84,7 +87,6 @@ export const ProductsPage: React.FC<Props> = ({ title, products }) => {
           <label className="select-label">Sort by</label>
           <DropdownSort
             value={sortBy}
-
             onChange={(selectedSort: Sort) => setSortBy(selectedSort)}
             options={[
               Sort.Newest,
@@ -99,7 +101,9 @@ export const ProductsPage: React.FC<Props> = ({ title, products }) => {
           <label className="select-label">Items on page</label>
           <DropdownAmount
             value={itemsPerPage}
-            onChange={(selectedItemsPerPage: number) => setItemsPerPage(selectedItemsPerPage)}
+            onChange={(selectedItemsPerPage: number) =>
+              setItemsPerPage(selectedItemsPerPage)
+            }
             options={[4, 8, 16, products.length]}
           />
         </div>
