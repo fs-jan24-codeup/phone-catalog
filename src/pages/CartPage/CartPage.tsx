@@ -5,12 +5,16 @@ import goBackIcon from '../../assets/icons/arrow-left.svg';
 import { CartItem } from '../../components/CartItem/CartItem';
 import { useAppContext } from '../../hooks/useAppContext';
 import { Modal } from '../../components/Modal/Modal';
+import orderSuccessul from '../../assets/images/order-success.gif';
+import emptyCart from '../../assets/images/empty-cart.gif';
+import { CartSummarySkeleton } from './CartSummarySkeleton';
 
 export const CartPage: React.FC = () => {
   const { cart, clearCart, itemCount } = useAppContext();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [orderConfirmed, setOrderConfirmed] = useState(false);
+  const [isLoadingSummary, setIsLoadingSummary] = useState(true);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -34,9 +38,15 @@ export const CartPage: React.FC = () => {
     0,
   );
 
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoadingSummary(false);
+    }, 500);
+  }, []);
+
   return (
     <>
-      <div className="cart">
+      <div className="cart cart__grid">
         <div className="button-go-back">
           <img src={goBackIcon} alt="Go back" className="button-go-back__img" />
           <Link to=".." className="button-go-back__link">
@@ -54,28 +64,38 @@ export const CartPage: React.FC = () => {
               ))}
             </div>
             <div className="cart__summary">
-              <div className="cart__total-price">${totalPrice}</div>
-              <div className="cart__total-price--label">
-                Total for {itemCount} items
-              </div>
-              <button
-                type="button"
-                className="cart__submit-btn"
-                onClick={openModal}
-              >
-                Checkout
-              </button>
+              {isLoadingSummary ? (
+                <CartSummarySkeleton />
+              ) : (
+                <>
+                  <div className="cart__total-price">${totalPrice}</div>
+                  <div className="cart__total-price--label">
+                    Total for {itemCount} items
+                  </div>
+                  <button
+                    type="button"
+                    className="cart__submit-btn"
+                    onClick={openModal}
+                  >
+                    Checkout
+                  </button>
+                </>
+              )}
             </div>
           </div>
         ) : orderConfirmed ? (
           <div className="cart__empty">
-            <h1>Your order has been placed</h1>
-            <p className="cart__text">Thank you for your purchase!</p>
+            <img src={orderSuccessul} alt="Thank you for your purchase" />
           </div>
         ) : (
           <div className="cart__empty">
-            <h1>Your cart is empty</h1>
-            <p className="cart__text">But it's never too late to fix it...</p>
+            <h1 className="cart__empty--title">Your cart is empty</h1>
+
+            <img
+              className="cart__empty--img"
+              src={emptyCart}
+              alt="Your cart is empty"
+            />
           </div>
         )}
 

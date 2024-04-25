@@ -7,6 +7,7 @@ import { ItemsLayout } from '../../components/ItemsLayout';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './ProductsPage.scss';
 import { Sort } from '../../types/Sort';
+import { QuantitySkeleton } from './QuantitySkeleton';
 
 type Props = {
   title: string;
@@ -27,6 +28,8 @@ export const ProductsPage: React.FC<Props> = ({ title, products }) => {
     const params = new URLSearchParams(location.search);
     return Number(params.get('itemsPerPage')) || 4;
   });
+
+  const [isLoadingTitle, setIsLoadingTitle] = useState(true);
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -65,18 +68,28 @@ export const ProductsPage: React.FC<Props> = ({ title, products }) => {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = sortProducts(products).slice(
     indexOfFirstItem,
-    indexOfLastItem
+    indexOfLastItem,
   );
 
   const handlePageChange = (page: number) => setCurrentPage(page);
 
   const totalPages = Math.ceil(products.length / itemsPerPage);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoadingTitle(false);
+    }, 500);
+  }, []);
+
   return (
     <div className="product-page">
       <Breadcrumb />
       <h1 className="product-page__header">{title}</h1>
-      <p className="product-page__quantity">{products.length} models</p>
+      {isLoadingTitle ? (
+        <QuantitySkeleton />
+      ) : (
+        <p className="product-page__quantity">{products.length} models</p>
+      )}
 
       <div className="product-page__filters">
         <div className="product-page__filter product-page__filter--sort">
@@ -84,9 +97,9 @@ export const ProductsPage: React.FC<Props> = ({ title, products }) => {
           <select
             className="select"
             value={sortBy}
-            onChange={(event) => {
+            onChange={event => {
               const selectedSort = event.target.value as Sort;
-              setSortBy(selectedSort === "newest" ? Sort.Newest : selectedSort);
+              setSortBy(selectedSort === 'newest' ? Sort.Newest : selectedSort);
             }}
           >
             <option value={Sort.Newest}>Newest</option>
@@ -101,7 +114,7 @@ export const ProductsPage: React.FC<Props> = ({ title, products }) => {
           <select
             className="select"
             value={itemsPerPage}
-            onChange={(event) => {
+            onChange={event => {
               setItemsPerPage(Number(event.target.value));
               setCurrentPage(1);
             }}
@@ -115,7 +128,7 @@ export const ProductsPage: React.FC<Props> = ({ title, products }) => {
       </div>
 
       <ItemsLayout>
-        {currentItems.map((product) => (
+        {currentItems.map(product => (
           <CardLayout good={product} key={product.id} />
         ))}
       </ItemsLayout>
