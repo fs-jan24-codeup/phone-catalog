@@ -25,7 +25,7 @@ export const CategoriesSection: React.FC = () => {
 
   return (
     <div className="categories">
-      <h1 className="categories__title">Shop by category</h1>
+      <h2 className="categories__title">Shop by category</h2>
       <div className="categories__content">
         <div className="categories__content__section">
           <NavLink to="/phones" className="categories__content__link">

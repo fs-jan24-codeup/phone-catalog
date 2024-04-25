@@ -1,0 +1,95 @@
+@import '../../styles/utils/mixins.scss';
+@import '../../styles/utils/variables.module.scss';
+
+.skeleton {
+  &__cart {
+    width: 100%;
+    height: 100%;
+    margin: 16px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 18px;
+    }
+  }
+
+  &___cart-block {
+    display: flex;
+    justify-content: space-between;
+
+    @include on-tablet {
+      align-items: center;
+      gap: 16px;
+    }
+  }
+  &__cart-second-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  &__cart-name {
+    width: 68%;
+    height: 16px;
+    animation: skeleton-loading 1s linear infinite alternate;
+    border-radius: 4px;
+    margin-bottom: 4px;
+
+    @include on-tablet {
+      width: 220px;
+    }
+
+    @include on-desktop {
+      width: 270px;
+    }
+  }
+
+  &__cart-image {
+    width: 66px;
+    height: 66px;
+    animation: skeleton-loading 1s linear infinite alternate;
+    border-radius: 4px;
+    margin-bottom: 8px;
+
+    @include on-tablet {
+    }
+  }
+
+  &__cart-btn-remove {
+    width: 16px;
+    height: 16px;
+    border-radius: 2px;
+    animation: skeleton-loading 1s linear infinite alternate;
+    margin-top: 26px;
+
+    @include on-tablet {
+      margin-top: 0;
+    }
+  }
+
+  &__cart-second-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  &__cart-button {
+    width: 110px;
+    height: 32px;
+    animation: skeleton-loading 1s linear infinite alternate;
+    border-radius: 4px;
+  }
+
+  &__cart-price {
+    width: 60px;
+    height: 32px;
+    animation: skeleton-loading 1s linear infinite alternate;
+    border-radius: 4px;
+  }
+}

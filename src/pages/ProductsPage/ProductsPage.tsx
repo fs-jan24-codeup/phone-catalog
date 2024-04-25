@@ -8,6 +8,12 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import './ProductsPage.scss';
 import { Sort } from '../../types/Sort';
 
+import { QuantitySkeleton } from './QuantitySkeleton';
+
+import { DropdownSort } from '../../components/Dropdown/DropdownSort';
+import { DropdownAmount } from '../../components/Dropdown/DropdownAmount';
+
+
 type Props = {
   title: string;
   products: Product[];
@@ -25,11 +31,17 @@ export const ProductsPage: React.FC<Props> = ({ title, products }) => {
 
   const [itemsPerPage, setItemsPerPage] = useState<number>(() => {
     const params = new URLSearchParams(location.search);
-    return Number(params.get('itemsPerPage')) || 4;
+    const itemsPerPageParam = params.get('itemsPerPage');
+    return itemsPerPageParam ? parseInt(itemsPerPageParam) : 4;
   });
+
+
+  const [isLoadingTitle, setIsLoadingTitle] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
+    params.set('page', currentPage.toString());
     params.set('itemsPerPage', itemsPerPage.toString());
 
     if (sortBy !== Sort.Newest) {
@@ -39,25 +51,23 @@ export const ProductsPage: React.FC<Props> = ({ title, products }) => {
     }
 
     if (sortBy === Sort.Newest) {
-      params.set('sortBy', 'newest');
+      params.set('sortBy', 'Newest');
     }
 
     navigate(`${location.pathname}?${params.toString()}`);
-  }, [sortBy, itemsPerPage, navigate, location.pathname]);
+  }, [currentPage, sortBy, itemsPerPage, navigate, location.pathname]);
 
-  const [currentPage, setCurrentPage] = useState(1);
-
-  const sortProducts = (phones: Product[]) => {
+  const sortProducts = (products: Product[]) => {
     switch (sortBy) {
       case Sort.Alphabetically:
-        return [...phones].sort((a, b) => a.name.localeCompare(b.name));
+        return [...products].sort((a, b) => a.name.localeCompare(b.name));
       case Sort.PriceLow:
-        return [...phones].sort((a, b) => a.priceDiscount - b.priceDiscount);
+        return [...products].sort((a, b) => a.priceDiscount - b.priceDiscount);
       case Sort.PriceHigh:
-        return [...phones].sort((a, b) => b.priceDiscount - a.priceDiscount);
+        return [...products].sort((a, b) => b.priceDiscount - a.priceDiscount);
       case Sort.Newest:
       default:
-        return [...phones];
+        return [...products];
     }
   };
 
@@ -65,57 +75,58 @@ export const ProductsPage: React.FC<Props> = ({ title, products }) => {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = sortProducts(products).slice(
     indexOfFirstItem,
-    indexOfLastItem
+    indexOfLastItem,
   );
 
   const handlePageChange = (page: number) => setCurrentPage(page);
 
   const totalPages = Math.ceil(products.length / itemsPerPage);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoadingTitle(false);
+    }, 500);
+  }, []);
+
   return (
     <div className="product-page">
       <Breadcrumb />
       <h1 className="product-page__header">{title}</h1>
-      <p className="product-page__quantity">{products.length} models</p>
+      {isLoadingTitle ? (
+        <QuantitySkeleton />
+      ) : (
+        <p className="product-page__quantity">{products.length} models</p>
+      )}
 
       <div className="product-page__filters">
         <div className="product-page__filter product-page__filter--sort">
           <label className="select-label">Sort by</label>
-          <select
-            className="select"
+          <DropdownSort
             value={sortBy}
-            onChange={(event) => {
-              const selectedSort = event.target.value as Sort;
-              setSortBy(selectedSort === "newest" ? Sort.Newest : selectedSort);
-            }}
-          >
-            <option value={Sort.Newest}>Newest</option>
-            <option value={Sort.Alphabetically}>Alphabetically</option>
-            <option value={Sort.PriceLow}>Price low</option>
-            <option value={Sort.PriceHigh}>Price high</option>
-          </select>
+            onChange={(selectedSort: Sort) => setSortBy(selectedSort)}
+            options={[
+              Sort.Newest,
+              Sort.Alphabetically,
+              Sort.PriceLow,
+              Sort.PriceHigh,
+            ]}
+          />
         </div>
 
         <div className="product-page__filter product-page__filter--items">
           <label className="select-label">Items on page</label>
-          <select
-            className="select"
+          <DropdownAmount
             value={itemsPerPage}
-            onChange={(event) => {
-              setItemsPerPage(Number(event.target.value));
-              setCurrentPage(1);
-            }}
-          >
-            <option value="4">4</option>
-            <option value="8">8</option>
-            <option value="16">16</option>
-            <option value={products.length}>All</option>
-          </select>
+            onChange={(selectedItemsPerPage: number) =>
+              setItemsPerPage(selectedItemsPerPage)
+            }
+            options={[4, 8, 16, products.length]}
+          />
         </div>
       </div>
 
       <ItemsLayout>
-        {currentItems.map((product) => (
+        {currentItems.map(product => (
           <CardLayout good={product} key={product.id} />
         ))}
       </ItemsLayout>

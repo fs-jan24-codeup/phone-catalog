@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useAppContext } from '../../hooks/useAppContext';
 import { CartProduct } from '../../types/CartProduct';
@@ -11,6 +11,7 @@ import Close from '../../assets/icons/close.svg?react';
 import './CartItem.scss';
 
 import variables from '../../styles/utils/variables.module.scss';
+import { CartItemSkeleton } from './CartItemSkeleton';
 
 interface Props {
   item: CartProduct;
@@ -20,6 +21,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
   const { id, name, image, price, quantity: initialQuantity } = item;
   const { removeFromCart, updateQuantity } = useAppContext();
   const [quantity, setQuantity] = React.useState(initialQuantity);
+  const [isCartLoading, setIsCartLoading] = useState(true);
 
   const isDisabled = quantity === 1;
 
@@ -39,42 +41,55 @@ export const CartItem: React.FC<Props> = ({ item }) => {
     removeFromCart(id);
   };
 
+  useEffect(() => {
+    setTimeout(() => {
+      setIsCartLoading(false);
+    }, 500);
+  }, []);
+
   return (
     <div className="card-item__container">
-      <div className="card-item">
-        <button onClick={handleRemoveFromCart} className="cross">
-          <Close />
-        </button>
-        <div className="cart-item__img">
-          <img src={image} alt={name} />
-        </div>
-        <Link className="cart-item__name" to={`/phones/${id}`}>
-          {name}
-        </Link>
-        <div className="cart-item__buttons">
-          <div className="cart-item__buttons-icons">
+      {isCartLoading ? (
+        <CartItemSkeleton />
+      ) : (
+        <div className="card-item">
+          <button onClick={handleRemoveFromCart} className="cross">
+            <Close />
+          </button>
+          <div className="cart-item__img">
+            <img src={image} alt={name} />
+          </div>
+          <Link className="cart-item__name" to={`/phones/${id}`}>
+            {name}
+          </Link>
+          <div className="cart-item__buttons">
+            <div className="cart-item__buttons-icons">
+              <button
+                className={classNames('cart-item__buttons-icon', {
+                  'icon--disabled': isDisabled,
+                })}
+                onClick={handleClickMinus}
+                disabled={isDisabled}
+              >
+                <Minus
+                  color={
+                    isDisabled ? variables.iconColor : variables.primaryColor
+                  }
+                />
+              </button>
+            </div>
+            <div className="cart-item__count">{quantity}</div>
+
             <button
-              className={classNames('cart-item__buttons-icon', {
-                'icon--disabled': isDisabled,
-              })}
-              onClick={handleClickMinus}
-              disabled={isDisabled}
+              className="cart-item__buttons-icon"
+              onClick={handleClickPlus}
             >
-              <Minus
-                color={
-                  isDisabled ? variables.iconColor : variables.primaryColor
-                }
-              />
+              <Plus />
             </button>
           </div>
-          <div className="cart-item__count">{quantity}</div>
-
-          <button className="cart-item__buttons-icon" onClick={handleClickPlus}>
-            <Plus />
-          </button>
+          <p className="cart-item__price">{price * quantity}</p>
         </div>
-        <p className="cart-item__price">{price * quantity}</p>
-      </div>
+      )}
     </div>
   );
 };

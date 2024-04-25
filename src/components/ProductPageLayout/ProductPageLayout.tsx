@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 
 import { Product } from '../../types/Product';
 import { getProduct, getProducts } from '../../utils/fetchData';
@@ -20,8 +20,11 @@ export const ProductPageLayout: React.FC = () => {
   const [recommendedGoods, setRecomendedGoods] = useState<Product[]>([]);
   const { productId } = useParams();
 
+  const { pathname } = useLocation();
+  const BASE_PATH = pathname.split('/');
+
   useEffect(() => {
-    getProducts('./api/phones.json')
+    getProducts(`./api/${BASE_PATH[1]}.json`)
       .then(phones => {
         const newPhones = phones.slice(5, 16);
 
@@ -32,7 +35,7 @@ export const ProductPageLayout: React.FC = () => {
 
   useEffect(() => {
     if (productId) {
-      getProduct('./api/phones.json', productId)
+      getProduct(`./api/${BASE_PATH[1]}.json`, productId)
         .then(product => setGood(product))
         .catch(error => console.log(error));
     }

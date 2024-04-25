@@ -1,0 +1,80 @@
+@import '../../styles/utils/mixins.scss';
+@import '../../styles/utils/variables.module.scss';
+
+.search {
+  position: relative;
+
+  &__input {
+    height: 40px;
+    width: 140px;
+    padding: 10px 30px 10px 12px;
+    border: 1px solid var(--icon-color);
+    font-family: inherit;
+    font-weight: 600;
+
+    &:placeholder-shown {
+      text-overflow: ellipsis;
+    }
+  
+    &:focus {
+      border: 1px solid var(--primary-color);
+      outline: none;
+    }
+  
+    @include on-medium-tablet {
+      width: 170px;
+    }
+  
+    @include on-desktop {
+      width: 250px;
+    }
+
+    &-icon {
+      display: flex;
+      position: absolute;
+      margin: 0;
+      padding: 0;
+      right: 10px;
+      background: none;
+      border: 0;
+    }
+  }
+
+  &__results {
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    position: absolute;
+    margin-top: 4px;
+    border: 1px solid var(--element-color);
+    background-color: var(--white-color);
+    z-index: 999;
+  }
+
+  &__product {
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+    padding: 10px 12px;
+    color: var(--primary-color);
+    background-color: var(--white-color);
+    font-weight: 500;
+    font-size: 12px;
+
+    @include hover(background-color, var(--hover-background-color));
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &-image {
+      height: 30px; 
+    }
+  }
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}

@@ -1,0 +1,82 @@
+@import '../../styles/utils/mixins.scss';
+@import '../../styles/utils/variables.module.scss';
+
+.custom-dropdown {
+  position: relative;
+  background: var(--button-color-selected);
+
+  &__button {
+    align-items: center;
+    border: 1px solid var(--element-color);
+    cursor: pointer;
+    display: flex;
+    font: inherit;
+    height: 40px;
+    justify-content: space-between;
+    padding: 10px 12px;
+    position: relative;
+    width: 100%;
+    border: 1px solid var(--element-color);
+
+    @include hover(border-color, var(--primary-color));
+  }
+
+  &__title {
+    font-family: 'Mont';
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: var(--primary-color);
+  }
+
+  &__icon {
+    height: 16px;
+    width: 16px;
+    transition: transform 0.3s ease;
+  }
+
+  &__list-wrapper {
+    background-color: var(--white-color);
+    box-shadow: 0 2px 15px 0 #0000001a;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: calc(100% + 24px);
+    transform: translateY(-10%);
+    transform-origin: top center;
+    transition: transform 0.3s ease;
+    z-index: 1;
+  }
+
+  &__list {
+    list-style-type: none;
+    padding: 0;
+    background: var(--button-color-selected);
+  }
+
+  &__item {
+    padding: 10px 12px;
+    font-family: 'Mont';
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: var(--secondary-color);
+    cursor: pointer;
+
+    @include hover(background-color, var(--hover-background-color));
+    @include hover(color, var(--primary-color));
+  }
+
+  &__icon.open {
+    transform: rotate(180deg);
+  }
+
+  &__list-wrapper--open {
+    max-height: 200px;
+    opacity: 1;
+    overflow: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+}

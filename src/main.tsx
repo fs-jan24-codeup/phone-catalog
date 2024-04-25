@@ -25,16 +25,17 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <Route index element={<HomePage />} />
           <Route path="phones">
             <Route index element={<PhonesPage />} />
-            <Route path=":productId" element={<PhoneDetailsPage />} />
+            <Route path=":productId?" element={<PhoneDetailsPage />} />
           </Route>
-          <Route path="tablets" element={<TabletsPage />}>
-            <Route path=":tabletId?" element={<div>Tablet details page</div>} />
+
+          <Route path="tablets">
+            <Route index element={<TabletsPage />} />
+            <Route path=":productId?" element={<PhoneDetailsPage />} />
           </Route>
-          <Route path="accessories" element={<AccessoriesPage />}>
-            <Route
-              path=":accessoryId?"
-              element={<div>Accessory details page</div>}
-            />
+
+          <Route path="accessories">
+            <Route index element={<AccessoriesPage />} />
+            <Route path=":productId?" element={<PhoneDetailsPage />} />
           </Route>
           <Route path="cart" element={<CartPage />} />
           <Route path="favourites" element={<FavouritesPage />} />
