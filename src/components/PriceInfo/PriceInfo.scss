@@ -1,5 +1,5 @@
 @import '../../styles/utils/mixins.scss';
-@import '../../styles/utils/variables.scss';
+@import '../../styles/utils/variables.module.scss';
 
 a {
   text-decoration: none;
@@ -13,7 +13,7 @@ a {
   font-size: 12px;
   font-weight: 600;
   line-height: 15.34px;
-  color: $secondary-color;
+  color: var(--secondary-color);
 
   @include on-tablet {
     justify-content: start;
@@ -47,49 +47,7 @@ a {
     cursor: pointer;
     padding-left: 3px;
   }
-
-  &__capacity {
-    position: relative;
-    margin-bottom: 45px;
   
-    &::before {
-      content: '';
-      position: absolute;
-      bottom: -24px;
-      width: 100%;
-  
-      border-bottom: $element-color solid 1px;
-    }
-  
-    &__option {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 32px;
-      width: 63px;
-  
-      font-size: 14px;
-      font-weight: 500;
-      line-height: 21px;
-      color: $primary-color;
-  
-      border: 1px solid $element-color;
-      background-color: $white-color;
-  
-      @include hover(border, 1px solid $primary-color);
-  
-      &:hover {
-        cursor: pointer;
-      }
-  
-      &--active {
-        background-color: $primary-color;
-        color: $white-color;
-        border: 1px solid $primary-color;
-      }
-    }
-  }
-
   &__top-text {
     display: flex;
     justify-content: space-between;
@@ -98,7 +56,7 @@ a {
     font-size: 12px;
     font-weight: 600;
     line-height: 15.34px;
-    color: $secondary-color;
+    color: var(--secondary-color);
   }
 
   &__price {
@@ -122,7 +80,7 @@ a {
     &-old {
       font-size: 22px;
       font-weight: 500;
-      color: $secondary-color;
+      color: var(--secondary-color);
       text-decoration: line-through;
 
       &::before {
@@ -135,7 +93,7 @@ a {
     width: 100%;
     padding: 10px 20px;
     background-color: #007bff;
-    color: $green-color;
+    color: var(--green-color);
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -162,7 +120,7 @@ a {
   line-height: 15.34px;
 
   &__text {
-    color: $secondary-color;
+    color: var(--secondary-color);
   }
 }
 
@@ -176,7 +134,7 @@ a {
     bottom: -24px;
     width: 100%;
 
-    border-bottom: $element-color solid 1px;
+    border-bottom: var(--element-color) solid 1px;
   }
 
   &__option {
@@ -194,20 +152,110 @@ a {
       height: 33px;
       width: 33px;
 
-      background-color: $white-color;
+      background-color: var(--white-color);
       border-radius: 50%;
-      border: $element-color solid 1px;
+      border: var(--element-color) solid 1px;
       z-index: -1;
       transform: translate(-50%, -50%);
       transition: border-color 0.3s linear;
     }
 
     &:hover::before {
-      border-color: $icon-color;
+      border-color: var(--icon-color);
     }
 
     &--active::before {
-      border-color: $primary-color;
+      border-color: var(--primary-color);
+    }
+
+    &--black {
+      background: #171818;
+    }
+
+    &--silver {
+      background: #dfe0dc;
+    }
+
+    &--green {
+      background: #96d2b6;
+    }
+
+    &--yellow {
+      background: #ffe77b;
+    }
+
+    &--white {
+      background: #fffaf5;
+    }
+
+    &--purple {
+      background: #c1bcd1;
+    }
+
+    &--gold {
+      background: #e6b7af;
+    }
+
+    &--rosegold {
+      background: #fcdbc1;
+    }
+
+    &--red {
+      background: #ab001b;
+    }
+
+    &--coral {
+      background: #ef5f54;
+    }
+    &--spacegray,
+    &--space-gray {
+      background: #717378;
+    }
+
+    &--midnightgreen {
+      background: #464f47;
+    }
+  }
+}
+
+.capacity {
+  position: relative;
+  margin-bottom: 45px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -24px;
+    width: 100%;
+
+    border-bottom: var(--element-color) solid 1px;
+  }
+
+  &__option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    width: 63px;
+
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: var(--primary-color);
+
+    border: 1px solid var(--element-color);
+    background-color: var(--white-color);
+
+    @include hover(border, 1px solid var(--primary-color));
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &--active {
+      background-color: var(--primary-color);
+      color: var(--white-color);
+      border: 1px solid var(--primary-color);
     }
   }
 }

@@ -1,0 +1,67 @@
+:root {
+  --primary-color: #313237;
+  --secondary-color: #89939a;
+  --icon-color: #b4bdc3;
+  --element-color: #e2e6e9;
+  --hover-background-color: #fafbfc;
+  --white-color: #fff;
+  --green-color: #27ae60;
+  --red-color: #eb5757;
+  --background-color: #fff;
+  --button-color: #313237;
+  --button-color-selected: #fff;
+  --button-color-text: #27ae60;
+  --favourite-button-color: #fff;
+  --card-layout-bg-color: #fff;
+  --card-characteristic-name-color: #313237;
+  --card-characteristic-value-color: #89939a;
+  --button-pagination-color: #313237;
+  --button-hover-color: #313237;
+  --button-hover-bg-color: #fff;
+}
+
+[data-theme='dark'] {
+  --primary-color: #f1f2f9;
+  --secondary-color: #75767f;
+  --icon-color: #323542;
+  --element-color: #161827;
+  --hover-background-color: #323542;
+  --white-color: #f1f2f9;
+  --green-color: #27ae60;
+  --red-color: #eb5757;
+  --background-color: #0f1121;
+  --button-color: #905bff;
+  --button-color-selected: #323542;
+  --button-color-text: #f1f2f9;
+  --favourite-button-color: #323542;
+  --card-layout-bg-color: #161827;
+  --card-characteristic-name-color: #75767F;
+  --card-characteristic-value-color: #F1F2F9;
+  --button-pagination-color: #905bff;
+  --button-hover-color: #313237;
+  --button-hover-bg-color: #4a4d58;
+}
+
+$small-tablet-min-width: 640px;
+$medium-tablet-min-width: 768px;
+$tablet-min-width: 640px;
+$desktop-min-width: 1200px;
+$effect-duration: 0.3s;
+$hover-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+
+:export {
+  primaryColor: var(--primary-color);
+  iconColor: var(--icon-color);
+}
+
+body {
+  background-color: var(--background-color);
+}
+
+h1 {
+  color: var(--primary-color);
+}
+
+svg {
+  color: var(--primary-color);
+}

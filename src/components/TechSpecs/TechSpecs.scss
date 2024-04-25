@@ -1,5 +1,5 @@
-@import '../../styles/utils/variables.scss';
-@import '../../styles/utils/mixins.scss';    
+@import '../../styles/utils/variables.module.scss';
+@import '../../styles/utils/mixins.scss';
 
 .specs {
     @include on-tablet {
@@ -26,7 +26,7 @@
     position: absolute;
     bottom: -16px;
     width: 100%;
-    border-bottom: $element-color solid 1px;
+    border-bottom: var(--element-color) solid 1px;
   }
   
   .specs__container {
@@ -41,7 +41,7 @@
     font-weight: 500;
     line-height: 21px;
     text-align: left;
-    color: $secondary-color;
+    color: var(--secondary-color);
 
   }
 
@@ -50,7 +50,7 @@
     font-weight: 500;
     line-height: 21px;
     text-align: right;
-    color: $primary-color;
+    color: var(--primary-color);
   }
   
   .cell {

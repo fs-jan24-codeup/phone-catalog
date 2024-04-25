@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import './CartPage.scss';
-import goBackIcon from '../../assets/icons/arrow-left.svg';
+
 import { CartItem } from '../../components/CartItem/CartItem';
 import { useAppContext } from '../../hooks/useAppContext';
 import { Modal } from '../../components/Modal/Modal';
 import orderSuccessul from '../../assets/images/order-success.gif';
 import emptyCart from '../../assets/images/empty-cart.gif';
 import { CartSummarySkeleton } from './CartSummarySkeleton';
+import { GoBack } from '../../components/GoBack';
+
 
 export const CartPage: React.FC = () => {
   const { cart, clearCart, itemCount } = useAppContext();
@@ -46,13 +47,9 @@ export const CartPage: React.FC = () => {
 
   return (
     <>
+
       <div className="cart cart__grid">
-        <div className="button-go-back">
-          <img src={goBackIcon} alt="Go back" className="button-go-back__img" />
-          <Link to=".." className="button-go-back__link">
-            Go back
-          </Link>
-        </div>
+        <GoBack />
 
         <h1 className="cart__title">Cart</h1>
 

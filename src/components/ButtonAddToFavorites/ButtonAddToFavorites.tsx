@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { Product } from '../../types/Product';
 import { useAppContext } from '../../hooks/useAppContext';
 
-import favourites from '../../assets/icons/favourites.svg';
-import favourites_filled from '../../assets/icons/favourites_filled.svg';
+import Favourites from '../../assets/icons/favourites.svg?react';
+import FavouritesFilled from '../../assets/icons/favourites_filled.svg?react';
 
 import '../CardLayout/CardLayout.scss';
 
@@ -35,11 +35,7 @@ export const ButtonAddToFavorites: React.FC<Props> = ({ good }) => {
 
   return (
     <button className="card__button--favourite" onClick={handleAddToFavorites}>
-      <img
-        src={isAddedToFavorites ? favourites_filled : favourites}
-        alt="Favourite"
-        className="card__button--image"
-      />
+      {isAddedToFavorites ? <FavouritesFilled /> : <Favourites />}
     </button>
   );
 };

@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import minus from '../../assets/icons/minus.svg';
-import plus from '../../assets/icons/plus.svg';
-import close from '../../assets/icons/close.svg';
-import './CartItem.scss';
+import React from 'react';
+
 import { useAppContext } from '../../hooks/useAppContext';
 import { CartProduct } from '../../types/CartProduct';
 import { Link } from 'react-router-dom';
-import { CartItemSkeleton } from './CartItemSkeleton';
+import classNames from 'classnames';
+
+import Minus from '../../assets/icons/minus.svg?react';
+import Plus from '../../assets/icons/plus.svg?react';
+import Close from '../../assets/icons/close.svg?react';
+import './CartItem.scss';
+
+import variables from '../../styles/utils/variables.module.scss';
 
 interface Props {
   item: CartProduct;
@@ -17,6 +21,8 @@ export const CartItem: React.FC<Props> = ({ item }) => {
   const { removeFromCart, updateQuantity } = useAppContext();
   const [quantity, setQuantity] = React.useState(initialQuantity);
   const [isCartLoading, setIsCartLoading] = useState(true);
+
+  const isDisabled = quantity === 1;
 
   const handleClickPlus = () => {
     const newQuantity = quantity + 1;

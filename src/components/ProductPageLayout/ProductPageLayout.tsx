@@ -1,21 +1,30 @@
 import React from 'react';
-import './ProductPageLayout.scss';
+import { useState, useEffect } from 'react';
+import { useLocation, useParams } from 'react-router-dom';
+
+import { Product } from '../../types/Product';
+import { getProduct, getProducts } from '../../utils/fetchData';
+
+import { Breadcrumb } from '../Breadcrumb';
 import { PriceInfo } from '../PriceInfo';
 import { AboutSection } from '../AboutSection';
 import { TechSpecs } from '../TechSpecs';
-import { Product } from '../../types/Product';
-import { useParams } from 'react-router-dom';
-import { getProduct, getProducts } from '../../utils/fetchData';
-import { useState, useEffect } from 'react';
 import { ProductSlider } from '../ProductSlider';
+import { ImagesSwiper } from '../ImagesSwiper';
+
+import './ProductPageLayout.scss';
+import { GoBack } from '../GoBack';
 
 export const ProductPageLayout: React.FC = () => {
   const [good, setGood] = useState<Product | null>(null);
   const [recommendedGoods, setRecomendedGoods] = useState<Product[]>([]);
   const { productId } = useParams();
 
+  const { pathname } = useLocation();
+  const BASE_PATH = pathname.split('/');
+
   useEffect(() => {
-    getProducts('./api/phones.json')
+    getProducts(`./api/${BASE_PATH[1]}.json`)
       .then(phones => {
         const newPhones = phones.slice(5, 16);
 
@@ -26,17 +35,23 @@ export const ProductPageLayout: React.FC = () => {
 
   useEffect(() => {
     if (productId) {
-      getProduct('./api/phones.json', productId)
+      getProduct(`./api/${BASE_PATH[1]}.json`, productId)
         .then(product => setGood(product))
         .catch(error => console.log(error));
     }
   }, [productId]);
   return (
     <div className="product__grid">
-      <div className="product__path">Path</div>
-      <div className="product__back">Button Back</div>
-      <div className="product__title">Title</div>
-      <div className="product__images">Photo</div>
+      <div className="product__path">
+        <Breadcrumb />
+      </div>
+      <div className="product__back">
+        <GoBack />
+      </div>
+      <h2 className="product__title">{good?.name}</h2>
+      <div className="product__images">
+        {good && <ImagesSwiper images={good.images} />}
+      </div>
       <div className="product__price">
         <PriceInfo />
       </div>
@@ -47,7 +62,11 @@ export const ProductPageLayout: React.FC = () => {
         <TechSpecs good={good} />
       </div>
       <div className="product__also-like">
-        <ProductSlider products={recommendedGoods} title="You may also like" />
+        <ProductSlider
+          id="also-like"
+          products={recommendedGoods}
+          title="You may also like"
+        />
       </div>
     </div>
   );

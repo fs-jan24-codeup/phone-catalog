@@ -1,4 +1,4 @@
-@import '../../styles/utils/variables.scss';
+@import '../../styles/utils/variables.module.scss';
 @import '../../styles/utils/mixins.scss';
 
 .pagination {
@@ -23,23 +23,30 @@
     justify-content: center;
     height: 32px;
     width: 32px;
-    border: 1px solid $element-color;
-    background-color: $white-color;
+    border: 1px solid var(--element-color);
+    background-color: var(--card-layout-bg-color);
+    color: var(--primary-color);
 
-    @include hover(border, 1px solid $primary-color);
+    @include hover(border, 1px solid var(--button-hover-color));
+    @include hover(background-color, var(--button-hover-bg-color));
 
     &:hover {
       cursor: pointer;
     }
 
     &--nav {
-      border: 1px solid $icon-color;
+      border: 1px solid var(--icon-color);
+      background-color: var(--button-color-selected);
+
+      &:disabled {
+        pointer-events: none;
+      }
     }
 
     &--active {
-      background-color: $primary-color;
-      color: $white-color;
-      border: 1px solid $primary-color;
+      background-color: var(--button-pagination-color);
+      color: var(--white-color);
+      border: 1px solid var(--primary-colo);
     }
   }
 }

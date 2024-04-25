@@ -1,4 +1,4 @@
-@import '../../styles/utils/variables.scss';
+@import '../../styles/utils/variables.module.scss';
 @import '../../styles/utils/mixins.scss';
 
 .categories {
@@ -26,7 +26,7 @@
     font-size: 22px;
     font-weight: 800;
     line-height: 30.8px;
-    color: $primary-color;
+    color: var(--primary-color);
     letter-spacing: -1%;
     margin-top: 0;
     margin-bottom: 24px;
@@ -41,19 +41,21 @@
     font-size: 20px;
     font-weight: 700;
     line-height: 25.56px;
-    color: $primary-color;
+    color: var(--primary-color);
     margin-top: 24px;
   }
 
   &__content__image {
     width: 100%;
+
+    @include hover(transform, scale(1.05))
   }
 
   &__content__quantity {
     font-size: 14px;
     font-weight: 600;
     line-height: 21px;
-    color: $secondary-color;
+    color: var(--secondary-color);
     margin-top: 4px;
   }
 }

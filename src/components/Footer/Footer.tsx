@@ -1,11 +1,15 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
-import logo from '../../assets/images/logo.svg';
-import arrowUp from '../../assets/icons/arrow_up.svg';
+import Logo from '../../assets/images/logo.svg?react';
+import ArrowUp from '../../assets/icons/arrow_up.svg?react';
 import './Footer.scss';
+import { useThemeContext } from '../../hooks/useThemeContext';
+import { ThemeToggler } from '../ThemeToggler/ThemeToggler';
 
 export const Footer: React.FC = () => {
+  const { theme, setTheme, themes } = useThemeContext();
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -18,7 +22,7 @@ export const Footer: React.FC = () => {
       <div className="footer__content">
         <div className="footer__logo-wrapper">
           <NavLink to="/" className="footer__logo">
-            <img className="footer__img" alt="logo" src={logo} />
+            <Logo className="footer__img" />
           </NavLink>
         </div>
 
@@ -43,11 +47,19 @@ export const Footer: React.FC = () => {
 
         <div className="footer__anchor">
           <span className="footer__label">Back to top</span>
+          <ThemeToggler
+            onChange={() => {
+              if (theme === themes.light) setTheme(themes.dark);
+              if (theme === themes.dark) setTheme(themes.light);
+            }}
+            value={theme === themes.dark}
+          />
+
           <button
             onClick={scrollToTop}
             className="footer__link footer__link--top"
           >
-            <img src={arrowUp} alt="Arrow Up" className="footer__arrow" />
+            <ArrowUp />
           </button>
         </div>
       </div>

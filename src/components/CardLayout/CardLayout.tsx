@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { ButtonAddToCard } from '../ButtonAddToCard';
 import { ButtonAddToFavorites } from '../ButtonAddToFavorites';
@@ -11,8 +11,25 @@ type Props = {
 };
 
 export const CardLayout: React.FC<Props> = ({ good }) => {
-  const { images, name, priceRegular, priceDiscount, ram, screen, capacity } =
-    good;
+  const { productId } = useParams();
+
+  const {
+    images,
+    name,
+    priceRegular,
+    priceDiscount,
+    ram,
+    screen,
+    capacity,
+    category,
+  } = good;
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: productId ? 'smooth' : 'instant',
+    });
+  };
 
   const [isLoading, setIsLoading] = useState(true);
 
@@ -23,23 +40,27 @@ export const CardLayout: React.FC<Props> = ({ good }) => {
   }, []);
 
   return (
+
     <article className={`card ${isLoading ? 'skeleton' : ''}`}>
       {isLoading ? (
         <CardSkeleton />
       ) : (
         <div className="card__container">
-          <Link className="card__link" to={`/phones/${good.id}`}>
+          <Link className="card__link" to={`/${category}/${good.id}`} onClick={scrollToTop}>
             <img src={images[0]} alt={name} className="card__image" />
           </Link>
+        <Link
+          onClick={scrollToTop}
+          className="card__name"
+          to={`/${category}/${good.id}`}
+        >
+          {name}
+        </Link>
 
-          <Link className="card__name" to={`/phones/${good.id}`}>
-            {name}
-          </Link>
-
-          <div className="card__prices">
-            <div className="card__price--discount">{`${priceDiscount}$`}</div>
-            <div className="card__price">{`${priceRegular}$`}</div>
-          </div>
+        <div className="card__prices">
+          <div className="card__price--discount">{`${priceDiscount}$`}</div>
+          <div className="card__price">{`${priceRegular}$`}</div>
+        </div>
 
           <div className="card__breakline"></div>
 
