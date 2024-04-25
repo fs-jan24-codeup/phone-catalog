@@ -3,10 +3,11 @@
 
 .custom-dropdown {
   position: relative;
+  background: var(--button-color-selected);
 
   &__button {
     align-items: center;
-    border: 1px solid $element-color;
+    border: 1px solid var(--element-color);
     cursor: pointer;
     display: flex;
     font: inherit;
@@ -15,9 +16,9 @@
     padding: 10px 12px;
     position: relative;
     width: 100%;
-    border: 1px solid $element-color;
+    border: 1px solid var(--element-color);
 
-    @include hover(border-color, $primary-color);
+    @include hover(border-color, var(--primary-color));
   }
 
   &__title {
@@ -25,7 +26,7 @@
     font-size: 14px;
     font-weight: 600;
     line-height: 21px;
-    color: $primary-color;
+    color: var(--primary-color);
   }
 
   &__icon {
@@ -35,7 +36,7 @@
   }
 
   &__list-wrapper {
-    background-color: $white-color;
+    background-color: var(--white-color);
     box-shadow: 0 2px 15px 0 #0000001a;
     left: 0;
     overflow: hidden;
@@ -51,6 +52,7 @@
   &__list {
     list-style-type: none;
     padding: 0;
+    background: var(--button-color-selected);
   }
 
   &__item {
@@ -59,11 +61,11 @@
     font-size: 14px;
     font-weight: 600;
     line-height: 21px;
-    color: $secondary-color;
+    color: var(--secondary-color);
     cursor: pointer;
 
-    @include hover(background-color, $hover-background-color);
-    @include hover(color, $primary-color);
+    @include hover(background-color, var(--hover-background-color));
+    @include hover(color, var(--primary-color));
   }
 
   &__icon.open {

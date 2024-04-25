@@ -10,13 +10,13 @@
   align-items: center;
   width: 14px;
   height: 14px;
-  border: 1px solid $white-color;
+  border: 1px solid var(--white-color);
   border-radius: 50%;
-  background-color: $red-color;
+  background-color: var(--red-color);
   
   &--text {
     font-size: 10px;
     font-weight: 700;
-    color: $white-color;
+    color: var(--white-color);
   }
 }

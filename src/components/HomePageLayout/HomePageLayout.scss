@@ -11,7 +11,7 @@
     font-size: 32px;
     line-height: 128%;
     letter-spacing: -0.01em;
-    color: $primary-color;
+    color: var(--primary-color);
     margin-block: 24px;
     grid-column: 1 / 5;
   }

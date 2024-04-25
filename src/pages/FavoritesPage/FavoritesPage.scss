@@ -17,7 +17,7 @@
   &__quantity {
     margin-top: 8px;
     margin-bottom: 32px;
-    color: $secondary-color;
+    color: var(--secondary-color);
 
     @include on-tablet {
       margin-bottom: 40px;
