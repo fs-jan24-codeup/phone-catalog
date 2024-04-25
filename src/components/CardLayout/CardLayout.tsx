@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { ButtonAddToCard } from '../ButtonAddToCard';
 import { ButtonAddToFavorites } from '../ButtonAddToFavorites';
@@ -9,6 +9,8 @@ type Props = {
 };
 
 export const CardLayout: React.FC<Props> = ({ good }) => {
+  const { productId } = useParams();
+
   const {
     images,
     name,
@@ -20,14 +22,29 @@ export const CardLayout: React.FC<Props> = ({ good }) => {
     category,
   } = good;
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: productId ? 'smooth' : 'instant',
+    });
+  };
+
   return (
     <article className="card">
       <div className="card__container">
-        <Link className="card__link" to={`/${category}/${good.id}`}>
+        <Link
+          onClick={scrollToTop}
+          className="card__link"
+          to={`/${category}/${good.id}`}
+        >
           <img src={images[0]} alt={name} className="card__image" />
         </Link>
 
-        <Link className="card__name" to={`/${category}/${good.id}`}>
+        <Link
+          onClick={scrollToTop}
+          className="card__name"
+          to={`/${category}/${good.id}`}
+        >
           {name}
         </Link>
 

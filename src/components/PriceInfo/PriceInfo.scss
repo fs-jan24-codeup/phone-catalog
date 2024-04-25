@@ -47,49 +47,7 @@ a {
     cursor: pointer;
     padding-left: 3px;
   }
-
-  &__capacity {
-    position: relative;
-    margin-bottom: 45px;
   
-    &::before {
-      content: '';
-      position: absolute;
-      bottom: -24px;
-      width: 100%;
-  
-      border-bottom: var(--element-color) solid 1px;
-    }
-  
-    &__option {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 32px;
-      width: 63px;
-  
-      font-size: 14px;
-      font-weight: 500;
-      line-height: 21px;
-      color: var(--primary-color);
-  
-      border: 1px solid var(--element-color);
-      background-color: var(--white-color);
-  
-      @include hover(border, 1px solid var(--primary-color));
-  
-      &:hover {
-        cursor: pointer;
-      }
-  
-      &--active {
-        background-color: var(--primary-color);
-        color: var(--white-color);
-        border: 1px solid var(--primary-color);
-      }
-    }
-  }
-
   &__top-text {
     display: flex;
     justify-content: space-between;
@@ -256,6 +214,48 @@ a {
 
     &--midnightgreen {
       background: #464f47;
+    }
+  }
+}
+
+.capacity {
+  position: relative;
+  margin-bottom: 45px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -24px;
+    width: 100%;
+
+    border-bottom: var(--element-color) solid 1px;
+  }
+
+  &__option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    width: 63px;
+
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: var(--primary-color);
+
+    border: 1px solid var(--element-color);
+    background-color: var(--white-color);
+
+    @include hover(border, 1px solid var(--primary-color));
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &--active {
+      background-color: var(--primary-color);
+      color: var(--white-color);
+      border: 1px solid var(--primary-color);
     }
   }
 }
