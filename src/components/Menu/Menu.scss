@@ -38,12 +38,12 @@
       font-family: 'Mont';
       text-decoration: none;
       text-transform: uppercase;
-      color: $secondary-color;
+      color: var(--secondary-color);
   
-      @include hover(color, $primary-color);
+      @include hover(color, var(--primary-color));
   
       &--active {
-        color: $primary-color;
+        color: var(--primary-color);
   
         &::after {
           content: '';
@@ -51,7 +51,7 @@
           bottom: 0;
           height: 3px;
           width: 100%;
-          background-color: $primary-color;
+          background-color: var(--primary-color);
         }
       }
     }
@@ -80,13 +80,13 @@
         
   
         &--favourites {
-          border-color: $element-color;
+          border-color: var(--element-color);
           border-style: solid;
           border-width: 1px 1px 0 0;
         }
   
         &--cart {
-          border: $element-color;
+          border: var(--element-color);
           border-style: solid;
           border-width: 1px 0 0 0;
         }

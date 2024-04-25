@@ -38,10 +38,10 @@
     font-size: 12px;
     line-height: 16px;
     font-weight: 600;
-    color: $primary-color;
+    color: var(--primary-color);
 
     &--last{
-      color: $secondary-color;
+      color: var(--secondary-color);
     }
   }
 }

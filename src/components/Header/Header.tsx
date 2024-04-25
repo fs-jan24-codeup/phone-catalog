@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
+import '../../styles/utils/variables.module.scss';
 
 import { SelectedItemsCircle } from '../SelectedItemsCircle/SelectedItemsCircle';
 import { Menu } from '../Menu';
@@ -58,57 +59,60 @@ export const Header = () => {
   const getHeaderIconClass = ({ isActive }: { isActive: boolean }) =>
     classNames('navbar__icon', { 'navbar__link--active': isActive });
 
+  
   return (
-    <div className="header">
-      <div className="header__wrapper">
-        <NavLink to="/" className="header__home">
-          <Logo className="header__logo" />
-        </NavLink>
-
-        <ul className="header__navbar navbar">
-          <li>
-            <NavLink to="/" className={getHeaderLinkClass}>
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/phones" className={getHeaderLinkClass}>
-              Phones
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/tablets" className={getHeaderLinkClass}>
-              Tablets
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/accessories" className={getHeaderLinkClass}>
-              Accessories
-            </NavLink>
-          </li>
-        </ul>
-      </div>
-
-      <div className="header__icons">
-        {(isMobile || isMenuOpen) && (
-          <button className="header__menu__toggler" onClick={toggleMenu}>
-            {isMenuOpen ? <Cancel /> : <MenuIcon />}
-          </button>
-        )}
-
-        <div className="wrapper">
-          <NavLink to="/favourites" className={getHeaderIconClass}>
-            <Favourites />
-            <SelectedItemsCircle type="favourite" />
+    <>
+      <div className="header">
+        <div className="header__wrapper">
+          <NavLink to="/" className="header__home">
+            <Logo className="header__logo" />
           </NavLink>
-          <NavLink to="/cart" className={getHeaderIconClass}>
-            <ShoppingCart />
-            <SelectedItemsCircle type="cart" />
-          </NavLink>
+
+          <ul className="header__navbar navbar">
+            <li>
+              <NavLink to="/" className={getHeaderLinkClass}>
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/phones" className={getHeaderLinkClass}>
+                Phones
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/tablets" className={getHeaderLinkClass}>
+                Tablets
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/accessories" className={getHeaderLinkClass}>
+                Accessories
+              </NavLink>
+            </li>
+          </ul>
         </div>
-      </div>
 
-      {isMenuOpen && isMobile && <Menu onCloseMenu={toggleMenu} />}
-    </div>
+        <div className="header__icons">
+          {(isMobile || isMenuOpen) && (
+            <button className="header__menu__toggler" onClick={toggleMenu}>
+              {isMenuOpen ? <Cancel /> : <MenuIcon />}
+            </button>
+          )}
+
+          <div className="wrapper">
+            <NavLink to="/favourites" className={getHeaderIconClass}>
+              <Favourites />
+              <SelectedItemsCircle type="favourite" />
+            </NavLink>
+            <NavLink to="/cart" className={getHeaderIconClass}>
+              <ShoppingCart />
+              <SelectedItemsCircle type="cart" />
+            </NavLink>
+          </div>
+        </div>
+
+        {isMenuOpen && isMobile && <Menu onCloseMenu={toggleMenu} />}
+      </div>
+    </>
   );
 };
