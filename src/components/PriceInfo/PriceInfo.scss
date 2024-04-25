@@ -1,5 +1,5 @@
 @import '../../styles/utils/mixins.scss';
-@import '../../styles/utils/variables.scss';
+@import '../../styles/utils/variables.module.scss';
 
 a {
   text-decoration: none;
@@ -46,6 +46,48 @@ a {
 
     cursor: pointer;
     padding-left: 3px;
+  }
+
+  &__capacity {
+    position: relative;
+    margin-bottom: 45px;
+  
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -24px;
+      width: 100%;
+  
+      border-bottom: $element-color solid 1px;
+    }
+  
+    &__option {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 32px;
+      width: 63px;
+  
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21px;
+      color: $primary-color;
+  
+      border: 1px solid $element-color;
+      background-color: $white-color;
+  
+      @include hover(border, 1px solid $primary-color);
+  
+      &:hover {
+        cursor: pointer;
+      }
+  
+      &--active {
+        background-color: $primary-color;
+        color: $white-color;
+        border: 1px solid $primary-color;
+      }
+    }
   }
 
   &__top-text {
@@ -214,48 +256,6 @@ a {
 
     &--midnightgreen {
       background: #464f47;
-    }
-  }
-}
-
-.capacity {
-  position: relative;
-  margin-bottom: 45px;
-
-  &::before {
-    content: '';
-    position: absolute;
-    bottom: -24px;
-    width: 100%;
-
-    border-bottom: $element-color solid 1px;
-  }
-
-  &__option {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 32px;
-    width: 63px;
-
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 21px;
-    color: $primary-color;
-
-    border: 1px solid $element-color;
-    background-color: $white-color;
-
-    @include hover(border, 1px solid $primary-color);
-
-    &:hover {
-      cursor: pointer;
-    }
-
-    &--active {
-      background-color: $primary-color;
-      color: $white-color;
-      border: 1px solid $primary-color;
     }
   }
 }

@@ -1,0 +1,121 @@
+@import '../../styles/utils/mixins.scss';
+@import '../../styles/utils/variables.module.scss';
+
+.images {
+  @include on-tablet {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+}
+
+.images__main-image {
+  max-height: 275px !important;
+
+  @include on-tablet {
+    max-height: 287px !important;
+    max-width: 287px !important;
+  }
+
+  @include on-medium-tablet {
+    max-height: 353px !important;
+    max-width: 353px !important;
+  }
+
+  @include on-desktop {
+    max-height: 464px !important;
+  }
+}
+
+.swiper-slide {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.images__swiper--sidebar {
+  height: 49px;
+  width: 288px;
+
+  @include on-tablet {
+    height: 207px;
+  }
+  @include on-medium-tablet {
+    height: 253px;
+  }
+
+  @include on-desktop {
+    height: 464px;
+    width: 464px;
+  }
+
+  .swiper-wrapper {
+    gap: 8px;
+
+    @include on-tablet {
+      width: 35px !important;
+      height: 253px !important;
+    }
+    @include on-medium-tablet {
+      width: 43px !important;
+      height: 309px !important;
+    }
+
+    @include on-desktop {
+      width: 80px !important;
+      height: 464px !important;
+      gap: 16px;
+    }
+  }
+
+  .swiper-slide {
+    border: 1px solid $element-color;
+    width: 49px !important;
+
+    @include on-tablet {
+      width: 35px !important;
+      height: 35px !important;
+    }
+
+    @include on-medium-tablet {
+      width: 43px !important;
+      height: 43px !important;
+    }
+
+    @include on-desktop {
+      width: 80px !important;
+      height: 80px !important;
+    }
+  }
+
+  .swiper-slide-thumb-active {
+    border: 1px solid $primary-color;
+  }
+}
+
+.images__swiper--main {
+  margin-bottom: 16px;
+}
+
+.images__sidebar-image {
+  width: 40px !important;
+  height: 40px !important;
+  object-fit: contain;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  @include on-tablet {
+    width: 29px !important;
+    height: 29px !important;
+  }
+  @include on-medium-tablet {
+    width: 36px !important;
+    height: 36px !important;
+  }
+
+  @include on-desktop {
+    width: 76px !important;
+    height: 76px !important;
+  }
+}

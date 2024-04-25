@@ -1,11 +1,16 @@
 import React from 'react';
-import minus from '../../assets/icons/minus.svg';
-import plus from '../../assets/icons/plus.svg';
-import close from '../../assets/icons/close.svg';
-import './CartItem.scss';
+
 import { useAppContext } from '../../hooks/useAppContext';
 import { CartProduct } from '../../types/CartProduct';
 import { Link } from 'react-router-dom';
+import classNames from 'classnames';
+
+import Minus from '../../assets/icons/minus.svg?react';
+import Plus from '../../assets/icons/plus.svg?react';
+import Close from '../../assets/icons/close.svg?react';
+import './CartItem.scss';
+
+import variables from '../../styles/utils/variables.module.scss';
 
 interface Props {
   item: CartProduct;
@@ -15,6 +20,8 @@ export const CartItem: React.FC<Props> = ({ item }) => {
   const { id, name, image, price, quantity: initialQuantity } = item;
   const { removeFromCart, updateQuantity } = useAppContext();
   const [quantity, setQuantity] = React.useState(initialQuantity);
+
+  const isDisabled = quantity === 1;
 
   const handleClickPlus = () => {
     const newQuantity = quantity + 1;
@@ -36,7 +43,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
     <div className="card-item__container">
       <div className="card-item">
         <button onClick={handleRemoveFromCart} className="cross">
-          <img src={close} alt="union" />
+          <Close />
         </button>
         <div className="cart-item__img">
           <img src={image} alt={name} />
@@ -47,17 +54,23 @@ export const CartItem: React.FC<Props> = ({ item }) => {
         <div className="cart-item__buttons">
           <div className="cart-item__buttons-icons">
             <button
-             className={"cart-item__buttons-icon" + (quantity === 1 ? ' disabled' : '')}
+              className={classNames('cart-item__buttons-icon', {
+                'icon--disabled': isDisabled,
+              })}
               onClick={handleClickMinus}
-              disabled={quantity === 1}
+              disabled={isDisabled}
             >
-              <img src={minus} alt="minus" className={quantity === 1 ? 'disabled' : ''}/>
+              <Minus
+                color={
+                  isDisabled ? variables.iconColor : variables.primaryColor
+                }
+              />
             </button>
           </div>
           <div className="cart-item__count">{quantity}</div>
 
           <button className="cart-item__buttons-icon" onClick={handleClickPlus}>
-            <img src={plus} alt="plus" />
+            <Plus />
           </button>
         </div>
         <p className="cart-item__price">{price * quantity}</p>

@@ -6,8 +6,8 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import slidePhones from '../../assets/images/slide-phones.png';
 import slideTablets from '../../assets/images/slide-tablets.png';
 import slideWatches from '../../assets/images/slide-watches.png';
-import chevronLeft from '../../assets/icons/chevron-left.svg';
-import chevronRight from '../../assets/icons/chevron-right.svg';
+import ChevronLeft from '../../assets/icons/chevron-left.svg?react';
+import ChevronRight from '../../assets/icons/chevron-right.svg?react';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -27,7 +27,7 @@ export const HomeSlider: React.FC = () => {
   return (
     <div className="slider">
       <button className="slider__button" onClick={() => swiper.slidePrev()}>
-        <img src={chevronLeft} />
+        <ChevronLeft />
       </button>
 
       <Swiper
@@ -55,7 +55,7 @@ export const HomeSlider: React.FC = () => {
       </Swiper>
 
       <button className="slider__button" onClick={() => swiper.slideNext()}>
-        <img src={chevronRight} />
+        <ChevronRight />
       </button>
     </div>
   );

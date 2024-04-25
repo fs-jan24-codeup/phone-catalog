@@ -1,6 +1,12 @@
 @import '../../styles/utils/mixins.scss';
 
 .product-slider-container {
+  &__title {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 128%;
+    letter-spacing: -0.01em;
+  }
   &__wrapper-title-btn {
     display: flex;
     flex-direction: row;
@@ -11,25 +17,6 @@
     display: flex;
     flex-direction: row;
     gap: 16px;
-  }
-  &__btn {
-    width: 32px;
-    height: 32px;
-    background-color: transparent;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    &--plus {
-      color: $primary-color;
-      border: 1px solid $icon-color;
-    }
-
-    &--minus {
-      color: $primary-color;
-      border: 1px solid $icon-color;
-    }
   }
 }
 
@@ -45,10 +32,15 @@
   background-size: 50%;
   background-repeat: no-repeat;
   background-position: center;
-}
 
-.swiper-button-disabled {
-  border: 1px solid $element-color;
+  &:hover {
+    border: 1px solid $primary-color;
+  }
+
+  &:disabled {
+    border: 1px solid $element-color;
+    pointer-events: none;
+  }
 }
 
 .products-swiper .swiper-slide {

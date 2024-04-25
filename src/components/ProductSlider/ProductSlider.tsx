@@ -1,57 +1,50 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css/navigation';
 import 'swiper/css';
-import SwiperCore from 'swiper';
+
 import { Navigation } from 'swiper/modules';
 
 import { Product } from '../../types/Product';
 import { CardLayout } from '../CardLayout';
 import './ProductSlider.scss';
-import arrowLeft from '../../assets/icons/chevron-left.svg';
-import arrowRight from '../../assets/icons/chevron-right.svg';
-
-SwiperCore.use([Navigation]);
+import ArrowLeft from '../../assets/icons/chevron-left.svg?react';
+import ArrowRight from '../../assets/icons/chevron-right.svg?react';
 
 type Props = {
+  id: string;
   title: string;
   products: Product[];
 };
 
-export const ProductSlider: React.FC<Props> = ({ title, products }) => {
-  const swiperRef = useRef<any>(null);
+export const ProductSlider: React.FC<Props> = ({ id, title, products }) => {
+  const [swiper, setSwiper] = useState<any>(null);
+  const [isPrevDisabled, setIsPrevDisabled] = useState(true);
+  const [isNextDisabled, setIsNextDisabled] = useState(false);
 
-  useEffect(() => {
-    if (swiperRef.current && swiperRef.current.swiper) {
-      swiperRef.current.swiper.slideNext();
-    }
-  }, []);
+  const handleDisable = () => {
+    setIsPrevDisabled(swiper?.realIndex === 0);
+    setIsNextDisabled(swiper?.progress === 1);
+  };
 
   return (
     <div className="product-slider-container">
-      <h2>{title}</h2>
       <div className="product-slider-container__wrapper-title-btn">
-        <h2>{title}</h2>
+        <h2 className="product-slider-container__title">{title}</h2>
         <div className="product-slider-container__btn--wrapper">
           <button
-            onClick={() => swiperRef.current?.swiper?.slidePrev()}
-            className="custom-prev-button"
+            onClick={() => swiper.slidePrev()}
+            className={'custom-prev-button'}
+            disabled={isPrevDisabled}
           >
-            <img
-              src={arrowLeft}
-              alt="Prev"
-              className="product-slider-container__arrow-left"
-            />
+            <ArrowLeft />
           </button>
           <button
-            onClick={() => swiperRef.current?.swiper?.slideNext()}
-            className="custom-next-button"
+            onClick={() => swiper.slideNext()}
+            className={'custom-next-button'}
+            disabled={isNextDisabled}
           >
-            <img
-              src={arrowRight}
-              alt="Next"
-              className="product-slider-container__arrow-right"
-            />
+            <ArrowRight />
           </button>
         </div>
       </div>
@@ -66,10 +59,12 @@ export const ProductSlider: React.FC<Props> = ({ title, products }) => {
           },
         }}
         navigation={{
-          prevEl: '.custom-prev-button',
-          nextEl: '.custom-next-button',
+          prevEl: `.custom-prev-button-${id}`,
+          nextEl: `.custom-next-button-${id}`,
         }}
-        ref={swiperRef}
+        onSwiper={setSwiper}
+        modules={[Navigation]}
+        onSlideChange={handleDisable}
         className="products-swiper"
       >
         {products.map(product => (
