@@ -79,7 +79,7 @@
     font-size: 12px;
     line-height: 92%;
     letter-spacing: 0.04em;
-    color: $secondary-color;
+    color: var(--secondary-color);
     text-transform: uppercase;
 
     @include hover(color, var(--primary-color));

@@ -1,7 +1,5 @@
 @import '../../styles/utils/mixins.scss';
 @import '../../styles/utils/variables.module.scss';
-@import '../../styles/utils/darkModeVariables.module.scss';
-
 
 .header {
   display: flex;
@@ -77,7 +75,7 @@
     @include hover(color, var(--primary-color));
 
     &--active {
-      color: $primary-color;
+      color: var(--primary-color);
 
       &::after {
         content: '';
@@ -97,7 +95,8 @@
     height: 48px;
     width: 48px;
 
-    border-left: 1px solid var(--element-color);
+    // filter: invert(92%) sepia(14%) saturate(65%) hue-rotate(197deg) brightness(100%) contrast(101%);
+    // border-left: 1px solid var(--primary-color);
 
     @include on-tablet {
       display: flex;

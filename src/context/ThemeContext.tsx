@@ -9,29 +9,33 @@ type Props = {
   children: React.ReactNode;
 };
 
+enum Theme {
+  dark = 'dark',
+  light = 'light',
+}
+
 export const ThemeContextProvider: React.FC<Props> = ({ children }) => {
   const themes = {
     dark: 'dark',
     light: 'light',
   };
 
-  const getTheme = () => {
+  const getTheme = (): Theme => {
     const theme = `${window?.localStorage?.getItem('theme')}`;
     if (Object.values(themes).includes(theme)) {
-      return theme;
+      return theme as Theme;
     }
     const userMedia = window.matchMedia('(prefers-color-scheme: light)');
     if (userMedia.matches) {
-      return themes.light;
+      return Theme.light;
     }
 
-    return themes.dark;
+    return Theme.dark;
   };
-  const [theme, setTheme] = React.useState(getTheme);
+  const [theme, setTheme] = React.useState<'light' | 'dark'>(getTheme);
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
-    // document.documentElement.className = theme;
     localStorage.setItem('theme', theme);
   }, [theme]);
 

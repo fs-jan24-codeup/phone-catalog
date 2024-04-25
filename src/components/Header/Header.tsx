@@ -12,9 +12,6 @@ import Cancel from '../../assets/icons/close.svg?react';
 import ShoppingCart from '../../assets/icons/shopping-cart.svg?react';
 import Favourites from '../../assets/icons/favourites.svg?react';
 import './Header.scss';
-import { useThemeContext } from '../../hooks/useThemeContext';
-import { ThemeToggler } from '../ThemeToggler/ThemeToggler';
-import { ThemeContext } from '../../context/ThemeContext';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -62,22 +59,10 @@ export const Header = () => {
   const getHeaderIconClass = ({ isActive }: { isActive: boolean }) =>
     classNames('navbar__icon', { 'navbar__link--active': isActive });
 
-  const { theme, setTheme, themes } = useThemeContext();
-
+  
   return (
     <>
       <div className="header">
-        <ThemeContext.Consumer>
-          {({ theme, setTheme }) => (
-            <ThemeToggler
-              onChange={() => {
-                if (theme === themes.light) setTheme(themes.dark);
-                if (theme === themes.dark) setTheme(themes.light);
-              }}
-              value={theme === themes.dark}
-            />
-          )}
-        </ThemeContext.Consumer>
         <div className="header__wrapper">
           <NavLink to="/" className="header__home">
             <Logo className="header__logo" />

@@ -1,5 +1,6 @@
-import React from 'react'
-import styles from './ThemeToggler.module.scss'
+import React from 'react';
+import styles from './ThemeToggler.module.scss';
+
 type Props = {
   value: any;
   onChange: any;

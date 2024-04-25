@@ -19,10 +19,10 @@
 
   &__button {
     display: none;
-    background: none;
-    border: 1px solid $icon-color;
+    background: var(--button-color-selected);
+    border: 1px solid var(--icon-color);
 
-    @include hover(border, 1px solid $primary-color);
+    @include hover(border, 1px solid var(--primary-color));
 
     @include on-tablet {
       display: block;
@@ -37,8 +37,6 @@
 }
 
 .home-swiper .swiper-slide {
-  background: #fff;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -63,5 +61,5 @@
 }
 
 .home-swiper .swiper-pagination-bullet-active {
-  background-color: $primary-color;
+  background-color: var(--primary-color);
 }

@@ -8,13 +8,13 @@ import { ThemeContextProvider } from './context/ThemeContext';
 
 export const App: React.FC = () => {
   return (
-    <ThemeContextProvider >
+    <ThemeContextProvider>
       <AppContextProvider>
         <Header />
-        {/* <PageLayout>
+        <PageLayout>
           <Outlet />
         </PageLayout>
-        <Footer /> */}
+        <Footer />
       </AppContextProvider>
     </ThemeContextProvider>
   );
