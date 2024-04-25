@@ -1,5 +1,5 @@
 @import '../../styles/utils/mixins.scss';
-@import '../../styles/utils/variables.scss';
+@import '../../styles/utils/variables.modules.scss';
 
 .skeleton {
   .card__container {
@@ -43,7 +43,7 @@
     width: 100%;
     height: 1px;
 
-    background-color: $element-color;
+    background-color: var(--element-color);
   }
 
   &__characteristics {
