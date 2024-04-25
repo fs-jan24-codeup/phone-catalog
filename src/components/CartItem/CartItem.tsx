@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useAppContext } from '../../hooks/useAppContext';
 import { CartProduct } from '../../types/CartProduct';
@@ -11,6 +11,7 @@ import Close from '../../assets/icons/close.svg?react';
 import './CartItem.scss';
 
 import variables from '../../styles/utils/variables.module.scss';
+import { CartItemSkeleton } from './CartItemSkeleton';
 
 interface Props {
   item: CartProduct;
@@ -53,7 +54,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
       ) : (
         <div className="card-item">
           <button onClick={handleRemoveFromCart} className="cross">
-            <img src={close} alt="union" />
+            <Close />
           </button>
           <div className="cart-item__img">
             <img src={image} alt={name} />
@@ -64,17 +65,16 @@ export const CartItem: React.FC<Props> = ({ item }) => {
           <div className="cart-item__buttons">
             <div className="cart-item__buttons-icons">
               <button
-                className={
-                  'cart-item__buttons-icon' +
-                  (quantity === 1 ? ' disabled' : '')
-                }
+                className={classNames('cart-item__buttons-icon', {
+                  'icon--disabled': isDisabled,
+                })}
                 onClick={handleClickMinus}
-                disabled={quantity === 1}
+                disabled={isDisabled}
               >
-                <img
-                  src={minus}
-                  alt="minus"
-                  className={quantity === 1 ? 'disabled' : ''}
+                <Minus
+                  color={
+                    isDisabled ? variables.iconColor : variables.primaryColor
+                  }
                 />
               </button>
             </div>
@@ -84,7 +84,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
               className="cart-item__buttons-icon"
               onClick={handleClickPlus}
             >
-              <img src={plus} alt="plus" />
+              <Plus />
             </button>
           </div>
           <p className="cart-item__price">{price * quantity}</p>
