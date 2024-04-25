@@ -1,11 +1,13 @@
 @import '../../styles/utils/mixins.scss';
 @import '../../styles/utils/variables.module.scss';
+@import '../../styles/utils/darkModeVariables.module.scss';
+
 
 .header {
   display: flex;
   justify-content: space-between;
   min-height: 48px;
-  border-bottom: 1px solid $element-color;
+  border-bottom: 1px solid var(--element-color);
   box-sizing: border-box;
   font-weight: 800;
 
@@ -39,7 +41,7 @@
       height: 48px;
       width: 48px;
 
-      border-left: 1px solid $element-color;
+      border-left: 1px solid var(--element-color);
     }
   }
 
@@ -70,9 +72,9 @@
     font-size: 12px;
     text-decoration: none;
     text-transform: uppercase;
-    color: $secondary-color;
+    color: var(--secondary-color);
 
-    @include hover(color, $primary-color);
+    @include hover(color, var(--primary-color));
 
     &--active {
       color: $primary-color;
@@ -83,7 +85,7 @@
         bottom: 0;
         height: 3px;
         width: 100%;
-        background-color: $primary-color;
+        background-color: var(--primary-color);
       }
     }
   }
@@ -91,11 +93,11 @@
   &__icon {
     position: relative;
     display: none;
-   
+
     height: 48px;
     width: 48px;
 
-     border-left: 1px solid $element-color;
+    border-left: 1px solid var(--element-color);
 
     @include on-tablet {
       display: flex;
