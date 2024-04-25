@@ -32,9 +32,9 @@ export const Footer: React.FC = () => {
             Github
           </Link>
 
-          <Link to="/" className="footer__link">
+          <NavLink to="/contacts" className="footer__link">
             Contacts
-          </Link>
+          </NavLink>
 
           <Link to="/" className="footer__link">
             Rights
