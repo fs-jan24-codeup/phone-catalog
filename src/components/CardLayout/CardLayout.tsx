@@ -9,17 +9,25 @@ type Props = {
 };
 
 export const CardLayout: React.FC<Props> = ({ good }) => {
-  const { images, name, priceRegular, priceDiscount, ram, screen, capacity } =
-    good;
+  const {
+    images,
+    name,
+    priceRegular,
+    priceDiscount,
+    ram,
+    screen,
+    capacity,
+    category,
+  } = good;
 
   return (
     <article className="card">
       <div className="card__container">
-        <Link className="card__link" to={`/phones/${good.id}`}>
+        <Link className="card__link" to={`/${category}/${good.id}`}>
           <img src={images[0]} alt={name} className="card__image" />
         </Link>
 
-        <Link className="card__name" to={`/phones/${good.id}`}>
+        <Link className="card__name" to={`/${category}/${good.id}`}>
           {name}
         </Link>
 

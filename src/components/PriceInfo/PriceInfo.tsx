@@ -1,15 +1,43 @@
-import { Link, useParams } from 'react-router-dom';
-import cn from 'classnames';
-import { ButtonAddToCard } from '../ButtonAddToCard';
-import './PriceInfo.scss';
 import { useEffect, useState } from 'react';
-import { getProduct } from '../../utils/fetchData';
+
+import cn from 'classnames';
+import { Link, useLocation, useParams } from 'react-router-dom';
+
 import { Product } from '../../types/Product';
+import { getProduct } from '../../utils/fetchData';
+import { ButtonAddToCard } from '../ButtonAddToCard';
 import { ButtonAddToFavorites } from '../ButtonAddToFavorites';
+
+import './PriceInfo.scss';
+
+const getNewLink = (productId: string): string => {
+  const segments = productId.split('-');
+  const suffixToRemove = productId.includes('space-gray') ? 3 : 2;
+
+  const newSegments = segments.slice(0, -suffixToRemove);
+  const newLink = newSegments.join('-');
+
+  return newLink;
+};
+
+const getValidColors = (colors: string[]): string[] => {
+  return colors.map(color => color.replace(/\s+/g, '-'));
+};
+
+const getValidColor = (color: string): string => {
+  return color.replace(/\s+/g, '-');
+};
 
 export const PriceInfo = () => {
   const [good, setGood] = useState<Product | null>(null);
+  const [activeColor, setActiveColor] = useState('');
+  const [activeCapacity, setActiveCapacity] = useState('');
+
   const { productId } = useParams();
+
+  const { pathname } = useLocation();
+
+  const BASE_PATH = pathname.split('/')[1];
 
   const {
     capacityAvailable = [],
@@ -22,15 +50,29 @@ export const PriceInfo = () => {
     priceDiscount,
   } = good || {};
 
-  const isActive = false;
+  const colors = getValidColors(colorsAvailable);
 
   useEffect(() => {
     if (productId) {
-      getProduct('./api/phones.json', productId)
-        .then(product => setGood(product))
+      getProduct(`./api/${BASE_PATH}.json`, productId)
+        .then(product => {
+          setActiveColor(getValidColor(product.color));
+          setActiveCapacity(product.capacity.toLowerCase());
+          setGood(product);
+        })
         .catch(error => console.log(error));
     }
-  }, []);
+  }, [productId]);
+
+  const handleClickColor = (color: string) => {
+    setActiveColor(color);
+  };
+
+  const handleClickCapacity = (capacity: string) => {
+    setActiveCapacity(capacity.toLowerCase());
+  };
+
+  const link = getNewLink(productId || '');
 
   return (
     <>
@@ -40,37 +82,45 @@ export const PriceInfo = () => {
       </div>
 
       <div className="product-card">
-        <Link to="#">
-          <div className="product-card__options color">
-            {colorsAvailable.map(color => (
+        <div className="product-card__options color">
+          {colors.map(color => (
+            <Link
+              key={color}
+              to={`/${BASE_PATH}/${link}-${activeCapacity}-${color}`}
+            >
               <div
-                key={color}
-                className={cn('color__option', {
-                  'color__option--active': isActive,
+                onClick={() => handleClickColor(color)}
+                className={cn(`color__option color__option--${color}`, {
+                  'color__option--active': activeColor === color,
                 })}
-                style={{ backgroundColor: color }}
-              >
-                <span className="checkmark"></span>
-              </div>
-            ))}
-          </div>
-        </Link>
+              ></div>
+            </Link>
+          ))}
+        </div>
 
         <div className="product-card__top-text">Select capacity</div>
-        <Link to="#">
-          <div className="product-card__options product-card__capacity">
-            {capacityAvailable.map(capacity => (
-              <div
+        <div className="product-card__options capacity">
+          {capacityAvailable.map(capacity => {
+            const formattedCapacity = capacity.toLowerCase();
+            const isActive = activeCapacity === formattedCapacity;
+
+            return (
+              <Link
                 key={capacity}
-                className={cn('capacity__option', {
-                  'capacity__option--active': isActive,
-                })}
+                to={`/${BASE_PATH}/${link}-${formattedCapacity}-${activeColor}`}
               >
-                {capacity}
-              </div>
-            ))}
-          </div>
-        </Link>
+                <div
+                  onClick={() => handleClickCapacity(capacity)}
+                  className={cn('capacity__option', {
+                    'capacity__option--active': isActive,
+                  })}
+                >
+                  {capacity}
+                </div>
+              </Link>
+            );
+          })}
+        </div>
 
         <div className="product-card__price">
           <span className="product-card__price-new">{priceDiscount}</span>
