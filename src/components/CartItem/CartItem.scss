@@ -11,16 +11,16 @@
   background-color: var(--card-layout-bg-color);
 
   @include on-tablet {
-      margin-bottom: 24px;
-      height: 128px;
+    margin-bottom: 24px;
+    height: 128px;
   }
 
   @include on-desktop {
-      width: 752px;
+    width: 752px;
   }
 }
 
-.card-item {  
+.card-item {
   margin: 16px;
   height: auto;
   width: 100%;
@@ -28,17 +28,17 @@
   grid-template-columns: auto auto auto auto;
   grid-template-rows: auto 50% auto;
   justify-content: space-between;
-  
-    @include on-tablet {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: nowrap;
-      margin: 24px;
-      height: 128px;
-    }
+
+  @include on-tablet {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    margin: 24px;
+    height: 128px;
+  }
 }
 
 .cart-item__img {
@@ -87,22 +87,31 @@
   align-items: center;
   width: 32px;
   height: 32px;
-  border: 1px solid var(--element-color);
-  background: none;
+  background-color: var(--favourite-button-color);
+  border: 1px solid var(--cart-product-border-color);
 
-  @include hover (border, 1px solid var(--primary-color));
+  @include hover(border, 1px solid var(--button-hover-color));
 
   &:hover {
     cursor: pointer;
+    background-color: var(--button-hover-bg-color);
   }
 }
 
 .icon--disabled {
+  border: 1px solid var(--cart-product-disabled-color) !important;
+  cursor: default;
+  background-color: var(--card-layout-bg-color) !important;
+
   &:hover {
-    border: 1px solid var(--element-color);
-    cursor: default;
+    border: 1px solid var(--cart-product-disabled-color) !important;
+  }
+
+  svg {
+    color: var(--cart-product-disabled-color);
   }
 }
+
 
 .cart-item__count {
   margin: 0 25%;
@@ -121,10 +130,14 @@
   position: relative;
 
   @include on-tablet {
-      margin-left: 10%;
+    margin-left: 10%;
   }
 
   &::before {
-      content: '$';
+    content: '$';
   }
 }
+
+// color={
+//   isDisabled ? variables.iconColor : variables.primaryColor
+// }

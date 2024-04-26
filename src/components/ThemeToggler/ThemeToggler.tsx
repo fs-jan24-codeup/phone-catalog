@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './ThemeToggler.module.scss';
+import './ThemeToggler.scss'
 
 type Props = {
   value: any;
@@ -7,13 +7,14 @@ type Props = {
 }
 
 export const ThemeToggler:React.FC<Props> = ({ value, onChange }) => (
-  <label className={styles.switch} htmlFor="toggler">
+  <div className='toggle-container'>
     <input
-      id="toggler"
       type="checkbox"
+      id="check"
+      className='toggle'
       onClick={onChange}
       checked={value}
-      readOnly
     />
-  </label>
+    <label htmlFor="check">Dark Mode</label>
+  </div>
 )

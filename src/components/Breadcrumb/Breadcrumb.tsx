@@ -3,7 +3,7 @@ import React from 'react';
 import Home from '../../assets/icons/home.svg?react';
 import ChevronRight from '../../assets/icons/chevron-right.svg?react';
 import './Breadcrumb.scss';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import variables from '../../styles/utils/variables.module.scss';
 
 interface Segment {
@@ -11,9 +11,14 @@ interface Segment {
   displayName: string;
 }
 
-export const Breadcrumb: React.FC = () => {
+type Props = {
+  productName?: string;
+};
+
+export const Breadcrumb: React.FC<Props> = ({ productName }) => {
   const location = useLocation();
   const { pathname } = location;
+  const { productId } = useParams();
 
   const processedSegments = pathname
     .split('/')
@@ -49,7 +54,7 @@ export const Breadcrumb: React.FC = () => {
           />
           {index === processedSegments.length - 1 ? (
             <span className="breadcrumb__path breadcrumb__path--last">
-              {segment.displayName}
+              {productId ? productName : segment.displayName}
             </span>
           ) : (
             <Link

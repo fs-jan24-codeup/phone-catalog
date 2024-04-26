@@ -10,7 +10,6 @@ import Plus from '../../assets/icons/plus.svg?react';
 import Close from '../../assets/icons/close.svg?react';
 import './CartItem.scss';
 
-import variables from '../../styles/utils/variables.module.scss';
 import { CartItemSkeleton } from './CartItemSkeleton';
 
 interface Props {
@@ -71,11 +70,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
                 onClick={handleClickMinus}
                 disabled={isDisabled}
               >
-                <Minus
-                  color={
-                    isDisabled ? variables.iconColor : variables.primaryColor
-                  }
-                />
+                <Minus />
               </button>
             </div>
             <div className="cart-item__count">{quantity}</div>

@@ -48,15 +48,12 @@
 
 .products-swiper .swiper-slide {
   width: 237px;
-  height: 512px;
 
   @include on-tablet {
     width: 237px;
-    height: 512px;
   }
 
   @include on-desktop {
     width: 272px;
-    height: 506px;
   }
 }

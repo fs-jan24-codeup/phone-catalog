@@ -102,7 +102,7 @@ export const PriceInfo = () => {
         </div>
 
         <div className="product-card__top-text">{t('selectCapacity')}</div>
-        <div className="product-card__options capacity">
+        <div className="product-card__options product-capacity">
           {capacityAvailable.map(capacity => {
             const formattedCapacity = capacity.toLowerCase();
             const isActive = activeCapacity === formattedCapacity;
@@ -114,8 +114,8 @@ export const PriceInfo = () => {
               >
                 <div
                   onClick={() => handleClickCapacity(capacity)}
-                  className={cn('capacity__option', {
-                    'capacity__option--active': isActive,
+                  className={cn('product-capacity__option', {
+                    'product-capacity__option--active': isActive,
                   })}
                 >
                   {capacity}

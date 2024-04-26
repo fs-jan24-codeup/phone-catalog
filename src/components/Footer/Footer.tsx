@@ -49,9 +49,9 @@ export const Footer: React.FC = () => {
             {t('github')}
           </Link>
 
-          <Link to="/" className="footer__link">
+          <NavLink to="/contacts" className="footer__link">
             {t('contacts')}
-          </Link>
+          </NavLink>
 
           <Link to="/" className="footer__link">
             {t('rights')}

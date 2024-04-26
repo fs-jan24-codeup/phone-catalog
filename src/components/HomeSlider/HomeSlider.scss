@@ -22,7 +22,8 @@
     background: var(--button-color-selected);
     border: 1px solid var(--icon-color);
 
-    @include hover(border, 1px solid var(--primary-color));
+    @include hover(border, 1px solid var(--button-hover-color));
+    @include hover(background-color, var(--button-hover-bg-color));
 
     @include on-tablet {
       display: block;
@@ -58,8 +59,14 @@
   width: 14px;
   height: 4px;
   border-radius: 0%;
+  background-color: var(--home-slider-pagination);
 }
 
 .home-swiper .swiper-pagination-bullet-active {
-  background-color: var(--primary-color);
+  background-color: var(--home-slider-pagination-active);
+}
+
+.slide-link {
+  height: 100%;
+  width: 100%;
 }

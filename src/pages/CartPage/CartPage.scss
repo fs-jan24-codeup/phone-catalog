@@ -97,6 +97,7 @@
 
     &:hover {
       box-shadow: $hover-shadow;
+      background-color: var(--button-add-hover-bg-color);
     }
   }
 

@@ -23,10 +23,14 @@ export const Pagination: React.FC<Props> = ({
       onPageChange(page);
     }
 
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
+    const timeoutId = setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    }, 50);
+
+    return () => clearTimeout(timeoutId);
   };
 
   let startPage = Math.max(1, currentPage - Math.floor(VISIBLE_PAGES / 2));

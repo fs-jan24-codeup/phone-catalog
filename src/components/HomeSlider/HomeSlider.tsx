@@ -13,6 +13,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import './HomeSlider.scss';
+import { Link } from 'react-router-dom';
 
 export const HomeSlider: React.FC = () => {
   const [swiper, setSwiper] = useState<any>(null);
@@ -44,13 +45,19 @@ export const HomeSlider: React.FC = () => {
         className="home-swiper"
       >
         <SwiperSlide>
-          <img src={slidePhones}></img>
+          <Link to="/phones" className="slide-link">
+            <img src={slidePhones}></img>
+          </Link>
         </SwiperSlide>
         <SwiperSlide>
-          <img src={slideTablets}></img>
+          <Link to="/tablets" className="slide-link">
+            <img src={slideTablets}></img>
+          </Link>
         </SwiperSlide>
         <SwiperSlide>
-          <img src={slideWatches}></img>
+          <Link to="/accessories" className="slide-link">
+            <img src={slideWatches}></img>
+          </Link>
         </SwiperSlide>
       </Swiper>
 
