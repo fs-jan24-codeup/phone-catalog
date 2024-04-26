@@ -12,13 +12,21 @@ import ShoppingCart from '../../assets/icons/shopping-cart.svg?react';
 import Favourites from '../../assets/icons/favourites.svg?react';
 import './Header.scss';
 import { Search } from '../Search';
+import SearchIcon from '../../assets/icons/search.svg?react';
+import Close from '../../assets/icons/close.svg?react';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const toggleSearch = () => {
+    setIsMenuOpen(false);
+    setIsSearchOpen(prev => !prev);
   };
 
   useEffect(() => {
@@ -91,9 +99,18 @@ export const Header = () => {
       </div>
 
       <div className="header__right">
-        <Search />
-
         <div className="header__icons">
+          {isSearchOpen && (
+            <div className="search-wrapper">
+              <Search />
+              <button className="header__search" onClick={toggleSearch}>
+                <Close />
+              </button>
+            </div>
+          )}
+          <button className="header__search" onClick={toggleSearch}>
+            {isSearchOpen ? <Close /> : <SearchIcon />}
+          </button>
           {(isMobile || isMenuOpen) && (
             <button className="header__menu__toggler" onClick={toggleMenu}>
               {isMenuOpen ? <Cancel /> : <MenuIcon />}
