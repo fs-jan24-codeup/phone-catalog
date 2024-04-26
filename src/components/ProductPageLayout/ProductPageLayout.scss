@@ -9,6 +9,10 @@
 }
 
 .product {
+  &__title, &__price {
+    color: var(--primary-color);
+  }
+
   &__grid {
     @include page-grid;
   }

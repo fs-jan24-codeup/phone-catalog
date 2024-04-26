@@ -39,13 +39,14 @@
 
       &:disabled {
         pointer-events: none;
+        background-color: var(--pagination-disabled-bg-color);
       }
     }
 
     &--active {
       background-color: var(--button-pagination-color);
       color: var(--white-color);
-      border: 1px solid var(--primary-color);
+      border: 1px solid var(--pagination-active-border-color);
     }
   }
 }

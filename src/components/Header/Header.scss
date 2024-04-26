@@ -6,7 +6,7 @@
   display: flex;
   justify-content: space-between;
   min-height: 48px;
-  border-bottom: 1px solid var(--element-color);
+  border-bottom: 1px solid var(--header-border-color);
   box-sizing: border-box;
   font-weight: 800;
 
@@ -35,6 +35,8 @@
 
   &__logo {
     padding-left: 16px;
+    background-color: var(--background-color);
+    color: (--primary-color);
   }
 
   &__icons {
@@ -54,7 +56,7 @@
       height: 48px;
       width: 48px;
 
-      border-left: 1px solid var(--element-color);
+      border-left: 1px solid var(--header-border-color);
     }
   }
 
@@ -123,6 +125,17 @@
         height: 3px;
         width: 100%;
         background-color: var(--primary-color);
+        transition: width 0.1s ease-in-out;
+        animation: grow-border 0.1s ease-in-out forwards;
+      }
+
+      @keyframes grow-border {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
       }
     }
   }
@@ -133,8 +146,7 @@
 
     height: 48px;
     width: 48px;
-
-    border-left: 1px solid var(--element-color);
+    border-left: 1px solid var(--header-border-color);
 
     @include on-medium-tablet {
       display: flex;
