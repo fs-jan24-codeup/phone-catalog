@@ -33,6 +33,8 @@
   --footer-border-color: #E2E6E9;
   --footer-hover-border-color: #313237;
   --footer-hover-bg-color: #fff;
+  --home-slider-pagination: gray;
+  --home-slider-pagination-active: gray;
 }
 
 [data-theme='dark'] {
@@ -70,6 +72,8 @@
   --footer-border-color: #323542;
   --footer-hover-border-color: #323542;
   --footer-hover-bg-color: #4A4D58;
+  --home-slider-pagination: #fff;
+  --home-slider-pagination-active: #F1F2F9;
 }
 
 $small-tablet-min-width: 640px;
