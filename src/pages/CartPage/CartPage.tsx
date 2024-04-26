@@ -4,7 +4,7 @@ import './CartPage.scss';
 import { CartItem } from '../../components/CartItem/CartItem';
 import { useAppContext } from '../../hooks/useAppContext';
 import { Modal } from '../../components/Modal/Modal';
-import orderSuccessul from '../../assets/images/order-success.gif';
+import orderSuccessul from '../../assets/images/order-received.gif';
 import emptyCart from '../../assets/images/empty-cart.gif';
 import { CartSummarySkeleton } from './CartSummarySkeleton';
 import { GoBack } from '../../components/GoBack';
@@ -83,7 +83,14 @@ export const CartPage: React.FC = () => {
           </div>
         ) : orderConfirmed ? (
           <div className="cart__empty">
-            <img src={orderSuccessul} alt="Thank you for your purchase" />
+            <h1 className="cart__empty--title">
+              {t('yourOrderHasBeenPlacedSuccessfuly')}
+            </h1>
+            <img
+              src={orderSuccessul}
+              alt="Thank you for your purchase"
+              className="cart__empty--img"
+            />
           </div>
         ) : (
           <div className="cart__empty">
