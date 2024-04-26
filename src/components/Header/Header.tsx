@@ -17,12 +17,15 @@ import { useTranslation } from 'react-i18next';
 
 import SearchIcon from '../../assets/icons/search.svg?react';
 import Close from '../../assets/icons/close.svg?react';
+import { ThemeToggler } from '../ThemeToggler/ThemeToggler';
 
+import { useThemeContext } from '../../hooks/useThemeContext';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const { theme, setTheme, themes } = useThemeContext();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -115,6 +118,15 @@ export const Header = () => {
 
       <div className="header__right">
         <div className="header__icons">
+          <div className='header__switcher navbar__icon'>
+            <ThemeToggler
+              onChange={() => {
+                if (theme === themes.light) setTheme(themes.dark);
+                if (theme === themes.dark) setTheme(themes.light);
+              }}
+              value={theme === themes.dark}
+            />
+          </div>
           {isSearchOpen && (
             <div className="search-wrapper">
               <Search />

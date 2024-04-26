@@ -4,13 +4,10 @@ import { Link, NavLink } from 'react-router-dom';
 import Logo from '../../assets/images/logo.svg?react';
 import ArrowUp from '../../assets/icons/arrow_up.svg?react';
 import './Footer.scss';
-import { useThemeContext } from '../../hooks/useThemeContext';
-import { ThemeToggler } from '../ThemeToggler/ThemeToggler';
 import { useTranslation } from 'react-i18next';
 import { LanguagesSelector } from '../LanguagesSelector/LanguagesSelector';
 
 export const Footer: React.FC = () => {
-  const { theme, setTheme, themes } = useThemeContext();
 
   const { t } = useTranslation();
 
@@ -61,13 +58,6 @@ export const Footer: React.FC = () => {
         <div className="footer__anchor">
           <span className="footer__label"> {t('backToTop')}</span>
           <LanguagesSelector />
-          <ThemeToggler
-            onChange={() => {
-              if (theme === themes.light) setTheme(themes.dark);
-              if (theme === themes.dark) setTheme(themes.light);
-            }}
-            value={theme === themes.dark}
-          />
 
           <button
             onClick={scrollToTop}
