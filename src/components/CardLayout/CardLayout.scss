@@ -30,6 +30,11 @@ p {
     display: flex;
     align-items: center;
     padding-bottom: 10%;
+    transition: all $effect-duration ease-in-out;
+
+    &:hover {
+      scale: 1.1;
+    }
 
     @include on-tablet {
       padding-bottom: 0;
@@ -58,6 +63,10 @@ p {
     padding: 5vh;
     padding-top: 0;
     object-fit: contain;
+
+    &:hover {
+      width: 103%;
+    }
 
     @include on-tablet {
       padding: 0;
