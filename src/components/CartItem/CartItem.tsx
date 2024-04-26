@@ -10,7 +10,6 @@ import Plus from '../../assets/icons/plus.svg?react';
 import Close from '../../assets/icons/close.svg?react';
 import './CartItem.scss';
 
-import variables from '../../styles/utils/variables.module.scss';
 import { CartItemSkeleton } from './CartItemSkeleton';
 
 interface Props {
