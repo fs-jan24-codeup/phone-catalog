@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Product } from '../../types/Product';
 import '../CardLayout/CardLayout.scss';
 import { useAppContext } from '../../hooks/useAppContext';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   good: Product;
@@ -12,6 +13,8 @@ export const ButtonAddToCard: React.FC<Props> = ({ good }) => {
   const [isAddedToCart, setIsAddedToCart] = useState<boolean>(
     isItemInCart(good.id),
   );
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     setIsAddedToCart(isItemInCart(good.id));
@@ -29,7 +32,7 @@ export const ButtonAddToCard: React.FC<Props> = ({ good }) => {
       className={!isAddedToCart ? 'card__button--add' : 'card__button--remove'}
       onClick={handleAddToCart}
     >
-      {isAddedToCart ? 'Added to cart' : 'Add to cart'}
+      {isAddedToCart ? t('addedToCart') : t('addToCart')}
     </button>
   );
 };

@@ -12,8 +12,12 @@ import ShoppingCart from '../../assets/icons/shopping-cart.svg?react';
 import Favourites from '../../assets/icons/favourites.svg?react';
 import './Header.scss';
 import { Search } from '../Search';
+
+import { useTranslation } from 'react-i18next';
+
 import SearchIcon from '../../assets/icons/search.svg?react';
 import Close from '../../assets/icons/close.svg?react';
+
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -67,6 +71,17 @@ export const Header = () => {
   const getHeaderIconClass = ({ isActive }: { isActive: boolean }) =>
     classNames('navbar__icon', { 'navbar__link--active': isActive });
 
+  const { t } = useTranslation();
+
+  const { i18n } = useTranslation();
+
+  useEffect(() => {
+    const savedLanguage = localStorage.getItem('selectedLanguage');
+    if (savedLanguage) {
+      i18n.changeLanguage(savedLanguage);
+    }
+  }, [i18n]);
+
   return (
     <div className="header">
       <div className="header__wrapper">
@@ -77,22 +92,22 @@ export const Header = () => {
         <ul className="header__navbar navbar">
           <li>
             <NavLink to="/" className={getHeaderLinkClass}>
-              Home
+              {t('home')}
             </NavLink>
           </li>
           <li>
             <NavLink to="/phones" className={getHeaderLinkClass}>
-              Phones
+              {t('phones')}
             </NavLink>
           </li>
           <li>
             <NavLink to="/tablets" className={getHeaderLinkClass}>
-              Tablets
+              {t('tablets')}
             </NavLink>
           </li>
           <li>
             <NavLink to="/accessories" className={getHeaderLinkClass}>
-              Accessories
+              {t('accessories')}
             </NavLink>
           </li>
         </ul>

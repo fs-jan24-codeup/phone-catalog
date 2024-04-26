@@ -18,10 +18,6 @@ export const DropdownSort: React.FC<DropdownSortProps> = ({
   };
 
   return (
-    <Dropdown
-      value={value}
-      options={options}
-      onChange={handleOptionSelect}
-    />
+    <Dropdown value={value} options={options} onChange={handleOptionSelect} />
   );
 };

@@ -5,6 +5,7 @@ import { ButtonAddToFavorites } from '../ButtonAddToFavorites';
 import './CardLayout.scss';
 import { useEffect, useState } from 'react';
 import { CardSkeleton } from '../CardSkeleton';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   good: Product;
@@ -12,6 +13,8 @@ type Props = {
 
 export const CardLayout: React.FC<Props> = ({ good }) => {
   const { productId } = useParams();
+
+  const { t } = useTranslation();
 
   const {
     images,
@@ -40,43 +43,46 @@ export const CardLayout: React.FC<Props> = ({ good }) => {
   }, []);
 
   return (
-
     <article className={`card ${isLoading ? 'skeleton' : ''}`}>
       {isLoading ? (
         <CardSkeleton />
       ) : (
         <div className="card__container">
-          <Link className="card__link" to={`/${category}/${good.id}`} onClick={scrollToTop}>
+          <Link
+            className="card__link"
+            to={`/${category}/${good.id}`}
+            onClick={scrollToTop}
+          >
             <img src={images[0]} alt={name} className="card__image" />
           </Link>
-        <Link
-          onClick={scrollToTop}
-          className="card__name"
-          to={`/${category}/${good.id}`}
-        >
-          {name}
-        </Link>
+          <Link
+            onClick={scrollToTop}
+            className="card__name"
+            to={`/${category}/${good.id}`}
+          >
+            {name}
+          </Link>
 
-        <div className="card__prices">
-          <div className="card__price--discount">{`${priceDiscount}$`}</div>
-          <div className="card__price">{`${priceRegular}$`}</div>
-        </div>
+          <div className="card__prices">
+            <div className="card__price--discount">{`${priceDiscount}$`}</div>
+            <div className="card__price">{`${priceRegular}$`}</div>
+          </div>
 
           <div className="card__breakline"></div>
 
           <div className="card__characteristics characteristics">
             <div className="screen">
-              <p className="characteristics--name">Screen</p>
+              <p className="characteristics--name">{t('screen')}</p>
               <p className="characteristics--value">{screen}</p>
             </div>
 
             <div className="capacity">
-              <p className="characteristics--name">Capacity</p>
+              <p className="characteristics--name">{t('capacity')}</p>
               <p className="characteristics--value">{capacity}</p>
             </div>
 
             <div className="ram">
-              <p className="characteristics--name">RAM</p>
+              <p className="characteristics--name">{t('RAM')}</p>
               <p className="characteristics--value">{ram}</p>
             </div>
 

@@ -1,11 +1,13 @@
+import { useTranslation } from 'react-i18next';
 import { Product } from '../../types/Product';
 import './TechSpecs.scss';
 
 type Props = {
-    good: Product | null;
-}
+  good: Product | null;
+};
 
 export const TechSpecs: React.FC<Props> = ({ good }) => {
+  const { t } = useTranslation();
 
   if (!good) return null;
 
@@ -22,13 +24,15 @@ export const TechSpecs: React.FC<Props> = ({ good }) => {
   };
 
   return (
-    <div className='specs'>
-      <h1 className='specs__title line'>Tech specs</h1>
-      <div className='specs__description'>
+    <div className="specs">
+      <h1 className="specs__title line">{t('techSpecs')}</h1>
+      <div className="specs__description">
         {Object.entries(specs).map(([key, value]) => (
-          <div className='specs__container' key={key}>
-            <p className='specs_subtitle'>{key.charAt(0).toUpperCase() + key.slice(1)}</p>
-            <p className='specs_text'>{value}</p>
+          <div className="specs__container" key={key}>
+            <p className="specs_subtitle">
+              {key.charAt(0).toUpperCase() + key.slice(1)}
+            </p>
+            <p className="specs_text">{value}</p>
           </div>
         ))}
       </div>

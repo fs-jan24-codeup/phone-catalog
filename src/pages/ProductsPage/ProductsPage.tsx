@@ -12,7 +12,7 @@ import { QuantitySkeleton } from './QuantitySkeleton';
 
 import { DropdownSort } from '../../components/Dropdown/DropdownSort';
 import { DropdownAmount } from '../../components/Dropdown/DropdownAmount';
-
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   title: string;
@@ -35,9 +35,10 @@ export const ProductsPage: React.FC<Props> = ({ title, products }) => {
     return itemsPerPageParam ? parseInt(itemsPerPageParam) : 4;
   });
 
-
   const [isLoadingTitle, setIsLoadingTitle] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -95,12 +96,14 @@ export const ProductsPage: React.FC<Props> = ({ title, products }) => {
       {isLoadingTitle ? (
         <QuantitySkeleton />
       ) : (
-        <p className="product-page__quantity">{products.length} models</p>
+        <p className="product-page__quantity">
+          {products.length} {t('models')}
+        </p>
       )}
 
       <div className="product-page__filters">
         <div className="product-page__filter product-page__filter--sort">
-          <label className="select-label">Sort by</label>
+          <label className="select-label">{t('sortBy')}</label>
           <DropdownSort
             value={sortBy}
             onChange={(selectedSort: Sort) => setSortBy(selectedSort)}
@@ -114,7 +117,7 @@ export const ProductsPage: React.FC<Props> = ({ title, products }) => {
         </div>
 
         <div className="product-page__filter product-page__filter--items">
-          <label className="select-label">Items on page</label>
+          <label className="select-label">{t('itemsOnPage')}</label>
           <DropdownAmount
             value={itemsPerPage}
             onChange={(selectedItemsPerPage: number) =>

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import accessories from '../../assets/images/accessories.png';
 import tablets from '../../assets/images/tablets.png';
@@ -14,6 +15,8 @@ export const CategoriesSection: React.FC = () => {
     accessories: 0,
   });
 
+  const { t } = useTranslation();
+
   useEffect(() => {
     async function fetchData() {
       const counts = await fetchModelsCount();
@@ -25,7 +28,7 @@ export const CategoriesSection: React.FC = () => {
 
   return (
     <div className="categories">
-      <h2 className="categories__title">Shop by category</h2>
+      <h2 className="categories__title"> {t('shopByCategory')}</h2>
       <div className="categories__content">
         <div className="categories__content__section">
           <NavLink to="/phones" className="categories__content__link">
@@ -35,9 +38,9 @@ export const CategoriesSection: React.FC = () => {
               className="categories__content__image"
             />
           </NavLink>
-          <p className="categories__content__item">Mobile phones</p>
+          <p className="categories__content__item"> {t('mobilePhones')}</p>
           <p className="categories__content__quantity">
-            {modelCounts.phones} models
+            {modelCounts.phones} {t('models')}
           </p>
         </div>
 
@@ -49,9 +52,9 @@ export const CategoriesSection: React.FC = () => {
               className="categories__content__image"
             />
           </NavLink>
-          <p className="categories__content__item">Tablets</p>
+          <p className="categories__content__item">{t('tablets')}</p>
           <p className="categories__content__quantity">
-            {modelCounts.tablets} models
+            {modelCounts.tablets} {t('models')}
           </p>
         </div>
 
@@ -63,9 +66,9 @@ export const CategoriesSection: React.FC = () => {
               className="categories__content__image"
             />
           </NavLink>
-          <p className="categories__content__item">Accessories</p>
+          <p className="categories__content__item">{t('accessories')}</p>
           <p className="categories__content__quantity">
-            {modelCounts.accessories} models
+            {modelCounts.accessories} {t('models')}
           </p>
         </div>
       </div>

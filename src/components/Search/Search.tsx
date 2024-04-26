@@ -11,11 +11,14 @@ import { Product } from '../../types/Product';
 import SearchIcon from '../../assets/icons/search.svg?react';
 import Close from '../../assets/icons/close.svg?react';
 import './Search.scss';
+import { useTranslation } from 'react-i18next';
 
 export const Search: React.FC = () => {
   const [query, setQuery] = useState('');
   const [products, setProducts] = useState<Product[]>([]);
   const [isResultsShown, setIsResultsShown] = useState(false);
+
+  const { t } = useTranslation();
 
   const ref = useRef(null);
 
@@ -65,7 +68,7 @@ export const Search: React.FC = () => {
         <input
           className="search__input"
           value={query}
-          placeholder="Search for a product"
+          placeholder={t('searchForProduct')}
           onChange={handleSearch}
           onFocus={() => setIsResultsShown(filteredProducts.length > 1)}
         />

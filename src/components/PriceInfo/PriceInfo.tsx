@@ -9,6 +9,7 @@ import { ButtonAddToCard } from '../ButtonAddToCard';
 import { ButtonAddToFavorites } from '../ButtonAddToFavorites';
 
 import './PriceInfo.scss';
+import { useTranslation } from 'react-i18next';
 
 const getNewLink = (productId: string): string => {
   const segments = productId.split('-');
@@ -36,6 +37,8 @@ export const PriceInfo = () => {
   const { productId } = useParams();
 
   const { pathname } = useLocation();
+
+  const { t } = useTranslation();
 
   const BASE_PATH = pathname.split('/')[1];
 
@@ -77,7 +80,7 @@ export const PriceInfo = () => {
   return (
     <>
       <div className="uppertext">
-        <span>Available colors</span>
+        <span>{t('availableColors')}</span>
         <span>ID: 802390</span>
       </div>
 
@@ -98,7 +101,7 @@ export const PriceInfo = () => {
           ))}
         </div>
 
-        <div className="product-card__top-text">Select capacity</div>
+        <div className="product-card__top-text">{t('selectCapacity')}</div>
         <div className="product-card__options product-capacity">
           {capacityAvailable.map(capacity => {
             const formattedCapacity = capacity.toLowerCase();
@@ -134,22 +137,22 @@ export const PriceInfo = () => {
 
         <div className="product-card__details">
           <p className="details">
-            <span className="details__text">Screen</span>
+            <span className="details__text">{t('screen')}</span>
             <span>{screen}</span>
           </p>
 
           <p className="details">
-            <span className="details__text">Resolution</span>
+            <span className="details__text">{t('resolution')}</span>
             <span>{resolution}</span>
           </p>
 
           <p className="details">
-            <span className="details__text">Processor</span>
+            <span className="details__text">{t('processor')}</span>
             <span>{processor}</span>
           </p>
 
           <p className="details">
-            <span className="details__text">RAM</span>
+            <span className="details__text">{t('RAM')}</span>
             <span>{ram}</span>
           </p>
         </div>
