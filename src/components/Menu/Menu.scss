@@ -75,11 +75,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-
-        &::after {
-          width: 50%;
-        }
-        
   
         &--favourites {
           border-color: var(--element-color);
