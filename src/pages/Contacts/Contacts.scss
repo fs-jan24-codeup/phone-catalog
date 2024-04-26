@@ -66,7 +66,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    opacity: 0;
+    opacity: 1;
     transition: opacity 0.5s;
     text-align: center;
     font-size: 14px;
@@ -80,6 +80,10 @@
     cursor: pointer;
     transition: all 0.3s;
     padding: 10px;
+
+    @include on-desktop {
+        opacity: 0;
+    }
 
     &:hover {
         box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
