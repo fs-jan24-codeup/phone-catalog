@@ -125,8 +125,8 @@
         height: 3px;
         width: 100%;
         background-color: var(--primary-color);
-        transition: width 0.1s ease-in-out;
-        animation: grow-border 0.1s ease-in-out forwards;
+        transition: width $effect-duration ease-in-out;
+        animation: grow-border $effect-duration ease-in-out forwards;
       }
 
       @keyframes grow-border {

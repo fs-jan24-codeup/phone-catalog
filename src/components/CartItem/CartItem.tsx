@@ -43,7 +43,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
   useEffect(() => {
     setTimeout(() => {
       setIsCartLoading(false);
-    }, 500);
+    }, 700);
   }, []);
 
   return (

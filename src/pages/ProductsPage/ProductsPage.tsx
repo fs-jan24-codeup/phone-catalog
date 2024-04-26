@@ -86,7 +86,7 @@ export const ProductsPage: React.FC<Props> = ({ title, products }) => {
   useEffect(() => {
     setTimeout(() => {
       setIsLoadingTitle(false);
-    }, 500);
+    }, 700);
   }, []);
 
   return (

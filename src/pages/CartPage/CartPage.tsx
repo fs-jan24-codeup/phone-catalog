@@ -44,7 +44,7 @@ export const CartPage: React.FC = () => {
   useEffect(() => {
     setTimeout(() => {
       setIsLoadingSummary(false);
-    }, 500);
+    }, 700);
   }, []);
 
   return (

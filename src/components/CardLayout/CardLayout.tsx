@@ -39,7 +39,7 @@ export const CardLayout: React.FC<Props> = ({ good }) => {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 500);
+    }, 700);
   }, []);
 
   return (
