@@ -64,7 +64,7 @@ export const ProductSlider: React.FC<Props> = ({ id, title, products }) => {
         }}
         freeMode={{
           enabled: true,
-          momentumVelocityRatio: 1,
+          momentumVelocityRatio: 0.5,
         }}
         onSwiper={setSwiper}
         modules={[Navigation, FreeMode]}
