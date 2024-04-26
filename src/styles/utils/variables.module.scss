@@ -18,6 +18,16 @@
   --button-pagination-color: #313237;
   --button-hover-color: #313237;
   --button-hover-bg-color: #fff;
+  --button-add-hover-bg-color: #313237;
+  --pagination-active-border-color: #313237;
+  --pagination-disabled-bg-color: #fff;
+  --cart-product-disabled-color: #E2E6E9;
+  --cart-product-border-color: #B4BDC3;
+  --product-price-bg-color: #fff;
+  --product-price-selected-bg-color: #313237;
+  --product-price-border-color: #e2e6e9;
+  --product-price-border-hover-color: #313237;
+  --product-price-hover-bg-color: #fff;
 }
 
 [data-theme='dark'] {
@@ -38,8 +48,18 @@
   --card-characteristic-name-color: #75767F;
   --card-characteristic-value-color: #F1F2F9;
   --button-pagination-color: #905bff;
-  --button-hover-color: #313237;
+  --button-hover-color: #323542;
   --button-hover-bg-color: #4a4d58;
+  --button-add-hover-bg-color: #a378ff;
+  --pagination-active-border-color: #3b3e4a;
+  --pagination-disabled-bg-color: #0F1121;
+  --cart-product-disabled-color: #4A4D58;
+  --cart-product-border-color: #323542;
+  --product-price-bg-color: #0f1121;
+  --product-price-selected-bg-color: #F1F2F9;
+  --product-price-border-color: #4A4D58;
+  --product-price-border-hover-color: #4A4D58;
+  --product-price-hover-bg-color: #4A4D58;
 }
 
 $small-tablet-min-width: 640px;

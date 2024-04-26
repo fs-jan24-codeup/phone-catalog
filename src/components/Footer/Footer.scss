@@ -53,6 +53,8 @@
     display: block;
     height: 32px;
     position: relative;
+    background-color: var(--background-color) !important;
+    color: (--primary-color);
   }
 
   &__links-block {

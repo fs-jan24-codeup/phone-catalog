@@ -26,6 +26,8 @@
 
   &__logo {
     padding-left: 16px;
+    background-color: var(--background-color);
+    color: (--primary-color);
   }
 
   &__icons {
@@ -100,9 +102,6 @@
 
     height: 48px;
     width: 48px;
-
-    // filter: invert(92%) sepia(14%) saturate(65%) hue-rotate(197deg) brightness(100%) contrast(101%);
-    // border-left: 1px solid var(--primary-color);
 
     @include on-medium-tablet {
       display: flex;

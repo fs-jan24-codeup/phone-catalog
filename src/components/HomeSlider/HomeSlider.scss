@@ -22,7 +22,8 @@
     background: var(--button-color-selected);
     border: 1px solid var(--icon-color);
 
-    @include hover(border, 1px solid var(--primary-color));
+    @include hover(border, 1px solid var(--button-hover-color));
+    @include hover(background-color, var(--button-hover-bg-color));
 
     @include on-tablet {
       display: block;
