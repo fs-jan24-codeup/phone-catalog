@@ -5,7 +5,7 @@
   display: flex;
   justify-content: space-between;
   min-height: 48px;
-  border-bottom: 1px solid var(--element-color);
+  border-bottom: 1px solid var(--header-border-color);
   box-sizing: border-box;
   font-weight: 800;
 
@@ -47,7 +47,7 @@
       height: 48px;
       width: 48px;
 
-      border-left: 1px solid var(--element-color);
+      border-left: 1px solid var(--header-border-color);
     }
   }
 
@@ -102,6 +102,7 @@
 
     height: 48px;
     width: 48px;
+    border-left: 1px solid var(--header-border-color);
 
     @include on-medium-tablet {
       display: flex;

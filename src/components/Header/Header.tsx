@@ -64,7 +64,6 @@ export const Header = () => {
       <div className="header__wrapper">
         <NavLink to="/" className="header__home">
           <Logo className="header__logo" />
-          {/* <div className="header__logo" /> */}
         </NavLink>
 
         <ul className="header__navbar navbar">

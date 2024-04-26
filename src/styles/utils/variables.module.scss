@@ -28,6 +28,11 @@
   --product-price-border-color: #e2e6e9;
   --product-price-border-hover-color: #313237;
   --product-price-hover-bg-color: #fff;
+  --header-border-color: #E2E6E9;
+  --footer-bg-color: #fff;
+  --footer-border-color: #E2E6E9;
+  --footer-hover-border-color: #313237;
+  --footer-hover-bg-color: #fff;
 }
 
 [data-theme='dark'] {
@@ -60,6 +65,11 @@
   --product-price-border-color: #4A4D58;
   --product-price-border-hover-color: #4A4D58;
   --product-price-hover-bg-color: #4A4D58;
+  --header-border-color: #323542;
+  --footer-bg-color: #323542;
+  --footer-border-color: #323542;
+  --footer-hover-border-color: #323542;
+  --footer-hover-bg-color: #4A4D58;
 }
 
 $small-tablet-min-width: 640px;
