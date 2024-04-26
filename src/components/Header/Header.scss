@@ -44,22 +44,6 @@
     align-items: center;
   }
 
-  &__switcher {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 48px;
-    height: 48px;
-    border: none;
-    background: transparent;
-    border-left: 1px solid var(--header-border-color);
-
-    @include on-desktop {
-      height: 64px;
-      width: 64px;
-    }
-  }
-
   &__menu {
     height: 16px;
 
