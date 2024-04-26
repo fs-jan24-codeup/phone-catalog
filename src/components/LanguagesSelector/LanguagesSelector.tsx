@@ -1,5 +1,5 @@
-import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { Dropdown } from '../Dropdown';
 
 const languages = [
   { code: 'en', lang: 'English' },
@@ -20,16 +20,11 @@ export const LanguagesSelector: React.FC = () => {
 
   return (
     <div className="languages__dropdown">
-      <select
+      <Dropdown
         value={savedLanguage}
-        onChange={e => changeLanguage(e.target.value)}
-      >
-        {languages.map(lng => (
-          <option key={lng.code} value={lng.code}>
-            {lng.lang}
-          </option>
-        ))}
-      </select>
+        options={languages.map(lng => lng.code)}
+        onChange={changeLanguage}
+      />
     </div>
   );
 };
