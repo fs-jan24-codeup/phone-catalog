@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css/navigation';
 import 'swiper/css';
 
-import { Navigation } from 'swiper/modules';
+import { Navigation, FreeMode } from 'swiper/modules';
 
 import { Product } from '../../types/Product';
 import { CardLayout } from '../CardLayout';
@@ -62,8 +62,12 @@ export const ProductSlider: React.FC<Props> = ({ id, title, products }) => {
           prevEl: `.custom-prev-button-${id}`,
           nextEl: `.custom-next-button-${id}`,
         }}
+        freeMode={{
+          enabled: true,
+          momentumVelocityRatio: 1,
+        }}
         onSwiper={setSwiper}
-        modules={[Navigation]}
+        modules={[Navigation, FreeMode]}
         onSlideChange={handleDisable}
         className="products-swiper"
       >
