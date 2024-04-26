@@ -118,7 +118,7 @@ export const Header = () => {
 
       <div className="header__right">
         <div className="header__icons">
-          <div className='header__switcher navbar__icon'>
+          <button className="header__switcher">
             <ThemeToggler
               onChange={() => {
                 if (theme === themes.light) setTheme(themes.dark);
@@ -126,7 +126,7 @@ export const Header = () => {
               }}
               value={theme === themes.dark}
             />
-          </div>
+          </button>
           {isSearchOpen && (
             <div className="search-wrapper">
               <Search />
