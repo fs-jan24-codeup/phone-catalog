@@ -3,6 +3,7 @@ import './Menu.scss';
 import Cart from '../../assets/icons/shopping-cart.svg?react';
 import Favourites from '../../assets/icons/favourites.svg?react';
 import classNames from 'classnames';
+import { SelectedItemsCircle } from '../SelectedItemsCircle/SelectedItemsCircle';
 
 interface MenuProps {
   onCloseMenu?: (event?: React.MouseEvent) => void;
@@ -75,6 +76,7 @@ export const Menu: React.FC<MenuProps> = ({ onCloseMenu }) => {
           onClick={handleLinkClick}
         >
           <Favourites />
+          <SelectedItemsCircle type="favourite" />
         </NavLink>
         <NavLink
           to="/cart"
@@ -88,6 +90,7 @@ export const Menu: React.FC<MenuProps> = ({ onCloseMenu }) => {
           onClick={handleLinkClick}
         >
           <Cart />
+          <SelectedItemsCircle type="cart" />
         </NavLink>
       </div>
     </div>

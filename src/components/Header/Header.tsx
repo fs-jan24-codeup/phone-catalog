@@ -20,12 +20,13 @@ import Close from '../../assets/icons/close.svg?react';
 import { ThemeToggler } from '../ThemeToggler/ThemeToggler';
 
 import { useThemeContext } from '../../hooks/useThemeContext';
+import { useAppContext } from '../../hooks/useAppContext';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const { theme, setTheme, themes } = useThemeContext();
+  const { isSearchOpen, setIsSearchOpen } = useAppContext();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -118,26 +119,31 @@ export const Header = () => {
 
       <div className="header__right">
         <div className="header__icons">
-          <button className="header__switcher">
-            <ThemeToggler
-              onChange={() => {
-                if (theme === themes.light) setTheme(themes.dark);
-                if (theme === themes.dark) setTheme(themes.light);
-              }}
-              value={theme === themes.dark}
-            />
-          </button>
           {isSearchOpen && (
             <div className="search-wrapper">
               <Search />
-              <button className="header__search" onClick={toggleSearch}>
+              <button
+                className="header__button header__close"
+                onClick={toggleSearch}
+              >
                 <Close />
               </button>
             </div>
           )}
-          <button className="header__search" onClick={toggleSearch}>
+
+          <button className="header__button" onClick={toggleSearch}>
             {isSearchOpen ? <Close /> : <SearchIcon />}
           </button>
+
+          <ThemeToggler
+            onChange={() => {
+              if (theme === themes.light) setTheme(themes.dark);
+              if (theme === themes.dark) setTheme(themes.light);
+            }}
+            value={theme === themes.dark}
+            className="header__switcher header__button"
+          />
+
           {(isMobile || isMenuOpen) && (
             <button className="header__menu__toggler" onClick={toggleMenu}>
               {isMenuOpen ? <Cancel /> : <MenuIcon />}

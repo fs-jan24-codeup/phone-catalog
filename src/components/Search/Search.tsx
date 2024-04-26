@@ -12,11 +12,13 @@ import SearchIcon from '../../assets/icons/search.svg?react';
 import Close from '../../assets/icons/close.svg?react';
 import './Search.scss';
 import { useTranslation } from 'react-i18next';
+import { useAppContext } from '../../hooks/useAppContext';
 
 export const Search: React.FC = () => {
   const [query, setQuery] = useState('');
   const [products, setProducts] = useState<Product[]>([]);
   const [isResultsShown, setIsResultsShown] = useState(false);
+  const { setIsSearchOpen } = useAppContext();
 
   const { t } = useTranslation();
 
@@ -51,6 +53,7 @@ export const Search: React.FC = () => {
 
   const handleRedirect = () => {
     setIsResultsShown(false);
+    setIsSearchOpen(false);
     setQuery('');
   };
 

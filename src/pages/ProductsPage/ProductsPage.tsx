@@ -40,10 +40,11 @@ export const ProductsPage: React.FC<Props> = ({ title, products }) => {
 
   const { t } = useTranslation();
 
+  const params = new URLSearchParams(location.search);
+
   useEffect(() => {
-    const params = new URLSearchParams(location.search);
+    // const params = new URLSearchParams(location.search);
     params.set('page', currentPage.toString());
-    params.set('itemsPerPage', itemsPerPage.toString());
 
     if (sortBy !== Sort.Newest) {
       params.set('sortBy', sortBy);
@@ -56,7 +57,16 @@ export const ProductsPage: React.FC<Props> = ({ title, products }) => {
     }
 
     navigate(`${location.pathname}?${params.toString()}`);
-  }, [currentPage, sortBy, itemsPerPage, navigate, location.pathname]);
+  }, [currentPage, sortBy, navigate, location.pathname]);
+
+  useEffect(() => {
+    params.set('page', '1');
+    params.set('itemsPerPage', itemsPerPage.toString());
+
+    setCurrentPage(1);
+
+    navigate(`${location.pathname}?${params.toString()}`);
+  }, [itemsPerPage]);
 
   const sortProducts = (products: Product[]) => {
     switch (sortBy) {
