@@ -35,6 +35,15 @@
   --footer-hover-bg-color: #fff;
   --home-slider-pagination: gray;
   --home-slider-pagination-active: gray;
+  --modal-bg-color: #fff;
+  --modal-button-color: #fff;
+  --modal-button-color-text: #000;
+  --modal-button-hover-color: #fff;
+  --modar-border-color: #75767F;
+  --modal-button-yes-bg-color: #000;
+  --modal-button-yes-hover-color: #e9e9e9;
+  --modar-border-yes-color: #b8bac3;
+  --modal-button-yes-color-text: #b8bac3;
 }
 
 [data-theme='dark'] {
@@ -74,6 +83,15 @@
   --footer-hover-bg-color: #4A4D58;
   --home-slider-pagination: #fff;
   --home-slider-pagination-active: #F1F2F9;
+  --modal-bg-color: #a1a3ae;
+  --modal-button-color: #000;
+  --modal-button-color-text: #000;
+  --modal-button-hover-color: #c0c1c7;
+  --modar-border-color: #b8bac3;
+  --modal-button-yes-bg-color: #000;
+  --modal-button-yes-hover-color: #e9e9e9;
+  --modar-border-yes-color: #b8bac3;
+  --modal-button-yes-color-text: #fff;
 }
 
 $small-tablet-min-width: 640px;

@@ -16,10 +16,30 @@
   }
 
   &__content {
-    background-color: #fff;
+    background-color: var(--modal-bg-color);
     padding: 34px;
     text-align: center;
     animation: modalFadeIn 0.3s ease-in-out forwards;
+  }
+
+  &__btn {
+    background-color: var(--modal-bg-color);
+    color: var(--modal-button-color-text);
+    border: 1px solid var(--modar-border-color);
+
+    &:hover {
+      background-color: var(--modal-button-hover-color);
+    }
+
+    &--yes {
+      background-color: var(--modal-button-yes-bg-color);
+      color: var(--modal-button-yes-color-text);
+      border: 1px solid var(--modar-border-yes-color);
+
+      &:hover {
+        background-color: var(--modal-button-yes-bg-color);
+      }
+    }
   }
 }
 

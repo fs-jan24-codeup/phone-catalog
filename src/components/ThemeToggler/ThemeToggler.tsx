@@ -1,20 +1,21 @@
 import React from 'react';
-import './ThemeToggler.scss'
+import './ThemeToggler.scss';
+import Moon from '../../assets/icons/moon.svg?react';
+import Sun from '../../assets/icons/sun.svg?react';
 
 type Props = {
   value: any;
   onChange: any;
-}
+};
 
-export const ThemeToggler:React.FC<Props> = ({ value, onChange }) => (
-  <div className='toggle-container'>
-    <input
-      type="checkbox"
-      id="check"
-      className='toggle'
-      onClick={onChange}
-      checked={value}
-    />
-    <label htmlFor="check">Dark Mode</label>
-  </div>
-)
+export const ThemeToggler: React.FC<Props> = ({ value, onChange }) => {
+  return (
+    <div className="toggle-container">
+      {value ? (
+        <Moon className="moon" onClick={onChange} />
+      ) : (
+        <Sun className="moon" onClick={onChange} />
+      )}
+    </div>
+  );
+};
