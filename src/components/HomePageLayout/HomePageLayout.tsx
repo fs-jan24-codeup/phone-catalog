@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+
 import './HomePageLayout.scss';
 
 import { HomeSlider } from '../HomeSlider';
@@ -10,6 +12,8 @@ import { Product } from '../../types/Product';
 export const HomePageLayout: React.FC = () => {
   const [phonesWithHotPrices, setPhonesWithHotPrices] = useState<Product[]>([]);
   const [newModels, setNewModels] = useState<Product[]>([]);
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     getProducts('./api/phones.json')
@@ -28,7 +32,7 @@ export const HomePageLayout: React.FC = () => {
 
   return (
     <div className="home home__grid">
-      <h1 className="home__title">Welcome to Nice Gadgets store!</h1>
+      <h1 className="home__title">{t('welcomeToNiceGadgetsStore')}</h1>
       <div className="home__slider">
         <HomeSlider />
       </div>
@@ -36,7 +40,7 @@ export const HomePageLayout: React.FC = () => {
         <ProductSlider
           id="brand-new"
           products={newModels}
-          title="Brand new models"
+          title={t('brandNewModels')}
         />
       </div>
       <div className="home__shop-by-category">
@@ -46,7 +50,7 @@ export const HomePageLayout: React.FC = () => {
         <ProductSlider
           id="hot-models"
           products={phonesWithHotPrices}
-          title="Hot prices"
+          title={t('hotPrices')}
         />
       </div>
     </div>

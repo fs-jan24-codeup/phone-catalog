@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { Product } from '../../types/Product';
 import './AboutSection.scss';
 
@@ -6,9 +7,11 @@ type Props = {
 };
 
 export const AboutSection: React.FC<Props> = ({ good }) => {
+  const { t } = useTranslation();
+
   return (
     <div className="about">
-      <h1 className="about__title line">About</h1>
+      <h1 className="about__title line">{t('about')}</h1>
       <div className="about__description">
         {good &&
           good.description.map(desc => (
