@@ -2,6 +2,7 @@
 @import '../../styles/utils/variables.module.scss';
 
 .header {
+  position: relative;
   display: flex;
   justify-content: space-between;
   min-height: 48px;
@@ -18,6 +19,14 @@
   &__wrapper {
     display: flex;
     align-items: center;
+
+    @include on-tablet {
+      padding-left: 16px;
+    }
+
+    @include on-desktop {
+      padding-left: 24px;
+    }
   }
 
   &__home {
@@ -56,9 +65,33 @@
     display: none;
   }
 
+  @include on-tablet {
+    &__logo {
+      height: 21px;
+      padding-left: 0;
+    }
+  }
+
   @include on-medium-tablet {
     .header__menu__toggler {
       display: none;
+    }
+  }
+
+  &__search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    width: 48px;
+    border: 0;
+    border-left: 1px solid var(--header-border-color);
+    border-bottom: 1px solid var(--header-border-color);
+    background-color: var(--background-color);
+  
+    @include on-desktop {
+      height: 64px;
+      width: 64px;
     }
   }
 }
@@ -129,17 +162,8 @@
   }
 }
 
-@include on-tablet {
-  .header {
-    padding: 0 0 0 16px;
-
-    &__logo {
-      height: 21px;
-      padding-left: 0;
-    }
-  }
-
-  .wrapper {
+.wrapper {
+  @include on-tablet {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -173,4 +197,28 @@
     min-height: 64px;
     padding: 0 0 0 24px;
   }
+}
+
+.search-wrapper {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  @include on-medium-tablet {
+    width: 300px;
+    left: auto;
+    right: 0;
+    z-index: 999;
+  }
+
+  @include on-desktop {
+    position: static;
+    width: auto;
+    button {
+      display: none;
+    }
+  }
+
 }
