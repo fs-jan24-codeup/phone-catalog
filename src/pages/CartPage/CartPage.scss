@@ -108,10 +108,6 @@
     &--img {
       width: 300px;
       margin-bottom: 20px;
-
-      @include on-tablet {
-        width: 400px;
-      }
     }
   }
 

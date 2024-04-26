@@ -11,7 +11,7 @@
   &-price {
     width: 110px;
     height: 40px;
-    animation: skeleton-loading 1s linear infinite alternate;
+    animation: $animation-skeleton;
     border-radius: 4px;
     margin-bottom: 12px;
   }
@@ -19,7 +19,7 @@
   &-desc {
     width: 140px;
     height: 16px;
-    animation: skeleton-loading 1s linear infinite alternate;
+    animation: $animation-skeleton;
     border-radius: 4px;
     position: relative;
     margin-bottom: 16px;
@@ -35,7 +35,7 @@
   &-button {
     width: 100%;
     height: 48px;
-    animation: skeleton-loading 1s linear infinite alternate;
+    animation: $animation-skeleton;
     border-radius: 4px;
   }
 }
