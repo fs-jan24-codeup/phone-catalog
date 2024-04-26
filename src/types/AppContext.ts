@@ -1,5 +1,6 @@
 import { Product } from './Product';
 import { CartProduct } from './CartProduct';
+import { Dispatch, SetStateAction } from 'react';
 
 export type AppContext = {
   cart: CartProduct[];
@@ -11,6 +12,8 @@ export type AppContext = {
   addToFavourites: (product: Product) => void;
   removeFromFavourites: (productId: string) => void;
   isItemInFavourites: (productId: string) => boolean;
+  isSearchOpen: boolean;
+  setIsSearchOpen: Dispatch<SetStateAction<boolean>>
   itemCount: number;
   clearCart: () => void;
 };

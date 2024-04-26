@@ -1,21 +1,21 @@
 import React from 'react';
-import './ThemeToggler.scss';
 import Moon from '../../assets/icons/moon.svg?react';
 import Sun from '../../assets/icons/sun.svg?react';
 
 type Props = {
   value: any;
   onChange: any;
+  className: string;
 };
 
-export const ThemeToggler: React.FC<Props> = ({ value, onChange }) => {
+export const ThemeToggler: React.FC<Props> = ({
+  value,
+  onChange,
+  className,
+}) => {
   return (
-    <div className="toggle-container">
-      {value ? (
-        <Moon className="moon" onClick={onChange} />
-      ) : (
-        <Sun className="moon" onClick={onChange} />
-      )}
+    <div className={className} onClick={onChange}>
+      {value ? <Moon className="moon" /> : <Sun className="moon" />}
     </div>
   );
 };
