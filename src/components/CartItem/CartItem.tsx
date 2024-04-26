@@ -71,11 +71,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
                 onClick={handleClickMinus}
                 disabled={isDisabled}
               >
-                <Minus
-                  color={
-                    isDisabled ? variables.iconColor : variables.primaryColor
-                  }
-                />
+                <Minus />
               </button>
             </div>
             <div className="cart-item__count">{quantity}</div>
