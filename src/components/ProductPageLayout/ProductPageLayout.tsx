@@ -43,7 +43,7 @@ export const ProductPageLayout: React.FC = () => {
   return (
     <div className="product__grid">
       <div className="product__path">
-        <Breadcrumb />
+        <Breadcrumb productName={good?.name} />
       </div>
       <div className="product__back">
         <GoBack />
