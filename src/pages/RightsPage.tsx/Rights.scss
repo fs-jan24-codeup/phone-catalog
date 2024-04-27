@@ -1,0 +1,45 @@
+@import '../../styles/utils/variables.module.scss';
+@import '../../styles/utils/mixins.scss';
+.rights {
+  &__earth {
+    width: 100%;
+    cursor: pointer;
+
+    @include on-tablet {
+      width: 100%;
+    }
+  }
+  &__block {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+
+    @include on-tablet {
+      height: auto;
+    }
+
+    @include on-desktop {
+      flex-direction: row;
+      height: 200px;
+    }
+  }
+
+  &__text {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.6;
+    color: var(--primary-color);
+    margin-top: -120px;
+    padding: 20px;
+
+    @include on-desktop {
+      padding: 5em;
+      margin-top: 0;
+    }
+  }
+
+  &__year {
+    text-align: center;
+    margin-top: 28px;
+  }
+}
