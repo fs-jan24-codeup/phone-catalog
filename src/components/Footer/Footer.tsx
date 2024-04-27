@@ -6,6 +6,7 @@ import ArrowUp from '../../assets/icons/arrow_up.svg?react';
 import './Footer.scss';
 import { useThemeContext } from '../../hooks/useThemeContext';
 import { ThemeToggler } from '../ThemeToggler/ThemeToggler';
+import { Chat } from '../Chat';
 
 export const Footer: React.FC = () => {
   const { theme, setTheme, themes } = useThemeContext();
@@ -44,6 +45,8 @@ export const Footer: React.FC = () => {
             Rights
           </Link>
         </div>
+
+        <Chat />
 
         <div className="footer__anchor">
           <span className="footer__label">Back to top</span>
