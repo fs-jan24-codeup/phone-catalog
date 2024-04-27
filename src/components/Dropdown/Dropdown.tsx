@@ -6,12 +6,14 @@ interface DropdownProps<T> {
   value: T;
   options: T[];
   onChange: (selectedOption: T) => void;
+  className?: string;
 }
 
 export const Dropdown = <T extends string | number>({
   value,
   options,
   onChange,
+  className,
 }: DropdownProps<T>) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -40,10 +42,12 @@ export const Dropdown = <T extends string | number>({
     onChange(selectedOption);
   };
 
+  const isLastNumber = typeof options[options.length - 1] === 'number';
+
   return (
     <div className="custom-dropdown" ref={dropdownRef}>
       <div
-        className="custom-dropdown__button"
+        className={'custom-dropdown__button ' + className}
         onClick={() => setIsOpen(!isOpen)}
       >
         <span className="custom-dropdown__title">{t(String(value))}</span>
@@ -75,7 +79,13 @@ export const Dropdown = <T extends string | number>({
                 tabIndex={0}
                 onClick={() => handleOptionSelect(option)}
               >
-                {t(String(option))}
+                {t(
+                  String(
+                    index === options.length - 1 && isLastNumber
+                      ? t('all')
+                      : option,
+                  ),
+                )}
               </li>
             ))}
           </ul>

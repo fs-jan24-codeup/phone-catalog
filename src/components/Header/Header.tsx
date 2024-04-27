@@ -21,6 +21,7 @@ import { ThemeToggler } from '../ThemeToggler/ThemeToggler';
 
 import { useThemeContext } from '../../hooks/useThemeContext';
 import { useAppContext } from '../../hooks/useAppContext';
+import { LanguagesSelector } from '../LanguagesSelector/LanguagesSelector';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -87,7 +88,7 @@ export const Header = () => {
   }, [i18n]);
 
   return (
-    <div className="header" id='header'>
+    <div className="header" id="header">
       <div className="header__wrapper">
         <NavLink to="/" className="header__home">
           <Logo className="header__logo" />
@@ -119,6 +120,8 @@ export const Header = () => {
 
       <div className="header__right">
         <div className="header__icons">
+          <LanguagesSelector />
+
           {isSearchOpen && (
             <div className="search-wrapper">
               <Search />
