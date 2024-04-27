@@ -21,19 +21,32 @@
   --button-add-hover-bg-color: #313237;
   --pagination-active-border-color: #313237;
   --pagination-disabled-bg-color: #fff;
-  --cart-product-disabled-color: #E2E6E9;
-  --cart-product-border-color: #B4BDC3;
+  --cart-product-disabled-color: #e2e6e9;
+  --cart-product-border-color: #b4bdc3;
   --product-price-bg-color: #fff;
   --product-price-selected-bg-color: #313237;
   --product-price-border-color: #e2e6e9;
   --product-price-border-hover-color: #313237;
   --product-price-hover-bg-color: #fff;
-  --header-border-color: #E2E6E9;
+  --header-border-color: #e2e6e9;
   --footer-bg-color: #fff;
-  --footer-border-color: #E2E6E9;
+  --footer-border-color: #e2e6e9;
   --footer-hover-border-color: #313237;
   --footer-hover-bg-color: #fff;
   --mesage-color: #dcf8c6;
+  --home-slider-pagination: gray;
+  --home-slider-pagination-active: gray;
+  --modal-bg-color: #fff;
+  --modal-button-color: #fff;
+  --modal-button-color-text: #000;
+  --modal-button-hover-color: #fff;
+  --modar-border-color: #75767F;
+  --modal-button-yes-bg-color: #000;
+  --modal-button-yes-hover-color: #e9e9e9;
+  --modar-border-yes-color: #b8bac3;
+  --modal-button-yes-color-text: #b8bac3;
+  --skeleton-background-lighter: #e2e6e9;
+  --skeleton-background-darker: #b4bdc3;
 }
 
 [data-theme='dark'] {
@@ -51,26 +64,40 @@
   --button-color-text: #f1f2f9;
   --favourite-button-color: #323542;
   --card-layout-bg-color: #161827;
-  --card-characteristic-name-color: #75767F;
-  --card-characteristic-value-color: #F1F2F9;
+  --card-characteristic-name-color: #75767f;
+  --card-characteristic-value-color: #f1f2f9;
   --button-pagination-color: #905bff;
   --button-hover-color: #323542;
   --button-hover-bg-color: #4a4d58;
   --button-add-hover-bg-color: #a378ff;
   --pagination-active-border-color: #3b3e4a;
-  --pagination-disabled-bg-color: #0F1121;
-  --cart-product-disabled-color: #4A4D58;
+  --pagination-disabled-bg-color: #0f1121;
+  --cart-product-disabled-color: #4a4d58;
   --cart-product-border-color: #323542;
   --product-price-bg-color: #0f1121;
-  --product-price-selected-bg-color: #F1F2F9;
-  --product-price-border-color: #4A4D58;
-  --product-price-border-hover-color: #4A4D58;
-  --product-price-hover-bg-color: #4A4D58;
+  --product-price-selected-bg-color: #f1f2f9;
+  --product-price-border-color: #4a4d58;
+  --product-price-border-hover-color: #4a4d58;
+  --product-price-hover-bg-color: #4a4d58;
   --header-border-color: #323542;
   --footer-bg-color: #323542;
   --footer-border-color: #323542;
   --footer-hover-border-color: #323542;
-  --footer-hover-bg-color: #4A4D58;
+  --footer-hover-bg-color: #4a4d58;
+  --home-slider-pagination: #fff;
+  --home-slider-pagination-active: #F1F2F9;
+  --modal-bg-color: #212430;
+  --modal-button-color: #000;
+  --modal-button-color-text: #fff;
+  --modal-button-hover-color: #c0c1c7;
+  --modar-border-color: #b8bac3;
+  --modal-button-yes-bg-color: #000;
+  --modal-button-yes-hover-color: #e9e9e9;
+  --modar-border-yes-color: #b8bac3;
+  --modal-button-yes-color-text: #fff;
+  --home-slider-pagination-active: #f1f2f9;
+  --skeleton-background-lighter: #323542;
+  --skeleton-background-darker: #212430;
 }
 
 $small-tablet-min-width: 640px;
@@ -79,6 +106,7 @@ $tablet-min-width: 640px;
 $desktop-min-width: 1200px;
 $effect-duration: 0.3s;
 $hover-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+$animation-skeleton: skeleton-loading 1s linear infinite alternate;
 
 :export {
   primaryColor: var(--primary-color);

@@ -15,23 +15,35 @@ import { ImagesSwiper } from '../ImagesSwiper';
 import './ProductPageLayout.scss';
 import { GoBack } from '../GoBack';
 
+import { fadeOut } from '../FadeOut/FadeOut';
+import {
+  SkeletonAbout,
+  SkeletonImages,
+  SkeletonPrice,
+  SkeletonTitle,
+} from './ProductPageSkeleton';
+
 export const ProductPageLayout: React.FC = () => {
+  fadeOut();
+
   const [good, setGood] = useState<Product | null>(null);
   const [recommendedGoods, setRecomendedGoods] = useState<Product[]>([]);
+  const [isLoadingProduct, setIsLoadingProduct] = useState(true);
   const { productId } = useParams();
 
   const { pathname } = useLocation();
   const BASE_PATH = pathname.split('/');
 
   useEffect(() => {
-    getProducts(`./api/${BASE_PATH[1]}.json`)
-      .then(phones => {
-        const newPhones = phones.slice(5, 16);
-
-        setRecomendedGoods(newPhones);
-      })
-      .catch(error => console.error('Error fetching phones:', error));
-  }, []);
+    if (!isLoadingProduct) {
+      getProducts(`./api/${BASE_PATH[1]}.json`)
+        .then(phones => {
+          const newPhones = phones.slice(5, 16);
+          setRecomendedGoods(newPhones);
+        })
+        .catch(error => console.error('Error fetching phones:', error));
+    }
+  }, [isLoadingProduct]);
 
   useEffect(() => {
     if (productId) {
@@ -40,28 +52,47 @@ export const ProductPageLayout: React.FC = () => {
         .catch(error => console.log(error));
     }
   }, [productId]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoadingProduct(false);
+    }, 700);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="product__grid">
+    <div className="product__grid fadeOut">
       <div className="product__path">
         <Breadcrumb productName={good?.name} />
       </div>
+
       <div className="product__back">
         <GoBack />
       </div>
-      <h2 className="product__title">{good?.name}</h2>
+      {isLoadingProduct ? (
+        <SkeletonTitle />
+      ) : (
+        <h2 className="product__title">{good?.name}</h2>
+      )}
       <div className="product__images">
-        {good && <ImagesSwiper images={good.images} />}
+        {isLoadingProduct ? (
+          <SkeletonImages />
+        ) : (
+          good && <ImagesSwiper images={good.images} />
+        )}
       </div>
       <div className="product__price">
-        <PriceInfo />
+        {isLoadingProduct ? <SkeletonPrice /> : <PriceInfo />}
       </div>
-      <div className="product__about">
-        <AboutSection good={good} />
+      <div className="product__about fadeOut">
+        {isLoadingProduct ? <SkeletonAbout /> : <AboutSection good={good} />}
       </div>
-      <div className="product__specs">
-        <TechSpecs good={good} />
+      <div className="product__specs fadeOut">
+        {isLoadingProduct ? <SkeletonAbout /> : <TechSpecs good={good} />}
       </div>
-      <div className="product__also-like">
+
+      <div className="product__also-like fadeOut">
         <ProductSlider
           id="also-like"
           products={recommendedGoods}

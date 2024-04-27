@@ -5,6 +5,7 @@ import ChevronRight from '../../assets/icons/chevron-right.svg?react';
 import './Breadcrumb.scss';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import variables from '../../styles/utils/variables.module.scss';
+import { useTranslation } from 'react-i18next';
 
 interface Segment {
   path: string;
@@ -20,6 +21,8 @@ export const Breadcrumb: React.FC<Props> = ({ productName }) => {
   const { pathname } = location;
   const { productId } = useParams();
 
+  const { t } = useTranslation();
+
   const processedSegments = pathname
     .split('/')
     .filter(segment => segment !== '')
@@ -30,6 +33,7 @@ export const Breadcrumb: React.FC<Props> = ({ productName }) => {
     });
 
   function generatePath(index: number, segments: Segment[]) {
+    console.log('segments :>> ', segments);
     return (
       '/' +
       segments
@@ -54,14 +58,14 @@ export const Breadcrumb: React.FC<Props> = ({ productName }) => {
           />
           {index === processedSegments.length - 1 ? (
             <span className="breadcrumb__path breadcrumb__path--last">
-              {productId ? productName : segment.displayName}
+              {productId ? productName : t(segment.displayName)}
             </span>
           ) : (
             <Link
               to={generatePath(index, processedSegments)}
               className="breadcrumb__path"
             >
-              {segment.displayName}
+              {t(segment.displayName)}
             </Link>
           )}
         </li>

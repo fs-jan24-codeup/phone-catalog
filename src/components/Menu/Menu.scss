@@ -24,19 +24,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 16px;
+    padding-top: 24px;
     list-style: none;
     flex-direction: column;
-  
+    row-gap: 16px;
   
     &__link {
       position: relative;
       display: flex;
       align-items: center;
-      padding: 8px 0 8px 0;
+      padding-bottom: 8px;
   
       font-size: 12px;
-      font-family: 'Mont';
       text-decoration: none;
       text-transform: uppercase;
       color: var(--secondary-color);
@@ -69,16 +68,12 @@
   
     &__icon {
       &__wrapper {
+        position: relative;
         width: 100%;
         height: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
-
-        &::after {
-          width: 50%;
-        }
-        
   
         &--favourites {
           border-color: var(--element-color);

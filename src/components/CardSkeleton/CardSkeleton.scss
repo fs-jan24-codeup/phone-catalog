@@ -11,7 +11,7 @@
     height: 196px;
     border-radius: 10px;
     margin-bottom: 16px;
-    animation: skeleton-loading 1s linear infinite alternate;
+    animation: $animation-skeleton;
     background-image: url('../../assets/icons/card-skeleton.svg');
     background-repeat: no-repeat;
     background-position: center;
@@ -28,21 +28,20 @@
     height: 14px;
     border-radius: 10px;
     margin-bottom: 8px;
-    animation: skeleton-loading 1s linear infinite alternate;
+    animation: $animation-skeleton;
   }
 
   &__prices {
     width: 100%;
     height: 20px;
     border-radius: 10px;
-    animation: skeleton-loading 1s linear infinite alternate;
+    animation: $animation-skeleton;
   }
 
   &__breakline {
     margin: 14px 0;
     width: 100%;
     height: 1px;
-
     background-color: var(--element-color);
   }
 
@@ -56,23 +55,23 @@
     width: 100%;
     height: 14px;
     border-radius: 10px;
-    animation: skeleton-loading 1s linear infinite alternate;
+    animation: $animation-skeleton;
   }
 
   &__button {
     width: 100%;
     height: 40px;
     border-radius: 10px;
-    animation: skeleton-loading 1s linear infinite alternate;
+    animation: $animation-skeleton;
   }
 }
 
 @keyframes skeleton-loading {
   0% {
-    background-color: hsl(204, 8%, 87%);
+    background-color: var(--skeleton-background-lighter);
   }
 
   100% {
-    background-color: hsl(210, 11%, 96%);
+    background-color: var(--skeleton-background-darker);
   }
 }

@@ -4,11 +4,11 @@ import './CartPage.scss';
 import { CartItem } from '../../components/CartItem/CartItem';
 import { useAppContext } from '../../hooks/useAppContext';
 import { Modal } from '../../components/Modal/Modal';
-import orderSuccessul from '../../assets/images/order-success.gif';
+import orderSuccessul from '../../assets/images/order-received.gif';
 import emptyCart from '../../assets/images/empty-cart.gif';
 import { CartSummarySkeleton } from './CartSummarySkeleton';
 import { GoBack } from '../../components/GoBack';
-
+import { useTranslation } from 'react-i18next';
 
 export const CartPage: React.FC = () => {
   const { cart, clearCart, itemCount } = useAppContext();
@@ -16,6 +16,8 @@ export const CartPage: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [orderConfirmed, setOrderConfirmed] = useState(false);
   const [isLoadingSummary, setIsLoadingSummary] = useState(true);
+
+  const { t } = useTranslation();
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -42,84 +44,86 @@ export const CartPage: React.FC = () => {
   useEffect(() => {
     setTimeout(() => {
       setIsLoadingSummary(false);
-    }, 500);
+    }, 700);
   }, []);
 
   return (
-    <>
+    <div className="cart cart__grid">
+      <GoBack />
 
-      <div className="cart cart__grid">
-        <GoBack />
+      <h1 className="cart__title fadeOut">{t('cart')}</h1>
 
-        <h1 className="cart__title">Cart</h1>
-
-        {cart.length ? (
-          <div className="cart__content-wrapper">
-            <div className="cart__content">
-              {cart.map((item, id) => (
-                <CartItem key={id} item={item} />
-              ))}
-            </div>
-            <div className="cart__summary">
-              {isLoadingSummary ? (
-                <CartSummarySkeleton />
-              ) : (
-                <>
-                  <div className="cart__total-price">${totalPrice}</div>
-                  <div className="cart__total-price--label">
-                    Total for {itemCount} items
-                  </div>
-                  <button
-                    type="button"
-                    className="cart__submit-btn"
-                    onClick={openModal}
-                  >
-                    Checkout
-                  </button>
-                </>
-              )}
-            </div>
+      {cart.length ? (
+        <div className="cart__content-wrapper">
+          <div className="cart__content">
+            {cart.map((item, id) => (
+              <CartItem key={id} item={item} />
+            ))}
           </div>
-        ) : orderConfirmed ? (
-          <div className="cart__empty">
-            <img src={orderSuccessul} alt="Thank you for your purchase" />
-          </div>
-        ) : (
-          <div className="cart__empty">
-            <h1 className="cart__empty--title">Your cart is empty</h1>
-
-            <img
-              className="cart__empty--img"
-              src={emptyCart}
-              alt="Your cart is empty"
-            />
-          </div>
-        )}
-
-        {isModalOpen && (
-          <Modal onClose={closeModal}>
-            <>
-              <h2 className="modal__title">
-                Do you want to confirm the order?
-              </h2>
-              <div className="modal__btn-wrapper">
+          <div className="cart__summary">
+            {isLoadingSummary ? (
+              <CartSummarySkeleton />
+            ) : (
+              <>
+                <div className="cart__total-price">${totalPrice}</div>
+                <div className="cart__total-price--label">
+                  {t('totalFor')} {itemCount} {t('items')}
+                </div>
                 <button
-                  onClick={closeModal}
-                  className="modal__btn modal__btn--no"
+                  type="button"
+                  className="cart__submit-btn"
+                  onClick={openModal}
                 >
-                  No
+                  {t('checkout')}
                 </button>
-                <button
-                  onClick={confirmOrder}
-                  className="modal__btn modal__btn--yes"
-                >
-                  Yes
-                </button>
-              </div>
-            </>
-          </Modal>
-        )}
-      </div>
-    </>
+              </>
+            )}
+          </div>
+        </div>
+      ) : orderConfirmed ? (
+        <div className="cart__empty">
+          <h1 className="cart__empty--title">
+            {t('yourOrderHasBeenPlacedSuccessfuly')}
+          </h1>
+          <img
+            src={orderSuccessul}
+            alt="Thank you for your purchase"
+            className="cart__empty--img"
+          />
+        </div>
+      ) : (
+        <div className="cart__empty">
+          <h1 className="cart__empty--title">{t('yourCartIsEmpty')}</h1>
+
+          <img
+            className="cart__empty--img"
+            src={emptyCart}
+            alt="Your cart is empty"
+          />
+        </div>
+      )}
+
+      {isModalOpen && (
+        <Modal onClose={closeModal}>
+          <>
+            <h2 className="modal__title">{t('wantToConfirmOrder')}</h2>
+            <div className="modal__btn-wrapper">
+              <button
+                onClick={closeModal}
+                className="modal__btn modal__btn--no"
+              >
+                {t('no')}
+              </button>
+              <button
+                onClick={confirmOrder}
+                className="modal__btn modal__btn--yes"
+              >
+                {t('yes')}
+              </button>
+            </div>
+          </>
+        </Modal>
+      )}
+    </div>
   );
 };

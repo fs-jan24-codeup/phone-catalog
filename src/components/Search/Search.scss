@@ -17,6 +17,7 @@
     padding: 10px 30px 10px 12px;
     color: var(--primary-color);
     border: 1px solid var(--icon-color);
+    border-top: none;
     background-color: var(--button-color-selected);
     font-family: inherit;
     font-weight: 600;
@@ -27,6 +28,7 @@
   
     &:focus {
       border: 1px solid var(--primary-color);
+      border-top: none;
       outline: none;
     }
   

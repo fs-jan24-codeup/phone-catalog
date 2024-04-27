@@ -18,6 +18,7 @@ export const AppContextProvider: React.FC<Props> = ({ children }) => {
   const [favourites, setFavourites] = useState<Product[]>([]);
   const [favouritesIds, setFavouritesIds] = useState<string[]>([]);
   const [addedIds, setAddedIds] = useState<string[]>([]);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const { updateCart, removeCart, getCart } = useCartStorage();
 
   useEffect(() => {
@@ -122,6 +123,8 @@ export const AppContextProvider: React.FC<Props> = ({ children }) => {
     removeFromFavourites,
     isItemInFavourites,
     itemCount,
+    isSearchOpen,
+    setIsSearchOpen,
     clearCart,
   };
 

@@ -80,3 +80,21 @@
     transform: translateY(0);
   }
 }
+
+.custom-dropdown:has(.languages-selector) {
+  background: transparent;
+}
+
+.languages-selector {
+  border: 0;
+  text-transform: uppercase;
+}
+
+.languages-selector .custom-dropdown__title {
+  margin-top: 3px;
+  margin-right: 5px;
+}
+
+.languages-selector + div ul li {
+  text-transform: uppercase;
+}

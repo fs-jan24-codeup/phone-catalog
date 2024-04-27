@@ -2,13 +2,17 @@
 @import '../../styles/utils/variables.module.scss';
 
 .header {
-  position: relative;
+  position: fixed;
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  min-height: 48px;
+  height: 48px;
   border-bottom: 1px solid var(--header-border-color);
   box-sizing: border-box;
   font-weight: 800;
+  z-index: 999; // just to be sure
+  opacity: 1;
+  background-color: var(--background-color);
 
   &__right {
     display: flex;
@@ -48,6 +52,9 @@
     height: 16px;
 
     &__toggler {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       border: none;
       margin: 0;
       padding: 0;
@@ -78,7 +85,7 @@
     }
   }
 
-  &__search {
+  &__button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -86,13 +93,21 @@
     width: 48px;
     border: 0;
     border-left: 1px solid var(--header-border-color);
-    border-bottom: 1px solid var(--header-border-color);
-    background-color: var(--background-color);
+    background-color: transparent;
   
     @include on-desktop {
       height: 64px;
       width: 64px;
     }
+  }
+
+  &__switcher:hover {
+    cursor: pointer;
+  }
+
+  &__close {
+    border-bottom: 1px solid var(--icon-color);
+    background-color: var(--background-color);
   }
 }
 
@@ -125,8 +140,8 @@
         height: 3px;
         width: 100%;
         background-color: var(--primary-color);
-        transition: width 0.1s ease-in-out;
-        animation: grow-border 0.1s ease-in-out forwards;
+        transition: width $effect-duration ease-in-out;
+        animation: grow-border $effect-duration ease-in-out forwards;
       }
 
       @keyframes grow-border {
@@ -220,5 +235,4 @@
       display: none;
     }
   }
-
 }

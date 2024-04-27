@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
 import Logo from '../../assets/images/logo.svg?react';
 import ArrowUp from '../../assets/icons/arrow_up.svg?react';
 import './Footer.scss';
+
 import { useThemeContext } from '../../hooks/useThemeContext';
 import { ThemeToggler } from '../ThemeToggler/ThemeToggler';
 import { Chat } from '../Chat';
+import { useTranslation } from 'react-i18next';
 
 export const Footer: React.FC = () => {
-  const { theme, setTheme, themes } = useThemeContext();
+  const { t } = useTranslation();
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -17,6 +19,15 @@ export const Footer: React.FC = () => {
       behavior: 'smooth',
     });
   };
+
+  const { i18n } = useTranslation();
+
+  useEffect(() => {
+    const savedLanguage = localStorage.getItem('selectedLanguage');
+    if (savedLanguage) {
+      i18n.changeLanguage(savedLanguage);
+    }
+  }, [i18n]);
 
   return (
     <footer className="footer footer--fixed">
@@ -34,29 +45,22 @@ export const Footer: React.FC = () => {
             rel="noopener noreferrer"
             className="footer__link"
           >
-            Github
+            {t('github')}
           </Link>
 
           <NavLink to="/contacts" className="footer__link">
-            Contacts
+            {t('contacts')}
           </NavLink>
 
-          <Link to="/" className="footer__link">
-            Rights
-          </Link>
+          <NavLink to="/rights" className="footer__link">
+            {t('rights')}
+          </NavLink>
         </div>
 
         <Chat />
 
         <div className="footer__anchor">
-          <span className="footer__label">Back to top</span>
-          <ThemeToggler
-            onChange={() => {
-              if (theme === themes.light) setTheme(themes.dark);
-              if (theme === themes.dark) setTheme(themes.light);
-            }}
-            value={theme === themes.dark}
-          />
+          <span className="footer__label"> {t('backToTop')}</span>
 
           <button
             onClick={scrollToTop}

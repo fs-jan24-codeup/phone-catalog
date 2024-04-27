@@ -59,8 +59,14 @@
   width: 14px;
   height: 4px;
   border-radius: 0%;
+  background-color: var(--home-slider-pagination);
 }
 
 .home-swiper .swiper-pagination-bullet-active {
-  background-color: var(--primary-color);
+  background-color: var(--home-slider-pagination-active);
+}
+
+.slide-link {
+  height: 100%;
+  width: 100%;
 }

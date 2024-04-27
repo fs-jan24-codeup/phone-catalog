@@ -1,23 +1,31 @@
 import { useState, useEffect, useRef } from 'react';
 import './Dropdown.scss';
+import { useTranslation } from 'react-i18next';
 
 interface DropdownProps<T> {
   value: T;
   options: T[];
   onChange: (selectedOption: T) => void;
+  className?: string;
 }
 
 export const Dropdown = <T extends string | number>({
   value,
   options,
   onChange,
+  className,
 }: DropdownProps<T>) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
+  const { t } = useTranslation();
+
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setIsOpen(false);
       }
     };
@@ -34,20 +42,24 @@ export const Dropdown = <T extends string | number>({
     onChange(selectedOption);
   };
 
+  const isLastNumber = typeof options[options.length - 1] === 'number';
+
   return (
     <div className="custom-dropdown" ref={dropdownRef}>
       <div
-        className="custom-dropdown__button"
+        className={'custom-dropdown__button ' + className}
         onClick={() => setIsOpen(!isOpen)}
       >
-        <span className="custom-dropdown__title">{value}</span>
+        <span className="custom-dropdown__title">{t(String(value))}</span>
         <svg
           width="16"
           height="16"
           viewBox="0 0 16 16"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className={isOpen ? "custom-dropdown__icon open" : "custom-dropdown__icon"}
+          className={
+            isOpen ? 'custom-dropdown__icon open' : 'custom-dropdown__icon'
+          }
         >
           <path
             fillRule="evenodd"
@@ -67,7 +79,13 @@ export const Dropdown = <T extends string | number>({
                 tabIndex={0}
                 onClick={() => handleOptionSelect(option)}
               >
-                {option}
+                {t(
+                  String(
+                    index === options.length - 1 && isLastNumber
+                      ? t('all')
+                      : option,
+                  ),
+                )}
               </li>
             ))}
           </ul>

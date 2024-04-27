@@ -36,7 +36,7 @@
   &__cart-name {
     width: 68%;
     height: 16px;
-    animation: skeleton-loading 1s linear infinite alternate;
+    animation: $animation-skeleton;
     border-radius: 4px;
     margin-bottom: 4px;
 
@@ -52,7 +52,7 @@
   &__cart-image {
     width: 66px;
     height: 66px;
-    animation: skeleton-loading 1s linear infinite alternate;
+    animation: $animation-skeleton;
     border-radius: 4px;
     margin-bottom: 8px;
 
@@ -64,7 +64,7 @@
     width: 16px;
     height: 16px;
     border-radius: 2px;
-    animation: skeleton-loading 1s linear infinite alternate;
+    animation: $animation-skeleton;
     margin-top: 26px;
 
     @include on-tablet {
@@ -82,14 +82,14 @@
   &__cart-button {
     width: 110px;
     height: 32px;
-    animation: skeleton-loading 1s linear infinite alternate;
+    animation: $animation-skeleton;
     border-radius: 4px;
   }
 
   &__cart-price {
     width: 60px;
     height: 32px;
-    animation: skeleton-loading 1s linear infinite alternate;
+    animation: $animation-skeleton;
     border-radius: 4px;
   }
 }

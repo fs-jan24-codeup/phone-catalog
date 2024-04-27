@@ -106,12 +106,8 @@
     margin-top: 0;
 
     &--img {
-      width: 300px;
+      width: 250px;
       margin-bottom: 20px;
-
-      @include on-tablet {
-        width: 400px;
-      }
     }
   }
 
