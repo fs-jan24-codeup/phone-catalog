@@ -14,8 +14,11 @@ import { ImagesSwiper } from '../ImagesSwiper';
 
 import './ProductPageLayout.scss';
 import { GoBack } from '../GoBack';
+import { fadeOut } from '../FadeOut/FadeOut';
 
 export const ProductPageLayout: React.FC = () => {
+  fadeOut();
+
   const [good, setGood] = useState<Product | null>(null);
   const [recommendedGoods, setRecomendedGoods] = useState<Product[]>([]);
   const { productId } = useParams();
@@ -42,26 +45,33 @@ export const ProductPageLayout: React.FC = () => {
   }, [productId]);
   return (
     <div className="product__grid">
-      <div className="product__path">
+      <div className="product__path fadeOut">
         <Breadcrumb productName={good?.name} />
       </div>
-      <div className="product__back">
+
+      <div className="product__back fadeOut">
         <GoBack />
       </div>
-      <h2 className="product__title">{good?.name}</h2>
-      <div className="product__images">
+
+      <h2 className="product__title fadeOut">{good?.name}</h2>
+
+      <div className="product__images fadeOut">
         {good && <ImagesSwiper images={good.images} />}
       </div>
-      <div className="product__price">
+
+      <div className="product__price fadeOut">
         <PriceInfo />
       </div>
-      <div className="product__about">
+
+      <div className="product__about fadeOut">
         <AboutSection good={good} />
       </div>
-      <div className="product__specs">
+
+      <div className="product__specs fadeOut">
         <TechSpecs good={good} />
       </div>
-      <div className="product__also-like">
+
+      <div className="product__also-like fadeOut">
         <ProductSlider
           id="also-like"
           products={recommendedGoods}

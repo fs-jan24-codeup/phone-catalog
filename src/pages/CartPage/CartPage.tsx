@@ -9,8 +9,10 @@ import emptyCart from '../../assets/images/empty-cart.gif';
 import { CartSummarySkeleton } from './CartSummarySkeleton';
 import { GoBack } from '../../components/GoBack';
 import { useTranslation } from 'react-i18next';
+import { fadeOut } from '../../components/FadeOut/FadeOut';
 
 export const CartPage: React.FC = () => {
+  fadeOut();
   const { cart, clearCart, itemCount } = useAppContext();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -49,7 +51,7 @@ export const CartPage: React.FC = () => {
 
   return (
     <>
-      <div className="cart cart__grid">
+      <div className="cart cart__grid fadeOut">
         <GoBack />
 
         <h1 className="cart__title">{t('cart')}</h1>
