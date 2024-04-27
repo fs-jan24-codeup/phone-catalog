@@ -13,6 +13,7 @@ import { QuantitySkeleton } from './QuantitySkeleton';
 import { DropdownSort } from '../../components/Dropdown/DropdownSort';
 import { DropdownAmount } from '../../components/Dropdown/DropdownAmount';
 import { useTranslation } from 'react-i18next';
+import { fadeOut } from '../../components/FadeOut/FadeOut';
 
 type Props = {
   title: string;
@@ -20,6 +21,7 @@ type Props = {
 };
 
 export const ProductsPage: React.FC<Props> = ({ title, products }) => {
+  fadeOut();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -100,7 +102,7 @@ export const ProductsPage: React.FC<Props> = ({ title, products }) => {
   }, []);
 
   return (
-    <div className="product-page">
+    <div className="product-page fadeOut">
       <Breadcrumb />
       <h1 className="product-page__header">{title}</h1>
       {isLoadingTitle ? (

@@ -14,6 +14,8 @@ import { ImagesSwiper } from '../ImagesSwiper';
 
 import './ProductPageLayout.scss';
 import { GoBack } from '../GoBack';
+
+import { fadeOut } from '../FadeOut/FadeOut';
 import {
   SkeletonAbout,
   SkeletonImages,
@@ -22,6 +24,8 @@ import {
 } from './ProductPageSkeleton';
 
 export const ProductPageLayout: React.FC = () => {
+  fadeOut();
+
   const [good, setGood] = useState<Product | null>(null);
   const [recommendedGoods, setRecomendedGoods] = useState<Product[]>([]);
   const [isLoadingProduct, setIsLoadingProduct] = useState(true);
@@ -59,34 +63,36 @@ export const ProductPageLayout: React.FC = () => {
 
   return (
     <div className="product__grid">
-      <div className="product__path">
+      <div className="product__path fadeOut">
         <Breadcrumb productName={good?.name} />
       </div>
-      <div className="product__back">
+
+      <div className="product__back fadeOut">
         <GoBack />
       </div>
       {isLoadingProduct ? (
         <SkeletonTitle />
       ) : (
-        <h2 className="product__title">{good?.name}</h2>
+        <h2 className="product__title fadeOut">{good?.name}</h2>
       )}
-      <div className="product__images">
+      <div className="product__images fadeOut">
         {isLoadingProduct ? (
           <SkeletonImages />
         ) : (
           good && <ImagesSwiper images={good.images} />
         )}
       </div>
-      <div className="product__price">
+      <div className="product__price fadeOut">
         {isLoadingProduct ? <SkeletonPrice /> : <PriceInfo />}
       </div>
-      <div className="product__about">
+      <div className="product__about fadeOut">
         {isLoadingProduct ? <SkeletonAbout /> : <AboutSection good={good} />}
       </div>
-      <div className="product__specs">
+      <div className="product__specs fadeOut">
         {isLoadingProduct ? <SkeletonAbout /> : <TechSpecs good={good} />}
       </div>
-      <div className="product__also-like">
+
+      <div className="product__also-like fadeOut">
         <ProductSlider
           id="also-like"
           products={recommendedGoods}
