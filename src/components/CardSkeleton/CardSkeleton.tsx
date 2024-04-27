@@ -1,9 +1,11 @@
 import React from 'react';
 import './CardSkeleton.scss';
+import { fadeOut } from '../FadeOut/FadeOut';
 
 export const CardSkeleton: React.FC = () => {
+  fadeOut();
   return (
-    <div className="card__container skeleton">
+    <div className="card__container skeleton fadeOut">
       <div className="skeleton__image"></div>
 
       <div className="skeleton__name"></div>
