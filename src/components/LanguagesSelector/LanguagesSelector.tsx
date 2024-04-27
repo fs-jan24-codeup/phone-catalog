@@ -2,10 +2,10 @@ import { useTranslation } from 'react-i18next';
 import { Dropdown } from '../Dropdown';
 
 const languages = [
-  { code: 'en', lang: 'English' },
-  { code: 'ua', lang: 'Ukrainian' },
-  { code: 'fr', lang: 'French' },
-  { code: 'zh', lang: 'Chinese' },
+  { code: 'en', value: 'EN', lang: 'English' },
+  { code: 'ua', value: 'UA', lang: 'Ukrainian' },
+  { code: 'fr', value: 'FR', lang: 'French' },
+  { code: 'zh', value: 'ZH', lang: 'Chinese' },
 ];
 
 export const LanguagesSelector: React.FC = () => {
@@ -24,6 +24,7 @@ export const LanguagesSelector: React.FC = () => {
         value={savedLanguage}
         options={languages.map(lng => lng.code)}
         onChange={changeLanguage}
+        className={'languages-selector'}
       />
     </div>
   );

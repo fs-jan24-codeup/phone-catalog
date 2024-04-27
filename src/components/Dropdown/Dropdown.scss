@@ -80,3 +80,12 @@
     transform: translateY(0);
   }
 }
+
+.languages-selector {
+  border: 0;
+  text-transform: uppercase;
+}
+
+.languages-selector + div ul li {
+  text-transform: uppercase;
+}

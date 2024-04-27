@@ -5,10 +5,8 @@ import Logo from '../../assets/images/logo.svg?react';
 import ArrowUp from '../../assets/icons/arrow_up.svg?react';
 import './Footer.scss';
 import { useTranslation } from 'react-i18next';
-import { LanguagesSelector } from '../LanguagesSelector/LanguagesSelector';
 
 export const Footer: React.FC = () => {
-
   const { t } = useTranslation();
 
   const scrollToTop = () => {
@@ -57,7 +55,6 @@ export const Footer: React.FC = () => {
 
         <div className="footer__anchor">
           <span className="footer__label"> {t('backToTop')}</span>
-          <LanguagesSelector />
 
           <button
             onClick={scrollToTop}
