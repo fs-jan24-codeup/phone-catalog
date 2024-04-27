@@ -11,8 +11,6 @@ export const fadeOut = () => {
       const element = elements[i];
       const topPosition = element.getBoundingClientRect().top;
       const windowHeight = window.innerHeight;
-      // console.log('topPos', topPosition, i);
-      // console.log('windowH', windowHeight, i);
 
       if (topPosition <= windowHeight) {
         element.classList.add('animate');
