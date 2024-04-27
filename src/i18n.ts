@@ -63,6 +63,8 @@ i18n
           youMayAlsoLike: 'You may also like',
           yourOrderHasBeenPlacedSuccessfuly:
             'Your order has been placed successfully!',
+          rightsText:
+            'All rights belong to the CodeUp team and are protected. Our code is our tool for innovation and building the future. Every line of code is a step forward in our mission to make technology accessible and useful for everyone. ',
         },
       },
       fr: {
@@ -118,6 +120,7 @@ i18n
           youMayAlsoLike: 'Vous aimerez peut-être aussi',
           yourOrderHasBeenPlacedSuccessfuly:
             'Votre commande a été passée avec succès!',
+          rightsText: `Tous les droits appartiennent à l'équipe CodeUp et sont protégés. Notre code est notre outil d'innovation et de construction de l'avenir. Chaque ligne de code est un pas en avant dans notre mission de rendre la technologie accessible et utile pour tous.`,
         },
       },
       ua: {
@@ -173,6 +176,8 @@ i18n
           youMayAlsoLike: 'Вам також може сподобатися',
           yourOrderHasBeenPlacedSuccessfuly:
             'Ваше замовлення успішно оформлено!',
+          rightsText:
+            'Усі права належать команді CodeUp і захищені. Наш код - це наш інструмент для інновацій та будівництва майбутнього. Кожен рядок коду - це крок вперед у нашій місії зробити технології доступними і корисними для всіх.',
         },
       },
       zh: {
@@ -227,6 +232,8 @@ i18n
           cell: '电池',
           youMayAlsoLike: '您可能也喜欢',
           yourOrderHasBeenPlacedSuccessfuly: '您的訂單已成功下單。',
+          rightsText:
+            '所有权利属于 CodeUp 团队，并受到保护。我们的代码是我们创新和构建未来的工具。每一行代码都是我们使技术对每个人都可访问和有用的使命的一小步。',
         },
       },
     },

@@ -8,7 +8,6 @@ import { useTranslation } from 'react-i18next';
 import { LanguagesSelector } from '../LanguagesSelector/LanguagesSelector';
 
 export const Footer: React.FC = () => {
-
   const { t } = useTranslation();
 
   const scrollToTop = () => {
@@ -50,9 +49,9 @@ export const Footer: React.FC = () => {
             {t('contacts')}
           </NavLink>
 
-          <Link to="/" className="footer__link">
+          <NavLink to="/rights" className="footer__link">
             {t('rights')}
-          </Link>
+          </NavLink>
         </div>
 
         <div className="footer__anchor">
