@@ -62,27 +62,27 @@ export const ProductPageLayout: React.FC = () => {
   }, []);
 
   return (
-    <div className="product__grid">
-      <div className="product__path fadeOut">
+    <div className="product__grid fadeOut">
+      <div className="product__path">
         <Breadcrumb productName={good?.name} />
       </div>
 
-      <div className="product__back fadeOut">
+      <div className="product__back">
         <GoBack />
       </div>
       {isLoadingProduct ? (
         <SkeletonTitle />
       ) : (
-        <h2 className="product__title fadeOut">{good?.name}</h2>
+        <h2 className="product__title">{good?.name}</h2>
       )}
-      <div className="product__images fadeOut">
+      <div className="product__images">
         {isLoadingProduct ? (
           <SkeletonImages />
         ) : (
           good && <ImagesSwiper images={good.images} />
         )}
       </div>
-      <div className="product__price fadeOut">
+      <div className="product__price">
         {isLoadingProduct ? <SkeletonPrice /> : <PriceInfo />}
       </div>
       <div className="product__about fadeOut">
