@@ -2,13 +2,17 @@
 @import '../../styles/utils/variables.module.scss';
 
 .header {
-  position: relative;
+  position: fixed;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   height: 48px;
   border-bottom: 1px solid var(--header-border-color);
   box-sizing: border-box;
   font-weight: 800;
+  z-index: 999; // just to be sure
+  opacity: 1;
+  background-color: var(--background-color);
 
   &__right {
     display: flex;

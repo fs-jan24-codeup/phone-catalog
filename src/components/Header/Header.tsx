@@ -87,7 +87,7 @@ export const Header = () => {
   }, [i18n]);
 
   return (
-    <div className="header">
+    <div className="header" id='header'>
       <div className="header__wrapper">
         <NavLink to="/" className="header__home">
           <Logo className="header__logo" />
