@@ -1,0 +1,254 @@
+@import '../../styles/utils/mixins.scss';
+@import '../../styles/utils/variables.module.scss';
+
+.skeleton__product {
+  &-title {
+    width: 100%;
+    height: 30px;
+    border-radius: 12px;
+    animation: $animation-skeleton;
+
+    @include on-tablet {
+      width: 500px;
+    }
+
+    @include on-desktop {
+      width: 500px;
+      height: 34px;
+    }
+  }
+
+  &-images {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 50px;
+      height: 360px;
+    }
+  }
+
+  &-image {
+    width: 100%;
+    height: 80%;
+    border-radius: 10px;
+    animation: $animation-skeleton;
+    background-image: url('../../assets/icons/card-skeleton.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+
+    @include on-tablet {
+      height: 100%;
+      width: 60%;
+      order: 2;
+    }
+  }
+  &-slider {
+    width: 100%;
+    height: 49px;
+    border-radius: 10px;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+
+    @include on-tablet {
+      flex-direction: column;
+      justify-content: flex-start;
+      height: 80%;
+      width: 20%;
+      order: 1;
+    }
+  }
+  &-mini {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    animation: $animation-skeleton;
+    background-image: url('../../assets/icons/card-skeleton.svg');
+    background-size: 30%;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    @include on-tablet {
+    }
+  }
+}
+
+.skeleton__product-price {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.skeleton__product-colors-block {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 48px;
+}
+.skeleton__product-color-title-id {
+  display: flex;
+  justify-content: space-between;
+
+  @include on-tablet {
+    width: 240px;
+  }
+
+  @include on-desktop {
+    width: 100%;
+  }
+}
+
+.skeleton__product-color-id {
+  width: 68px;
+  height: 10px;
+  border-radius: 10px;
+  animation: $animation-skeleton;
+}
+.skeleton__product-color-title {
+  width: 100px;
+  height: 10px;
+  border-radius: 10px;
+  animation: $animation-skeleton;
+}
+
+.skeleton__product-colors {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+
+  @include on-tablet {
+    width: 240px;
+  }
+
+  @include on-desktop {
+    width: 320px;
+  }
+}
+
+.skeleton__product-color {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  animation: $animation-skeleton;
+}
+
+.skeleton__product-capacity {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    width: 240px;
+  }
+
+  @include on-desktop {
+    width: 320px;
+  }
+
+  &-title {
+    width: 20%;
+    height: 10px;
+    border-radius: 10px;
+    animation: $animation-skeleton;
+  }
+
+  &-block {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  &-btn {
+    width: 65px;
+    height: 32px;
+    border-radius: 10px;
+    animation: $animation-skeleton;
+  }
+
+  &-price {
+    width: 120px;
+    height: 36px;
+    border-radius: 10px;
+    animation: $animation-skeleton;
+    margin-bottom: 20px;
+  }
+  &-btn {
+    width: 100%;
+    height: 48px;
+    border-radius: 10px;
+    animation: $animation-skeleton;
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      width: 240px;
+    }
+
+    @include on-desktop {
+      width: 320px;
+    }
+  }
+
+  &-desc-block {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  &-desc {
+    height: 10px;
+    border-radius: 10px;
+    animation: $animation-skeleton;
+    width: 240px;
+
+    @include on-desktop {
+      width: 320px;
+    }
+  }
+}
+
+.skeleton__product-about-first-title {
+  width: 120px;
+  height: 20px;
+  border-radius: 10px;
+  animation: $animation-skeleton;
+  margin-bottom: 40px;
+  margin-top: 64px;
+
+  @include on-tablet {
+    margin-top: 120px;
+  }
+
+  @include on-desktop {
+    margin-top: -50px;
+  }
+
+  &about-title {
+    width: 100%;
+    height: 16px;
+    border-radius: 10px;
+    animation: $animation-skeleton;
+    margin-bottom: 20px;
+  }
+
+  &-about-desc {
+    width: 100%;
+    height: 10px;
+    border-radius: 10px;
+    animation: $animation-skeleton;
+    margin-bottom: 16px;
+  }
+}
