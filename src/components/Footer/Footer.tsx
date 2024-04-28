@@ -5,8 +5,6 @@ import Logo from '../../assets/images/logo.svg?react';
 import ArrowUp from '../../assets/icons/arrow_up.svg?react';
 import './Footer.scss';
 
-import { useThemeContext } from '../../hooks/useThemeContext';
-import { ThemeToggler } from '../ThemeToggler/ThemeToggler';
 import { Chat } from '../Chat';
 import { useTranslation } from 'react-i18next';
 
