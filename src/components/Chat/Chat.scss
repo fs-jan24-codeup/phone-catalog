@@ -12,7 +12,7 @@
   bottom: 76px;
   max-width: 400px;
   width: 350px;
-  background-color: white;
+  background-color: var(--favourite-button-color);
   border-radius: 5px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   pointer-events: auto;
@@ -25,7 +25,15 @@
   max-width: 350px;
   overflow-y: auto;
   margin: 16px;
-  background-color: white;
+  padding-right: 5px;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
 }
 
 .message {
@@ -37,13 +45,15 @@
 
 .message.user {
   display: inline-block;
-  max-width: 100%;
+  margin-left: auto;
+  max-width: 80%;
   white-space: pre-wrap;
   word-wrap: break-word;
 }
 
 .message.bot {
   background-color: #dcf8c6;
+  max-width: 80%;
   line-height: 26px;
   font-family: 'Mont';
   font-weight: lighter;
@@ -64,6 +74,8 @@
   flex-grow: 1;
   resize: none;
   border: 1px solid #ccc;
+  color: var(--primary-color);
+  background-color: var(--favourite-button-color);
   padding: 10px;
   font-size: 14px;
   font-family: "Mont";
@@ -86,6 +98,11 @@
   border: none;
   width: 48px;
   height: 48px;
+  background: var(--button-color);
+
+  svg {
+    color: white;
+  }
 }
 
 .close-chat-icon {
@@ -114,7 +131,7 @@
   align-items: center;
   width: 350px;
   height: 48px;
-  border: 1px solid gainsboro;
+  border-bottom: 1px solid gainsboro;
 }
 
 .modal-assistant-wrapper {
