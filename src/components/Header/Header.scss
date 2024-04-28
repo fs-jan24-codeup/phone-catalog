@@ -38,6 +38,10 @@
     align-items: center;
     height: 100%;
     width: 100%;
+
+    &.active {
+      background-color: transparent;
+    }
   }
 
   &__logo {
