@@ -14,14 +14,10 @@ export const SelectedItemsCircle: React.FC<Props> = ({ type }) => {
   return (
     <>
       {type === 'cart' && !!cart.length && (
-        <div className="circle">
-          <div className="circle--text">{itemCount}</div>
-        </div>
+        <div className="circle">{itemCount}</div>
       )}
       {type === 'favourite' && !!favourites.length && (
-        <div className="circle">
-          <div className="circle--text">{favourites.length}</div>
-        </div>
+        <div className="circle">{favourites.length}</div>
       )}
     </>
   );
