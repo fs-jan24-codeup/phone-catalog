@@ -22,11 +22,13 @@
   }
 
   &__title {
-    font-family: 'Mont';
+    font-family: inherit;
     font-size: 14px;
     font-weight: 600;
     line-height: 21px;
     color: var(--primary-color);
+    text-wrap: nowrap;
+    overflow: hidden;
   }
 
   &__icon {

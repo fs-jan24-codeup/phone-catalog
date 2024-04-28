@@ -1,22 +1,55 @@
-## How to start
+# Nice Gadgets
 
-use Node version 18
+Welcome to Nice Gadgets! This project is a showcase of various gadgets including phones, tablets, and accessories. With a sleek design and intuitive features, Nice Gadgets offers users the ability to explore and shop for their favorite tech products.
 
-- clone this repo
-- run `npm i` to install dependencies
-- run `npm run dev` to start project
-- open http://localhost:5173/phone-catalog/ in browser
+## Demo
 
-## How to develop a feature
+Experience the latest in tech and gadgets with our live demo of Nice Gadgets [here](https://fs-jan24-codeup.github.io/phone-catalog/#/)!
 
-1. `Pull` the latest `develop`
-1. Create a `feat/your-feature-name` branch and `push` it to Github
-1. Open a Pull Request (`PR`) from your branch to `develop`
-1. Add a screens or video to the PR description
-1. Write your code, save it and push it to Github
-1. Deploy the code to GH-Pages
-1. Ask your teammate to review and approve if everything is OK
-1. If some fixes are required discuss the comments and repeat steps 5-7
-1. If PR was approved by your teammate ask a mentor to review
-1. If the mentor requests some changes repeat steps 5 and 6
-1. After the mentor approves your PR `merge` it and delete the feature branch
+## Project Overview
+
+Nice Gadgets offers the following features:
+
+- A wide range of gadgets including phones, tablets, and accessories
+- Dark and light theme options for personalized browsing
+- AI helper to assist users in finding the right products
+- Language switcher for multi-language support
+- Global search functionality to easily find products
+- Ability to add products to cart and favorites for convenient shopping
+
+##### Mobile-First Design
+
+Nice Gadgets is designed with a mobile-first approach, ensuring seamless user experience across all devices.
+
+##### Auto Deployment
+
+Our project is set up for auto-deployment using GitHub Actions, ensuring continuous delivery with each new update.
+
+##### Technologies Used
+
+Nice Gadgets is built with the following technologies:
+
+- React
+- TypeScript
+- SCSS
+
+## Getting Started
+
+To get started with Nice Gadgets, follow these simple steps:
+
+- Make sure you are using Node version 18
+- Clone this repository to your local machine
+- Run `npm i` to install dependencies
+- Run `npm run dev` to start the project
+- Open http://localhost:5173/phone-catalog/ in your browser
+
+## Team
+
+Meet the developers behind Nice Gadgets:
+
+- Vasyl Dudla ([GitHub](https://github.com/Vasya564))
+- Kateryna Shepetska ([GitHub](https://github.com/kshepetska))
+- Viktoriia Zaitseva ([GitHub](https://github.com/ViktoriiaRepo))
+- Vitalii Vashkevych ([GitHub](https://github.com/VitaliiVashkevych))
+- Iliia Onyshchuk ([GitHub](https://github.com/illya-onyshchuk))
+- Vadym Khromei ([GitHub](https://github.com/khromakeiqt))

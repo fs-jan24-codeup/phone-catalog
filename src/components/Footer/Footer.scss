@@ -67,6 +67,7 @@
       flex-direction: row;
       gap: 14px;
       margin-top: 0;
+      margin-inline: auto;
     }
 
     @include on-desktop {
