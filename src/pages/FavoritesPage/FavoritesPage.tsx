@@ -6,6 +6,7 @@ import { useAppContext } from '../../hooks/useAppContext';
 import { Breadcrumb } from '../../components/Breadcrumb';
 
 import './FavoritesPage.scss';
+import '../../components/FadeOut/FadeOut.scss';
 import { useTranslation } from 'react-i18next';
 
 export const FavouritesPage: React.FC = () => {
@@ -14,7 +15,7 @@ export const FavouritesPage: React.FC = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="favorites-page">
+    <div className="favorites-page fadeOut animate">
       <Breadcrumb />
 
       <h1 className="favorites__title">{t('favourites')}</h1>
