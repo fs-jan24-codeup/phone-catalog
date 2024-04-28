@@ -4,6 +4,7 @@ import Cart from '../../assets/icons/shopping-cart.svg?react';
 import Favourites from '../../assets/icons/favourites.svg?react';
 import classNames from 'classnames';
 import { SelectedItemsCircle } from '../SelectedItemsCircle/SelectedItemsCircle';
+import { useTranslation } from 'react-i18next';
 
 interface MenuProps {
   onCloseMenu?: (event?: React.MouseEvent) => void;
@@ -22,6 +23,8 @@ export const Menu: React.FC<MenuProps> = ({ onCloseMenu }) => {
     }
   };
 
+  const { t } = useTranslation();
+
   return (
     <div className="menu">
       <ul className="menu__navbar">
@@ -31,7 +34,7 @@ export const Menu: React.FC<MenuProps> = ({ onCloseMenu }) => {
             className={getMenuLinkClass}
             onClick={handleLinkClick}
           >
-            Home
+            {t('home')}
           </NavLink>
         </li>
         <li>
@@ -40,7 +43,7 @@ export const Menu: React.FC<MenuProps> = ({ onCloseMenu }) => {
             className={getMenuLinkClass}
             onClick={handleLinkClick}
           >
-            Phones
+            {t('phones')}
           </NavLink>
         </li>
         <li>
@@ -49,7 +52,7 @@ export const Menu: React.FC<MenuProps> = ({ onCloseMenu }) => {
             className={getMenuLinkClass}
             onClick={handleLinkClick}
           >
-            Tablets
+            {t('tablets')}
           </NavLink>
         </li>
         <li>
@@ -58,7 +61,7 @@ export const Menu: React.FC<MenuProps> = ({ onCloseMenu }) => {
             className={getMenuLinkClass}
             onClick={handleLinkClick}
           >
-            Accessories
+            {t('accessories')}
           </NavLink>
         </li>
       </ul>
