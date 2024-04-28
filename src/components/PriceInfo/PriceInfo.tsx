@@ -13,7 +13,7 @@ import { useTranslation } from 'react-i18next';
 
 const getNewLink = (productId: string): string => {
   const segments = productId.split('-');
-  const suffixToRemove = productId.includes('space-gray') ? 3 : 2;
+  const suffixToRemove = !segments[segments.length - 2].match(/\d/) ? 3 : 2;
 
   const newSegments = segments.slice(0, -suffixToRemove);
   const newLink = newSegments.join('-');
