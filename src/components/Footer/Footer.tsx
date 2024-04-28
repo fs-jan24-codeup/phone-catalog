@@ -4,6 +4,10 @@ import { Link, NavLink } from 'react-router-dom';
 import Logo from '../../assets/images/logo.svg?react';
 import ArrowUp from '../../assets/icons/arrow_up.svg?react';
 import './Footer.scss';
+
+import { useThemeContext } from '../../hooks/useThemeContext';
+import { ThemeToggler } from '../ThemeToggler/ThemeToggler';
+import { Chat } from '../Chat';
 import { useTranslation } from 'react-i18next';
 
 export const Footer: React.FC = () => {
@@ -52,6 +56,8 @@ export const Footer: React.FC = () => {
             {t('rights')}
           </NavLink>
         </div>
+
+        <Chat />
 
         <div className="footer__anchor">
           <span className="footer__label"> {t('backToTop')}</span>
