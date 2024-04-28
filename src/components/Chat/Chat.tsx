@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import CloseChat from '../../assets/icons/close.svg?react';
 import OpenChat from '../../assets/icons/chat.svg?react';
+import Assistant from '../../assets/icons/assistant.svg?react';
 import OpenAI from 'openai';
 import './Chat.scss';
 
@@ -84,7 +85,9 @@ export const Chat = () => {
           <div className="modal-content" ref={modalContentRef}>
             <div className="modal-header">
               <div className="modal-assistant-wrapper">
-                <div className="modal-assistant"></div>
+                <div className="modal-assistant">
+                  <Assistant className='modal-assistant__icon'/>
+                </div>
                 <p className="modal-assistant-status">Online</p>
               </div>
               <div className="close-chat-icon">
