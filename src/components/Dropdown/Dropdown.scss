@@ -85,6 +85,7 @@
 
 .custom-dropdown:has(.languages-selector) {
   background: transparent;
+  z-index: 3;
 }
 
 .languages-selector {

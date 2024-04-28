@@ -55,6 +55,7 @@
   --svg-border-hover-color: #313237;
   --chat-border-color: rgb(220, 220, 220);
   --chat-logo-color: #313237;
+  --card-box-shadow-hover: #0000001a;
 }
 
 [data-theme='dark'] {
@@ -114,6 +115,7 @@
   --svg-border-hover-color: #323542;
   --chat-border-color: #4A4D58;
   --chat-logo-color: #e9e9e9;
+  --card-box-shadow-hover: #ffffff1a;
 }
 
 $small-tablet-min-width: 640px;
