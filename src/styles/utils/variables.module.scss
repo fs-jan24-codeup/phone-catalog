@@ -4,7 +4,7 @@
   --icon-color: #b4bdc3;
   --element-color: #e2e6e9;
   --hover-background-color: #fafbfc;
-  --white-color: #fff;
+  --white-color: #4c3f3f;
   --green-color: #27ae60;
   --red-color: #eb5757;
   --background-color: #fff;
@@ -46,6 +46,11 @@
   --modal-button-yes-color-text: #b8bac3;
   --skeleton-background-lighter: #e2e6e9;
   --skeleton-background-darker: #b4bdc3;
+  --svg-disabled-color: #b4bdc3;
+  --svg-bg-color: #fff;
+  --svg-bg-hover-color: #fff;
+  --svg-border-color: #b4bdc3;
+  --svg-border-hover-color: #313237;
 }
 
 [data-theme='dark'] {
@@ -97,6 +102,11 @@
   --home-slider-pagination-active: #f1f2f9;
   --skeleton-background-lighter: #323542;
   --skeleton-background-darker: #212430;
+  --svg-disabled-color: #4a4d58;
+  --svg-bg-color: #323542;
+  --svg-bg-hover-color: #4a4d58;
+  --svg-border-color: #323542;
+  --svg-border-hover-color: #323542;
 }
 
 $small-tablet-min-width: 640px;
