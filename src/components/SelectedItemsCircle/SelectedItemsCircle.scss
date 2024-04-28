@@ -10,13 +10,13 @@
   align-items: center;
   width: 14px;
   height: 14px;
-  border: 1px solid var(--white-color);
+  border: 1px solid var(--card-add-color);
   border-radius: 50%;
   background-color: var(--red-color);
-  
+
   &--text {
     font-size: 10px;
     font-weight: 700;
-    color: var(--white-color);
+    color: var(--card-add-color);
   }
 }
