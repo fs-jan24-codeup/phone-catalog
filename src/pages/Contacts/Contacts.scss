@@ -73,13 +73,14 @@
   font-weight: 700;
   width: 100%;
   max-width: 200px;
-  height: auto;
   background-color: var(--button-color);
   border: none;
   font-weight: 400;
   cursor: pointer;
   transition: all 0.3s;
   padding: 10px;
+  height: 40px;
+  color: var(--contacts-link-color);
 
   @include on-desktop {
     opacity: 0;

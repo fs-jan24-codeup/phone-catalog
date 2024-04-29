@@ -5,10 +5,12 @@ import Vitalii from '../../assets/images/contacts/Vitalii.jfif';
 import Iliia from '../../assets/images/contacts/Iliia.jfif';
 import Vadym from '../../assets/images/contacts/Vadym.jfif';
 import './Contacts.scss';
-import '../../components/FadeOut/FadeOut.scss'
+import '../../components/FadeOut/FadeOut.scss';
 import { useEffect } from 'react';
+import { fadeOut } from '../../components/FadeOut/FadeOut';
 
 export const Contacts: React.FC = () => {
+  fadeOut();
   const contacts = [
     {
       name: 'Vasyl Dudla',
@@ -48,27 +50,24 @@ export const Contacts: React.FC = () => {
     });
   }, []);
 
-
   return (
     <div className="contacts fadeOut animate">
       {contacts.map(contact => (
-        <div className="contact__container">
+        <div className="contact__container fadeOut">
           <div className="contact__wrapper">
             <div className="contact__img">
               <img src={contact.image} alt={contact.name} className="img" />
             </div>
             <p className="contact__name">{contact.name}</p>
             <p className="contact__text">Fullstack developer</p>
-            <button className="contact__github">
-              <a
-                href={contact.githubLink}
-                target="_blank"
-                rel="noreferrer"
-                className="contact__link"
-              >
-                Github
-              </a>
-            </button>
+            <a
+              href={contact.githubLink}
+              target="_blank"
+              rel="noreferrer"
+              className="contact__link contact__github"
+            >
+              Github
+            </a>
           </div>
         </div>
       ))}
