@@ -3,7 +3,11 @@ import './FadeOut.scss'
 
 export const fadeOut = () => {
   useEffect(() => {
-    window.scrollTo(0, 1)
+    window.scrollTo({
+      top: 2,
+      left: 0,
+      behavior: "smooth",
+    });
   }, [])
   window.addEventListener('scroll', function () {
     const elements = document.querySelectorAll('.fadeOut');
@@ -17,5 +21,4 @@ export const fadeOut = () => {
       }
     }
   });
-  window.scrollTo(0, 2)
 };

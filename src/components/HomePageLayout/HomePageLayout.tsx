@@ -18,6 +18,7 @@ export const HomePageLayout: React.FC = () => {
   const { t } = useTranslation();
 
   useEffect(() => {
+    window.scrollTo(0, 2);
     getProducts('./api/phones.json')
       .then(phones => {
         const hotPrices = [...phones]
