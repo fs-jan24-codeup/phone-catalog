@@ -21,6 +21,7 @@
     background-color: var(--button-color-selected);
     font-family: inherit;
     font-weight: 600;
+    z-index: 5;
 
     &:placeholder-shown {
       text-overflow: ellipsis;
@@ -44,6 +45,7 @@
       right: 10px;
       background: none;
       border: 0;
+      z-index: 6;
     }
   }
 

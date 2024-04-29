@@ -15,7 +15,6 @@ import { ImagesSwiper } from '../ImagesSwiper';
 import './ProductPageLayout.scss';
 import { GoBack } from '../GoBack';
 
-import { fadeOut } from '../FadeOut/FadeOut';
 import {
   SkeletonAbout,
   SkeletonImages,
@@ -24,8 +23,6 @@ import {
 } from './ProductPageSkeleton';
 
 export const ProductPageLayout: React.FC = () => {
-  fadeOut();
-
   const [good, setGood] = useState<Product | null>(null);
   const [recommendedGoods, setRecomendedGoods] = useState<Product[]>([]);
   const [isLoadingProduct, setIsLoadingProduct] = useState(true);
@@ -62,7 +59,7 @@ export const ProductPageLayout: React.FC = () => {
   }, []);
 
   return (
-    <div className="product__grid fadeOut">
+    <div className="product__grid fadeOut animate">
       <div className="product__path">
         <Breadcrumb productName={good?.name} />
       </div>
@@ -92,7 +89,7 @@ export const ProductPageLayout: React.FC = () => {
         {isLoadingProduct ? <SkeletonAbout /> : <TechSpecs good={good} />}
       </div>
 
-      <div className="product__also-like fadeOut">
+      <div className="product__also-like">
         <ProductSlider
           id="also-like"
           products={recommendedGoods}
