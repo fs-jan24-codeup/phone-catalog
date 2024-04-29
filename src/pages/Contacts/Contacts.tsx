@@ -5,6 +5,7 @@ import Vitalii from '../../assets/images/contacts/Vitalii.jfif';
 import Iliia from '../../assets/images/contacts/Iliia.jfif';
 import Vadym from '../../assets/images/contacts/Vadym.jfif';
 import './Contacts.scss';
+import '../../components/FadeOut/FadeOut.scss'
 import { useEffect } from 'react';
 
 export const Contacts: React.FC = () => {
@@ -47,8 +48,9 @@ export const Contacts: React.FC = () => {
     });
   }, []);
 
+
   return (
-    <div className="contacts">
+    <div className="contacts fadeOut animate">
       {contacts.map(contact => (
         <div className="contact__container">
           <div className="contact__wrapper">
