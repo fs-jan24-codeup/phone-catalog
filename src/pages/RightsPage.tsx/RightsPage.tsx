@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import './Rights.scss';
+import '../../components/FadeOut/FadeOut.scss'
 
 import { EarthCanvas } from './Earth';
 import { useTranslation } from 'react-i18next';
@@ -14,7 +15,7 @@ export const RightsPage: React.FC = () => {
   }, []);
 
   return (
-    <div className="rights__block">
+    <div className="rights__block fadeOut animate">
       <div className="rights__earth">
         <EarthCanvas />
       </div>
