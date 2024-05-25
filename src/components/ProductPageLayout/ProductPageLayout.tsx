@@ -1,9 +1,9 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import { Product } from '../../types/Product';
-import { getProduct, getProducts } from '../../utils/fetchData';
+import { apiRequest } from '../../utils/fetchData';
 
 import { Breadcrumb } from '../Breadcrumb';
 import { PriceInfo } from '../PriceInfo';
@@ -28,12 +28,13 @@ export const ProductPageLayout: React.FC = () => {
   const [isLoadingProduct, setIsLoadingProduct] = useState(true);
   const { productId } = useParams();
 
-  const { pathname } = useLocation();
-  const BASE_PATH = pathname.split('/');
+  // const { pathname } = useLocation();
+  // const BASE_PATH = pathname.split('/');
 
   useEffect(() => {
     if (!isLoadingProduct) {
-      getProducts(`./api/${BASE_PATH[1]}.json`)
+      apiRequest(`/products/recommended/${productId}`)
+      // apiRequest(`/products/${BASE_PATH[1]}.json`)
         .then(phones => {
           const newPhones = phones.slice(5, 16);
           setRecomendedGoods(newPhones);
@@ -44,8 +45,11 @@ export const ProductPageLayout: React.FC = () => {
 
   useEffect(() => {
     if (productId) {
-      getProduct(`./api/${BASE_PATH[1]}.json`, productId)
-        .then(product => setGood(product))
+      apiRequest(`/products/${productId}`)
+        .then(product => {
+          setGood(product);
+          console.log({ product: product });
+        })
         .catch(error => console.log(error));
     }
   }, [productId]);

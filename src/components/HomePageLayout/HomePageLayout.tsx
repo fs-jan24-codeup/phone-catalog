@@ -6,7 +6,7 @@ import './HomePageLayout.scss';
 import { HomeSlider } from '../HomeSlider';
 import { CategoriesSection } from '../CategoriesSection';
 import { ProductSlider } from '../ProductSlider';
-import { getProducts } from '../../utils/fetchData';
+import { apiRequest } from '../../utils/fetchData';
 import { Product } from '../../types/Product';
 import { fadeOut } from '../FadeOut/FadeOut';
 export const HomePageLayout: React.FC = () => {
@@ -19,7 +19,8 @@ export const HomePageLayout: React.FC = () => {
 
   useEffect(() => {
     window.scrollTo(0, 2);
-    getProducts('./api/phones.json')
+    // getProducts('./api/phones.json')
+    apiRequest(`/products/phones`)
       .then(phones => {
         const hotPrices = [...phones]
           .sort((a, b) => b.priceDiscount - a.priceDiscount)
@@ -35,9 +36,7 @@ export const HomePageLayout: React.FC = () => {
 
   return (
     <div className="home home__grid fadeOut">
-      <h1 className="home__title fadeOut">
-        {t('welcomeToNiceGadgetsStore')}
-      </h1>
+      <h1 className="home__title fadeOut">{t('welcomeToNiceGadgetsStore')}</h1>
 
       <div className="home__slider fadeOut">
         <HomeSlider />

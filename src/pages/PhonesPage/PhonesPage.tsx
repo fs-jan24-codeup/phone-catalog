@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 
 import { Product } from '../../types/Product';
-import { getProducts } from '../../utils/fetchData';
+import { apiRequest } from '../../utils/fetchData';
 import { ProductsPage } from '../ProductsPage';
 import { useTranslation } from 'react-i18next';
 
@@ -12,9 +12,9 @@ export const PhonesPage: React.FC = () => {
   const { t } = useTranslation();
 
   useEffect(() => {
-    getProducts('./api/phones.json')
-      .then(phones => setPhones(phones))
-      .catch(error => console.error('Error fetching phones:', error));
+    apiRequest('/products/phones?perPage=200').then(phones => {
+      setPhones(phones);
+    });
   }, []);
 
   return <ProductsPage products={phones} title={t('mobilePhones')} />;

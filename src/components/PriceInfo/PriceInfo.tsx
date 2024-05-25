@@ -4,7 +4,7 @@ import cn from 'classnames';
 import { Link, useLocation, useParams } from 'react-router-dom';
 
 import { Product } from '../../types/Product';
-import { getProduct } from '../../utils/fetchData';
+import { apiRequest } from '../../utils/fetchData';
 import { ButtonAddToCard } from '../ButtonAddToCard';
 import { ButtonAddToFavorites } from '../ButtonAddToFavorites';
 
@@ -57,7 +57,8 @@ export const PriceInfo = () => {
 
   useEffect(() => {
     if (productId) {
-      getProduct(`./api/${BASE_PATH}.json`, productId)
+      // getProduct(`./api/${BASE_PATH}.json`, productId)
+      apiRequest(`/products/${productId}`)
         .then(product => {
           setActiveColor(getValidColor(product.color));
           setActiveCapacity(product.capacity.toLowerCase());

@@ -1,11 +1,11 @@
-import { getProducts } from './fetchData';
+import { apiRequest } from './fetchData';
 
 export async function fetchModelsCount() {
   try {
     const counts = await Promise.all([
-      fetchModelsCountFromApi('./api/phones.json'),
-      fetchModelsCountFromApi('./api/tablets.json'),
-      fetchModelsCountFromApi('./api/accessories.json'),
+      fetchModelsCountFromApi('/products/phones?perPage=200'),
+      fetchModelsCountFromApi('/products/tablets?perPage=200'),
+      fetchModelsCountFromApi('/products/accessories?perPage=200'),
     ]);
     return {
       phones: counts[0],
@@ -24,7 +24,7 @@ export async function fetchModelsCount() {
 
 async function fetchModelsCountFromApi(endpoint: string) {
   try {
-    const models = await getProducts(endpoint);
+    const models = await apiRequest(endpoint);
     return models.length;
   } catch (error) {
     console.error(`Error fetching models count from API ${endpoint}:`, error);
