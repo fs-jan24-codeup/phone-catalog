@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import LoginForm from '../LogIn/LogIn';
 import SignupForm from '../SignUp/SignUp';
 import Logo from '../../../../public/img/logo.svg';
@@ -7,8 +7,8 @@ import FormImg from '../forms img/form-img2.svg';
 import '../Forms.scss';
 
 interface InitialBlockProps {
-  onClose: () => void;
   setShowForm: (showForm: boolean) => void;
+  onClose: () => void;
 }
 
 const InitialForm: React.FC<InitialBlockProps> = ({ setShowForm }) => {
@@ -27,6 +27,13 @@ const InitialForm: React.FC<InitialBlockProps> = ({ setShowForm }) => {
   };
 
   const handleCrossClick = () => {
+    setShowInitialForm(false);
+    setShowLoginForm(false);
+    setShowSignupForm(false);
+    setShowForm(false);
+  };
+
+  const handleInitialFormClose = () => {
     setShowInitialForm(false);
     setShowLoginForm(false);
     setShowSignupForm(false);
@@ -55,12 +62,12 @@ const InitialForm: React.FC<InitialBlockProps> = ({ setShowForm }) => {
       )}
       {showLoginForm && (
         <>
-          <LoginForm onClose={() => { setShowLoginForm(false); setShowInitialForm(true); }} />
+          <LoginForm onClose={handleInitialFormClose} />
         </>
       )}
       {showSignupForm && (
         <>
-          <SignupForm onClose={() => { setShowSignupForm(false); setShowInitialForm(true); }} />
+          <SignupForm onClose={handleInitialFormClose} />
         </>
       )}
     </div>
