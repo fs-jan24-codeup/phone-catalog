@@ -10,6 +10,8 @@ import emptyCart from '../../assets/images/empty-cart.gif';
 import { CartSummarySkeleton } from './CartSummarySkeleton';
 import { GoBack } from '../../components/GoBack';
 import { useTranslation } from 'react-i18next';
+import { isLoggedIn } from '../../utils/UserLogedIn';
+import InitialForm from '../../components/Forms/InitialForm/InitialForm';
 
 export const CartPage: React.FC = () => {
   const { cart, clearCart, itemCount } = useAppContext();
@@ -17,6 +19,7 @@ export const CartPage: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [orderConfirmed, setOrderConfirmed] = useState(false);
   const [isLoadingSummary, setIsLoadingSummary] = useState(true);
+  const [initialFormVisible, setInitialFormVisible] = useState(false); 
 
   const { t } = useTranslation();
 
@@ -36,6 +39,16 @@ export const CartPage: React.FC = () => {
       document.body.classList.remove('modal-open');
     }
   }, [isModalOpen]);
+
+  const userLoggedIn = isLoggedIn();
+
+  const handleYesButtonClick = () => {
+    if (!userLoggedIn) {
+      setInitialFormVisible(true);
+    } else {
+      confirmOrder();
+    }
+  };
 
   const totalPrice = cart.reduce(
     (total, item) => total + item.price * item.quantity,
@@ -102,7 +115,10 @@ export const CartPage: React.FC = () => {
             alt="Your cart is empty"
           />
         </div>
-      )}
+      ) 
+      }
+      {!userLoggedIn && initialFormVisible && <InitialForm onClose={() => {}} setShowForm={() => {}} />}
+
 
       {isModalOpen && (
         <Modal onClose={closeModal}>
@@ -116,7 +132,7 @@ export const CartPage: React.FC = () => {
                 {t('no')}
               </button>
               <button
-                onClick={confirmOrder}
+                onClick={handleYesButtonClick}
                 className="modal__btn modal__btn--yes"
               >
                 {t('yes')}
