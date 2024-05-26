@@ -33,7 +33,6 @@ export const Breadcrumb: React.FC<Props> = ({ productName }) => {
     });
 
   function generatePath(index: number, segments: Segment[]) {
-    console.log('segments :>> ', segments);
     return (
       '/' +
       segments

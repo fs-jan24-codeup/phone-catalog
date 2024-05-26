@@ -3,9 +3,12 @@ import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
-import slidePhones from '../../assets/images/slide-phones.png';
-import slideTablets from '../../assets/images/slide-tablets.png';
-import slideWatches from '../../assets/images/slide-watches.png';
+const baseUrl = import.meta.env.VITE_API_URL;
+
+const slidePhones = `${baseUrl}/assets/images/slide-phones.png`;
+const slideTablets = `${baseUrl}/assets/images/slide-tablets.png`;
+const slideWatches = `${baseUrl}/assets/images/slide-watches.png`;
+
 import ChevronLeft from '../../assets/icons/chevron-left.svg?react';
 import ChevronRight from '../../assets/icons/chevron-right.svg?react';
 

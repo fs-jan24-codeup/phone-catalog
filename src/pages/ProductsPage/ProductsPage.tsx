@@ -45,7 +45,6 @@ export const ProductsPage: React.FC<Props> = ({ title, products }) => {
   const params = new URLSearchParams(location.search);
 
   useEffect(() => {
-    // const params = new URLSearchParams(location.search);
     params.set('page', currentPage.toString());
 
     if (sortBy !== Sort.Newest) {

@@ -2,9 +2,12 @@ import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-import accessories from '../../assets/images/accessories.png';
-import tablets from '../../assets/images/tablets.png';
-import phones from '../../assets/images/phones.png';
+const baseUrl = import.meta.env.VITE_API_URL;
+
+const accessories = `${baseUrl}/assets/images/accessories.png`;
+const tablets = `${baseUrl}/assets/images/tablets.png`;
+const phones = `${baseUrl}/assets/images/phones.png`;
+
 import './CategoriesSection.scss';
 import { fetchModelsCount } from '../../utils/fetchModelsCount';
 

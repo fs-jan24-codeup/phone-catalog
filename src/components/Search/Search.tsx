@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import debounce from 'lodash.debounce';
 
-import { fetchAllProducts } from '../../utils/fetchAllProducts';
 import { filterProducts } from '../../utils/filterProducts';
 import useOutsideClick from '../../hooks/useOutsideClick';
 
@@ -13,6 +12,7 @@ import Close from '../../assets/icons/close.svg?react';
 import './Search.scss';
 import { useTranslation } from 'react-i18next';
 import { useAppContext } from '../../hooks/useAppContext';
+import { apiRequest } from '../../utils/fetchData';
 
 export const Search: React.FC = () => {
   const [query, setQuery] = useState('');
@@ -31,7 +31,7 @@ export const Search: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const allProducts = await fetchAllProducts();
+        const allProducts = await apiRequest(`/products?perPage=200`);
         setProducts(allProducts);
       } catch (error: any) {
         throw error(error.message);
