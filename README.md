@@ -47,7 +47,7 @@ To get started with Nice Gadgets, follow these simple steps:
 
 Meet the developers behind Nice Gadgets:
 
-- Vasyl Dudla ([GitHub](https://github.com/Vasya564))
+- Vasyl Dudla ([GitHub](https://github.com/tetlisna))
 - Kateryna Shepetska ([GitHub](https://github.com/kshepetska))
 - Viktoriia Zaitseva ([GitHub](https://github.com/ViktoriiaRepo))
 - Vitalii Vashkevych ([GitHub](https://github.com/VitaliiVashkevych))
