@@ -10,7 +10,7 @@ import MenuIcon from '../../assets/icons/menu.svg?react';
 import Cancel from '../../assets/icons/close.svg?react';
 import ShoppingCart from '../../assets/icons/shopping-cart.svg?react';
 import Favourites from '../../assets/icons/favourites.svg?react';
-import ProfileImage from '../../../public/img/profile-svgrepo-com.svg';
+import ProfileImage from '../../assets/images/logo.svg';
 import './Header.scss';
 import { Search } from '../Search';
 
