@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom/client';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import './i18n.ts';
 
-// import 'normalize.css';
 import './styles/styles.scss';
 import App from './App.tsx';
 

@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import debounce from 'lodash.debounce';
 
-// import { fetchAllProducts } from '../../utils/fetchAllProducts';
 import { filterProducts } from '../../utils/filterProducts';
 import useOutsideClick from '../../hooks/useOutsideClick';
 

@@ -26,20 +26,19 @@ export const ProductPageLayout: React.FC = () => {
   const [good, setGood] = useState<Product | null>(null);
   const [recommendedGoods, setRecomendedGoods] = useState<Product[]>([]);
   const [isLoadingProduct, setIsLoadingProduct] = useState(true);
-  const { productId } = useParams();
-
-  // const { pathname } = useLocation();
-  // const BASE_PATH = pathname.split('/');
+  const { productId } = useParams<{
+    category: string;
+    productId: string;
+  }>();
 
   useEffect(() => {
     if (!isLoadingProduct) {
-      apiRequest(`/products/recommended/${productId}`)
-      // apiRequest(`/products/${BASE_PATH[1]}.json`)
-        .then(phones => {
-          const newPhones = phones.slice(5, 16);
-          setRecomendedGoods(newPhones);
+      apiRequest(`/products/${productId}`)
+        .then(products => {
+          const newProducts = products.slice(5, 16);
+          setRecomendedGoods(newProducts);
         })
-        .catch(error => console.error('Error fetching phones:', error));
+        .catch(error => console.error('Error fetching product:', error));
     }
   }, [isLoadingProduct]);
 
@@ -48,7 +47,6 @@ export const ProductPageLayout: React.FC = () => {
       apiRequest(`/products/${productId}`)
         .then(product => {
           setGood(product);
-          console.log({ product: product });
         })
         .catch(error => console.log(error));
     }

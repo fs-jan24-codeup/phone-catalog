@@ -19,7 +19,6 @@ export const HomePageLayout: React.FC = () => {
 
   useEffect(() => {
     window.scrollTo(0, 2);
-    // getProducts('./api/phones.json')
     apiRequest(`/products/phones`)
       .then(phones => {
         const hotPrices = [...phones]

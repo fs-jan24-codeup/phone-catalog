@@ -57,7 +57,6 @@ export const PriceInfo = () => {
 
   useEffect(() => {
     if (productId) {
-      // getProduct(`./api/${BASE_PATH}.json`, productId)
       apiRequest(`/products/${productId}`)
         .then(product => {
           setActiveColor(getValidColor(product.color));
