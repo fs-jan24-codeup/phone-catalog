@@ -1,15 +1,15 @@
 const key = 'accessToken';
 
-function get(): string | null {
-  return localStorage.getItem(key);
+function get() {
+  return localStorage.getItem(key)
 }
 
-function save(token: string): void {
-  localStorage.setItem(key, token);
+function save(token: string) {
+  return localStorage.setItem(key, token)
 }
 
-function remove(): void {
-  localStorage.removeItem(key);
+function remove() {
+  return localStorage.removeItem(key)
 }
 
 export const accessTokenService = { get, save, remove };

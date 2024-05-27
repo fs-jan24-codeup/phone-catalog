@@ -10,6 +10,11 @@ import { FormVisibilityProvider } from './context/FormContext';
 import '../src/styles/App.scss';
 export const App: React.FC = () => {
   const [showForm, setShowForm] = useState(true);
+  
+  // useEffect(() => {
+  //   checkAuth();
+  // }, []);
+  // const { isChecked, user, logout, checkAuth } = useContext(AuthContext);
 
   const handleFormClose = () => {
     setShowForm(false);
@@ -19,6 +24,7 @@ export const App: React.FC = () => {
     <ThemeContextProvider>
       <AppContextProvider>
         <FormVisibilityProvider>
+        {/* <AuthProvider> */}
         {showForm && (
           <div className="initial-block-container">
             <InitialForm onClose={handleFormClose} setShowForm={setShowForm}/>
@@ -30,7 +36,8 @@ export const App: React.FC = () => {
             <Outlet />
           </PageLayout>
           <Footer />
-        </div>
+            </div>
+            {/* </AuthProvider> */}
         </FormVisibilityProvider>
       </AppContextProvider>
     </ThemeContextProvider>
