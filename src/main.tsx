@@ -17,6 +17,7 @@ import { FavouritesPage } from './pages/FavoritesPage/FavoritesPage.tsx';
 import { HomePage } from './pages/HomePage/HomePage.tsx';
 import { Contacts } from './pages/Contacts/Contacts.tsx';
 import { RightsPage } from './pages/RightsPage.tsx/RightsPage.tsx';
+import { Profile } from './pages/ProfilePage/Profile.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -42,6 +43,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <Route path="favourites" element={<FavouritesPage />} />
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/rights" element={<RightsPage />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

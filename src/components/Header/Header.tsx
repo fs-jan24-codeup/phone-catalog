@@ -24,28 +24,19 @@ import { useThemeContext } from '../../hooks/useThemeContext';
 import { useAppContext } from '../../hooks/useAppContext';
 import { LanguagesSelector } from '../LanguagesSelector/LanguagesSelector';
 
-interface ProfileInfo {
-  name: string;
-  email: string;
-}
-
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const { theme, setTheme, themes } = useThemeContext();
   const { isSearchOpen, setIsSearchOpen } = useAppContext();
-  
-  const [isProfileActive, setIsProfileActive] = useState(false);
-  const [isProfileWindowOpen, setIsProfileWindowOpen] = useState(false);
-  const [profileInfo, setProfileInfo] = useState<ProfileInfo>({ name: '', email: '' });
-  
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
   const toggleSearch = () => {
     setIsMenuOpen(false);
-    setIsSearchOpen(prev => !prev);
+    setIsSearchOpen((prev) => !prev);
   };
 
   useEffect(() => {
@@ -86,9 +77,6 @@ export const Header = () => {
   const getHeaderIconClass = ({ isActive }: { isActive: boolean }) =>
     classNames('navbar__icon', { 'navbar__link--active': isActive });
 
-  const getProfileIconClass = () =>
-    classNames('navbar__icon', { 'navbar__link--active': isProfileActive });
-
   const { t } = useTranslation();
 
   const { i18n } = useTranslation();
@@ -99,15 +87,6 @@ export const Header = () => {
       i18n.changeLanguage(savedLanguage);
     }
   }, [i18n]);
-
-  const handleProfileClick = () => {
-    setIsProfileWindowOpen(true);
-    setIsProfileActive(true);
-    const userData = localStorage.getItem('userData');
-    if (userData) {
-      setProfileInfo(JSON.parse(userData));
-    }
-  };
 
   return (
     <div className="header" id="header">
@@ -184,23 +163,14 @@ export const Header = () => {
               <ShoppingCart />
               <SelectedItemsCircle type="cart" />
             </NavLink>
-              <div className={getProfileIconClass()} onClick={handleProfileClick}>
-                <img src={ProfileImage} alt="Profile" className="header__profile-image" />
-              </div>
           </div>
+
+          <NavLink to="/profile" className={getHeaderIconClass}>
+            <img src={ProfileImage} alt="Profile" className="header__profile-image" />
+          </NavLink>
         </div>
 
         {isMenuOpen && isMobile && <Menu onCloseMenu={toggleMenu} />}
-        {isProfileWindowOpen && (
-        <div className="header__profile-window">
-          <div className="header__profile-info">
-            <h2 className="header__profile-title">User Profile</h2>
-            <p className="header__profile-text">Name: {profileInfo.name}</p>
-            <p className="header__profile-text">Email: {profileInfo.email}</p>
-            <button className="form__button" onClick={() => { setIsProfileWindowOpen(false); setIsProfileActive(false); }}>Close</button>
-          </div>
-        </div>
-      )}
       </div>
     </div>
   );
