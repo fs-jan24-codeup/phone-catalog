@@ -19,7 +19,7 @@ export async function registerRequest(userData: {
   password: string;
   name?: string;
 }) {
-  return fetch(`${baseUrl}/auth/registration`, {
+  return fetch(`${baseUrl}/registration`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -33,7 +33,31 @@ export async function registerRequest(userData: {
     return response.json();
   })
   .catch(error => {
-    console.error('Error fetching products:', error);
-    return [];
+    console.error('Error during registration', error);
+    // return [];
+  });
+}
+
+export async function loginRequest(userData: {
+  name?: string;
+  email: string;
+  password: string;
+}) {
+  return fetch(`${baseUrl}/login`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(userData)
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .catch(error => {
+    console.error('Error during login', error);
+    // return [];
   });
 }
