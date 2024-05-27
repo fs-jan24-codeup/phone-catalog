@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './CartPage.scss';
-import '../../components/FadeOut/FadeOut.scss';
 
 import { CartItem } from '../../components/CartItem/CartItem';
 import { useAppContext } from '../../hooks/useAppContext';
@@ -62,10 +61,10 @@ export const CartPage: React.FC = () => {
   }, []);
 
   return (
-    <div className="cart cart__grid fadeOut animate">
+    <div className="cart cart__grid" data-aos="fade-down">
       <GoBack />
 
-      <h1 className="cart__title fadeOut">{t('cart')}</h1>
+      <h1 className="cart__title">{t('cart')}</h1>
 
       {cart.length ? (
         <div className="cart__content-wrapper">
@@ -95,7 +94,7 @@ export const CartPage: React.FC = () => {
           </div>
         </div>
       ) : orderConfirmed ? (
-        <div className="cart__empty fadeOut animate">
+        <div className="cart__empty">
           <h1 className="cart__empty--title">
             {t('yourOrderHasBeenPlacedSuccessfuly')}
           </h1>

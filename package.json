@@ -14,6 +14,7 @@
   "dependencies": {
     "@react-three/drei": "^9.105.4",
     "@react-three/fiber": "^8.16.2",
+    "aos": "^2.3.4",
     "axios": "^1.6.8",
     "classnames": "^2.5.1",
     "i18next": "^23.11.2",
@@ -35,6 +36,7 @@
     "vite-plugin-svgr": "^4.2.0"
   },
   "devDependencies": {
+    "@types/aos": "^3.0.7",
     "@types/lodash.debounce": "^4.0.9",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",

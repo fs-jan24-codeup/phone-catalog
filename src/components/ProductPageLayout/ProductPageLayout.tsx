@@ -61,7 +61,7 @@ export const ProductPageLayout: React.FC = () => {
   }, []);
 
   return (
-    <div className="product__grid fadeOut animate">
+    <div className="product__grid">
       <div className="product__path">
         <Breadcrumb productName={good?.name} />
       </div>
@@ -84,10 +84,10 @@ export const ProductPageLayout: React.FC = () => {
       <div className="product__price">
         {isLoadingProduct ? <SkeletonPrice /> : <PriceInfo />}
       </div>
-      <div className="product__about fadeOut">
+      <div className="product__about">
         {isLoadingProduct ? <SkeletonAbout /> : <AboutSection good={good} />}
       </div>
-      <div className="product__specs fadeOut">
+      <div className="product__specs">
         {isLoadingProduct ? <SkeletonAbout /> : <TechSpecs good={good} />}
       </div>
 
