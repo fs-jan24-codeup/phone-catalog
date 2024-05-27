@@ -29,14 +29,14 @@ export const Header = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const { theme, setTheme, themes } = useThemeContext();
   const { isSearchOpen, setIsSearchOpen } = useAppContext();
-  
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
   const toggleSearch = () => {
     setIsMenuOpen(false);
-    setIsSearchOpen(prev => !prev);
+    setIsSearchOpen((prev) => !prev);
   };
 
   useEffect(() => {
@@ -148,10 +148,6 @@ export const Header = () => {
             className="header__switcher header__button"
           />
 
-          <NavLink to="/profile" className={getHeaderIconClass}>
-            <img src={ProfileImage} alt="Profile" className="header__profile-image" />
-          </NavLink>
-
           {(isMobile || isMenuOpen) && (
             <button className="header__menu__toggler" onClick={toggleMenu}>
               {isMenuOpen ? <Cancel /> : <MenuIcon />}
@@ -168,6 +164,10 @@ export const Header = () => {
               <SelectedItemsCircle type="cart" />
             </NavLink>
           </div>
+
+          <NavLink to="/profile" className={getHeaderIconClass}>
+            <img src={ProfileImage} alt="Profile" className="header__profile-image" />
+          </NavLink>
         </div>
 
         {isMenuOpen && isMobile && <Menu onCloseMenu={toggleMenu} />}
