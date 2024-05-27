@@ -12,14 +12,17 @@ import { GoBack } from '../../components/GoBack';
 import { useTranslation } from 'react-i18next';
 import { isLoggedIn } from '../../utils/UserLogedIn';
 import InitialForm from '../../components/Forms/InitialForm/InitialForm';
+import { useFormVisibility } from '../../context/FormContext';
+import { useConfirmedOrders } from '../../utils/ConfirmedOrders';
 
 export const CartPage: React.FC = () => {
   const { cart, clearCart, itemCount } = useAppContext();
+  const { showInitialForm, setShowInitialForm } = useFormVisibility();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [orderConfirmed, setOrderConfirmed] = useState(false);
   const [isLoadingSummary, setIsLoadingSummary] = useState(true);
-  const [initialFormVisible, setInitialFormVisible] = useState(false); 
+  const { addConfirmedOrder } = useConfirmedOrders();
 
   const { t } = useTranslation();
 
@@ -30,7 +33,11 @@ export const CartPage: React.FC = () => {
     setIsModalOpen(false);
     clearCart();
     setOrderConfirmed(true);
+    cart.forEach((item) => {
+      addConfirmedOrder(item);
+    });
   };
+  
 
   useEffect(() => {
     if (isModalOpen) {
@@ -43,12 +50,14 @@ export const CartPage: React.FC = () => {
   const userLoggedIn = isLoggedIn();
 
   const handleYesButtonClick = () => {
-    if (!userLoggedIn) {
-      setInitialFormVisible(true);
+    const userDataSaved = localStorage.getItem('userData');
+    if (!userDataSaved) {
+      setShowInitialForm(true);
     } else {
       confirmOrder();
     }
   };
+  
 
   const totalPrice = cart.reduce(
     (total, item) => total + item.price * item.quantity,
@@ -117,7 +126,7 @@ export const CartPage: React.FC = () => {
         </div>
       ) 
       }
-      {!userLoggedIn && initialFormVisible && <InitialForm onClose={() => {}} setShowForm={() => {}} />}
+      {!userLoggedIn && showInitialForm && <InitialForm onClose={() => {}} setShowForm={() => {}} />}
 
 
       {isModalOpen && (
@@ -144,3 +153,4 @@ export const CartPage: React.FC = () => {
     </div>
   );
 };
+

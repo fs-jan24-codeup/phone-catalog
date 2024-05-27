@@ -1,23 +1,30 @@
-import { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode } from 'react';
 
-interface InitialFormContextType {
-    showForm: boolean;
-    setShowForm: (show: boolean) => void;
-    modalTriggered: boolean;
-    setModalTriggered: (triggered: boolean) => void;
-}   
+interface FormVisibilityContextType {
+  showInitialForm: boolean;
+  setShowInitialForm: (show: boolean) => void;
+}
 
-const InitialFormContext = createContext<InitialFormContextType | null>(null);
+const FormVisibilityContext = createContext<FormVisibilityContextType | undefined>(undefined);
 
-export const useInitialForm = () => useContext(InitialFormContext);
+export const useFormVisibility = () => {
+  const context = useContext(FormVisibilityContext);
+  if (!context) {
+    throw new Error('useFormVisibility must be used within a FormVisibilityProvider');
+  }
+  return context;
+};
 
-export const InitialFormProvider = ({ children }: { children: ReactNode }) => {
-    const [showForm, setShowForm] = useState(false);
-    const [modalTriggered, setModalTriggered] = useState(false);
-  
-    return (
-      <InitialFormContext.Provider value={{ showForm, setShowForm, modalTriggered, setModalTriggered }}>
-        {children}
-      </InitialFormContext.Provider>
-    );
+interface FormVisibilityProviderProps {
+  children: ReactNode;
+}
+
+export const FormVisibilityProvider: React.FC<FormVisibilityProviderProps> = ({ children }) => {
+  const [showInitialForm, setShowInitialForm] = useState<boolean>(false);
+
+  return (
+    <FormVisibilityContext.Provider value={{ showInitialForm, setShowInitialForm }}>
+      {children}
+    </FormVisibilityContext.Provider>
+  );
 };
