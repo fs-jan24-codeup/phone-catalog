@@ -19,8 +19,8 @@ export const App: React.FC = () => {
   };
   return (
     <ThemeContextProvider>
-      <AppContextProvider>
-        <AuthProvider>
+      <AuthProvider>
+        <AppContextProvider>
           <FormVisibilityProvider>
             {showInitialForm && showForm && (
               <div className="initial-block-container">
@@ -49,8 +49,8 @@ export const App: React.FC = () => {
               </>
             )}
           </FormVisibilityProvider>
-        </AuthProvider>
-      </AppContextProvider>
+        </AppContextProvider>
+      </AuthProvider>
     </ThemeContextProvider>
   );
 };
