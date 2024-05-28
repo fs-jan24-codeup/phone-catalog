@@ -162,11 +162,11 @@ export const Header: React.FC<HeaderProps> = ({ setShowInitialForm }) => {
           </div>
 
           {isAuthenticated ? (
-            <NavLink to="/profile" className={getHeaderIconClass}>
+            <NavLink to="/profile" className='header__button'>
               <img src={ProfileImage} alt="Profile" className="header__profile-image" />
             </NavLink>
           ) : (
-            <p className="header__login navbar__icon" onClick={handleLoginClick}>Log In</p>
+            <p className="header__login header__button" onClick={handleLoginClick}>Log In</p>
           )}
         </div>
 
