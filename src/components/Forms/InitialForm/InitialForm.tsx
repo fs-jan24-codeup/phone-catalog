@@ -17,9 +17,9 @@ const InitialForm: React.FC<InitialBlockProps> = ({ setShowForm }) => {
   const [showSignupForm, setShowSignupForm] = useState(false);
 
   useEffect(() => {
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflowY = 'hidden';
     return () => {
-      document.body.style.overflow = 'scroll';
+      document.body.style.overflowY = 'auto';
     };
   }, []);
 

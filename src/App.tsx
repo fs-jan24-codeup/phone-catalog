@@ -32,13 +32,17 @@ export const App: React.FC = () => {
             )}
 
             {showInitialForm && showForm ? (
-              <div className="dark-overlay">
-                <Header setShowInitialForm={setShowInitialForm} />
-                <PageLayout>
-                  <Outlet />
-                </PageLayout>
-                <Footer />
-              </div>
+              <>
+                <div className="dark-overlay">
+                  <Header setShowInitialForm={setShowInitialForm} />
+                  <PageLayout>
+                    <Outlet />
+                  </PageLayout>
+                </div>
+                <div className="dark-overlay-footer">
+                  <Footer />
+                </div>
+              </>
             ) : (
               <>
                 <Header setShowInitialForm={setShowInitialForm} />
