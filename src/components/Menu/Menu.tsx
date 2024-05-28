@@ -27,7 +27,7 @@ export const Menu: React.FC<MenuProps> = ({ onCloseMenu }) => {
 
   return (
     <div className="menu">
-      <ul className="menu__navbar">
+      <ul className="menu__navbar"  data-aos="fade-down">
         <li>
           <NavLink
             to="/"

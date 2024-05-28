@@ -8,9 +8,13 @@ import { CategoriesSection } from '../CategoriesSection';
 import { ProductSlider } from '../ProductSlider';
 import { apiRequest } from '../../utils/fetchData';
 import { Product } from '../../types/Product';
-import { fadeOut } from '../FadeOut/FadeOut';
+
+//@ts-ignore
+import { aos } from '../AOS/aos';
+
+aos();
+
 export const HomePageLayout: React.FC = () => {
-  fadeOut();
 
   const [phonesWithHotPrices, setPhonesWithHotPrices] = useState<Product[]>([]);
   const [newModels, setNewModels] = useState<Product[]>([]);
@@ -18,7 +22,6 @@ export const HomePageLayout: React.FC = () => {
   const { t } = useTranslation();
 
   useEffect(() => {
-    window.scrollTo(0, 2);
     apiRequest(`/products/phones`)
       .then(phones => {
         const hotPrices = [...phones]
@@ -34,14 +37,14 @@ export const HomePageLayout: React.FC = () => {
   }, []);
 
   return (
-    <div className="home home__grid fadeOut">
-      <h1 className="home__title fadeOut">{t('welcomeToNiceGadgetsStore')}</h1>
+    <div className="home home__grid">
+      <h1 className="home__title" data-aos="fade-down">{t('welcomeToNiceGadgetsStore')}</h1>
 
-      <div className="home__slider fadeOut">
+      <div className="home__slider" data-aos="fade-down">
         <HomeSlider />
       </div>
 
-      <div className="home__brand-new-models fadeOut">
+      <div className="home__brand-new-models" data-aos="fade-down">
         <ProductSlider
           id="brand-new"
           products={newModels}
@@ -49,11 +52,11 @@ export const HomePageLayout: React.FC = () => {
         />
       </div>
 
-      <div className="home__shop-by-category fadeOut">
+      <div className="home__shop-by-category" data-aos="fade-down">
         <CategoriesSection />
       </div>
 
-      <div className="home__hot-prices fadeOut">
+      <div className="home__hot-prices" data-aos="fade-down">
         <ProductSlider
           id="hot-models"
           products={phonesWithHotPrices}
