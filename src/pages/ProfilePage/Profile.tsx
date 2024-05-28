@@ -1,10 +1,19 @@
 import { CartItem } from '../../components/CartItem/CartItem';
 import { GoBack } from '../../components/GoBack';
 import { useConfirmedOrders } from '../../utils/ConfirmedOrders'; 
+import { AuthContext } from '../../context/AuthContext';
+import { useContext } from 'react';
+
+import './Profile.scss';
 
 export const Profile = () => {
+    const { logout } = useContext(AuthContext);
     const { confirmedOrders } = useConfirmedOrders(); 
     const userData = JSON.parse(localStorage.getItem('userData') || '');
+
+    const handleLogout = () => {
+        logout();
+    };
 
     return (
         <div className="profile">
@@ -22,6 +31,7 @@ export const Profile = () => {
                 ) : (
                     <p>No confirmed orders</p>
                 )}
+                <button className="profile__button" onClick={handleLogout}>Logout</button>
             </div>
         </div>
     );

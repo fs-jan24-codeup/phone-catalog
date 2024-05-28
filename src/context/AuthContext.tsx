@@ -14,9 +14,13 @@ interface AuthContextType {
   isAuthenticated: boolean;
 }
 
-export const AuthContext = createContext<AuthContextType | undefined>(
-  undefined,
-);
+export const AuthContext = createContext<AuthContextType>({
+  user: null,
+  login: async () => {},
+  register: async () => {},
+  logout: () => {},
+  isAuthenticated: false,
+});
 
 interface AuthProviderProps {
   children: ReactNode;
