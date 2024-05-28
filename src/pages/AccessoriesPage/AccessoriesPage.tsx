@@ -12,7 +12,7 @@ export const AccessoriesPage: React.FC = () => {
   const { t } = useTranslation();
 
   useEffect(() => {
-    apiRequest('/products/accessories')
+    apiRequest('/products/accessories?perPage=200')
       .then(accessories => {
         setAccessories(accessories);
       })

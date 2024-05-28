@@ -2,6 +2,7 @@ import '../Forms.scss';
 import Logo from '../../../../public/img/logo.svg';
 import { useForm } from 'react-hook-form';
 import { registerRequest } from '../../../utils/fetchData';
+import { useAuth } from '../../../hooks/useAuth';
 
 interface LoginFormProps {
   onClose: () => void;
@@ -17,6 +18,7 @@ interface FormData {
 
 const SignupForm: React.FC<LoginFormProps> = ({ onClose, onBack }) => {
   const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
+  const { login } = useAuth();
 
   const onSubmit = (data: FormData) => {
     console.log(data);
@@ -27,7 +29,8 @@ const SignupForm: React.FC<LoginFormProps> = ({ onClose, onBack }) => {
     registerRequest({
       name, email, password
     }).then(data => {
-      console.log({registerRequest: data});
+      console.log({ registerRequest: data });
+      login({ email, password });
     });
   };    
   
