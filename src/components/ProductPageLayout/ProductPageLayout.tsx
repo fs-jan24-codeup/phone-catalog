@@ -33,10 +33,9 @@ export const ProductPageLayout: React.FC = () => {
 
   useEffect(() => {
     if (!isLoadingProduct) {
-      apiRequest(`/products/${productId}`)
+      apiRequest(`/products/recommended/${productId}`)
         .then(products => {
-          const newProducts = products.slice(5, 16);
-          setRecomendedGoods(newProducts);
+          setRecomendedGoods(products);
         })
         .catch(error => console.error('Error fetching product:', error));
     }
