@@ -26,7 +26,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onClose, onBack }) => {
     try {
       await login(data);
       onClose();
-      // localStorage.setItem('userData', JSON.stringify(data));
+      localStorage.setItem('userData', JSON.stringify(data));
     } catch (error) {
       console.error('Error during login:', error);
     }
