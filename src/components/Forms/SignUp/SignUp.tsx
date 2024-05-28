@@ -9,6 +9,7 @@ interface LoginFormProps {
 }
 
 interface FormData {
+  name: string;
   email: string;
   password: string;
   confirmPassword: string;
@@ -21,10 +22,10 @@ const SignupForm: React.FC<LoginFormProps> = ({ onClose, onBack }) => {
     console.log(data);
     onClose();
     localStorage.setItem('userData', JSON.stringify(data));
-    const { email, password } = data;
+    const { name, email, password } = data;
 
     registerRequest({
-      email, password
+      name, email, password
     }).then(data => {
       console.log({registerRequest: data});
     });
@@ -48,6 +49,12 @@ const SignupForm: React.FC<LoginFormProps> = ({ onClose, onBack }) => {
         <p className='form__title'>Sign Up</p>
         <p className='form__text'>Explore our community for updates and exclusive offers.</p>
         <form onSubmit={handleSubmit(onSubmit)}>
+        <input
+            className="form__input"
+            type="name"
+            placeholder="Enter Username"
+            {...register('name', { required: true })}
+          />
           <input className='form__input' type="email" placeholder="Enter Email" {...register('email', { required: 'Email is required.', pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i })} />
           {errors.email && <span className="error-message">{errors.email.message}</span>}
           <input className='form__input' type="password" placeholder="Enter Password" {...register('password', { required: 'Password is required.', minLength: { value: 8, message: 'Password must be at least 8 characters long.' } })} />

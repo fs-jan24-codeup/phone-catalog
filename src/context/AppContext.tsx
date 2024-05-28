@@ -3,8 +3,7 @@ import { AppContext as AppContextType } from '../types/AppContext';
 import { Product } from '../types/Product';
 import { CartProduct } from '../types/CartProduct';
 import { useCartStorage } from '../hooks/useCartStorage';
-import { useAuth } from '../hooks/useAuth';
-import { privateRequest } from '../utils/fetchData';
+import { privateRequest, privatePostRequest } from '../utils/fetchData';
 
 const CART_STORAGE_KEY = 'cart';
 const FAVOURITE_STORAGE_KEY = 'favourite';
@@ -22,11 +21,18 @@ export const AppContextProvider: React.FC<Props> = ({ children }) => {
   const [addedIds, setAddedIds] = useState<string[]>([]);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const { updateCart, removeCart, getCart } = useCartStorage();
-  const { isAuthenticated } = useAuth();
 
   useEffect(() => {
     const itemFromLocalStorge = getCart(CART_STORAGE_KEY);
-    const favouriteItems = getCart(FAVOURITE_STORAGE_KEY);
+    const userData = localStorage.getItem('userData');
+
+    if (userData) {
+      const { id } = JSON.parse(userData);
+      privateRequest(`/favourites?userId=${id}`).then((data: Product[]) => {
+        setFavourites(data);
+        setFavouritesIds(data.map((p) => p.id));
+      }).catch(error => console.log(error));
+    }
 
     if (itemFromLocalStorge) {
       const cart = Object.values(itemFromLocalStorge).flat();
@@ -35,31 +41,7 @@ export const AppContextProvider: React.FC<Props> = ({ children }) => {
       setCart(() => cart);
       setAddedIds(itemIds);
     }
-
-    if (favouriteItems) {
-      setFavourites(Object.values(favouriteItems).flat());
-      setFavouritesIds(Object.keys(favouriteItems));
-    }
   }, []);
-
-  useEffect(() => {
-    // const fetchFavourites = async () => {
-    //   if (isAuthenticated) {
-    //     try {
-    //       const response = await privateRequest('/favourites');
-    //       setFavourites(response);
-    //       setFavouritesIds(response.map((product: Product) => product.id));
-    //     } catch (error) {
-    //       console.error('Error fetching favourites from backend:', error);
-    //     }
-    //   } else {
-    //     const storedFavourites = JSON.parse(localStorage.getItem('favourites') || '[]');
-    //     setFavourites(storedFavourites);
-    //   }
-    // };
-
-   // fetchFavourites();
-  }, [isAuthenticated]);
 
   const addToCart = (product: Product) => {
     const { id, name, priceRegular, priceDiscount, images } = product;
@@ -93,12 +75,42 @@ export const AppContextProvider: React.FC<Props> = ({ children }) => {
     updateCart(FAVOURITE_STORAGE_KEY, {
       [product.id]: { ...product },
     });
-  };
 
+    const userData = localStorage.getItem('userData');
+    if (userData) {
+      const { id } = JSON.parse(userData);
+      privatePostRequest(`/favourites/add?userId=${id}`, {
+        "userId": `${id}`,
+	      "productId": `${product.productId}`
+      }).catch(error => console.log(error));
+    }
+  };
+  
   const removeFromFavourites = (productId: string) => {
+    console.log({ favourites });
+    
+    const productToDelete = favourites.find(item => item.id === productId);
+    let productToDeleteId: string | undefined;
+
+    if (productToDelete) {
+      productToDeleteId = productToDelete.productId
+    }
+    
+    
     setFavourites(favourites.filter(item => item.id !== productId));
     setFavouritesIds(favouritesIds.filter(id => id !== productId));
     removeCart(FAVOURITE_STORAGE_KEY, productId);
+
+    const userData = localStorage.getItem('userData');
+
+    if (userData && productToDeleteId) {
+      const { id } = JSON.parse(userData);
+
+      privatePostRequest(`/favourites/remove`, {
+        "userId": `${id}`,
+	      "productId": `${productToDeleteId}`
+      }).catch(error => console.log(error));
+    }
   };
 
   const updateQuantity = (id: string, newQuantity: number) => {

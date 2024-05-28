@@ -1,10 +1,8 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
-
 import { SelectedItemsCircle } from '../SelectedItemsCircle/SelectedItemsCircle';
 import { Menu } from '../Menu';
-
 import Logo from '../../assets/images/logo.svg?react';
 import MenuIcon from '../../assets/icons/menu.svg?react';
 import Cancel from '../../assets/icons/close.svg?react';
@@ -13,22 +11,26 @@ import Favourites from '../../assets/icons/favourites.svg?react';
 import ProfileImage from '../../../public/img/profile-svgrepo-com.svg';
 import './Header.scss';
 import { Search } from '../Search';
-
 import { useTranslation } from 'react-i18next';
-
 import SearchIcon from '../../assets/icons/search.svg?react';
 import Close from '../../assets/icons/close.svg?react';
 import { ThemeToggler } from '../ThemeToggler/ThemeToggler';
-
 import { useThemeContext } from '../../hooks/useThemeContext';
 import { useAppContext } from '../../hooks/useAppContext';
 import { LanguagesSelector } from '../LanguagesSelector/LanguagesSelector';
+import { AuthContext } from '../../context/AuthContext';
 
-export const Header = () => {
+interface HeaderProps {
+  setShowInitialForm: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export const Header: React.FC<HeaderProps> = ({ setShowInitialForm }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const { theme, setTheme, themes } = useThemeContext();
   const { isSearchOpen, setIsSearchOpen } = useAppContext();
+  const { isAuthenticated } = useContext(AuthContext);
+  const { t } = useTranslation();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -37,6 +39,10 @@ export const Header = () => {
   const toggleSearch = () => {
     setIsMenuOpen(false);
     setIsSearchOpen((prev) => !prev);
+  };
+
+  const handleLoginClick = () => {
+    setShowInitialForm(true);
   };
 
   useEffect(() => {
@@ -58,6 +64,7 @@ export const Header = () => {
       }
     };
 
+
     if (isMenuOpen) {
       document.body.classList.add('disable-scroll');
       window.addEventListener('wheel', handleScroll, { passive: false });
@@ -76,17 +83,6 @@ export const Header = () => {
 
   const getHeaderIconClass = ({ isActive }: { isActive: boolean }) =>
     classNames('navbar__icon', { 'navbar__link--active': isActive });
-
-  const { t } = useTranslation();
-
-  const { i18n } = useTranslation();
-
-  useEffect(() => {
-    const savedLanguage = localStorage.getItem('selectedLanguage');
-    if (savedLanguage) {
-      i18n.changeLanguage(savedLanguage);
-    }
-  }, [i18n]);
 
   return (
     <div className="header" id="header">
@@ -165,9 +161,13 @@ export const Header = () => {
             </NavLink>
           </div>
 
-          <NavLink to="/profile" className={getHeaderIconClass}>
-            <img src={ProfileImage} alt="Profile" className="header__profile-image" />
-          </NavLink>
+          {isAuthenticated ? (
+            <NavLink to="/profile" className='header__button'>
+              <img src={ProfileImage} alt="Profile" className="header__profile-image" />
+            </NavLink>
+          ) : (
+            <p className="header__login header__button" onClick={handleLoginClick}>Log In</p>
+          )}
         </div>
 
         {isMenuOpen && isMobile && <Menu onCloseMenu={toggleMenu} />}

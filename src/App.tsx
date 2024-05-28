@@ -9,19 +9,20 @@ import InitialForm from './components/Forms/InitialForm/InitialForm';
 import { FormVisibilityProvider } from './context/FormContext';
 import '../src/styles/App.scss';
 import { AuthProvider } from './context/AuthContext';
+
 export const App: React.FC = () => {
   const [showForm, setShowForm] = useState(true);
-
+  const [showInitialForm, setShowInitialForm] = useState(false);
   const handleFormClose = () => {
+    setShowInitialForm(false);
     setShowForm(false);
   };
-
   return (
     <ThemeContextProvider>
       <AuthProvider>
         <AppContextProvider>
           <FormVisibilityProvider>
-            {showForm && (
+            {showInitialForm && showForm && (
               <div className="initial-block-container">
                 <InitialForm
                   onClose={handleFormClose}
@@ -30,9 +31,9 @@ export const App: React.FC = () => {
               </div>
             )}
 
-            {showForm ? (
+            {showInitialForm && showForm ? (
               <div className="dark-overlay">
-                <Header />
+                <Header setShowInitialForm={setShowInitialForm} />
                 <PageLayout>
                   <Outlet />
                 </PageLayout>
@@ -40,7 +41,7 @@ export const App: React.FC = () => {
               </div>
             ) : (
               <>
-                <Header />
+                <Header setShowInitialForm={setShowInitialForm} />
                 <PageLayout>
                   <Outlet />
                 </PageLayout>
