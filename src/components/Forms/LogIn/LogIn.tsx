@@ -2,7 +2,7 @@ import '../Forms.scss';
 import Logo from '../../../../public/img/logo.svg';
 
 import { useForm } from 'react-hook-form';
-import { loginRequest } from '../../../utils/fetchData';
+import { useAuth } from '../../../hooks/useAuth';
 
 interface LoginFormProps {
   onClose: () => void;
@@ -15,27 +15,40 @@ interface FormData {
   password: string;
 }
 
-const LoginForm: React.FC<LoginFormProps> = ({ onClose, onBack }) => {
+export const LoginForm: React.FC<LoginFormProps> = ({ onClose, onBack }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>();
+  const { login } = useAuth();
 
-  const onSubmit = (data: FormData) => {
+  const onSubmit = async (data: FormData) => {
+    await login(data);
     onClose();
-    localStorage.setItem('userData', JSON.stringify(data));
-    const { email, password } = data;
+    // localStorage.setItem('userData', JSON.stringify(data));
+    // const { email, password } = data;
  
-    loginRequest({
-      email,
-      password,
-    }).then(data => {
-      console.log({ registerRequest: data });
-    }).catch(error => {
+  //   loginRequest({
+  //     email,
+  //     password,
+  //   }).then(data => {
+  //     if (data.token) {
+        
+  //       console.log(data.token);
+  //     }
+  //     console.log({ registerRequest: data });
+  //   }).catch(error => {
+  //     console.error('Error during login:', error);
+    //   });
+    
+    try {
+      await login(data);
+      onClose();
+    } catch (error) {
       console.error('Error during login:', error);
-    });
-  };
+    }
+ };
 
   const onGoBack = () => {
     onBack();
@@ -92,5 +105,3 @@ const LoginForm: React.FC<LoginFormProps> = ({ onClose, onBack }) => {
     </div>
   );
 };
-
-export default LoginForm;

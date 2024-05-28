@@ -8,6 +8,7 @@ import { ThemeContextProvider } from './context/ThemeContext';
 import InitialForm from './components/Forms/InitialForm/InitialForm';
 import { FormVisibilityProvider } from './context/FormContext';
 import '../src/styles/App.scss';
+import { AuthProvider } from './context/AuthContext';
 export const App: React.FC = () => {
   const [showForm, setShowForm] = useState(true);
 
@@ -18,20 +19,25 @@ export const App: React.FC = () => {
   return (
     <ThemeContextProvider>
       <AppContextProvider>
-        <FormVisibilityProvider>
-        {showForm && (
-          <div className="initial-block-container">
-            <InitialForm onClose={handleFormClose} setShowForm={setShowForm}/>
-          </div>
-        )}
-        <div className={showForm ? "dark-overlay" : ""}>
-          <Header />
-          <PageLayout>
-            <Outlet />
-          </PageLayout>
-          <Footer />
-        </div>
-        </FormVisibilityProvider>
+        <AuthProvider>
+          <FormVisibilityProvider>
+            {showForm && (
+              <div className="initial-block-container">
+                <InitialForm
+                  onClose={handleFormClose}
+                  setShowForm={setShowForm}
+                />
+              </div>
+            )}
+            <div className={showForm ? 'dark-overlay' : ''}>
+              <Header />
+              <PageLayout>
+                <Outlet />
+              </PageLayout>
+              <Footer />
+            </div>
+          </FormVisibilityProvider>
+        </AuthProvider>
       </AppContextProvider>
     </ThemeContextProvider>
   );

@@ -31,7 +31,7 @@ export const Search: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const allProducts = await apiRequest(`/products?perPage=200`);
+        const allProducts = await apiRequest(`/products`);
         setProducts(allProducts);
       } catch (error: any) {
         throw error(error.message);
