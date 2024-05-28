@@ -18,38 +18,38 @@ export const App: React.FC = () => {
 
   return (
     <ThemeContextProvider>
-      <AppContextProvider>
-        <AuthProvider>
+      <AuthProvider>
+        <AppContextProvider>
           <FormVisibilityProvider>
-          {showForm && (
-            <div className="initial-block-container">
-              <InitialForm
-                onClose={handleFormClose}
-                setShowForm={setShowForm}
-              />
-            </div>
-          )}
+            {showForm && (
+              <div className="initial-block-container">
+                <InitialForm
+                  onClose={handleFormClose}
+                  setShowForm={setShowForm}
+                />
+              </div>
+            )}
 
-          {showForm ? (
-            <div className="dark-overlay">
-              <Header />
-              <PageLayout>
-                <Outlet />
-              </PageLayout>
-              <Footer />
-            </div>
-          ) : (
+            {showForm ? (
+              <div className="dark-overlay">
+                <Header />
+                <PageLayout>
+                  <Outlet />
+                </PageLayout>
+                <Footer />
+              </div>
+            ) : (
               <>
-              <Header />
-              <PageLayout>
-                <Outlet />
-              </PageLayout>
-              <Footer />
+                <Header />
+                <PageLayout>
+                  <Outlet />
+                </PageLayout>
+                <Footer />
               </>
-          )}
+            )}
           </FormVisibilityProvider>
-        </AuthProvider>
-      </AppContextProvider>
+        </AppContextProvider>
+      </AuthProvider>
     </ThemeContextProvider>
   );
 };

@@ -19,8 +19,6 @@ import { Contacts } from './pages/Contacts/Contacts.tsx';
 import { RightsPage } from './pages/RightsPage.tsx/RightsPage.tsx';
 import { Profile } from './pages/ProfilePage/Profile.tsx';
 import { PrivateRoutes } from './components/PrivateRoutes.tsx';
-// import InitialForm from './components/Forms/InitialForm/InitialForm.tsx';
-// import { LoginForm } from './components/Forms/LogIn/LogIn.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

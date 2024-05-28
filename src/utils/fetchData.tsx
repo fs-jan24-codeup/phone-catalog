@@ -1,3 +1,5 @@
+import { accessTokenService } from '../services/accessTokenService';
+
 const baseUrl = import.meta.env.VITE_API_URL;
 
 export function apiRequest(url: string) {
@@ -61,4 +63,49 @@ export async function loginRequest(userData: {
     .catch(error => {
       console.error('Error during login', error);
     });
+}
+
+export async function privateRequest(url: string) {
+  const accessToken = accessTokenService.get();
+
+  const headers = new Headers({
+    'Content-Type': 'application/json',
+  });
+
+  if (accessToken) {
+    headers.append('Authorization', `Bearer ${accessToken}`);
+  }
+
+  return fetch(`${baseUrl}${url}`, {
+    method: 'GET',
+    headers,
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .catch(error => {
+      console.error('Error during request', error);
+    });
+  //   // return request;
+  //   return fetch(`${baseUrl}/login`, {
+  //     method: 'GET',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       ''
+  //     },
+  //     body: JSON.stringify(userData),
+  //   })
+  //     .then(response => {
+  //       if (!response.ok) {
+  //         throw new Error('Network response was not ok');
+  //       }
+
+  //       return response.json();
+  //     })
+  //     .catch(error => {
+  //       console.error('Error during login', error);
+  //     });
 }

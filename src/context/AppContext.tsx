@@ -3,6 +3,8 @@ import { AppContext as AppContextType } from '../types/AppContext';
 import { Product } from '../types/Product';
 import { CartProduct } from '../types/CartProduct';
 import { useCartStorage } from '../hooks/useCartStorage';
+import { useAuth } from '../hooks/useAuth';
+import { privateRequest } from '../utils/fetchData';
 
 const CART_STORAGE_KEY = 'cart';
 const FAVOURITE_STORAGE_KEY = 'favourite';
@@ -20,6 +22,7 @@ export const AppContextProvider: React.FC<Props> = ({ children }) => {
   const [addedIds, setAddedIds] = useState<string[]>([]);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const { updateCart, removeCart, getCart } = useCartStorage();
+  const { isAuthenticated } = useAuth();
 
   useEffect(() => {
     const itemFromLocalStorge = getCart(CART_STORAGE_KEY);
@@ -38,6 +41,25 @@ export const AppContextProvider: React.FC<Props> = ({ children }) => {
       setFavouritesIds(Object.keys(favouriteItems));
     }
   }, []);
+
+  useEffect(() => {
+    // const fetchFavourites = async () => {
+    //   if (isAuthenticated) {
+    //     try {
+    //       const response = await privateRequest('/favourites');
+    //       setFavourites(response);
+    //       setFavouritesIds(response.map((product: Product) => product.id));
+    //     } catch (error) {
+    //       console.error('Error fetching favourites from backend:', error);
+    //     }
+    //   } else {
+    //     const storedFavourites = JSON.parse(localStorage.getItem('favourites') || '[]');
+    //     setFavourites(storedFavourites);
+    //   }
+    // };
+
+   // fetchFavourites();
+  }, [isAuthenticated]);
 
   const addToCart = (product: Product) => {
     const { id, name, priceRegular, priceDiscount, images } = product;
