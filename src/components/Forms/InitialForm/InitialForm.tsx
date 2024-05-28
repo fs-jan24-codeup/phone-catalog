@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import LoginForm from '../LogIn/LogIn';
 import SignupForm from '../SignUp/SignUp';
 import Logo from '../../../assets/images/logo.svg';
@@ -15,6 +15,13 @@ const InitialForm: React.FC<InitialBlockProps> = ({ setShowForm }) => {
   const [showInitialForm, setShowInitialForm] = useState(true);
   const [showLoginForm, setShowLoginForm] = useState(false);
   const [showSignupForm, setShowSignupForm] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+        document.body.style.overflow = "scroll"
+    };
+}, []);
 
   const handleLoginClick = () => {
     setShowInitialForm(false);

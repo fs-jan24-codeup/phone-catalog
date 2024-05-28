@@ -6,8 +6,20 @@
   justify-content: center;
   flex-direction: column;
   width: 50%;
+  height: 60vh;
 
   &__img {
+    height: 60vh;
+    object-fit: contain;
     width: 100%;
+    filter: opacity(1) drop-shadow(0 0 0 white);
+  }
+
+  &__text {
+    color: var(--primary-color);
+  }
+  svg {
+    color: var(--not-found-svg-fill-color);
+    background: var(--not-found-svg-el-color);
   }
 }

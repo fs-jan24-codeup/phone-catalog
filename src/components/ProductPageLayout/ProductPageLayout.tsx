@@ -61,7 +61,7 @@ export const ProductPageLayout: React.FC = () => {
   }, []);
 
   return (
-    <div className="product__grid">
+    <div className="product__grid" data-aos="fade-down">
       <div className="product__path">
         <Breadcrumb productName={good?.name} />
       </div>
