@@ -1,6 +1,7 @@
 import '../Forms.scss';
 import Logo from '../../../../public/img/logo.svg';
 import { useForm } from 'react-hook-form';
+import { registerRequest } from '../../../utils/fetchData';
 
 interface LoginFormProps {
   onClose: () => void;
@@ -20,6 +21,13 @@ const SignupForm: React.FC<LoginFormProps> = ({ onClose, onBack }) => {
     console.log(data);
     onClose();
     localStorage.setItem('userData', JSON.stringify(data));
+    const { email, password } = data;
+
+    registerRequest({
+      email, password
+    }).then(data => {
+      console.log({registerRequest: data});
+    });
   };    
   
   const onGoBack = () => {

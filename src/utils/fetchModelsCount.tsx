@@ -1,33 +1,24 @@
-import { apiRequest } from './fetchData';
-
-export async function fetchModelsCount() {
-  try {
-    const counts = await Promise.all([
-      fetchModelsCountFromApi('/products/phones?perPage=200'),
-      fetchModelsCountFromApi('/products/tablets?perPage=200'),
-      fetchModelsCountFromApi('/products/accessories?perPage=200'),
-    ]);
-    return {
-      phones: counts[0],
-      tablets: counts[1],
-      accessories: counts[2],
-    };
-  } catch (error) {
-    console.error('Error fetching model counts:', error);
-    return {
-      phones: 0,
-      tablets: 0,
-      accessories: 0,
-    };
-  }
+interface CategoryCount {
+  category: string;
+  count: number;
 }
 
-async function fetchModelsCountFromApi(endpoint: string) {
-  try {
-    const models = await apiRequest(endpoint);
-    return models.length;
-  } catch (error) {
-    console.error(`Error fetching models count from API ${endpoint}:`, error);
-    return 0;
+const baseUrl = import.meta.env.VITE_API_URL;
+
+export async function fetchModelsCount(): Promise<{ phones: number; tablets: number; accessories: number }> {
+  const response = await fetch(`${baseUrl}/home`);
+  if (!response.ok) {
+    throw new Error('Failed to fetch category counts');
   }
+
+  const data: CategoryCount[] = await response.json();
+  const counts = { phones: 0, tablets: 0, accessories: 0 };
+
+  data.forEach(category => {
+    if (category.category === 'phones') counts.phones = category.count;
+    else if (category.category === 'tablets') counts.tablets = category.count;
+    else if (category.category === 'accessories') counts.accessories = category.count;
+  });
+
+  return counts;
 }
