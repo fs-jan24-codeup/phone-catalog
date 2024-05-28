@@ -10,7 +10,7 @@ export const Profile = () => {
     const { logout } = useContext(AuthContext);
     const { confirmedOrders } = useConfirmedOrders(); 
     const userData = JSON.parse(localStorage.getItem('userData') || '');
-
+  
     const handleLogout = () => {
         logout();
     };

@@ -63,6 +63,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     accessTokenService.remove();
     setUser(null);
     localStorage.removeItem('userData');
+    window.location.reload(); 
   };
 
   const value = {

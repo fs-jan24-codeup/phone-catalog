@@ -122,31 +122,31 @@ export async function privatePostRequest<T>(url: string, data: T) {
     });
 }
 
-export async function deleteRequest<T>(url: string, data: T) {
-  const accessToken = accessTokenService.get();
+// export async function deleteRequest<T>(url: string, data: T) {
+//   const accessToken = accessTokenService.get();
 
-  const headers = new Headers({
-    'Content-Type': 'application/json',
-  });
+//   const headers = new Headers({
+//     'Content-Type': 'application/json',
+//   });
 
-  if (accessToken) {
-    headers.append('Authorization', `Bearer ${accessToken}`);
-  }
+//   if (accessToken) {
+//     headers.append('Authorization', `Bearer ${accessToken}`);
+//   }
 
-  return fetch(`${baseUrl}${url}`, {
-    method: 'DELETE',
-    headers,
-    body: JSON.stringify(data)
-  })
-    .then(response => {
-      console.log({response});
+//   return fetch(`${baseUrl}${url}`, {
+//     method: 'DELETE',
+//     headers,
+//     body: JSON.stringify(data)
+//   })
+//     .then(response => {
+//       console.log({response});
       
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    })
-    .catch(error => {
-      console.error('Error during request', error);
-    });
-}
+//       if (!response.ok) {
+//         throw new Error('Network response was not ok');
+//       }
+//       return response.json();
+//     })
+//     .catch(error => {
+//       console.error('Error during request', error);
+//     });
+// }
