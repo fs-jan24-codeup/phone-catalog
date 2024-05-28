@@ -28,10 +28,18 @@ export const AppContextProvider: React.FC<Props> = ({ children }) => {
 
     if (userData) {
       const { id } = JSON.parse(userData);
-      privateRequest(`/favourites?userId=${id}`).then((data: Product[]) => {
-        setFavourites(data);
-        setFavouritesIds(data.map((p) => p.id));
-      }).catch(error => console.log(error));
+      if (id) {
+        privateRequest(`/favourites?userId=${id}`)
+          .then((data: Product[]) => {
+            console.log({ data });
+
+            if (data) {
+              setFavourites(data);
+              setFavouritesIds(data.map(p => p.id));
+            }
+          })
+          .catch(error => console.log(error));
+      }
     }
 
     if (itemFromLocalStorge) {
@@ -80,23 +88,22 @@ export const AppContextProvider: React.FC<Props> = ({ children }) => {
     if (userData) {
       const { id } = JSON.parse(userData);
       privatePostRequest(`/favourites/add?userId=${id}`, {
-        "userId": `${id}`,
-	      "productId": `${product.productId}`
+        userId: `${id}`,
+        productId: `${product.productId}`,
       }).catch(error => console.log(error));
     }
   };
-  
+
   const removeFromFavourites = (productId: string) => {
     console.log({ favourites });
-    
+
     const productToDelete = favourites.find(item => item.id === productId);
     let productToDeleteId: string | undefined;
 
     if (productToDelete) {
-      productToDeleteId = productToDelete.productId
+      productToDeleteId = productToDelete.productId;
     }
-    
-    
+
     setFavourites(favourites.filter(item => item.id !== productId));
     setFavouritesIds(favouritesIds.filter(id => id !== productId));
     removeCart(FAVOURITE_STORAGE_KEY, productId);
@@ -107,8 +114,8 @@ export const AppContextProvider: React.FC<Props> = ({ children }) => {
       const { id } = JSON.parse(userData);
 
       privatePostRequest(`/favourites/remove`, {
-        "userId": `${id}`,
-	      "productId": `${productToDeleteId}`
+        userId: `${id}`,
+        productId: `${productToDeleteId}`,
       }).catch(error => console.log(error));
     }
   };
