@@ -12,7 +12,7 @@ export const TabletsPage: React.FC = () => {
   const { t } = useTranslation();
 
   useEffect(() => {
-    apiRequest('/products/tablets')
+    apiRequest('/products/tablets?perPage=200')
       .then(tablets => {
         setTablets(tablets);
       })
