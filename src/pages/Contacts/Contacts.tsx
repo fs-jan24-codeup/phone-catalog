@@ -4,8 +4,8 @@ import Viktoriia from '../../assets/images/contacts/Viktoriia.jfif';
 import Vitalii from '../../assets/images/contacts/Vitalii.jfif';
 import Iliia from '../../assets/images/contacts/Iliia.jfif';
 import Vadym from '../../assets/images/contacts/Vadym.jfif';
+import Tetyana from '../../assets/images/contacts/Tetyana.jfif';
 import './Contacts.scss';
-import { useEffect } from 'react';
 
 export const Contacts: React.FC = () => {
   const contacts = [
@@ -13,6 +13,11 @@ export const Contacts: React.FC = () => {
       name: 'Vasyl Dudla',
       image: Vasyl,
       githubLink: 'https://github.com/Vasya564',
+    },
+    {
+      name: 'Tetyana Lisna',
+      image: Tetyana,
+      githubLink: 'https://github.com/tetlisna',
     },
     {
       name: 'Kateryna Shepetska',
@@ -40,12 +45,6 @@ export const Contacts: React.FC = () => {
       githubLink: 'https://github.com/khromakeiqt',
     },
   ];
-
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-    });
-  }, []);
 
   return (
     <div className="contacts" data-aos="fade-down">
