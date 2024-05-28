@@ -6,6 +6,7 @@ export function apiRequest(url: string) {
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
+
       return response.json();
     })
     .catch(error => {
@@ -24,18 +25,18 @@ export async function registerRequest(userData: {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(userData)
+    body: JSON.stringify(userData),
   })
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return response.json();
-  })
-  .catch(error => {
-    console.error('Error during registration', error);
-    // return [];
-  });
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      return response.json();
+    })
+    .catch(error => {
+      console.error('Error during registration', error);
+    });
 }
 
 export async function loginRequest(userData: {
@@ -48,16 +49,16 @@ export async function loginRequest(userData: {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(userData)
+    body: JSON.stringify(userData),
   })
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return response.json();
-  })
-  .catch(error => {
-    console.error('Error during login', error);
-    // return [];
-  });
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      return response.json();
+    })
+    .catch(error => {
+      console.error('Error during login', error);
+    });
 }

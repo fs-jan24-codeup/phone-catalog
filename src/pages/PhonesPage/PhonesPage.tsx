@@ -12,7 +12,7 @@ export const PhonesPage: React.FC = () => {
   const { t } = useTranslation();
 
   useEffect(() => {
-    apiRequest('/products/phones?perPage=200').then(phones => {
+    apiRequest('/products/phones').then(phones => {
       setPhones(phones);
     });
   }, []);

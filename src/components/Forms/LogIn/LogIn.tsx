@@ -31,6 +31,10 @@ const LoginForm: React.FC<LoginFormProps> = ({ onClose, onBack }) => {
       email,
       password,
     }).then(data => {
+      if (data.token) {
+        
+        console.log(data.token);
+      }
       console.log({ registerRequest: data });
     }).catch(error => {
       console.error('Error during login:', error);
