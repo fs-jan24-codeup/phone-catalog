@@ -40,7 +40,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     if (storedUser) {
       setUser(storedUser);
     }
-  }, []);
+  }, [user]);
 
   const login = async (userData: { email: string; password: string }) => {
     const response = await loginRequest(userData);
