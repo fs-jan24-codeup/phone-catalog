@@ -21,6 +21,10 @@
     object-fit: cover;
   }
 
+  &__login {
+    color: var(--primary-color);
+  }
+
   &__right {
     display: flex;
     column-gap: 10px;
