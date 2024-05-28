@@ -1,12 +1,12 @@
 import './ProductPageSkeleton.scss';
 
 export const SkeletonTitle: React.FC = () => {
-  return <div className="product__title skeleton__product-title"></div>;
+  return <div className="product__title skeleton__product-title" data-aos="fade-down"></div>;
 };
 
 export const SkeletonImages: React.FC = () => {
   return (
-    <div className="skeleton__product-images">
+    <div className="skeleton__product-images" data-aos="fade-down">
       <div className="skeleton__product-image"></div>
       <div className="skeleton__product-slider">
         <div className="skeleton__product-mini"></div>
@@ -21,7 +21,7 @@ export const SkeletonImages: React.FC = () => {
 
 export const SkeletonPrice: React.FC = () => {
   return (
-    <div className="skeleton__product-price-block">
+    <div className="skeleton__product-price-block" data-aos="fade-down">
       <div className="skeleton__product-colors-block">
         <div className="skeleton__product-color-title-id">
           <div className="skeleton__product-color-title"></div>
@@ -59,7 +59,7 @@ export const SkeletonPrice: React.FC = () => {
 
 export const SkeletonAbout: React.FC = () => {
   return (
-    <div className="skeleton__product-about">
+    <div className="skeleton__product-about" data-aos="fade-down">
       <div className="skeleton__product-about-first-title"></div>
       <div className="skeleton__product-about-title"></div>
 

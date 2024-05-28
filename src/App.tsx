@@ -21,21 +21,32 @@ export const App: React.FC = () => {
       <AppContextProvider>
         <AuthProvider>
           <FormVisibilityProvider>
-            {showForm && (
-              <div className="initial-block-container">
-                <InitialForm
-                  onClose={handleFormClose}
-                  setShowForm={setShowForm}
-                />
-              </div>
-            )}
-            <div className={showForm ? 'dark-overlay' : ''}>
+          {showForm && (
+            <div className="initial-block-container">
+              <InitialForm
+                onClose={handleFormClose}
+                setShowForm={setShowForm}
+              />
+            </div>
+          )}
+
+          {showForm ? (
+            <div className="dark-overlay">
               <Header />
               <PageLayout>
                 <Outlet />
               </PageLayout>
               <Footer />
             </div>
+          ) : (
+              <>
+              <Header />
+              <PageLayout>
+                <Outlet />
+              </PageLayout>
+              <Footer />
+              </>
+          )}
           </FormVisibilityProvider>
         </AuthProvider>
       </AppContextProvider>
