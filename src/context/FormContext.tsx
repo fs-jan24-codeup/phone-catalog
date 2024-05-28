@@ -2,10 +2,10 @@ import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 interface FormVisibilityContextType {
   showInitialForm: boolean;
-  setShowInitialForm: (show: boolean) => void;
+  setShowInitialForm: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const FormVisibilityContext = createContext<FormVisibilityContextType | undefined>(undefined);
+export const FormVisibilityContext = createContext<FormVisibilityContextType | undefined>(undefined);
 
 export const useFormVisibility = () => {
   const context = useContext(FormVisibilityContext);
@@ -14,10 +14,6 @@ export const useFormVisibility = () => {
   }
   return context;
 };
-
-interface FormVisibilityProviderProps {
-  children: ReactNode;
-}
 
 export const FormVisibilityProvider: React.FC<FormVisibilityProviderProps> = ({ children }) => {
   const [showInitialForm, setShowInitialForm] = useState<boolean>(false);
@@ -28,3 +24,7 @@ export const FormVisibilityProvider: React.FC<FormVisibilityProviderProps> = ({ 
     </FormVisibilityContext.Provider>
   );
 };
+
+interface FormVisibilityProviderProps {
+  children: ReactNode;
+}

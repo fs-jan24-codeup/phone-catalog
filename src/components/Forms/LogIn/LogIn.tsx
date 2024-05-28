@@ -1,6 +1,5 @@
 import '../Forms.scss';
 import Logo from '../../../../public/img/logo.svg';
-
 import { useForm } from 'react-hook-form';
 import { useAuth } from '../../../hooks/useAuth';
 
@@ -24,31 +23,14 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onClose, onBack }) => {
   const { login } = useAuth();
 
   const onSubmit = async (data: FormData) => {
-    await login(data);
-    onClose();
-    // localStorage.setItem('userData', JSON.stringify(data));
-    // const { email, password } = data;
- 
-  //   loginRequest({
-  //     email,
-  //     password,
-  //   }).then(data => {
-  //     if (data.token) {
-        
-  //       console.log(data.token);
-  //     }
-  //     console.log({ registerRequest: data });
-  //   }).catch(error => {
-  //     console.error('Error during login:', error);
-    //   });
-    
     try {
       await login(data);
       onClose();
+      localStorage.setItem('userData', JSON.stringify(data));
     } catch (error) {
       console.error('Error during login:', error);
     }
- };
+  };
 
   const onGoBack = () => {
     onBack();
@@ -72,13 +54,10 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onClose, onBack }) => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <input
             className="form__input"
-            type="name"
+            type="text"
             placeholder="Enter Username"
-            {...register('name', { required: true })}
+            {...register('name')}
           />
-          {errors.name && (
-            <span className="error-message">Username is required.</span>
-          )}
           <input
             className="form__input"
             type="email"

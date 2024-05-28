@@ -9,44 +9,45 @@ import InitialForm from './components/Forms/InitialForm/InitialForm';
 import { FormVisibilityProvider } from './context/FormContext';
 import '../src/styles/App.scss';
 import { AuthProvider } from './context/AuthContext';
+
 export const App: React.FC = () => {
   const [showForm, setShowForm] = useState(true);
-
+  const [showInitialForm, setShowInitialForm] = useState(false);
   const handleFormClose = () => {
+    setShowInitialForm(false);
     setShowForm(false);
   };
-
   return (
     <ThemeContextProvider>
       <AppContextProvider>
         <AuthProvider>
           <FormVisibilityProvider>
-          {showForm && (
-            <div className="initial-block-container">
-              <InitialForm
-                onClose={handleFormClose}
-                setShowForm={setShowForm}
-              />
-            </div>
-          )}
+            {showInitialForm && showForm && (
+              <div className="initial-block-container">
+                <InitialForm
+                  onClose={handleFormClose}
+                  setShowForm={setShowForm}
+                />
+              </div>
+            )}
 
-          {showForm ? (
-            <div className="dark-overlay">
-              <Header />
-              <PageLayout>
-                <Outlet />
-              </PageLayout>
-              <Footer />
-            </div>
-          ) : (
+            {showInitialForm && showForm ? (
+              <div className="dark-overlay">
+                <Header setShowInitialForm={setShowInitialForm} />
+                <PageLayout>
+                  <Outlet />
+                </PageLayout>
+                <Footer />
+              </div>
+            ) : (
               <>
-              <Header />
-              <PageLayout>
-                <Outlet />
-              </PageLayout>
-              <Footer />
+                <Header setShowInitialForm={setShowInitialForm} />
+                <PageLayout>
+                  <Outlet />
+                </PageLayout>
+                <Footer />
               </>
-          )}
+            )}
           </FormVisibilityProvider>
         </AuthProvider>
       </AppContextProvider>
