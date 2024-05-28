@@ -40,7 +40,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     if (storedUser) {
       setUser(storedUser);
     }
-  }, [user]);
+  }, []);
 
   const login = async (userData: { email: string; password: string }) => {
     const response = await loginRequest(userData);
@@ -62,7 +62,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const logout = () => {
     accessTokenService.remove();
     setUser(null);
-    localStorage.removeItem('userData');
     window.location.reload(); 
   };
 
