@@ -18,6 +18,9 @@ import { HomePage } from './pages/HomePage/HomePage.tsx';
 import { Contacts } from './pages/Contacts/Contacts.tsx';
 import { RightsPage } from './pages/RightsPage.tsx/RightsPage.tsx';
 import { Profile } from './pages/ProfilePage/Profile.tsx';
+import { PrivateRoutes } from './components/PrivateRoutes.tsx';
+// import InitialForm from './components/Forms/InitialForm/InitialForm.tsx';
+// import { LoginForm } from './components/Forms/LogIn/LogIn.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -40,10 +43,14 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             <Route path=":productId?" element={<PhoneDetailsPage />} />
           </Route>
           <Route path="cart" element={<CartPage />} />
-          <Route path="favourites" element={<FavouritesPage />} />
+          <Route element={<PrivateRoutes />}>
+            <Route path="/favourites" element={<FavouritesPage />} />
+            <Route path="/profile" element={<Profile />} />
+          </Route>
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/rights" element={<RightsPage />} />
-          <Route path="/profile" element={<Profile />} />
+
+          {/* <Route path="/login" element={<InitialForm />} /> */}
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
