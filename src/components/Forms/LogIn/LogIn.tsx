@@ -9,7 +9,7 @@ interface LoginFormProps {
 }
 
 interface FormData {
-  name: string;
+  // name: string;
   email: string;
   password: string;
 }
@@ -26,7 +26,6 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onClose, onBack }) => {
     try {
       await login(data);
       onClose();
-      localStorage.setItem('userData', JSON.stringify(data));
     } catch (error) {
       console.error('Error during login:', error);
     }
@@ -52,12 +51,12 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onClose, onBack }) => {
         </div>
         <p className="form__title">Log In</p>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <input
+          {/* <input
             className="form__input"
             type="text"
             placeholder="Enter Username"
             {...register('name')}
-          />
+          /> */}
           <input
             className="form__input"
             type="email"

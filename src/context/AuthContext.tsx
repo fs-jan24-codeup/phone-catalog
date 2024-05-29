@@ -9,7 +9,7 @@ interface AuthContextType {
   register: (userData: {
     email: string;
     password: string;
-    name?: string;
+    // name?: string;
   }) => Promise<void>;
   logout: () => void;
   isAuthenticated: boolean;
@@ -30,7 +30,7 @@ interface AuthProviderProps {
 interface User {
   id: number;
   email: string;
-  name?: string;
+  // name?: string;
 }
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
@@ -63,9 +63,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const logout = () => {
     accessTokenService.remove();
-    setUser(null);
     localStorage.removeItem('userData');
-    navigate('/');
+    window.location.reload();
   };
 
   const value = {

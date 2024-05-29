@@ -48,7 +48,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/rights" element={<RightsPage />} />
 
-          {/* <Route path="/login" element={<InitialForm />} /> */}
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
