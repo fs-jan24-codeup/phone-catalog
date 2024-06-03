@@ -26,11 +26,13 @@ const InitialForm: React.FC<InitialBlockProps> = ({ setShowForm }) => {
   const handleLoginClick = () => {
     setShowInitialForm(false);
     setShowLoginForm(true);
+    setShowSignupForm(false);
   };
 
   const handleSignupClick = () => {
     setShowInitialForm(false);
     setShowSignupForm(true);
+    setShowLoginForm(false);
   };
 
   const handleCrossClick = () => {
@@ -40,43 +42,43 @@ const InitialForm: React.FC<InitialBlockProps> = ({ setShowForm }) => {
     setShowForm(false);
   };
 
+  const handleGoBack = () => {
+    setShowInitialForm(true);
+    setShowLoginForm(false);
+    setShowSignupForm(false);
+  };
+
   return (
     <div>
       {showInitialForm && (
-        <>
-          <div className="form">
-            <div className="form__container">
-              <div className="form__upperside upperside">
-                <img src={Logo} alt="logo" className="form__logo" />
-                <button className="form__cross" onClick={handleCrossClick}>
-                  ✖
-                </button>
-              </div>
-              <p className="form__text">
-                Nice Gadgets is an online platform for exploring and purchasing a variety of electronic devices, including smartphones and other innovative gadgets.
-              </p>
-              <img src={FormImg} alt="img" className="form__img" />
-              <div className="form__downside">
-                <button className="form__button margin-right" onClick={handleLoginClick}>
-                  Log In
-                </button>
-                <button className="form__button" onClick={handleSignupClick}>
-                  Sign Up
-                </button>
-              </div>
+        <div className="form">
+          <div className="form__container">
+            <div className="form__upperside upperside">
+              <img src={Logo} alt="logo" className="form__logo" />
+              <button className="form__cross" onClick={handleCrossClick}>
+                ✖
+              </button>
+            </div>
+            <p className="form__text">
+              Nice Gadgets is an online platform for exploring and purchasing a variety of electronic devices, including smartphones and other innovative gadgets.
+            </p>
+            <img src={FormImg} alt="img" className="form__img" />
+            <div className="form__downside">
+              <button className="form__button margin-right" onClick={handleLoginClick}>
+                Log In
+              </button>
+              <button className="form__button" onClick={handleSignupClick}>
+                Sign Up
+              </button>
             </div>
           </div>
-        </>
+        </div>
       )}
       {showLoginForm && (
-        <>
-          <LoginForm onClose={() => setShowForm(false)} onBack={() => setShowInitialForm(true)} />
-        </>
+        <LoginForm onClose={() => setShowForm(false)} onBack={handleGoBack} />
       )}
       {showSignupForm && (
-        <>
-          <SignupForm onClose={() => setShowForm(false)} onBack={() => setShowInitialForm(true)} />
-        </>
+        <SignupForm onClose={() => setShowForm(false)} onBack={handleGoBack} />
       )}
     </div>
   );

@@ -27,10 +27,12 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({ setShowInitialForm }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false); // State to manage profile menu
   const { theme, setTheme, themes } = useThemeContext();
   const { isSearchOpen, setIsSearchOpen } = useAppContext();
   const { isAuthenticated } = useContext(AuthContext);
   const { t } = useTranslation();
+  const { logout } = useContext(AuthContext);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -44,6 +46,10 @@ export const Header: React.FC<HeaderProps> = ({ setShowInitialForm }) => {
   const handleLoginClick = () => {
     setShowInitialForm(true);
   };
+
+  const handleLogout = () => {
+    logout();
+};
 
   useEffect(() => {
     const handleResize = () => {
@@ -64,7 +70,6 @@ export const Header: React.FC<HeaderProps> = ({ setShowInitialForm }) => {
       }
     };
 
-
     if (isMenuOpen) {
       document.body.classList.add('disable-scroll');
       window.addEventListener('wheel', handleScroll, { passive: false });
@@ -78,11 +83,18 @@ export const Header: React.FC<HeaderProps> = ({ setShowInitialForm }) => {
     };
   }, [isMenuOpen]);
 
+  useEffect(() => {
+  }, [isAuthenticated]);
+
   const getHeaderLinkClass = ({ isActive }: { isActive: boolean }) =>
     classNames('navbar__link', { 'navbar__link--active': isActive });
 
   const getHeaderIconClass = ({ isActive }: { isActive: boolean }) =>
     classNames('navbar__icon', { 'navbar__link--active': isActive });
+
+  const toggleProfileMenu = () => {
+    setIsProfileMenuOpen(!isProfileMenuOpen);
+  };
 
   return (
     <div className="header" id="header">
@@ -161,10 +173,19 @@ export const Header: React.FC<HeaderProps> = ({ setShowInitialForm }) => {
             </NavLink>
           </div>
 
+          <div className="header__profile">
+            {isAuthenticated && isProfileMenuOpen && (
+              <div className="header__profile-window">
+                <NavLink to="/profile" className='header__title'>Profile</NavLink>
+                <button className="profile__button" onClick={handleLogout}>Logout</button>
+              </div>
+            )}
+          </div>
+
           {isAuthenticated ? (
-            <NavLink to="/profile" className='header__button'>
-              <img src={ProfileImage} alt="Profile" className="header__profile-image" />
-            </NavLink>
+            <div className='header__button' onClick={toggleProfileMenu}>
+            <img src={ProfileImage} alt="Profile" className="header__profile-image"/>
+            </div>
           ) : (
             <p className="header__login header__button" onClick={handleLoginClick}>Log In</p>
           )}
