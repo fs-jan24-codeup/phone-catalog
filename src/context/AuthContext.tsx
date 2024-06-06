@@ -1,7 +1,6 @@
 import React, { createContext, useState, useEffect, ReactNode } from 'react';
 import { loginRequest, registerRequest } from '../utils/fetchData';
 import { accessTokenService } from '../services/accessTokenService';
-import { useNavigate } from 'react-router-dom';
 
 interface AuthContextType {
   user: User | null;
@@ -9,7 +8,6 @@ interface AuthContextType {
   register: (userData: {
     email: string;
     password: string;
-    // name?: string;
   }) => Promise<void>;
   logout: () => void;
   isAuthenticated: boolean;
@@ -30,12 +28,10 @@ interface AuthProviderProps {
 interface User {
   id: number;
   email: string;
-  // name?: string;
 }
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem('userData') || 'null');
