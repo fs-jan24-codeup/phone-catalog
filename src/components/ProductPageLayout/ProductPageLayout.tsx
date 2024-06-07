@@ -42,22 +42,22 @@ export const ProductPageLayout: React.FC = () => {
   }, [isLoadingProduct]);
 
   useEffect(() => {
+    setIsLoadingProduct(true);
     if (productId) {
       apiRequest(`/products/${productId}`)
         .then(product => {
           setGood(product);
         })
-        .catch(error => console.log(error));
+        .catch(error => console.log(error))
+        .finally(() => {
+          const timer = setTimeout(() => {
+            setIsLoadingProduct(false);
+          }, 700);
+
+          return () => clearTimeout(timer);
+        });
     }
   }, [productId]);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoadingProduct(false);
-    }, 700);
-
-    return () => clearTimeout(timer);
-  }, []);
 
   return (
     <div className="product__grid" data-aos="fade-down">
@@ -95,6 +95,7 @@ export const ProductPageLayout: React.FC = () => {
           id="also-like"
           products={recommendedGoods}
           title="You may also like"
+          isLoading={isLoadingProduct}
         />
       </div>
     </div>

@@ -10,14 +10,21 @@ import { CardLayout } from '../CardLayout';
 import './ProductSlider.scss';
 import ArrowLeft from '../../assets/icons/chevron-left.svg?react';
 import ArrowRight from '../../assets/icons/chevron-right.svg?react';
+import { CardSkeleton } from '../CardSkeleton';
 
 type Props = {
   id: string;
   title: string;
   products: Product[];
+  isLoading: boolean;
 };
 
-export const ProductSlider: React.FC<Props> = ({ id, title, products }) => {
+export const ProductSlider: React.FC<Props> = ({
+  id,
+  title,
+  products,
+  isLoading,
+}) => {
   const [swiper, setSwiper] = useState<any>(null);
   const [isPrevDisabled, setIsPrevDisabled] = useState(true);
   const [isNextDisabled, setIsNextDisabled] = useState(false);
@@ -71,11 +78,17 @@ export const ProductSlider: React.FC<Props> = ({ id, title, products }) => {
         onSlideChange={handleDisable}
         className="products-swiper"
       >
-        {products.map(product => (
-          <SwiperSlide key={product.id}>
-            <CardLayout key={product.id} good={product} />
-          </SwiperSlide>
-        ))}
+        {isLoading
+          ? Array.from({ length: 4 }).map((_, index) => (
+              <SwiperSlide key={index}>
+                <CardSkeleton />
+              </SwiperSlide>
+            ))
+          : products.map(product => (
+              <SwiperSlide key={product.id}>
+                <CardLayout key={product.id} good={product} />
+              </SwiperSlide>
+            ))}
       </Swiper>
     </div>
   );
