@@ -51,12 +51,6 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onClose, onBack }) => {
         </div>
         <p className="form__title">Log In</p>
         <form onSubmit={handleSubmit(onSubmit)}>
-          {/* <input
-            className="form__input"
-            type="text"
-            placeholder="Enter Username"
-            {...register('name')}
-          /> */}
           <input
             className="form__input"
             type="email"

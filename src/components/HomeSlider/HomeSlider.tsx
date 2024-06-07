@@ -49,17 +49,17 @@ export const HomeSlider: React.FC = () => {
       >
         <SwiperSlide>
           <Link to="/phones" className="slide-link">
-            <img src={slidePhones}></img>
+            <img src={slidePhones} loading="lazy" alt="Phones"></img>
           </Link>
         </SwiperSlide>
         <SwiperSlide>
           <Link to="/tablets" className="slide-link">
-            <img src={slideTablets}></img>
+            <img src={slideTablets} loading="lazy" alt="Tablets"></img>
           </Link>
         </SwiperSlide>
         <SwiperSlide>
           <Link to="/accessories" className="slide-link">
-            <img src={slideWatches}></img>
+            <img src={slideWatches} loading="lazy" alt="Watches"></img>
           </Link>
         </SwiperSlide>
       </Swiper>

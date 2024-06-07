@@ -56,7 +56,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
             <Close />
           </button>
           <div className="cart-item__img">
-            <img src={image} alt={name} />
+            <img src={image} alt={name} loading="lazy" />
           </div>
           <Link className="cart-item__name" to={`/phones/${id}`}>
             {name}
