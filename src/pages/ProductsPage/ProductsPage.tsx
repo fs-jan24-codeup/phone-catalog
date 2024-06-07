@@ -16,6 +16,7 @@ import { useTranslation } from 'react-i18next';
 
 //@ts-ignore
 import { aos } from '../../components/AOS/aos';
+import { CardSkeleton } from '../../components/CardSkeleton';
 
 aos();
 
@@ -40,7 +41,7 @@ export const ProductsPage: React.FC<Props> = ({ title, products }) => {
     return itemsPerPageParam ? parseInt(itemsPerPageParam) : 4;
   });
 
-  const [isLoadingTitle, setIsLoadingTitle] = useState(true);
+  const [isLoadingData, setIsLoadingData] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
 
   const { t } = useTranslation();
@@ -98,16 +99,18 @@ export const ProductsPage: React.FC<Props> = ({ title, products }) => {
   const totalPages = Math.ceil(products.length / itemsPerPage);
 
   useEffect(() => {
-    setTimeout(() => {
-      setIsLoadingTitle(false);
-    }, 700);
-  }, []);
+    if (currentItems.length === 0) {
+      setIsLoadingData(true);
+    } else {
+      setIsLoadingData(false);
+    }
+  }, [currentItems]);
 
   return (
     <div className="product-page" data-aos="fade-down">
       <Breadcrumb />
       <h1 className="product-page__header">{title}</h1>
-      {isLoadingTitle ? (
+      {isLoadingData ? (
         <QuantitySkeleton />
       ) : (
         <p className="product-page__quantity">
@@ -143,9 +146,13 @@ export const ProductsPage: React.FC<Props> = ({ title, products }) => {
       </div>
 
       <ItemsLayout>
-        {currentItems.map(product => (
-          <CardLayout good={product} key={product.id} />
-        ))}
+        {isLoadingData
+          ? Array.from({ length: itemsPerPage }, (_, index) => (
+              <CardSkeleton key={index} />
+            ))
+          : currentItems.map(product => (
+              <CardLayout good={product} key={product.id} />
+            ))}
       </ItemsLayout>
 
       <Pagination

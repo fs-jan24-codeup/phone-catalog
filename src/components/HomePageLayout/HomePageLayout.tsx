@@ -15,9 +15,9 @@ import { aos } from '../AOS/aos';
 aos();
 
 export const HomePageLayout: React.FC = () => {
-
   const [phonesWithHotPrices, setPhonesWithHotPrices] = useState<Product[]>([]);
   const [newModels, setNewModels] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const { t } = useTranslation();
 
@@ -32,13 +32,19 @@ export const HomePageLayout: React.FC = () => {
 
         setPhonesWithHotPrices(hotPrices);
         setNewModels(newPhones);
+        setIsLoading(false);
       })
-      .catch(error => console.error('Error fetching phones:', error));
+      .catch(error => {
+        console.error('Error fetching data:', error);
+        setIsLoading(false);
+      });
   }, []);
 
   return (
     <div className="home home__grid">
-      <h1 className="home__title" data-aos="fade-down">{t('welcomeToNiceGadgetsStore')}</h1>
+      <h1 className="home__title" data-aos="fade-down">
+        {t('welcomeToNiceGadgetsStore')}
+      </h1>
 
       <div className="home__slider" data-aos="fade-down">
         <HomeSlider />
@@ -49,6 +55,7 @@ export const HomePageLayout: React.FC = () => {
           id="brand-new"
           products={newModels}
           title={t('brandNewModels')}
+          isLoading={isLoading}
         />
       </div>
 
@@ -61,6 +68,7 @@ export const HomePageLayout: React.FC = () => {
           id="hot-models"
           products={phonesWithHotPrices}
           title={t('hotPrices')}
+          isLoading={isLoading}
         />
       </div>
     </div>
